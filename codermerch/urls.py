@@ -19,14 +19,16 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 
-from controllers import Views
+from products.views import *
+from mainapp.views import *
 from django.views.generic import RedirectView
 
+
 urlpatterns = [
-    path('', Views.HomeView.as_view(), name='home'),
-    path('about/', Views.AboutView.as_view(), name='about'),
-    path('products/', Views.ProductsView.as_view(), name='products'),
-    path('product/', Views.ProductView.as_view(), name='product'),
+    path('', HomeView.as_view(), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('products/', ProductsView.as_view(), name='products'),
+    path('product/', ProductView.as_view(), name='product'),
     # path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),
     path('accounts/', include('allauth.urls')),

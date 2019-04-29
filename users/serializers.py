@@ -73,8 +73,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
                                                     instance.date_of_birth)
         instance.save()
 
-        profile.patronymice = profile_data.get('patronymic',
-                                               profile.patronymic)
+        profile.patronymic = profile_data.get('patronymic', profile.patronymic)
         profile.gender = profile_data.get('gender',
                                           profile.gender)
         profile.avatar = profile_data.get('avatar', profile.avatar)
