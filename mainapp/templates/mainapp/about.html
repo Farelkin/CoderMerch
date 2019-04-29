@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="ru">
-{% load staticfiles %}
 
 <head>
     <meta charset="utf-8">
@@ -42,7 +44,7 @@
             <div class="col-6 flex-wrap d-flex justify-content-end">
                 <a href="#"
                    class="text-white p-0 mx-2 sale-text font-weight-bold">SALE</a>
-                <a href="{% url 'about' %}" class="text-white p-0 mx-2">About
+                <a href="{% url 'mainapp:about' %}" class="text-white p-0 mx-2">About
                     team</a>
                 <a href="#" class="text-white p-0 mx-2">Delivery-payment</a>
                 <a href="#" class="text-white p-0 mx-2">Contact</a>
@@ -52,7 +54,7 @@
 
     <div class="container wow fadeInDown">
         <!-- Navbar brand -->
-        <a class="navbar-brand pl-1 wow rollIn" href="{% url 'home' %}"><img
+        <a class="navbar-brand pl-1 wow rollIn" href="{% url 'mainapp:home' %}"><img
                 class="coder-merch-brand-size" src="../static/img/logo.png"
                 alt=""></a>
 
@@ -81,7 +83,7 @@
                         <a class="dropdown-item header-dropdown-item" href="#">Вся
                             одежда</a>
                         <a class="dropdown-item header-dropdown-item"
-                           href="{% url 'products' %}">Мужская</a>
+                           href="{% url 'products:man' %}">Мужская</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Женская</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Мальчики</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Девочки</a>
@@ -98,7 +100,8 @@
                             аксессуары</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Головные
                             уборы</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Носки</a>
+                        <a class="dropdown-item header-dropdown-item"
+                           href="#">Носки</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Подушки</a>
                     </div>
                 </li>
@@ -111,8 +114,10 @@
                         <a class="dropdown-item header-dropdown-item" href="#">Все
                             коллекционки</a>
                         <a class="dropdown-item header-dropdown-item" href="#">Фигурки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Кружки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Бубны</a>
+                        <a class="dropdown-item header-dropdown-item"
+                           href="#">Кружки</a>
+                        <a class="dropdown-item header-dropdown-item"
+                           href="#">Бубны</a>
                     </div>
                 </li>
             </ul>

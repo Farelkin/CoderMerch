@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="shortcut icon" type="img/png" href="{% static 'img/favicon.png' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <!-- Font Awesome -->
+    <link href="{% static 'libs/fontawesome-free/css/all.css' %}" rel="stylesheet">
+    <link href="{% static 'libs/fontawesome-pro/css/all.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <!-- Наши стили -->
+    <link href="{% static 'css/CoderMerchStyle.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="first-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 slogan">
+                <span>Your code</span> <span>-</span> your brand
+            </div>
+            <div class="col-12 col-lg-5 d-flex justify-content-between ml-lg-auto top-menu">
+                <a href="#">SALE</a>
+                <a href="{% url 'mainapp:about' %}">О команде</a>
+                <a href="#">Доставка и оплата</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="header sticky-top" id="header">
+    <div class="second-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-3 col-md-2 logo order-1">
+                    <a href="{% url 'mainapp:home' %}"><img
+                            src="{% static 'img/logo.png' %}"
+                            alt="logo" width="113"></a>
+                </div>
+                <div class="col-12 col-lg-4 main-categories d-flex order-2 order-lg-1">
+                    {% include 'mainapp/includes/inc_active_menu.html' %}
+                </div>
+                <div class="col-sm-6 col-md-8 col-lg-5 search order-1 d-none d-sm-block">
+                    <input class="form-control" type="search" placeholder="Поиск"
+                           aria-label="Search">
+                    <button type="submit"><i class="far fa-search search-button"></i>
+                    </button>
+                </div>
+                <div class="col-6 col-sm-3 col-md-2 col-lg-1 d-flex justify-content-around justify-content-sm-between main-icons order-1">
+                    <a href="#" class="d-sm-none"><i class="far fa-search"></i></a>
+                    <a href="#"><i class="far fa-user"></i></a>
+                    <a href="{% url 'products:like' %}"><i class="far fa-heart"></i></a>
+                    <a href="{% url 'basket:basket' %}"><i
+                            class="far fa-shopping-bag"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block extra_menu %}
+    {% endblock %}
+
+</header>
+
+
+{% block content %}
+{% endblock %}
+
+
+<footer>
+    <div class="social">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-lg-4 col-sm-8 col-10 d-flex justify-content-between">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube-square"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <img src="{% static 'img/logo_white.png' %}" alt="logo" width="113">
+            <div class="copyright-text">
+                &copy; Copyright <span>CoderMerch Team</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+<!-- Включение анимации -->
+<script type="text/javascript">
+    new WOW().init();
+</script>
+
+{% block extra_scripts %}
+{% endblock %}
+
+</body>
+
+</html>

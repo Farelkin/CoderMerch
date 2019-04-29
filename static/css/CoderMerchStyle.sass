@@ -1,526 +1,755 @@
-@import "_style-product"
+@charset "utf-8"
 
-*
-  margin: 0
-  padding: 0
 
-html, body
-  height: 100%
-  background-color: #f6f6f6
+/* ШРИФТЫ */
 
-// ширина контента
-$main-width: 1200px
-$custom-font: "Phosphate - Inline"
+@font-face
+  font-family: "Raleway Regular"
+  src: url(../font/Raleway-Regular.ttf)
 
-//цвета
-$grey: #383838
-$black: #1e1e1e
+
+@font-face
+  font-family: "Raleway Bold"
+  src: url(../font/Raleway-Bold.ttf)
+
+@font-face
+  font-family: "Phosphate"
+  src: url(../font/Phosphate.ttc)
+
+@font-face
+  font-family: "Roboto Regular"
+  src: url(../font/Roboto-Regular.ttf)
+
+@font-face
+  font-family: "Roboto Bold"
+  src: url(../font/Roboto-Bold.ttf)
+
+$rlw-r: "Raleway Regular", sans-serif
+$rlw-b: "Raleway Bold", sans-serif
+$pst: "Phosphate", sans-serif
+$rbt-r: "Roboto Regular", sans-serif
+$rbt-b: "Roboto Bold", sans-serif
+
+
+/* ЦВЕТА */
+
 $yellow: #e6db74
-$blue: #66dgef
+$blue: #66d9ef
 $green: #a6e22e
-$white: #f6f6f6
 $pink: #f92672
+$light: #f6f6f6
+$grey: #383838
+$dark: #1e1e1e
+$light-grey: #eaeaea
+$hover-dark: #323232
 
-// кастомный шрифт
-@font-face
-  font-family: "Phosphate - Inline"
-  src: url("../font/Phosphate.ttc") format("truetype")
-  font-style: normal
-  font-weight: normal
-
-@font-face
-  font-family: 'Raleway'
-  src: url('../font/Raleway-Regular.ttf') format('truetype')
-  font-weight: normal
-  font-style: normal
-
-@font-face
-  font-family: 'Raleway'
-  src: url('../font/Raleway-Bold.ttf') format('truetype')
-  font-weight: bold
-  font-style: normal
-
-
-/* --- Начало: прижатие футера --- */
-main
-  flex: 1 0 auto
-
-footer
-  flex: 0 0 auto
-/* --- Конец: прижатие футера --- */
-
-/* --- Начало: Гамбургер --- */
-.animated-icon1, .animated-icon2, .animated-icon3
-  width: 30px
-  height: 20px
-  position: relative
+body
   margin: 0
-  -webkit-transform: rotate(0deg)
-  -moz-transform: rotate(0deg)
-  -o-transform: rotate(0deg)
-  transform: rotate(0deg)
-  -webkit-transition: .5s ease-in-out
-  -moz-transition: .5s ease-in-out
-  -o-transition: .5s ease-in-out
-  transition: .5s ease-in-out
-  cursor: pointer
+  background: $light
+  font-family: $rlw-r
+  font-size: 18px
+  color: $dark
 
 
-.animated-icon1 span
-  display: block
-  position: absolute
-  height: 3px
-  width: 100%
-  border-radius: 9px
-  opacity: 1
-  left: 0
-  -webkit-transform: rotate(0deg)
-  -moz-transform: rotate(0deg)
-  -o-transform: rotate(0deg)
-  transform: rotate(0deg)
-  -webkit-transition: .25s ease-in-out
-  -moz-transition: .25s ease-in-out
-  -o-transition: .25s ease-in-out
-  transition: .25s ease-in-out
 
-.animated-icon1 span
-  background: #4dd0e1
+/* МЕНЮ 1 */
 
-.animated-icon1 span:nth-child(1)
-  top: 0
+.first-menu
+  background: $dark
+  min-height: 33px
+  font-size: 18px
 
-.animated-icon1 span:nth-child(2)
-  top: 10px
-
-.animated-icon1 span:nth-child(3)
-  top: 20px
-
-.animated-icon1.open span:nth-child(1)
-  top: 11px
-  -webkit-transform: rotate(135deg)
-  -moz-transform: rotate(135deg)
-  -o-transform: rotate(135deg)
-  transform: rotate(135deg)
-
-.animated-icon1.open span:nth-child(2)
-  opacity: 0
-  left: -60px
-
-.animated-icon1.open span:nth-child(3)
-  top: 11px
-  -webkit-transform: rotate(-135deg)
-  -moz-transform: rotate(-135deg)
-  -o-transform: rotate(-135deg)
-  transform: rotate(-135deg)
-/* --- Конец: Гамбургер --- */
-
-/* --- Начало: Поиск --- */
-.active-cyan-4 input[type=text]:focus:not([readonly])
-  border: 1px solid #4dd0e1
-  box-shadow: 0 0 0 1px #4dd0e1
-/* --- Конец: Поиск --- */
-
-/* --- Начало: Иконки хэдэра --- */
-.header-heart-color:hover
-  color: hotpink
-  transition: cubic-bezier(0, 0, 0, 1) 2s
-
-.header-heart-color:active
-  color: red
-
-.header-user-color:hover
-  color: #1de9b6
-  transition: cubic-bezier(0, 0, 0, 1) 2s
-
-.header-user-color:active
-  color: #2e7d32
-
-.header-basket-color:hover
-  color: #4dd0e1
-  transition: cubic-bezier(0, 0, 0, 1) 2s
-
-.header-basket-color:active
-  color: #00838f
-/* --- Конец: Иконки хэдэра --- */
-
-/* --- Начало: Скрол --- */
-::-webkit-scrollbar
-  width: 6px
-  background-color: #F5F5F5
-
-::-webkit-scrollbar-thumb
-  border-radius: 10px
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1)
-  background-color: #4dd0e1
-/* --- Конец: Скрол --- */
-
-/* --- Начало: Мозайка --- */
-.logo-transform
-  display: flex
-  width: 80px
-  height: 40px
-  letter-spacing: 2px
-
-.logo-transform-your
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: rotate(360deg) translate(80px, 8px)
-  color: #a6e22e
-
-.logo-transform-co
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(20px, -10px)
-  color: #a6e22e
-
-.logo-transform-de
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(50px, 20px)
-  color: #a6e22e
-
-.logo-transform-you
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(-60px, 20px)
-  color: #66d9ef
-
-.logo-transform-and
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(-55px, 10px)
-  color: #66d9ef
-
-.logo-transform-br
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: skew(-20deg, 20deg) translate(20px, -10px)
-  color: #66d9ef
-
-.logo-transform:hover .logo-transform-your
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-
-.logo-transform:hover .logo-transform-co
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-
-.logo-transform:hover .logo-transform-de
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-
-.logo-transform:hover .logo-transform-you
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-
-.logo-transform:hover .logo-transform-and
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-
-.logo-transform:hover .logo-transform-br
-  display: block
-  transition: all 0.5s ease-in-out
-  transform: translate(0px, 0px)
-/* --- Конец: Мозайка --- */
-
-
-/* --- Начало: страница about --- */
-.coder-merch-about
-  max-width: $main-width
-
-.coder-merch-about-title
-  max-width: 800px
-
-.coder-merch-about-blabla
-  font-family: Raleway
-  font-size: 14pt
-  text-align: center
-
-.coder-merch-about-blabla .coder-merch-about-blabla-img
-  width: 200px
-  height: 200px
-  border-radius: 50%
-  overflow: hidden
-  margin: 0 auto
-
-.coder-merch-about-blabla .coder-merch-about-blabla-img img
-  width: auto
-  height: 100%
-  margin: 0 -80px auto
-
-/* --- Конец: страница about --- */
-
-
-/* --- Начало: страница товары --- */
-
-.catalog-header
-  &-top
-    background-color: $black
-
-  &-bottom
-    background-color: $white
-
-    a
-      color: $black !important
-
-.catalog-header-top-list-item.active > .catalog-header-top-list-item-link
-  background-color: $white!important
-  color: $black !important
-
-.coder-merch-header
-  background-color: $grey
-  &-top
-    background-color: $black
-  &-bottom
-    justify-content: space-between
-    &-list
-      margin-block-start: 0
-      margin-block-end: 0
-      min-height: 59.02px
-      &-item
-        outline: 1px solid $black
-
-.coder-merch-header-bottom-list-item.active > .coder-merch-header-bottom-list-item-link
-  background-color: $black!important
-
-.catalog-menu
-  background-color: #ffffff
-  &-list
-    margin-block-start: 0
-    margin-block-end: 0
-    &-item
-      margin: 16px 0
-      min-width: 185px
-      &-link
-        border-radius: 30px
-        background-color: #eeeeee
-
-.catalog-menu-list-item.active > .catalog-menu-list-item-link
-  background-color: $grey!important
-  color: $yellow!important
-
-.sale-text
-  color: $pink!important
-
-.cm-font-title
-  color: $yellow
-
-.cm-bg-grey
-  background-color: $grey
-
-.cm-bg-black
-  background-color: $black
-
-.bg-tp-off
-  background-color: rgba(0,0,0,0)!important
-
-.cm-catalog-next
-  width: 350px
-  font-size: 33px
-  &:hover
-    background-color: $black
+  .slogan
     color: $yellow
+    box-sizing: border-box
+    padding-left: 15px
+    span
+      color: $blue
+      &:first-child
+        color: $green
 
-.catalog-preview-item
-  min-width: 280px
-  min-height: 280px
+  .top-menu
+    padding: 0
 
-/* --- Конец: страница товары --- */
-
-
-
-
-
-
-main
-  //max-width: $main-width
-  padding-top: 102px
-
-.header-dropdown-item:hover
-  background-color: #757575
-
-.header-fa-size
-  font-size: 25px
-  color: white
-
-.footer__social-icon:hover
-  color: #4dd0e1
-  transition: cubic-bezier(0, 0, 0, 1) 2s
-
-.coder-merch-search-bg
-  padding-left: 25px
-  background-color: $black
-  color: #323232
-  border: none
-  border-radius: 30px
-
-.coder-merch-search-place
-  position: relative
-
-.coder-merch-search-icon
-  position: absolute
-  top: 15%
-  margin-left: 5px
-  margin-top: 2px
-  z-index: 1
-  color: #4f5b66
-
-.coder-merch-brand-size
-  max-width: 113px
-
-.coder-merch-main-photo-size
-  max-width: $main-width
-
-.coder-merch-main-photo-color
-  background-color: #00dff0
-  width: 100%
-
-.coder-merch-custom-font
-  font-family: $custom-font
-
-.coder-merch-main-new-size
-  max-width: $main-width
-
-.coder-merch-main-new-size-photo
-  max-height: 165px
-
-.coder-merch-goods-text
-  color: #00dff0
-
-.coder-merch-goods-price
-  color: #a6e22e
-  font-size: 40px
-
-.coder-merch-goods-photo
-  background-size: cover
-  width: 288px
-  height: 288px
-
-.coder-merch-goods-photo:hover
-  .coder-merch-goods-description
-    display: flex
+  a
+    display: block
+    height: inherit
+    color: $light
+    font-size: 16px
+    box-sizing: border-box
+    padding-top: 4px
+    &:first-child
+      color: $pink
+      font-family: $rlw-b
+    &:hover
+      color: lightgrey
 
 
-.coder-merch-goods-description
-  display: none
-  width: 100%
-  height: 100%
-  opacity: .9
+/* МЕНЮ 2 */
+
+.second-menu
+  min-height: 61px
+  background: $grey
+  .logo
+    padding: 5px 0 0 0
+
+  .main-categories a
+    &:first-child
+      border-left: $dark 1px solid
+    &:hover
+      background: $hover-dark
+
+  .main-category
+    height: 61px
+    flex: 100%
+    padding: 19px 0 0 0
+    font-family: $rlw-b
+    font-size: 16px
+    color: $light
+    text-transform: uppercase
+    text-align: center
+    border-right: $dark 1px solid
+  .active
+    background: $dark
+
+  .search
+    padding-top: 15px
+    position: relative
+    input
+      border: none
+      background: $dark
+      width: 100%
+      height: 29px
+      border-radius: 20px
+      padding-left: 32px
+      font-size: 16px
+      color: $grey
+      &::-webkit-input-placeholder
+        color: $grey
+        font-size: 16px
+      &::-moz-placeholder
+        color: $grey
+        font-size: 16px
+      &::placeholder
+        color: $grey
+        font-size: 16px
+    .form-control
+      &:focus
+        border-color: $blue !important
+        box-shadow: 0 0 10px $blue !important
+        background: $light
+        color: $grey
+
+    button
+      background: none
+      border: none
+      position: absolute
+      top: 16px
+      i
+        color: $grey
+      &:focus
+        outline: none !important
+
+.main-icons
+  padding: 14px 0 0 0
+  font-size: 22px
+  a
+    color: $light
+    &:hover
+      color: $yellow
+
+  &:nth-child(2n)
+      color: $pink
+    &:hover
+      color: $green
 
 
 
+/* ФОТО НА ГЛАВНОЙ */
+
+.main-image
+  background: #ebdb76
+
+/* ФОТО НА МУЖСКОЙ СТРАНИЦЕ */
+
+.man-image
+  background: #00daed
+
+/* ФОТО НА ЖЕНСКОЙ СТРАНИЦЕ */
+
+.woman-image
+  background: #ff2b77
 
 
-.photobox
-  display: inline-block
+/* ОБЪЯВЛЕНИЕ */
+
+.main-announcement
+  margin-top: 25px
+  margin-bottom: 25px
+  min-height: 86px
+  background: $green
+  text-align: center
+  box-sizing: border-box
+  padding-top: 10px
+  font-size: 43px
 
 
-.photobox__previewbox
-  position: relative
-  overflow: hidden
 
+/* ЗАГОЛОВОК СТРАНИЦ И БЛОКОВ */
 
-.photobox__preview
-  display: block
-  max-width: 100%
-
-
-.photobox__previewbox:before
-  content: ""
-
-
-/* type 8 */
-
-.photobox_type8 .photobox__previewbox:before
-  width: 0
-  height: 0
-  padding: 25%
-
-  background-color: var(--photoboxOverlay, rgba(0, 0, 0, .8))
-  border-radius: 50%
-
-  position: absolute
-  top: 50%
-  left: 50%
-  z-index: 2
-
-  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) ease
-  will-change: transform
-  transform: translate(-50%, -50%) scale(0)
-
-.photobox_type8:hover .photobox__previewbox:before
-  transform: translate(-50%, -50%) scale(4)
-  transition-duration: var(--photoboxAnimationDuration, .8s)
-
-.photobox_type8 .photobox__label
-  width: 95%
+.product-title
+  margin-bottom: 25px
+  min-height: 58px
+  background: $grey
+  font-family: $pst
+  font-size: 34px
+  color: $yellow
+  padding-top: 5px
   text-align: center
 
-  opacity: 0
-  transition: opacity calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9)
-  will-change: opacity, transform
 
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, 200%)
-  z-index: 3
+/* РАЗДЕЛ ПРОДУКТОВ */
 
-.photobox_type8:hover .photobox__label
-  opacity: 1
-  transform: translate(-50%, -50%)
-  transition-duration: calc(var(--photoboxAnimationDuration, .8s) / 2)
-  transition-delay: calc(var(--photoboxAnimationDuration, .8s) / 4)
-
-.photobox_type8 .photobox__preview
-  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) cubic-bezier(0.71, 0.05, 0.29, 0.9)
-    will-change: transform
-  transform: scale(1) rotate(0)
-
-.photobox_type8:hover .photobox__preview
-  transform: scale(1.2) rotate(5deg)
+.products
+  a
+    margin-bottom: 25px
+    display: block
+    img
+      cursor: pointer
 
 
+/* ОПИСАНИЕ СТРАНИЦЫ */
+
+.page-description
+  margin-top: 25px
+  margin-bottom: 25px
+  background: $yellow
+  padding-top: 25px
+  padding-bottom: 25px
+  h3
+    font-size: 22px
+    font-family: $rlw-b
+    text-align: center
+    text-transform: uppercase
+    color: $grey
+
+
+/* ЖЕНСКОЕ И МУЖСКОЕ МЕНЮ */
+
+.categories-menu
+  height: 46px
+  background: $dark
+  .container
+    padding: 0
+
+  .navbar
+    min-height: 46px
+    background-color: $dark !important
+    box-shadow: none !important
+    padding: 0
+    font-family: $rlw-b
+    font-size: 16px
+    color: $light
+    .nav-item
+      width: 132px
+      min-height: 46px
+      text-align: center
+      a
+        &:hover
+          background-color: $grey
+          color: $light !important
+
+      .nav-link
+        min-height: 46px
+        box-sizing: border-box
+        padding-top: 12px
+
+    .active
+      background-color: $light
+      color: $grey !important
+      a
+        color: $grey !important
+      &:hover
+        background-color: $grey !important
+
+
+/* ПУТЬ */
+
+.path
+  height: 30px
+  a
+    font-size: 14px
+    color: $grey
+    box-sizing: border-box
+    padding-top: 3px
+
+
+/* КНОПКИ СОРТИРОВКИ */
+
+.product-sort
+  .active
+    background: $grey
+    color: $light
+  a
+    display: block
+    height: 40px
+    background: $light-grey
+    text-align: center
+    border-radius: 25px
+    font-family: $rlw-b
+    font-size: 16px
+    text-transform: uppercase
+    color: $grey
+    box-sizing: border-box
+    padding-top: 9px
+    margin-bottom: 25px
+    &:hover
+      background: #c5c4c4
+      color: $grey
+
+
+/* ПАГИНАТОР */
+
+.paginator
+  text-align: center
+  font-size: 16px
+  margin-bottom: 25px
+  span
+    font-family: $rlw-b
+  button
+    border: none
+    background: $grey
+    width: 290px
+    height: 51px
+    font-family: $pst
+    font-size: 34px
+    color: $yellow
+    cursor: pointer
+    margin-top: 5px
+    &:hover
+      background: $green
+      color: $grey
+
+
+/* ПРОДУКТ */
+
+.product
+  color: $grey
+  margin-bottom: 25px
+  .sub-product-photos
+    .active
+      border: 2px $blue solid
+    img
+      margin-bottom: 20px
+
+  .short-description
+    font-family: $rlw-b
+    font-size: 20px
+    height: 3.5rem
+    overflow: hidden
+
+  .price
+    font-family: $rlw-b
+    span
+      font-family: $rbt-b
+      font-size: 32px
+
+  .vendor-code
+    font-family: $rbt-r
+    margin-bottom: 10px
+    span
+      font-family: $rlw-b
+
+  .color
+    span
+      font-family: $rlw-b
+
+  .buttons
+    margin-top: 25px
+    margin-bottom: 25px
+    .add-to-bag
+      height: 44px
+      width: 290px
+      font-family: $rlw-b
+      text-transform: uppercase
+      border: none
+      background: $green
+      cursor: pointer
+      margin-right: 15px
+      &:hover
+        background: $grey
+        color: $light
+
+    .add-to-like
+      text-align: center
+      border: none
+      background: white
+      color: $grey
+      height: 44px
+      width: 44px
+      cursor: pointer
+      border-radius: 50px
+      &:hover
+        background: $pink
+        color: $light
+      i
+        font-size: 22px
+        position: relative
+        top: 4px
+
+  select
+    margin-top: 25px
+    &:focus
+      border-color: lightgrey
+      box-shadow: none
+
+
+  .long-description
+    margin-top: 25px
+    font-size: 16px
+    height: 18rem
+    overflow: hidden
+
+
+/* ПОХОЖИЕ ПРОДУКТЫ */
+
+.similar-products
+  a
+    cursor: pointer
+    img
+      margin-bottom: 25px
+
+
+/* КОРЗИНА */
+
+.basket
+  color: $grey
+  font-size: 16px
+  .basket-items
+    background: white
+    padding-left: 20px
+    padding-right: 20px
+    margin-bottom: 25px
+    margin-right: 10px
+    .img
+      margin-right: 10px
+    .title
+      padding-top: 25px
+      font-size: 14px
+      margin-bottom: 19px
+      .my-basket
+        font-family: $rlw-b
+        text-transform: uppercase
+        font-size: 18px
+      .sixty-min
+        padding-top: 3px
+        box-sizing: border-box
+    .basket-unit-description
+      .price, .name, .color
+        margin-bottom: 5px
+      span
+        margin-right: 10px
+        font-family: $rbt-r
+        text-transform: uppercase
+        input
+          width: 37px
+          height: 20px
+      .count
+        margin-right: 0
+      button
+        border: 1px lightgrey solid
+        background: none
+        margin-top: 12px
+        cursor: pointer
+        &:hover
+          background: $grey
+          color: $light
+          border: 1px $grey solid
+    .close-btn
+      border: none
+      background: none
+      height: 30px
+      cursor: pointer
+      font-size: 20px
+    .total-amount
+      box-sizing: border-box
+      padding-top: 18px
+      text-align: right
+      height: 70px
+      font-family: $rlw-b
+      text-transform: uppercase
+      font-size: 18px
+      span
+        font-family: $rbt-b
+
+  .basket-order
+    padding-left: 20px
+    padding-right: 20px
+    background: white
+    height: 370px
+    font-size: 18px
+    .total
+      padding-top: 25px
+      font-family: $rlw-b
+      text-transform: uppercase
+      margin-bottom: 19px
+    select
+      font-size: 14px
+      &:focus
+        border-color: $light-grey !important
+        box-shadow: none !important
+    .sum
+      margin-top: 10px
+      .delivery
+        font-family: $rlw-b
+      .delivery-price
+        font-family: $rbt-r
+
+    button
+      margin-top: 18px
+      background: $green
+      border: none
+      width: 100%
+      height: 40px
+      color: $grey
+      font-family: $rlw-b
+      text-transform: uppercase
+      cursor: pointer
+      &:hover
+        background: $grey
+        color: $light
+
+    .we-take
+      margin-top: 10px
+      font-family: $rlw-b
+      text-transform: uppercase
+      font-size: 16px
+
+    .have-coupon
+      font-size: 14px
+      margin-top: 6px
+
+/* ИЗБРАННОЕ */
+
+.like-unit
+  position: relative
+  a
+    margin-bottom: 0
+  button
+    position: absolute
+    right: 20px
+    top: 5px
+    border: none
+    background: lightgrey
+    color: white
+    cursor: pointer
+    width: 25px
+    height: 25px
+    border-radius: 50%
+    font-size: 16px
+    padding: 0
+    &:hover
+      background: $grey
+  .name
+    font-size: 16px
+    color: $grey
+    background: white
+    padding-left: 10px
+    padding-right: 10px
+    hr
+      margin-top: 0
+  .price
+    background: white
+    padding-left: 10px
+    padding-right: 10px
+    font-family: $rbt-b
+    text-transform: uppercase
+    color: $grey
+    padding-bottom: 10px
+    margin-bottom: 25px
+
+.like-buttons
+  .clear-like
+    background: $yellow
+  .like-to-bag
+    background: $green
+  button
+    width: 100%
+    border: none
+    height: 50px
+    font-family: $rlw-b
+    text-transform: uppercase
+    color: $grey
+    margin-bottom: 25px
+    cursor: pointer
+    &:hover
+      background: $grey
+      color: $light
+
+
+/* ФУТЕР */
+
+.social
+  min-height: 72px
+  text-align: center
+  background: $grey
+  box-sizing: border-box
+  padding-top: 20px
+  font-size: 24px
+  a
+    color: $light
+    &:first-child
+      &:hover
+        color: #3b5998
+    &:nth-child(2)
+      &:hover
+        color: #1dcaff
+    &:nth-child(3)
+      &:hover
+        color: #4c75a3
+    &:nth-child(4)
+      &:hover
+        color: #FF0000
+    &:nth-child(5)
+      &:hover
+        color: #E1306C
+    &:nth-child(6)
+      &:hover
+        color: #C92228
+
+.copyright
+  min-height: 116px
+  background: $dark
+  text-align: center
+  padding-top: 22px
+  box-sizing: border-box
+  color: $light
+  .copyright-text
+    box-sizing: border-box
+    padding-top: 10px
+    span
+      font-family: $rlw-b
+
+
+/* ------------------------------- */
+
+/* МЕДИАЗАПРОСЫ */
+
+@media screen and (max-width: 992px)
+
+  .slogan
+    display: none
+
+  .main-categories
+    padding: 0
+    margin-top: 5px
+    .main-category
+      border-top: 1px $dark solid
+      border-bottom: 1px $dark solid
+
+  .main-announcement
+    min-height: 72px
+    font-size: 35px
+
+  .categories-menu
+    height: 0
+    background: none
+    button
+      position: absolute
+      top: -49px
+    .navbar
+      min-height: 0
+      width: 50%
+      z-index: 100
+      .nav-item
+        width: 100%
+
+  .sub-product-photos
+    img
+      height: 100px
+      margin-top: 25px
+
+  .basket-items
+    margin-right: 0 !important
+
+
+  /* ТУТ КОСТЫЛЬ */
+
+  .categories-menu.woman
+    button
+      left: unset
+      right: -100%
+    .navbar-collapse
+      position: absolute
+      right: -100%
+      width: calc(100% + 1px)
+      top: 0
+      .navbar-nav
+        position: absolute
+        width: 100%
+        background: $dark
+
+  .path
+    display: none
+
+  .add-to-bag
+    width: 100% !important
+
+
+@media screen and (max-width: 768px)
+
+  .main-announcement
+    min-height: 58px
+    font-size: 26px
+
+
+@media screen and (max-width: 576px)
+
+  .first-menu
+    padding: 3px 15px 0 15px
+    a
+      font-size: 13px
+
+  .second-menu
+    .main-categories
+      margin-top: 5px
+
+  .categories-menu
+    button
+      left: -6px
+
+  .categories-menu.woman
+    button
+      left: unset
+      right: calc(-100% - 6px)
+
+  .sub-product-photos
+    img
+      height: 70px
+
+  .my-basket, .sixty-min
+    display: block
+
+  .basket-items
+    padding-right: 10px !important
+    padding-left: 10px !important
+
+  .basket-unit-description
+    button
+      min-width: 120px
+
+
+
+@media screen and (min-width: 992px)
+
+  .basket-order
+    position: sticky
+    top: 4em
 
 
 
 
 
-
-
-
-
-
-
-
-/* --- Начало: Медиазапросы --- */
-@media screen and (max-width: 500px)
-  main
-    padding-top: 133px
-
-  .coder-merch-right-menu-media500
-    flex-direction: column
-    align-items: center
-    justify-content: center
-
-@media screen and (max-width: 1199px)
-  main
-    padding-top: 127px
-  .coder-merch-header-bottom
-    min-height: 83px
-
-@media screen and (max-width: 420px)
-  .coder-merch-header-top
-    display: none!important
-  main
-    padding-top: 83px
-
-/* --- Конец: Медиазапросы --- */
 
 
 

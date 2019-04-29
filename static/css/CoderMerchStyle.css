@@ -1,1040 +1,621 @@
 @charset "UTF-8";
-/* --- Используемые шрифты --- */
+/* ШРИФТЫ */
 @font-face {
-  font-family: Raleway-Bold;
-  src: url(../font/Raleway-Bold.ttf);
-}
+  font-family: "Raleway Regular";
+  src: url(../font/Raleway-Regular.ttf); }
 @font-face {
-  font-family: Raleway-Regular;
-  src: url(../font/Raleway-Regular.ttf);
-}
+  font-family: "Raleway Bold";
+  src: url(../font/Raleway-Bold.ttf); }
 @font-face {
-  font-family: Roboto-Bold;
-  src: url(../font/Roboto-Bold.ttf);
-}
+  font-family: "Phosphate";
+  src: url(../font/Phosphate.ttc); }
 @font-face {
-  font-family: Roboto-Regular;
-  src: url(../font/Roboto-Regular.ttf);
-}
+  font-family: "Roboto Regular";
+  src: url(../font/Roboto-Regular.ttf); }
 @font-face {
-  font-family: Phosphate-Pro-Inline;
-  src: url("../font/Phosphate.ttc");
-}
-/* --- Используемая палитра --- */
-/* --- Шапка --- */
-.coder-merch-durkMenuWrap {
-  height: 33px;
-  background: #1e1e1e;
-}
-
-.coder-merch-greyMenuWrap {
-  background: #383838 !important;
-}
-
-.coder-merch-categoryMenuWrap {
-  height: 46px;
-  background: #1e1e1e;
-}
-
-.coder-merch-pathLine {
-  height: 46px;
+  font-family: "Roboto Bold";
+  src: url(../font/Roboto-Bold.ttf); }
+/* ЦВЕТА */
+body {
+  margin: 0;
   background: #f6f6f6;
-}
-
-.coder-merch-durkMenu {
-  background-color: #1e1e1e !important;
-}
-
-.coder-merch-greyMenuWrap {
-  /* --- Меню категорий --- */     
-}
-.coder-merch-greyMenuWrap .active > a {
-  background: #1e1e1e !important;
-}
-.coder-merch-greyMenuWrap a {
-  padding: 16px 0;
-}
-
-.coder-merch-categoryMenu {
-  background: #1e1e1e !important;
-  /* --- Навигационнще меню --- */
-}
-.coder-merch-categoryMenu > div {
-  min-height: 46px;
-}
-.coder-merch-categoryMenu > div .active {
-  background: #f6f6f6 !important;
-  color: black !important;
-}
-.coder-merch-categoryMenu > div a {
-  font-family: Raleway-Bold;
-  font-size: 16px;
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-categoryMenu {
-    display: none !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-categoryMenu {
-    display: none !important;
-  }
-}
-
-.coder-merch-pathLine {
-  background: #f6f6f6;
-  /* --- Контейнер с заголовком --- */ 
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-pathLine {
-    display: none !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-pathLine {
-    display: none !important;
-  }
-}
-.coder-merch-pathLine .coder-merch-breadcrumb li:nth-child(n+2):before {
-  content: ">" !important;
-}
-.coder-merch-pathLine .coder-merch-breadcrumb ol {
-  background-color: #00000000 !important;
-}
-.coder-merch-pathLine .coder-merch-breadcrumb li {
-  color: #383838 !important;
-}
-.coder-merch-pathLine .coder-merch-breadcrumb li:before {
-  color: #383838 !important;
-}
-.coder-merch-pathLine .coder-merch-breadcrumb a {
-  color: #383838 !important;
-  text-decoration: none !important;
-}
-.coder-merch-pathLine .coder-merch-breadcrumb a:hover {
-  color: #0770cf !important;
-}
-
-.coder-merch-greyLineWrap {
-  min-height: min-height;
-  background: #383838;
-}
-.coder-merch-greyLineWrap div {
-  height: inherit;
-}
-.coder-merch-greyLineWrap div p {
-  font-family: Phosphate-Pro-Inline;
-  font-size: 33px;
-  color: #e6db74;
-  margin: 4px 0 0 0;
-}
-
-/* --- Основной контент --- */ 
-.coder-merch-contentWrap {
-  margin-left: -15px;
-  margin-right: -15px;
-  height: 744px;
-}
-.coder-merch-contentWrap > div {
-  height: inherit;
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-contentWrap {
-    height: 600px;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentWrap {
-    height: auto;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentWrap {
-    height: auto;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-contentWrap {
-    height: auto;
-  }
-}
-
-/* --- Список фотографий --- */ 
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentLeft {
-    display: none !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-contentLeft {
-    display: none !important;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentLeft {
-    padding: 0;
-    margin-left: -15px;
-  }
-}
-.coder-merch-contentLeft div {
-  margin: 10px 0;
-  height: 100px;
-  width: 100px;
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-contentLeft div {
-    margin: 5px 0;
-    height: 90px;
-    width: 90px;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentLeft div {
-    margin: 2px 0;
-    height: 75px;
-    width: 75px;
-  }
-}
-.coder-merch-contentLeft i {
-  font-size: 30px;
-  color: rgba(30, 30, 30, 0.5);
-}
-.coder-merch-contentLeft i:hover {
-  color: #1e1e1e;
-}
-
-/* --- Карусель с фотографиями --- */ 
-.coder-merch-contentCenter {
-  padding: 0;
-}
-.coder-merch-contentCenter i {
-  font-size: 40px;
-  color: #1e1e1e;
-}
-
-/* --- Контент с информацией о тваре --- */
-.coder-merch-contentRight {
-  padding-right: 0;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentRight {
-    margin-top: 50px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight {
-    margin: 20px 15px 0 15px;
-  }
-}
-.coder-merch-contentRight p {
-  margin: 0;
-}
-.coder-merch-contentRight .coder-merch-nameProduct {
-  height: 3.1em;
-  overflow: hidden;
-}
-.coder-merch-contentRight .coder-merch-nameProduct p {
-  font-family: Raleway-Bold;
+  font-family: "Raleway Regular", sans-serif;
   font-size: 18px;
-  color: #1e1e1e;
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-nameProduct {
-    max-height: 5em;
-  }
-  .coder-merch-contentRight .coder-merch-nameProduct p {
-    font-size: 28px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-priceProduct {
-    margin-top: 10px;
-  }
-}
-.coder-merch-contentRight .coder-merch-priceProduct p {
-  font-family: Roboto-Bold;
-  font-size: 18px;
-  color: #1e1e1e;
-}
-.coder-merch-contentRight .coder-merch-priceProduct p span {
-  font-family: Roboto-Bold;
-  font-size: 32px;
-}
-.coder-merch-contentRight .coder-merch-colorArticleProduct p {
-  font-size: 18px;
-  font-family: Roboto-Regular;
-  color: #1e1e1e;
-}
-.coder-merch-contentRight .coder-merch-colorArticleProduct p span {
-  font-family: Raleway-Bold;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentRight .coder-merch-colorArticleProduct {
-    margin: 5px 0;
-  }
-}
-.coder-merch-contentRight .coder-merch-choiceSize {
-  margin-top: 20px;
-}
-.coder-merch-contentRight .coder-merch-choiceSize a {
-  margin: 0;
-  height: 47px;
-  border-color: black !important;
-  font-family: Raleway-Regular;
-  font-size: 14px !important;
-  color: #383838;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentRight .coder-merch-choiceSize a {
-    font-size: 12px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-contentRight .coder-merch-choiceSize {
-    margin-top: 10px;
-  }
-}
-.coder-merch-contentRight .coder-merch-choiceSize > ol > li > a dropdown1-toggle {
-  background-color: #f6f6f6 !important;
-}
-.coder-merch-contentRight .coder-merch-addBasket {
-  margin-top: 24px;
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-contentRight .coder-merch-addBasket {
-    margin-top: 18px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-addBasket {
-    padding: 0;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-contentRight .coder-merch-addBasket {
-    padding: 0;
-  }
-}
-.coder-merch-contentRight .coder-merch-addBasket div {
-  height: 44px;
-  padding: 0;
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-addBasket div {
-    width: 75%;
-  }
-}
-.coder-merch-contentRight .coder-merch-addBasket button {
-  display: block;
-  height: 42px !important;
-  margin: 0;
-  width: 100%;
+  color: #1e1e1e; }
+
+/* МЕНЮ 1 */
+.first-menu {
+  background: #1e1e1e;
+  min-height: 33px;
+  font-size: 18px; }
+  .first-menu .slogan {
+    color: #e6db74;
+    box-sizing: border-box;
+    padding-left: 15px; }
+    .first-menu .slogan span {
+      color: #66d9ef; }
+      .first-menu .slogan span:first-child {
+        color: #a6e22e; }
+  .first-menu .top-menu {
+    padding: 0; }
+  .first-menu a {
+    display: block;
+    height: inherit;
+    color: #f6f6f6;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding-top: 4px; }
+    .first-menu a:first-child {
+      color: #f92672;
+      font-family: "Raleway Bold", sans-serif; }
+    .first-menu a:hover {
+      color: lightgrey; }
+
+/* МЕНЮ 2 */
+.second-menu {
+  min-height: 61px;
+  background: #383838; }
+  .second-menu .logo {
+    padding: 5px 0 0 0; }
+  .second-menu .main-categories a:first-child {
+    border-left: #1e1e1e 1px solid; }
+  .second-menu .main-categories a:hover {
+    background: #323232; }
+  .second-menu .main-category {
+    height: 61px;
+    flex: 100%;
+    padding: 19px 0 0 0;
+    font-family: "Raleway Bold", sans-serif;
+    font-size: 16px;
+    color: #f6f6f6;
+    text-transform: uppercase;
+    text-align: center;
+    border-right: #1e1e1e 1px solid; }
+  .second-menu .active {
+    background: #1e1e1e; }
+  .second-menu .search {
+    padding-top: 15px;
+    position: relative; }
+    .second-menu .search input {
+      border: none;
+      background: #1e1e1e;
+      width: 100%;
+      height: 29px;
+      border-radius: 20px;
+      padding-left: 32px;
+      font-size: 16px;
+      color: #383838; }
+      .second-menu .search input::-webkit-input-placeholder {
+        color: #383838;
+        font-size: 16px; }
+      .second-menu .search input::-moz-placeholder {
+        color: #383838;
+        font-size: 16px; }
+      .second-menu .search input::placeholder {
+        color: #383838;
+        font-size: 16px; }
+    .second-menu .search .form-control:focus {
+      border-color: #66d9ef !important;
+      box-shadow: 0 0 10px #66d9ef !important;
+      background: #f6f6f6;
+      color: #383838; }
+    .second-menu .search button {
+      background: none;
+      border: none;
+      position: absolute;
+      top: 16px; }
+      .second-menu .search button i {
+        color: #383838; }
+      .second-menu .search button:focus {
+        outline: none !important; }
+
+.main-icons {
+  padding: 14px 0 0 0;
+  font-size: 22px; }
+  .main-icons a {
+    color: #f6f6f6; }
+    .main-icons a:hover {
+      color: #e6db74; }
+  .main-icons:nth-child(2n):hover {
+    color: #a6e22e; }
+
+/* ФОТО НА ГЛАВНОЙ */
+.main-image {
+  background: #ebdb76; }
+
+/* ФОТО НА МУЖСКОЙ СТРАНИЦЕ */
+.man-image {
+  background: #00daed; }
+
+/* ФОТО НА ЖЕНСКОЙ СТРАНИЦЕ */
+.woman-image {
+  background: #ff2b77; }
+
+/* ОБЪЯВЛЕНИЕ */
+.main-announcement {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  min-height: 86px;
   background: #a6e22e;
-}
-.coder-merch-contentRight .coder-merch-addBasket a {
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 10px;
+  font-size: 43px; }
+
+/* ЗАГОЛОВОК СТРАНИЦ И БЛОКОВ */
+.product-title {
+  margin-bottom: 25px;
+  min-height: 58px;
+  background: #383838;
+  font-family: "Phosphate", sans-serif;
+  font-size: 34px;
+  color: #e6db74;
+  padding-top: 5px;
+  text-align: center; }
+
+/* РАЗДЕЛ ПРОДУКТОВ */
+.products a {
+  margin-bottom: 25px;
+  display: block; }
+  .products a img {
+    cursor: pointer; }
+
+/* ОПИСАНИЕ СТРАНИЦЫ */
+.page-description {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background: #e6db74;
+  padding-top: 25px;
+  padding-bottom: 25px; }
+  .page-description h3 {
+    font-size: 22px;
+    font-family: "Raleway Bold", sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: #383838; }
+
+/* ЖЕНСКОЕ И МУЖСКОЕ МЕНЮ */
+.categories-menu {
+  height: 46px;
+  background: #1e1e1e; }
+  .categories-menu .container {
+    padding: 0; }
+  .categories-menu .navbar {
+    min-height: 46px;
+    background-color: #1e1e1e !important;
+    box-shadow: none !important;
+    padding: 0;
+    font-family: "Raleway Bold", sans-serif;
+    font-size: 16px;
+    color: #f6f6f6; }
+    .categories-menu .navbar .nav-item {
+      width: 132px;
+      min-height: 46px;
+      text-align: center; }
+      .categories-menu .navbar .nav-item a:hover {
+        background-color: #383838;
+        color: #f6f6f6 !important; }
+      .categories-menu .navbar .nav-item .nav-link {
+        min-height: 46px;
+        box-sizing: border-box;
+        padding-top: 12px; }
+    .categories-menu .navbar .active {
+      background-color: #f6f6f6;
+      color: #383838 !important; }
+      .categories-menu .navbar .active a {
+        color: #383838 !important; }
+      .categories-menu .navbar .active:hover {
+        background-color: #383838 !important; }
+
+/* ПУТЬ */
+.path {
+  height: 30px; }
+  .path a {
+    font-size: 14px;
+    color: #383838;
+    box-sizing: border-box;
+    padding-top: 3px; }
+
+/* КНОПКИ СОРТИРОВКИ */
+.product-sort .active {
+  background: #383838;
+  color: #f6f6f6; }
+.product-sort a {
   display: block;
-  height: 42px !important;
-  width: 42px;
-  text-decoration: none;
-}
-.coder-merch-contentRight .coder-merch-addBasket a:hover i {
-  color: rgba(255, 0, 0, 0.5) !important;
-}
-.coder-merch-contentRight .coder-merch-addBasket a:active i {
-  color: red !important;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentRight .coder-merch-addBasket a {
-    margin-top: 18px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-addBasket a {
-    margin-right: 40px !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-contentRight .coder-merch-addBasket a {
-    margin-right: 40px !important;
-  }
-}
-@media (max-width: 400px) {
-  .coder-merch-contentRight .coder-merch-addBasket a {
-    margin-right: 10px !important;
-  }
-}
-.coder-merch-contentRight .coder-merch-addBasket i {
-  font-size: 20px;
-}
-.coder-merch-contentRight .coder-merch-descriptionProduct {
-  margin-top: 24px;
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-contentRight .coder-merch-descriptionProduct {
-    margin-top: 10px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-contentRight .coder-merch-descriptionProduct {
-    margin-bottom: 20px;
-  }
-  .coder-merch-contentRight .coder-merch-descriptionProduct p {
-    height: auto !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-contentRight .coder-merch-descriptionProduct {
-    margin-bottom: 20px;
-  }
-  .coder-merch-contentRight .coder-merch-descriptionProduct p {
-    height: auto !important;
-  }
-}
-.coder-merch-contentRight .coder-merch-descriptionProduct p {
-  height: 197px;
-  margin-right: 40px;
-  overflow: hidden;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-contentRight .coder-merch-descriptionProduct p {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .coder-merch-mdDescriptionProduct {
-    display: none !important;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-mdDescriptionProduct {
-    display: none !important;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-mdDescriptionProduct {
-    display: block !important;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-mdDescriptionProduct {
-    display: none !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-mdDescriptionProduct {
-    display: none !important;
-  }
-}
-.coder-merch-mdDescriptionProduct div {
-  height: inherit;
-}
-
-/* --- Контейнер с похожими товарами --- */
-.coder-merch-similarProductsWrap div {
-  margin: 36px 0;
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-similarProductsWrap div {
-    margin: 18px 3px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  .coder-merch-similarProductsWrap div:nth-child(n+4) {
-    display: none !important;
-  }
-}
-@media (max-width: 479px) {
-  .coder-merch-similarProductsWrap div:nth-child(n+4) {
-    display: none !important;
-  }
-}
-.coder-merch-similarProductsWrap i {
-  color: rgba(56, 56, 56, 0.5);
-}
-.coder-merch-similarProductsWrap i:hover {
-  color: #383838;
-}
-@media (min-width: 1200px) {
-  .coder-merch-similarProductsWrap a {
-    display: none !important;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .coder-merch-similarProductsWrap a {
-    display: none !important;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .coder-merch-similarProductsWrap a {
-    display: none !important;
-  }
-}
-
-footer .coder-merch-footerCopyright {
-  background: #1e1e1e !important;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-  background-color: #f6f6f6;
-}
-
-@font-face {
-  font-family: "Phosphate - Inline";
-  src: url("../font/Phosphate.ttc") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  src: url("../font/Raleway-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Raleway";
-  src: url("../font/Raleway-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-/* --- Начало: прижатие футера --- */
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  flex: 0 0 auto;
-}
-
-/* --- Конец: прижатие футера --- */
-/* --- Начало: Гамбургер --- */
-.animated-icon1, .animated-icon2, .animated-icon3 {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  margin: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-.animated-icon1 span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.25s ease-in-out;
-  -moz-transition: 0.25s ease-in-out;
-  -o-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-}
-
-.animated-icon1 span {
-  background: #4dd0e1;
-}
-
-.animated-icon1 span:nth-child(1) {
-  top: 0;
-}
-
-.animated-icon1 span:nth-child(2) {
-  top: 10px;
-}
-
-.animated-icon1 span:nth-child(3) {
-  top: 20px;
-}
-
-.animated-icon1.open span:nth-child(1) {
-  top: 11px;
-  -webkit-transform: rotate(135deg);
-  -moz-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
-
-.animated-icon1.open span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-
-.animated-icon1.open span:nth-child(3) {
-  top: 11px;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
-
-/* --- Конец: Гамбургер --- */
-/* --- Начало: Поиск --- */
-.active-cyan-4 input[type=text]:focus:not([readonly]) {
-  border: 1px solid #4dd0e1;
-  box-shadow: 0 0 0 1px #4dd0e1;
-}
-
-/* --- Конец: Поиск --- */
-/* --- Начало: Иконки хэдэра --- */
-.header-heart-color:hover {
-  color: hotpink;
-  transition: cubic-bezier(0, 0, 0, 1) 2s;
-}
-
-.header-heart-color:active {
-  color: red;
-}
-
-.header-user-color:hover {
-  color: #1de9b6;
-  transition: cubic-bezier(0, 0, 0, 1) 2s;
-}
-
-.header-user-color:active {
-  color: #2e7d32;
-}
-
-.header-basket-color:hover {
-  color: #4dd0e1;
-  transition: cubic-bezier(0, 0, 0, 1) 2s;
-}
-
-.header-basket-color:active {
-  color: #00838f;
-}
-
-/* --- Конец: Иконки хэдэра --- */
-/* --- Начало: Скрол --- */
-::-webkit-scrollbar {
-  width: 6px;
-  background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #4dd0e1;
-}
-
-/* --- Конец: Скрол --- */
-/* --- Начало: Мозайка --- */
-.logo-transform {
-  display: flex;
-  width: 80px;
   height: 40px;
-  letter-spacing: 2px;
-}
-
-.logo-transform-your {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: rotate(360deg) translate(80px, 8px);
-  color: #a6e22e;
-}
-
-.logo-transform-co {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(20px, -10px);
-  color: #a6e22e;
-}
-
-.logo-transform-de {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(50px, 20px);
-  color: #a6e22e;
-}
-
-.logo-transform-you {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(-60px, 20px);
-  color: #66d9ef;
-}
-
-.logo-transform-and {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(-55px, 10px);
-  color: #66d9ef;
-}
-
-.logo-transform-br {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: skew(-20deg, 20deg) translate(20px, -10px);
-  color: #66d9ef;
-}
-
-.logo-transform:hover .logo-transform-your {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-.logo-transform:hover .logo-transform-co {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-.logo-transform:hover .logo-transform-de {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-.logo-transform:hover .logo-transform-you {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-.logo-transform:hover .logo-transform-and {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-.logo-transform:hover .logo-transform-br {
-  display: block;
-  transition: all 0.5s ease-in-out;
-  transform: translate(0px, 0px);
-}
-
-/* --- Конец: Мозайка --- */
-/* --- Начало: страница about --- */
-.coder-merch-about {
-  max-width: 1200px;
-}
-
-.coder-merch-about-title {
-  max-width: 800px;
-}
-
-.coder-merch-about-blabla {
-  font-family: Raleway;
-  font-size: 14pt;
+  background: #eaeaea;
   text-align: center;
-}
+  border-radius: 25px;
+  font-family: "Raleway Bold", sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #383838;
+  box-sizing: border-box;
+  padding-top: 9px;
+  margin-bottom: 25px; }
+  .product-sort a:hover {
+    background: #c5c4c4;
+    color: #383838; }
 
-.coder-merch-about-blabla .coder-merch-about-blabla-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto;
-}
+/* ПАГИНАТОР */
+.paginator {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 25px; }
+  .paginator span {
+    font-family: "Raleway Bold", sans-serif; }
+  .paginator button {
+    border: none;
+    background: #383838;
+    width: 290px;
+    height: 51px;
+    font-family: "Phosphate", sans-serif;
+    font-size: 34px;
+    color: #e6db74;
+    cursor: pointer;
+    margin-top: 5px; }
+    .paginator button:hover {
+      background: #a6e22e;
+      color: #383838; }
 
-.coder-merch-about-blabla .coder-merch-about-blabla-img img {
-  width: auto;
-  height: 100%;
-  margin: 0 -80px auto;
-}
+/* ПРОДУКТ */
+.product {
+  color: #383838;
+  margin-bottom: 25px; }
+  .product .sub-product-photos .active {
+    border: 2px #66d9ef solid; }
+  .product .sub-product-photos img {
+    margin-bottom: 20px; }
+  .product .short-description {
+    font-family: "Raleway Bold", sans-serif;
+    font-size: 20px;
+    height: 3.5rem;
+    overflow: hidden; }
+  .product .price {
+    font-family: "Raleway Bold", sans-serif; }
+    .product .price span {
+      font-family: "Roboto Bold", sans-serif;
+      font-size: 32px; }
+  .product .vendor-code {
+    font-family: "Roboto Regular", sans-serif;
+    margin-bottom: 10px; }
+    .product .vendor-code span {
+      font-family: "Raleway Bold", sans-serif; }
+  .product .color span {
+    font-family: "Raleway Bold", sans-serif; }
+  .product .buttons {
+    margin-top: 25px;
+    margin-bottom: 25px; }
+    .product .buttons .add-to-bag {
+      height: 44px;
+      width: 290px;
+      font-family: "Raleway Bold", sans-serif;
+      text-transform: uppercase;
+      border: none;
+      background: #a6e22e;
+      cursor: pointer;
+      margin-right: 15px; }
+      .product .buttons .add-to-bag:hover {
+        background: #383838;
+        color: #f6f6f6; }
+    .product .buttons .add-to-like {
+      text-align: center;
+      border: none;
+      background: white;
+      color: #383838;
+      height: 44px;
+      width: 44px;
+      cursor: pointer;
+      border-radius: 50px; }
+      .product .buttons .add-to-like:hover {
+        background: #f92672;
+        color: #f6f6f6; }
+      .product .buttons .add-to-like i {
+        font-size: 22px;
+        position: relative;
+        top: 4px; }
+  .product select {
+    margin-top: 25px; }
+    .product select:focus {
+      border-color: lightgrey;
+      box-shadow: none; }
+  .product .long-description {
+    margin-top: 25px;
+    font-size: 16px;
+    height: 18rem;
+    overflow: hidden; }
 
-/* --- Конец: страница about --- */
-/* --- Начало: страница товары --- */
-.catalog-header-top {
-  background-color: #1e1e1e;
-}
-.catalog-header-bottom {
-  background-color: #f6f6f6;
-}
-.catalog-header-bottom a {
-  color: #1e1e1e !important;
-}
+/* ПОХОЖИЕ ПРОДУКТЫ */
+.similar-products a {
+  cursor: pointer; }
+  .similar-products a img {
+    margin-bottom: 25px; }
 
-.catalog-header-top-list-item.active > .catalog-header-top-list-item-link {
-  background-color: #f6f6f6 !important;
-  color: #1e1e1e !important;
-}
+/* КОРЗИНА */
+.basket {
+  color: #383838;
+  font-size: 16px; }
+  .basket .basket-items {
+    background: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 25px;
+    margin-right: 10px; }
+    .basket .basket-items .img {
+      margin-right: 10px; }
+    .basket .basket-items .title {
+      padding-top: 25px;
+      font-size: 14px;
+      margin-bottom: 19px; }
+      .basket .basket-items .title .my-basket {
+        font-family: "Raleway Bold", sans-serif;
+        text-transform: uppercase;
+        font-size: 18px; }
+      .basket .basket-items .title .sixty-min {
+        padding-top: 3px;
+        box-sizing: border-box; }
+    .basket .basket-items .basket-unit-description .price, .basket .basket-items .basket-unit-description .name, .basket .basket-items .basket-unit-description .color {
+      margin-bottom: 5px; }
+    .basket .basket-items .basket-unit-description span {
+      margin-right: 10px;
+      font-family: "Roboto Regular", sans-serif;
+      text-transform: uppercase; }
+      .basket .basket-items .basket-unit-description span input {
+        width: 37px;
+        height: 20px; }
+    .basket .basket-items .basket-unit-description .count {
+      margin-right: 0; }
+    .basket .basket-items .basket-unit-description button {
+      border: 1px lightgrey solid;
+      background: none;
+      margin-top: 12px;
+      cursor: pointer; }
+      .basket .basket-items .basket-unit-description button:hover {
+        background: #383838;
+        color: #f6f6f6;
+        border: 1px #383838 solid; }
+    .basket .basket-items .close-btn {
+      border: none;
+      background: none;
+      height: 30px;
+      cursor: pointer;
+      font-size: 20px; }
+    .basket .basket-items .total-amount {
+      box-sizing: border-box;
+      padding-top: 18px;
+      text-align: right;
+      height: 70px;
+      font-family: "Raleway Bold", sans-serif;
+      text-transform: uppercase;
+      font-size: 18px; }
+      .basket .basket-items .total-amount span {
+        font-family: "Roboto Bold", sans-serif; }
+  .basket .basket-order {
+    padding-left: 20px;
+    padding-right: 20px;
+    background: white;
+    height: 370px;
+    font-size: 18px; }
+    .basket .basket-order .total {
+      padding-top: 25px;
+      font-family: "Raleway Bold", sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 19px; }
+    .basket .basket-order select {
+      font-size: 14px; }
+      .basket .basket-order select:focus {
+        border-color: #eaeaea !important;
+        box-shadow: none !important; }
+    .basket .basket-order .sum {
+      margin-top: 10px; }
+      .basket .basket-order .sum .delivery {
+        font-family: "Raleway Bold", sans-serif; }
+      .basket .basket-order .sum .delivery-price {
+        font-family: "Roboto Regular", sans-serif; }
+    .basket .basket-order button {
+      margin-top: 18px;
+      background: #a6e22e;
+      border: none;
+      width: 100%;
+      height: 40px;
+      color: #383838;
+      font-family: "Raleway Bold", sans-serif;
+      text-transform: uppercase;
+      cursor: pointer; }
+      .basket .basket-order button:hover {
+        background: #383838;
+        color: #f6f6f6; }
+    .basket .basket-order .we-take {
+      margin-top: 10px;
+      font-family: "Raleway Bold", sans-serif;
+      text-transform: uppercase;
+      font-size: 16px; }
+    .basket .basket-order .have-coupon {
+      font-size: 14px;
+      margin-top: 6px; }
 
-.coder-merch-header {
-  background-color: #383838;
-}
-.coder-merch-header-top {
-  background-color: #1e1e1e;
-}
-.coder-merch-header-bottom {
-  justify-content: space-between;
-}
-.coder-merch-header-bottom-list {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  min-height: 59.02px;
-}
-.coder-merch-header-bottom-list-item {
-  outline: 1px solid #1e1e1e;
-}
+/* ИЗБРАННОЕ */
+.like-unit {
+  position: relative; }
+  .like-unit a {
+    margin-bottom: 0; }
+  .like-unit button {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    border: none;
+    background: lightgrey;
+    color: white;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 0; }
+    .like-unit button:hover {
+      background: #383838; }
+  .like-unit .name {
+    font-size: 16px;
+    color: #383838;
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .like-unit .name hr {
+      margin-top: 0; }
+  .like-unit .price {
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Roboto Bold", sans-serif;
+    text-transform: uppercase;
+    color: #383838;
+    padding-bottom: 10px;
+    margin-bottom: 25px; }
 
-.coder-merch-header-bottom-list-item.active > .coder-merch-header-bottom-list-item-link {
-  background-color: #1e1e1e !important;
-}
-
-.catalog-menu {
-  background-color: #ffffff;
-}
-.catalog-menu-list {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-.catalog-menu-list-item {
-  margin: 16px 0;
-  min-width: 185px;
-}
-.catalog-menu-list-item-link {
-  border-radius: 30px;
-  background-color: #eeeeee;
-}
-
-.catalog-menu-list-item.active > .catalog-menu-list-item-link {
-  background-color: #383838 !important;
-  color: #e6db74 !important;
-}
-
-.sale-text {
-  color: #f92672 !important;
-}
-
-.cm-font-title {
-  color: #e6db74;
-}
-
-.cm-bg-grey {
-  background-color: #383838;
-}
-
-.cm-bg-black {
-  background-color: #1e1e1e;
-}
-
-.bg-tp-off {
-  background-color: rgba(0, 0, 0, 0) !important;
-}
-
-.cm-catalog-next {
-  width: 350px;
-  font-size: 33px;
-}
-.cm-catalog-next:hover {
-  background-color: #1e1e1e;
-  color: #e6db74;
-}
-
-.catalog-preview-item {
-  min-width: 280px;
-  min-height: 280px;
-}
-
-/* --- Конец: страница товары --- */
-main {
-  padding-top: 102px;
-}
-
-.header-dropdown-item:hover {
-  background-color: #757575;
-}
-
-.header-fa-size {
-  font-size: 25px;
-  color: white;
-}
-
-.footer__social-icon:hover {
-  color: #4dd0e1;
-  transition: cubic-bezier(0, 0, 0, 1) 2s;
-}
-
-.coder-merch-search-bg {
-  padding-left: 25px;
-  background-color: #1e1e1e;
-  color: #323232;
+.like-buttons .clear-like {
+  background: #e6db74; }
+.like-buttons .like-to-bag {
+  background: #a6e22e; }
+.like-buttons button {
+  width: 100%;
   border: none;
-  border-radius: 30px;
-}
+  height: 50px;
+  font-family: "Raleway Bold", sans-serif;
+  text-transform: uppercase;
+  color: #383838;
+  margin-bottom: 25px;
+  cursor: pointer; }
+  .like-buttons button:hover {
+    background: #383838;
+    color: #f6f6f6; }
 
-.coder-merch-search-place {
-  position: relative;
-}
-
-.coder-merch-search-icon {
-  position: absolute;
-  top: 15%;
-  margin-left: 5px;
-  margin-top: 2px;
-  z-index: 1;
-  color: #4f5b66;
-}
-
-.coder-merch-brand-size {
-  max-width: 113px;
-}
-
-.coder-merch-main-photo-size {
-  max-width: 1200px;
-}
-
-.coder-merch-main-photo-color {
-  background-color: #00dff0;
-  width: 100%;
-}
-
-.coder-merch-custom-font {
-  font-family: "Phosphate - Inline";
-}
-
-.coder-merch-main-new-size {
-  max-width: 1200px;
-}
-
-.coder-merch-main-new-size-photo {
-  max-height: 165px;
-}
-
-.coder-merch-goods-text {
-  color: #00dff0;
-}
-
-.coder-merch-goods-price {
-  color: #a6e22e;
-  font-size: 40px;
-}
-
-.coder-merch-goods-photo {
-  background-size: cover;
-  width: 288px;
-  height: 288px;
-}
-
-.coder-merch-goods-photo:hover .coder-merch-goods-description {
-  display: flex;
-}
-
-.coder-merch-goods-description {
-  display: none;
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-}
-
-.photobox {
-  display: inline-block;
-}
-
-.photobox__previewbox {
-  position: relative;
-  overflow: hidden;
-}
-
-.photobox__preview {
-  display: block;
-  max-width: 100%;
-}
-
-.photobox__previewbox:before {
-  content: "";
-}
-
-/* type 8 */
-.photobox_type8 .photobox__previewbox:before {
-  width: 0;
-  height: 0;
-  padding: 25%;
-  background-color: var(--photoboxOverlay, rgba(0, 0, 0, 0.8));
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) ease;
-  will-change: transform;
-  transform: translate(-50%, -50%) scale(0);
-}
-
-.photobox_type8:hover .photobox__previewbox:before {
-  transform: translate(-50%, -50%) scale(4);
-  transition-duration: var(--photoboxAnimationDuration, 0.8s);
-}
-
-.photobox_type8 .photobox__label {
-  width: 95%;
+/* ФУТЕР */
+.social {
+  min-height: 72px;
   text-align: center;
-  opacity: 0;
-  transition: opacity calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9);
-  will-change: opacity, transform;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 200%);
-  z-index: 3;
-}
+  background: #383838;
+  box-sizing: border-box;
+  padding-top: 20px;
+  font-size: 24px; }
+  .social a {
+    color: #f6f6f6; }
+    .social a:first-child:hover {
+      color: #3b5998; }
+    .social a:nth-child(2):hover {
+      color: #1dcaff; }
+    .social a:nth-child(3):hover {
+      color: #4c75a3; }
+    .social a:nth-child(4):hover {
+      color: #FF0000; }
+    .social a:nth-child(5):hover {
+      color: #E1306C; }
+    .social a:nth-child(6):hover {
+      color: #C92228; }
 
-.photobox_type8:hover .photobox__label {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-  transition-duration: calc(var(--photoboxAnimationDuration, .8s) / 2);
-  transition-delay: calc(var(--photoboxAnimationDuration, .8s) / 4);
-}
+.copyright {
+  min-height: 116px;
+  background: #1e1e1e;
+  text-align: center;
+  padding-top: 22px;
+  box-sizing: border-box;
+  color: #f6f6f6; }
+  .copyright .copyright-text {
+    box-sizing: border-box;
+    padding-top: 10px; }
+    .copyright .copyright-text span {
+      font-family: "Raleway Bold", sans-serif; }
 
-.photobox_type8 .photobox__preview {
-  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) cubic-bezier(0.71, 0.05, 0.29, 0.9);
-  transition-will-change: transform;
-  transform: scale(1) rotate(0);
-}
+/* ------------------------------- */
+/* МЕДИАЗАПРОСЫ */
+@media screen and (max-width: 992px) {
+  .slogan {
+    display: none; }
 
-.photobox_type8:hover .photobox__preview {
-  transform: scale(1.2) rotate(5deg);
-}
+  .main-categories {
+    padding: 0;
+    margin-top: 5px; }
+    .main-categories .main-category {
+      border-top: 1px #1e1e1e solid;
+      border-bottom: 1px #1e1e1e solid; }
 
-/* --- Начало: Медиазапросы --- */
-@media screen and (max-width: 500px) {
-  main {
-    padding-top: 133px;
-  }
+  .main-announcement {
+    min-height: 72px;
+    font-size: 35px; }
 
-  .coder-merch-right-menu-media500 {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
-@media screen and (max-width: 1199px) {
-  main {
-    padding-top: 127px;
-  }
+  .categories-menu {
+    height: 0;
+    background: none; }
+    .categories-menu button {
+      position: absolute;
+      top: -49px; }
+    .categories-menu .navbar {
+      min-height: 0;
+      width: 50%;
+      z-index: 100; }
+      .categories-menu .navbar .nav-item {
+        width: 100%; }
 
-  .coder-merch-header-bottom {
-    min-height: 83px;
-  }
-}
-@media screen and (max-width: 420px) {
-  .coder-merch-header-top {
-    display: none !important;
-  }
+  .sub-product-photos img {
+    height: 100px;
+    margin-top: 25px; }
 
-  main {
-    padding-top: 83px;
-  }
-}
-/* --- Конец: Медиазапросы --- */
+  .basket-items {
+    margin-right: 0 !important; }
+
+  /* ТУТ КОСТЫЛЬ */
+  .categories-menu.woman button {
+    left: unset;
+    right: -100%; }
+  .categories-menu.woman .navbar-collapse {
+    position: absolute;
+    right: -100%;
+    width: calc(100% + 1px);
+    top: 0; }
+    .categories-menu.woman .navbar-collapse .navbar-nav {
+      position: absolute;
+      width: 100%;
+      background: #1e1e1e; }
+
+  .path {
+    display: none; }
+
+  .add-to-bag {
+    width: 100% !important; } }
+@media screen and (max-width: 768px) {
+  .main-announcement {
+    min-height: 58px;
+    font-size: 26px; } }
+@media screen and (max-width: 576px) {
+  .first-menu {
+    padding: 3px 15px 0 15px; }
+    .first-menu a {
+      font-size: 13px; }
+
+  .second-menu .main-categories {
+    margin-top: 5px; }
+
+  .categories-menu button {
+    left: -6px; }
+
+  .categories-menu.woman button {
+    left: unset;
+    right: calc(-100% - 6px); }
+
+  .sub-product-photos img {
+    height: 70px; }
+
+  .my-basket, .sixty-min {
+    display: block; }
+
+  .basket-items {
+    padding-right: 10px !important;
+    padding-left: 10px !important; }
+
+  .basket-unit-description button {
+    min-width: 120px; } }
+@media screen and (min-width: 992px) {
+  .basket-order {
+    position: sticky;
+    top: 4em; } }
 
 /*# sourceMappingURL=CoderMerchStyle.css.map */

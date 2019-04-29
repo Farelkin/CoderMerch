@@ -1,406 +1,114 @@
-<!DOCTYPE html>
-<html lang="ru">
-{% load staticfiles %}
+{% extends 'mainapp/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>CoderMerch</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="static/css/mdb.min.css" rel="stylesheet">
-    <!-- Наши стили -->
-    <link href="static/css/CoderMerchStyle.css" rel="stylesheet">
-    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}"
-          type="image/png">
-</head>
+{% block title %}
+    CoderMerch | Главная
+{% endblock %}
 
-<body class="d-flex flex-column">
+{% block content %}
 
-<header class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color scrolling-navbar flex-column p-0 mx-0">
-    <!-- Самая верхняя менюшка -->
-    <div class="container-fluid justify-content-center grey darken-2 wow fadeInUp">
-        <nav class="container mx-0 p-0 d-flex justify-content-between align-items-center">
-            <div class="col-4 text-white pt-1 pl-0">
-                <p class="navbar-brand logo-transform p-0 m-0" href="#">
-                    <span class="logo-transform-your pr-1">Your</span>
-                    <span class="logo-transform-co">co</span>
-                    <span class="logo-transform-de pr-1">de</span>
-                    <span class="text-danger  pr-1">-</span>
-                    <span class="logo-transform-you  pr-1">your</span>
-                    <span class="logo-transform-br">br</span>
-                    <span class="logo-transform-and">and!</span>
-                </p>
-            </div>
-            <div class="col-6 flex-wrap d-flex justify-content-end">
-                <a href="#"
-                   class="text-white p-0 mx-2 sale-text font-weight-bold">SALE</a>
-                <a href="{% url 'about' %}" class="text-white p-0 mx-2">About
-                    team</a>
-                <a href="#" class="text-white p-0 mx-2">Delivery-payment</a>
-                <a href="#" class="text-white p-0 mx-2">Contact</a>
-            </div>
-        </nav>
-    </div>
-
-    <div class="container wow fadeInDown">
-        <!-- Navbar brand -->
-        <a class="navbar-brand pl-1 wow rollIn" href="{% url 'home' %}"><img
-                class="coder-merch-brand-size" src="static/img/logo.png"
-                alt=""></a>
-
-        <!-- Гамбургер -->
-        <button class="navbar-toggler first-button" type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarContent" aria-expanded="false"
-                aria-label="Togglenavigation">
-            <div class="animated-icon1"><span></span><span></span><span></span>
-            </div>
-        </button>
-
-        <!-- Схлопывается: Гамбургер -->
-        <div class="collapse navbar-collapse justify-content-between"
-             id="navbarSupportedContent">
-
-            <!-- Меню -->
-            <ul class="navbar-nav d-flex justify-content-between  m-auto">
-                <li class="nav-item dropdown active container-fluid text-center p-0">
-                    <a class="px-5 py-3 nav-link font-weight-bold" href="#"
-                       id="navbarDropdownMenuLink1" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">ОДЕЖДА</a>
-                    <div class="dropdown-menu dropdown-primary text-center grey lighten-1 wow fadeInRight"
-                         aria-labelledby="navbarDropdownMenuLink1">
-                        <a class="dropdown-item header-dropdown-item" href="#">Вся
-                            одежда</a>
-                        <a class="dropdown-item header-dropdown-item"
-                           href="{% url 'products' %}">Мужская</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Женская</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Мальчики</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Девочки</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown container-fluid text-center p-0">
-                    <a class="px-5 py-3 nav-link font-weight-bold" href="#"
-                       id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">АКСЕССУАРЫ</a>
-                    <div class="dropdown-menu dropdown-primary text-center grey lighten-1  wow fadeInRight"
-                         aria-labelledby="navbarDropdownMenuLink2">
-                        <a class="dropdown-item header-dropdown-item" href="#">Все
-                            аксессуары</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Головные
-                            уборы</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Носки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Подушки</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown container-fluid text-center p-0">
-                    <a class="px-5 py-3 nav-link font-weight-bold" href="#"
-                       id="navbarDropdownMenuLink3" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">КОЛЛЕКЦИЯ</a>
-                    <div class="dropdown-menu dropdown-primary text-center grey lighten-1  wow fadeInRight"
-                         aria-labelledby="navbarDropdownMenuLink3">
-                        <a class="dropdown-item header-dropdown-item" href="#">Все
-                            коллекционки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Фигурки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Кружки</a>
-                        <a class="dropdown-item header-dropdown-item" href="#">Бубны</a>
-                    </div>
-                </li>
-            </ul>
-            <!-- Правая сторона -->
-            <div class="d-flex justify-content-between flex-wrap p-0 my-1 coder-merch-right-menu-media500">
-                <form class="form-inline mx-2">
-                    <div class="active-cyan-4">
-                        <input class="form-control coder-merch-search-bg"
-                               type="text" placeholder="Поиск"
-                               aria-label="Search">
-                    </div>
-                </form>
-                <div class="mt-2 justify-content-around">
-                    <a href="#" id="non-logged-in" class="mx-2 text-center" data-toggle="modal"
-                       data-target="#modalLoginForm">
-                        <i class="far fa-user header-fa-size header-user-color wow swing delay-2s"></i>
-                    </a>
-                    <a href="#" id="logged-in" class="mx-2 text-center">
-                        <i class="fas fa-sign-out-alt header-fa-size header-user-color wow swing delay-1s"></i>
-                    </a>
-                    <a href="#" class="mx-2 text-center">
-                        <i class="far fa-heart header-fa-size header-heart-color wow swing delay-2s"></i>
-                    </a>
-                    <a href="#" class="mx-2 text-center">
-                        <i class="fas fa-shopping-bag header-fa-size header-basket-color wow swing delay-2s"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Схлопывается -->
-    </div>
-</header>
-
-
-<main class="d-flex flex-column">
-    <!-- Модалка для логина-->
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">С
-                        возвращением!</h4>
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email"
-                               class="form-control validate">
-                        <label data-error="wrong" data-success="right"
-                               for="defaultForm-email">Ваша почта</label>
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass"
-                               class="form-control validate">
-                        <label data-error="wrong" data-success="right"
-                               for="defaultForm-pass">Пароль</label>
-                    </div>
-
-                    <label class="form-checkbox"
-                           for="input-local-storage">
-                        <input type="checkbox" id="input-remember"/>
-                        Remember me
-                    </label>
-
-                    <div class="label text-warning invisible"
-                         id="modal-error">
-                        Unable to login!
-                    </div>
-
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-default" id="loginOkButton">Войти
-                    </button>
-                    <button class="btn btn-default">Зарегистрироваться</button>
-                </div>
-            </div>
+    <div class="main-image">
+        <div class="container">
+            <img src="{% static 'img/main-image.jpg' %}" class="img-fluid "
+                 alt="Main image">
         </div>
     </div>
-    <!-- Модалка длялогина -->
 
-    <article
-            class="container-fluid coder-merch-main-photo-color d-flex align-items-center justify-content-center">
-        <div>
-            <img src="../static/img/main_photo1.jpg" alt=""
-                 class="container d-block coder-merch-main-photo-size wow fadeIn">
+    <div class="main-announcement">
+        <div class="container">
+            Реши легкую задачу и получи скидку 15%
         </div>
-    </article>
+    </div>
 
-    <article
-            class="container-fluid yellow lighten-2 my-3 shadow-drop-2-center">
-        <h2 class="text-center text-uppercase py-2 m-0 wow fadeInLeft">Реши
-            легкую задачу и получи
-            <span class="font-weight-bold">10% скидки</span>
-        </h2>
-    </article>
-    <section>
-        <div class="container-fluid grey darken-2">
-            <h2 class="text-center text-uppercase py-2 m-0 coder-merch-custom-font cm-font-title wow fadeInRight">
-                НОВЫЕ
-                ПОСТУПЛЕНИЯ</h2>
+    <div class="product-title">
+        <div class="container">
+            Новые поступления
         </div>
-        <div class="container-fluid d-flex justify-content-center align-content-center flex-wrap coder-merch-main-new-size my-3">
+    </div>
 
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product1.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="{% url 'product' %}"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product2.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product3.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product4.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product5.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product6.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
-                <div class="photobox__previewbox">
-                    <img src="../static/img/product7.jpg"
-                         class="photobox__preview" alt="Preview">
-                    <div class="photobox__label text-uppercase">
-                        <p class="coder-merch-goods-text my-3 font-weight-bolder">
-                            Толстовка "С++"</p>
-                        <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
-                            2990</h3>
-                        <a href="#"
-                           class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<!-- Footer -->
-<footer class="page-footer text-center font-small elegant-color-dark wow fadeIn">
-
-    <!-- Footer Elements -->
-    <div class="container-fluid">
-
-        <!-- Grid row-->
-        <div class="row grey darken-2">
-
-            <!-- Grid column -->
-            <div class="col-md-12">
-                <div class="flex-center p-2">
-                    <a href="#" class="header-basket-color">
-                        <i class="fab fa-vk fa-lg footer__social-icon m-2"></i>
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product1.jpg' %}"
+                             alt="product1">
                     </a>
-                    <a href="#" class="">
-                        <i class="fab fa-twitter fa-lg footer__social-icon m-2"></i>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product2.jpg' %}"
+                             alt="product2">
                     </a>
-                    <a href="#" class="">
-                        <i class="fab fa-google-plus-g fa-lg footer__social-icon m-2"></i>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product3.jpg' %}"
+                             alt="product3">
                     </a>
-                    <a href="#" class="">
-                        <i class="fab fa-linkedin-in fa-lg footer__social-icon m-2"></i>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
+                             alt="product4">
                     </a>
-                    <a href="#" class="">
-                        <i class="fab fa-instagram fa-lg footer__social-icon m-2"></i>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product5.jpg' %}"
+                             alt="product5">
                     </a>
-                    <a href="#" class="">
-                        <i class="fab fa-pinterest fa-lg footer__social-icon m-2"></i>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product6.jpg' %}"
+                             alt="product6">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product7.jpg' %}"
+                             alt="product7">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product8.jpg' %}"
+                             alt="product8">
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-copyright text-center d-flex flex-column">
-        <a href="#" class=" py-3"><img class="coder-merch-brand-size"
-                                       src="static/img/logo_down.png"
-                                       alt=""></a>
-        <p class="">&copy;&nbsp;Copyright&nbsp;2019:<a href="#"> Team
-            CoderMerch</a></p>
+
+    <div class="page-description">
+        <div class="container">
+            <h3>Раздел для описания страницы</h3>
+            <p>Данный раздел предназначен для описания страницы и SEO-оптимизации.
+                Здесь будет находится много текста, содержащего поисковые запросы и
+                ключевые слова.
+                Заполнять этот раздел должен менеджер или SEO-оптимизатор из админки
+                сайта.
+                Дальше будет идти «текст-рыба».
+            </p>
+            <p>
+                Таким образом сложившаяся структура организации играет важную роль в
+                формировании позиций,
+                занимаемых участниками в отношении поставленных задач.
+                Значимость этих проблем настолько очевидна, что новая модель
+                организационной деятельности
+                влечет за собой процесс внедрения и модернизации новых предложений.
+            </p>
+            <p>
+                Идейные соображения высшего порядка, а также новая модель
+                организационной деятельности
+                требуют от нас анализа существенных финансовых и административных
+                условий.
+                Товарищи! укрепление и развитие структуры требуют от нас анализа
+                направлений
+                прогрессивного развития.
+            </p>
+        </div>
     </div>
-</footer>
-<!-- Footer -->
 
-
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="static/js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="static/js/mdb.js"></script>
-
-<script type="text/javascript" src="static/js/rest_auth.js"></script>
-
-<!-- Включение анимации -->
-<script type="text/javascript">
-    new WOW().init();
-</script>
-<script>
-    let is_authenticated = {{ request.user.is_authenticated|yesno:"true,false" }};
-    $(document).ready(function () {
-        $('.first-button').on('click', function () {
-            $('.animated-icon1').toggleClass('open');
-        });
-    });
-</script>
-</body>
-
-</html>
+{% endblock %}
