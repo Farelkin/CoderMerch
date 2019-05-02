@@ -1,4 +1,4 @@
 <a href="{% url 'products:man' %}"
-   class="main-category {% if request.path == '/man/' %}active{% endif %}">Мужское</a>
+   class="main-category {% if request.resolver_match.url_name|slice:":3" == 'man' %}active{% endif %}">Мужское</a>
 <a href="{% url 'products:woman' %}"
-   class="main-category {% if request.path == '/woman/' %}active{% endif %}">Женское</a>
+   class="main-category {% if request.resolver_match.url_name|slice:":5" == 'woman' %}active{% endif %}">Женское</a>
