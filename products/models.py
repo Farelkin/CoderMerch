@@ -2,7 +2,7 @@ from django.db import models
 
 
 class ProductCategory(models.Model):
-    """КАТЕГОРИЯ ПРОДУКТА - тип товара (толстовка, футболка, аксессуары и т.д."""
+    """КАТЕГОРИЯ ПРОДУКТА - тип товара (толстовка, футболка, аксессуары и т.д.)"""
     name_category = models.CharField(verbose_name='Категория продукта',
                                      max_length=40, unique=True, db_index=True)
     discount = models.PositiveSmallIntegerField(verbose_name='Процент скидки',
@@ -23,20 +23,17 @@ class Product(models.Model):
     # Список категорий людей
     GENDER_CHOICES = (
         ('male', 'Мужское'),
-        ('female', 'Женское'),
-        ('boys', 'Детское (мальчик)'),
-        ('girls', 'Детское (девочка)')
+        ('female', 'Женское')
     )
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE,
                                  related_name='product_category')
+    name_product = models.CharField(verbose_name='Название товара', max_length=80, unique=True, db_index=True)
 
-    name_product = models.CharField(verbose_name='Название товара',
-                                    max_length=40, unique=True, db_index=True)
     logotype = models.CharField(verbose_name='Логотип товара (тема)',
-                                max_length=20)
-    gender = models.CharField(verbose_name='Пол', max_length=15,
+                                max_length=30)
+    gender = models.CharField(verbose_name='Категория людей или тип товара', max_length=15,
                               choices=GENDER_CHOICES)
-    color = models.CharField(verbose_name='Цвет', max_length=15)
+    color = models.CharField(verbose_name='Цвет', max_length=30)
     article = models.CharField(verbose_name='Артикл', max_length=15,
                                unique=True)
     price = models.DecimalField(verbose_name='Цена', max_digits=8,
