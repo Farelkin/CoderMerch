@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import permissions
+from rest_framework import filters
 
 from rest_auth.views import LoginView
 
@@ -55,6 +56,9 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
+    search_fields = ('keywords', 'name_product', 'category__name_category', )
+    ordering_fields = ('name_product', 'price',)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

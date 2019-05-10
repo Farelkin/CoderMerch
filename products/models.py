@@ -4,7 +4,7 @@ from django.db import models
 class ProductCategory(models.Model):
     """КАТЕГОРИЯ ПРОДУКТА - тип товара (толстовка, футболка, аксессуары и т.д."""
     name_category = models.CharField(verbose_name='Категория продукта',
-                                     max_length=40, unique=True)
+                                     max_length=40, unique=True, db_index=True)
     discount = models.PositiveSmallIntegerField(verbose_name='Процент скидки',
                                                 default=0)
     is_active = models.BooleanField(verbose_name='Категория активна',
@@ -31,7 +31,7 @@ class Product(models.Model):
                                  related_name='product_category')
 
     name_product = models.CharField(verbose_name='Название товара',
-                                    max_length=40, unique=True)
+                                    max_length=40, unique=True, db_index=True)
     logotype = models.CharField(verbose_name='Логотип товара (тема)',
                                 max_length=20)
     gender = models.CharField(verbose_name='Пол', max_length=15,
@@ -44,6 +44,8 @@ class Product(models.Model):
     discount = models.PositiveSmallIntegerField(verbose_name='Процент скидки',
                                                 default=0)
     description = models.TextField(verbose_name='Описание товара', blank=True)
+
+    keywords = models.CharField(max_length=100, verbose_name=u"Ключевые слова", blank=True, db_index=True)
 
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
