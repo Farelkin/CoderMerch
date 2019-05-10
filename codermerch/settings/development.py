@@ -72,9 +72,11 @@ INSTALLED_APPS = [
     'users',
     'api',
     'products',
-    'orders',
     'basket',
+    'orders',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -145,6 +147,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_EMAIL_FIELD = 'email'
 # ACCOUNT_LOGOUT_ON_GET = True
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -167,7 +171,8 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'temp/email-messages/'
 
 WSGI_APPLICATION = 'codermerch.wsgi.application'
 
@@ -236,8 +241,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_URL = '/accounts/login/'
 

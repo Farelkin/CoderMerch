@@ -72,6 +72,8 @@ INSTALLED_APPS = [
     'basket',
 ]
 
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -136,7 +138,8 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'temp/email-messages/'
 
 WSGI_APPLICATION = 'codermerch.wsgi.application'
 
