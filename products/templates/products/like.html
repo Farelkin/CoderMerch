@@ -1,0 +1,137 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Избранное
+{% endblock %}
+
+{% block content %}
+    <div class="path">
+        <div class="container">
+            <a href="{% url 'mainapp:home' %}">Главная ></a>
+            <a href="{% url 'products:like' %}">Избранное</a>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container">
+            Избранное
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product1.jpg' %}"
+                             alt="product1">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Толстовка Python
+                    </div>
+                    <div class="price"> 2990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product2.jpg' %}"
+                             alt="product2">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Футболка Coding Girls
+                    </div>
+                    <div class="price"> 990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product3.jpg' %}"
+                             alt="product3">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Толстовка C++
+                    </div>
+                    <div class="price"> 2990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
+                             alt="product4">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Футболка C#
+                    </div>
+                    <div class="price"> 990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product5.jpg' %}"
+                             alt="product5">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Толстовка PostgreSQL
+                    </div>
+                    <div class="price"> 2990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product6.jpg' %}"
+                             alt="product6">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Кофта GoLang
+                    </div>
+                    <div class="price"> 1990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product7.jpg' %}"
+                             alt="product7">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Футболка "Послание Миру"
+                    </div>
+                    <div class="price"> 990 руб</div>
+                </div>
+                <div class="col-lg-3 col-sm-6 like-unit">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product8.jpg' %}"
+                             alt="product8">
+                    </a>
+                    <button type="submit"><i class="far fa-times"></i></button>
+                    <div class="name">
+                        <hr>
+                        Футболка NodeJS
+                    </div>
+                    <div class="price"> 1990 руб</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 d-flex justify-content-center like-buttons">
+                    <button class="clear-like">
+                        Очистить избранное
+                    </button>
+                </div>
+                <div class="col-12 col-sm-6 d-flex justify-content-center like-buttons">
+                    <button class="like-to-bag">
+                        Перенести в корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

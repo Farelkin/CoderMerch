@@ -1,0 +1,114 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Главная
+{% endblock %}
+
+{% block content %}
+
+    <div class="main-image">
+        <div class="container">
+            <img src="{% static 'img/main-image.jpg' %}" class="img-fluid "
+                 alt="Main image">
+        </div>
+    </div>
+
+    <div class="main-announcement">
+        <div class="container">
+            Реши легкую задачу и получи скидку 15%
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container">
+            Новые поступления
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product1.jpg' %}"
+                             alt="product1">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product2.jpg' %}"
+                             alt="product2">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product3.jpg' %}"
+                             alt="product3">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
+                             alt="product4">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product5.jpg' %}"
+                             alt="product5">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product6.jpg' %}"
+                             alt="product6">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product7.jpg' %}"
+                             alt="product7">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product8.jpg' %}"
+                             alt="product8">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-description">
+        <div class="container">
+            <h3>Раздел для описания страницы</h3>
+            <p>Данный раздел предназначен для описания страницы и SEO-оптимизации.
+                Здесь будет находится много текста, содержащего поисковые запросы и
+                ключевые слова.
+                Заполнять этот раздел должен менеджер или SEO-оптимизатор из админки
+                сайта.
+                Дальше будет идти «текст-рыба».
+            </p>
+            <p>
+                Таким образом сложившаяся структура организации играет важную роль в
+                формировании позиций,
+                занимаемых участниками в отношении поставленных задач.
+                Значимость этих проблем настолько очевидна, что новая модель
+                организационной деятельности
+                влечет за собой процесс внедрения и модернизации новых предложений.
+            </p>
+            <p>
+                Идейные соображения высшего порядка, а также новая модель
+                организационной деятельности
+                требуют от нас анализа существенных финансовых и административных
+                условий.
+                Товарищи! укрепление и развитие структуры требуют от нас анализа
+                направлений
+                прогрессивного развития.
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

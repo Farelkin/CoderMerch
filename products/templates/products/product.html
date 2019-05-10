@@ -1,0 +1,148 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Товар
+{% endblock %}
+
+<div class="first-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 slogan">
+                <span>Your code</span> <span>-</span> your brand
+            </div>
+            <div class="col-12 col-lg-5 d-flex justify-content-between ml-lg-auto top-menu">
+                <a href="#">SALE</a>
+                <a href="#">О команде</a>
+                <a href="#">Доставка и оплата</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block content %}
+    <div class="path">
+        <div class="container">
+            <a href="{% url 'mainapp:home' %}">Главная ></a>
+            <a href="{% url 'products:man' %}">Мужское > </a>
+            <a href="#">Футболки ></a>
+            <a href="#">Футболка C#</a>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container">
+            Футболка C#
+        </div>
+    </div>
+
+    <div class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 col-12 d-flex justify-content-sm-around justify-content-center d-lg-block sub-product-photos order-2 order-lg-0">
+                    <img class="img-fluid active"
+                         src="{% static 'img/product4.jpg' %}" alt="product4">
+                    <img class="img-fluid" src="{% static 'img/2.jpg' %}"
+                         alt="product4">
+                    <img class="img-fluid" src="{% static 'img/3.jpg' %}"
+                         alt="product4">
+                    <img class="img-fluid" src="{% static 'img/4.jpg' %}"
+                         alt="product4">
+                </div>
+                <div class="col-lg-7 main-product-photo order-1 order-lg-0">
+                    <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
+                         alt="product4">
+                </div>
+                <div class="col-lg-4 order-3">
+                    <div class="short-description">
+                        Серая мужская футболка с логотипом C#
+                    </div>
+                    <div class="price order-3">
+                        <span>990</span> руб.
+                    </div>
+                    <div class="vendor-code order-3">
+                        <span>Артикул:</span> T0003
+                    </div>
+                    <div class="color order-3">
+                        <span>Цвет:</span> Серый
+                    </div>
+                    <select class="form-control order-3"
+                            data-btn-class="btn-primary">
+                        <option value="" hidden>Пожалуйста, выберите размер</option>
+                        <option value="">S</option>
+                        <option value="">M</option>
+                        <option value="">L</option>
+                        <option value="">XL</option>
+                        <option value="">2XL</option>
+                    </select>
+                    <div class="buttons d-flex order-3">
+                        <button class="add-to-bag" type="submit">
+                            Добавить в корзину
+                        </button>
+                        <button class="add-to-like ml-auto order-3">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+
+                    <div class="long-description order-3">
+                        Разнообразный и богатый опыт консультация с широким активом
+                        играет
+                        важную роль в формировании существенных финансовых и
+                        административных условий.
+                        Равным образом сложившаяся структура организации требуют
+                        определения уточнения
+                        существенных финансовых и административных условий. Идейные
+                        соображения высшего
+                        порядка, а также постоянный количественный рост и сфера нашей
+                        активности играет
+                        важную роль в формировании модели развития. Не следует,
+                        однако забывать,
+                        что начало повседневной работы по формированию позиции влечет
+                        за собой процесс
+                        внедрения и модернизации существенных финансовых и
+                        административных условий.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container">
+            Похожие товары
+        </div>
+    </div>
+
+    <div class="similar-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-3">
+                    <a href="#" class="view overlay zoom">
+                        <img src="{% static 'img/product7.jpg' %}" alt="product7"
+                             class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <a href="#" class="view overlay zoom">
+                        <img src="{% static 'img/product9.jpg' %}" alt="product9"
+                             class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <a href="#" class="view overlay zoom">
+                        <img src="{% static 'img/product11.jpg' %}" alt="product11"
+                             class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <a href="#" class="view overlay zoom">
+                        <img src="{% static 'img/product14.jpg' %}" alt="product14"
+                             class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

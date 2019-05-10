@@ -1,0 +1,244 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Женское
+{% endblock %}
+
+
+{% block extra_menu %}
+    <div class="categories-menu woman">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between"
+                     id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item " aria-hidden="true">
+                            <a class="nav-link active" href="#">Смотреть все</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Футболки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Рубашки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Кофты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Толстовки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Куртки</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="path">
+        <div class="container">
+            <a href="{% url 'mainapp:home' %}">Главная ></a>
+            <a href="{% url 'products:woman' %}">Женское ></a>
+            <a href="#">Смотреть все</a>
+        </div>
+    </div>
+
+    <div class="woman-image">
+        <div class="container">
+            <img src="{% static 'img/woman-image.jpg' %}" class="img-fluid "
+                 alt="Woman image">
+        </div>
+    </div>
+
+    <div class="main-announcement">
+        <div class="container">
+            Скидка 10% по промокоду codergirl
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container">
+            Женская одежда
+        </div>
+    </div>
+
+    <div class="product-sort">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#" class="active">Смотреть все</a>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#">Футболки</a>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#">Рубашки</a>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#">Кофты</a>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#">Толстовки</a>
+                </div>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <a href="#">Куртки</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product1.jpg' %}"
+                             alt="product1">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product9.jpg' %}"
+                             alt="product2">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product3.jpg' %}"
+                             alt="product3">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
+                             alt="product4">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product5.jpg' %}"
+                             alt="product5">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product10.jpg' %}"
+                             alt="product6">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product7.jpg' %}"
+                             alt="product7">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product12.jpg' %}"
+                             alt="product12">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product13.jpg' %}"
+                             alt="product13">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product14.jpg' %}"
+                             alt="product14">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product15.jpg' %}"
+                             alt="product15">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product16.jpg' %}"
+                             alt="product16">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid"
+                             src="{% static '/img/product17.jpg' %}" alt="product17">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product18.jpg' %}"
+                             alt="product18">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product19.jpg' %}"
+                             alt="product19">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <a href="product.html" class="view overlay zoom">
+                        <img class="img-fluid" src="{% static 'img/product20.jpg' %}"
+                             alt="product20">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="paginator">
+        <div class="container">
+            <div>
+                Вы посмотрели <span>16</span> из <span>100500</span> товаров
+            </div>
+            <button>
+                Загрузить еще
+            </button>
+        </div>
+    </div>
+
+
+    <div class="page-description">
+        <div class="container">
+            <h3>Раздел для описания страницы</h3>
+            <p>Данный раздел предназначен для описания страницы и SEO-оптимизации.
+                Здесь будет находится много текста, содержащего поисковые запросы и
+                ключевые слова.
+                Заполнять этот раздел должен менеджер или SEO-оптимизатор из админки
+                сайта.
+                Дальше будет идти «текст-рыба».
+            </p>
+            <p>
+                Таким образом сложившаяся структура организации играет важную роль в
+                формировании позиций,
+                занимаемых участниками в отношении поставленных задач.
+                Значимость этих проблем настолько очевидна, что новая модель
+                организационной деятельности
+                влечет за собой процесс внедрения и модернизации новых предложений.
+            </p>
+            <p>
+                Идейные соображения высшего порядка, а также новая модель
+                организационной деятельности
+                требуют от нас анализа существенных финансовых и административных
+                условий.
+                Товарищи! укрепление и развитие структуры требуют от нас анализа
+                направлений
+                прогрессивного развития.
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
