@@ -1,26 +1,27 @@
 from django.core.management.base import BaseCommand
-from products.models import ProductCategory, Product, ProductBySize, ProductImage
-import json, os
-from django.core.files.images import ImageFile
+from products.models import ProductCategory, Product, ProductBySize, \
+    ProductImage
+import json
+import os
+from django.db import connection
 from shutil import copyfile
-import re
-
 
 # путь к файлу с данными продуктов
 JSON_PATH = 'products/json'
 
 # путь к папкам "woman" и "man"
-IMG_PATH = 'static/content'
+IMG_PATH = 'media/content/'
 
 
-def loadFromJSON(file_name):
-    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', encoding='utf-8') as f:
+def load_from_json(file_name):
+    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r',
+              encoding='utf-8') as f:
         return json.load(f)
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        products_data = loadFromJSON('product_data')
+        products_data = load_from_json('product_data')
 
         # удаляем все данные из таблиц
         ProductCategory.objects.all().delete()
@@ -28,15 +29,23 @@ class Command(BaseCommand):
         ProductBySize.objects.all().delete()
         ProductImage.objects.all().delete()
 
+        for i in (
+                'ALTER SEQUENCE products_productcategory_id_seq RESTART WITH 1;',
+                'ALTER SEQUENCE products_product_id_seq RESTART WITH 1;',
+                'ALTER SEQUENCE products_productbysize_id_seq RESTART WITH 1;',
+                'ALTER SEQUENCE products_productimage_id_seq RESTART WITH 1;',
+        ):
+            connection.cursor().execute(i)
+
         # фаилы выбивающиеся из общей системы названий, копирование его с переименованием
-        copyfile(os.path.join(IMG_PATH, 'woman/jackets', '4.png'),
-                 os.path.join(IMG_PATH, 'woman/jackets', 'c1-1.jpg'))
-        copyfile(os.path.join(IMG_PATH, 'woman/tshirts', 'wcp22.jpg'),
-                 os.path.join(IMG_PATH, 'woman/tshirts', 'wcp2-2.jpg'))
-        copyfile(os.path.join(IMG_PATH, 'woman/tshirts', 'wcp24.jpg'),
-                 os.path.join(IMG_PATH, 'woman/tshirts', 'wcp2-4.jpg'))
-        copyfile(os.path.join(IMG_PATH, 'man/tshirts', 'r1-1psd.jpg'),
-                 os.path.join(IMG_PATH, 'man/tshirts', 'r1-1.jpg'))
+        copyfile(IMG_PATH + 'woman/jackets/4.png',
+                 IMG_PATH + 'woman/jackets/c1-1.jpg')
+        copyfile(IMG_PATH + 'woman/tshirts/wcp22.jpg',
+                 IMG_PATH + 'woman/tshirts/wcp2-2.jpg')
+        copyfile(IMG_PATH + 'woman/tshirts/wcp24.jpg',
+                 IMG_PATH + 'woman/tshirts/wcp2-4.jpg')
+        copyfile(IMG_PATH + 'man/tshirts/r1-1psd.jpg',
+                 IMG_PATH + 'man/tshirts/r1-1.jpg')
 
         for data in products_data:
             name_category = data['category']
@@ -80,19 +89,16 @@ class Command(BaseCommand):
             for i in range(1, 5):
                 try:
                     print(data['product'])
-                    path_img = os.path.join(IMG_PATH, data['product'] + '-{}.jpg'.format(i))
+                    path_img = 'content/' + data['product'] + f'-{i}.jpg'
                     product_img = ProductImage(
                         product=product,
-                        img_product=ImageFile(open(path_img, "rb"))
+                        img_product=path_img
                     )
                     product_img.save()
                 except FileNotFoundError:
-                    path_img = os.path.join(IMG_PATH, data['product'][:-1] + '{}.jpg'.format(i))
+                    path_img = 'content/' + data['product'][:-1] + f'{i}.jpg'
                     product_img = ProductImage(
                         product=product,
-                        img_product=ImageFile(open(path_img, "rb"))
+                        img_product=path_img
                     )
                     product_img.save()
-
-
-

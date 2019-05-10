@@ -27,11 +27,13 @@ class Product(models.Model):
     )
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE,
                                  related_name='product_category')
-    name_product = models.CharField(verbose_name='Название товара', max_length=80, unique=True, db_index=True)
+    name_product = models.CharField(verbose_name='Название товара',
+                                    max_length=80, unique=True, db_index=True)
 
     logotype = models.CharField(verbose_name='Логотип товара (тема)',
                                 max_length=30)
-    gender = models.CharField(verbose_name='Категория людей или тип товара', max_length=15,
+    gender = models.CharField(verbose_name='Категория людей или тип товара',
+                              max_length=15,
                               choices=GENDER_CHOICES)
     color = models.CharField(verbose_name='Цвет', max_length=30)
     article = models.CharField(verbose_name='Артикл', max_length=15,
@@ -42,7 +44,8 @@ class Product(models.Model):
                                                 default=0)
     description = models.TextField(verbose_name='Описание товара', blank=True)
 
-    keywords = models.CharField(max_length=100, verbose_name=u"Ключевые слова", blank=True, db_index=True)
+    keywords = models.CharField(max_length=100, verbose_name=u"Ключевые слова",
+                                blank=True, db_index=True)
 
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
@@ -103,7 +106,7 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='prod_img',
                                 on_delete=models.CASCADE)
     img_product = models.ImageField(verbose_name='Фотография товара',
-                                    upload_to='products')
+                                    max_length=255, upload_to='content')
 
     def __str__(self):
         return 'фотографии ({})'.format(self.product.name_product)
