@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    CoderMerch | Главная
+    {{ page_title }}
 {% endblock %}
 
 {% block content %}
@@ -15,74 +15,141 @@
     </div>
 
     <div class="main-announcement">
-        <div class="container">
+        <div class="container wow fadeInLeft">
             Реши легкую задачу и получи скидку 15%
         </div>
     </div>
 
     <div class="product-title">
-        <div class="container">
+        <div class="container wow fadeInRight">
             Новые поступления
         </div>
     </div>
 
     <div class="products">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product1.jpg' %}"
-                             alt="product1">
-                    </a>
+        <div class="container p-0 d-flex justify-content-center flex-wrap">
+
+
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product1.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product2.jpg' %}"
-                             alt="product2">
-                    </a>
+
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product2.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product3.jpg' %}"
-                             alt="product3">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product3.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
-                             alt="product4">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product10.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product5.jpg' %}"
-                             alt="product5">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product8.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product6.jpg' %}"
-                             alt="product6">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product12.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product7.jpg' %}"
-                             alt="product7">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product14.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a href="{% url 'products:product' 1 %}" class="view overlay zoom">
-                        <img class="img-fluid" src="{% static 'img/product8.jpg' %}"
-                             alt="product8">
-                    </a>
+                <div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src={% static 'img/product15.jpg' %}
+                             class="photobox__preview" alt="Preview">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                Толстовка "С++"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                2990</h3>
+                            <a href="#"
+                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+
         </div>
     </div>
 
     <div class="page-description">
-        <div class="container">
+        <div class="container wow fadeIn">
             <h3>Раздел для описания страницы</h3>
             <p>Данный раздел предназначен для описания страницы и SEO-оптимизации.
                 Здесь будет находится много текста, содержащего поисковые запросы и

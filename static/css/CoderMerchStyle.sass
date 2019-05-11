@@ -70,7 +70,6 @@ body
   //  border-radius: 30px
   //  border: 2px solid $light
 
-
 /* МЕНЮ 1 */
 
 .first-menu
@@ -82,8 +81,10 @@ body
     color: $yellow
     box-sizing: border-box
     padding-left: 15px
+
     span
       color: $blue
+
       &:first-child
         color: $green
 
@@ -97,9 +98,11 @@ body
     font-size: 16px
     box-sizing: border-box
     padding-top: 4px
+
     &:first-child
       color: $pink
       font-family: $rlw-b
+
     &:hover
       color: lightgrey
 
@@ -109,12 +112,14 @@ body
 .second-menu
   min-height: 61px
   background: $grey
+
   .logo
     padding: 5px 0 0 0
 
   .main-categories a
     &:first-child
       border-left: $dark 1px solid
+
     &:hover
       background: $hover-dark
 
@@ -128,12 +133,14 @@ body
     text-transform: uppercase
     text-align: center
     border-right: $dark 1px solid
+
   .active
     background: $dark
 
   .search
     padding-top: 15px
     position: relative
+
     input
       border: none
       background: $dark
@@ -143,15 +150,19 @@ body
       padding-left: 32px
       font-size: 16px
       color: $grey
+
       &::-webkit-input-placeholder
         color: $grey
         font-size: 16px
+
       &::-moz-placeholder
         color: $grey
         font-size: 16px
+
       &::placeholder
         color: $grey
         font-size: 16px
+
     .form-control
       &:focus
         border-color: $blue !important
@@ -164,24 +175,28 @@ body
       border: none
       position: absolute
       top: 16px
+
       i
         color: $grey
+
       &:focus
         outline: none !important
 
 .main-icons
   padding: 14px 0 0 0
   font-size: 22px
+
   a
     color: $light
+
     &:hover
       color: $yellow
 
   &:nth-child(2n)
     color: $pink
+
     &:hover
       color: $green
-
 
 
 /* ФОТО НА ГЛАВНОЙ */
@@ -213,7 +228,6 @@ body
   font-size: 43px
 
 
-
 /* ЗАГОЛОВОК СТРАНИЦ И БЛОКОВ */
 
 .product-title
@@ -233,6 +247,7 @@ body
   a
     margin-bottom: 25px
     display: block
+
     img
       cursor: pointer
 
@@ -245,6 +260,7 @@ body
   background: $yellow
   padding-top: 25px
   padding-bottom: 25px
+
   h3
     font-size: 22px
     font-family: $rlw-b
@@ -258,6 +274,7 @@ body
 .categories-menu
   height: 46px
   background: $dark
+
   .container
     padding: 0
 
@@ -269,10 +286,12 @@ body
     font-family: $rlw-b
     font-size: 16px
     color: $light
+
     .nav-item
       width: 132px
       min-height: 46px
       text-align: center
+
       a
         &:hover
           background-color: $grey
@@ -286,8 +305,10 @@ body
     .active
       background-color: $light
       color: $grey !important
+
       a
         color: $grey !important
+
       &:hover
         background-color: $grey !important
 
@@ -296,6 +317,7 @@ body
 
 .path
   height: 30px
+
   a
     font-size: 14px
     color: $grey
@@ -309,6 +331,7 @@ body
   .active
     background: $grey
     color: $light
+
   a
     display: block
     height: 40px
@@ -322,6 +345,7 @@ body
     box-sizing: border-box
     padding-top: 9px
     margin-bottom: 25px
+
     &:hover
       background: #c5c4c4
       color: $grey
@@ -333,8 +357,10 @@ body
   text-align: center
   font-size: 16px
   margin-bottom: 25px
+
   span
     font-family: $rlw-b
+
   button
     border: none
     background: $grey
@@ -345,6 +371,7 @@ body
     color: $yellow
     cursor: pointer
     margin-top: 5px
+
     &:hover
       background: $green
       color: $grey
@@ -355,9 +382,11 @@ body
 .product
   color: $grey
   margin-bottom: 25px
+
   .sub-product-photos
     .active
       border: 2px $blue solid
+
     img
       margin-bottom: 20px
 
@@ -369,6 +398,7 @@ body
 
   .price
     font-family: $rlw-b
+
     span
       font-family: $rbt-b
       font-size: 32px
@@ -376,6 +406,7 @@ body
   .vendor-code
     font-family: $rbt-r
     margin-bottom: 10px
+
     span
       font-family: $rlw-b
 
@@ -386,6 +417,7 @@ body
   .buttons
     margin-top: 25px
     margin-bottom: 25px
+
     .add-to-bag
       height: 44px
       width: 290px
@@ -395,6 +427,7 @@ body
       background: $green
       cursor: pointer
       margin-right: 15px
+
       &:hover
         background: $grey
         color: $light
@@ -408,9 +441,11 @@ body
       width: 44px
       cursor: pointer
       border-radius: 50px
+
       &:hover
         background: $pink
         color: $light
+
       i
         font-size: 22px
         position: relative
@@ -418,6 +453,7 @@ body
 
   select
     margin-top: 25px
+
     &:focus
       border-color: lightgrey
       box-shadow: none
@@ -430,11 +466,108 @@ body
     overflow: hidden
 
 
+/* АНИМАЦИЯ НА ТОВАРАХ */
+
+.coder-merch-goods-text
+  color: #00dff0
+
+.coder-merch-goods-price
+  color: #a6e22e
+  font-size: 40px
+
+.coder-merch-goods-photo
+  background-size: cover
+  width: 280px
+  height: 280px
+
+.coder-merch-goods-photo:hover
+  .coder-merch-goods-description
+    display: flex
+
+
+.coder-merch-goods-description
+  display: none
+  width: 100%
+  height: 100%
+  opacity: .9
+
+
+.photobox
+  display: inline-block
+
+
+.photobox__previewbox
+  position: relative
+  overflow: hidden
+
+
+.photobox__preview
+  display: block
+  max-width: 100%
+
+
+.photobox__previewbox:before
+  content: ""
+
+
+/* type 8 */
+
+.photobox_type8 .photobox__previewbox:before
+  width: 0
+  height: 0
+  padding: 25%
+
+  background-color: var(--photoboxOverlay, rgba(0, 0, 0, .8))
+  border-radius: 50%
+
+  position: absolute
+  top: 50%
+  left: 50%
+  z-index: 2
+
+  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) ease
+  will-change: transform
+  transform: translate(-50%, -50%) scale(0)
+
+.photobox_type8:hover .photobox__previewbox:before
+  transform: translate(-50%, -50%) scale(4)
+  transition-duration: var(--photoboxAnimationDuration, .8s)
+
+.photobox_type8 .photobox__label
+  width: 95%
+  text-align: center
+
+  opacity: 0
+  transition: opacity calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9)
+  will-change: opacity, transform
+
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, 200%)
+  z-index: 3
+
+.photobox_type8:hover .photobox__label
+  opacity: 1
+  transform: translate(-50%, -50%)
+  transition-duration: calc(var(--photoboxAnimationDuration, .8s) / 2)
+  transition-delay: calc(var(--photoboxAnimationDuration, .8s) / 4)
+
+.photobox_type8 .photobox__preview
+  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) cubic-bezier(0.71, 0.05, 0.29, 0.9)
+    will-change: transform
+  transform: scale(1) rotate(0)
+
+.photobox_type8:hover .photobox__preview
+  transform: scale(1.2) rotate(5deg)
+
+
 /* ПОХОЖИЕ ПРОДУКТЫ */
 
 .similar-products
   a
     cursor: pointer
+
     img
       margin-bottom: 25px
 
@@ -444,52 +577,65 @@ body
 .basket
   color: $grey
   font-size: 16px
+
   .basket-items
     background: white
     padding-left: 20px
     padding-right: 20px
     margin-bottom: 25px
     margin-right: 10px
+
     .img
       margin-right: 10px
+
     .title
       padding-top: 25px
       font-size: 14px
       margin-bottom: 19px
+
       .my-basket
         font-family: $rlw-b
         text-transform: uppercase
         font-size: 18px
+
       .sixty-min
         padding-top: 3px
         box-sizing: border-box
+
     .basket-unit-description
       .price, .name, .color
         margin-bottom: 5px
+
       span
         margin-right: 10px
         font-family: $rbt-r
         text-transform: uppercase
+
         input
           width: 37px
           height: 20px
+
       .count
         margin-right: 0
+
       button
         border: 1px lightgrey solid
         background: none
         margin-top: 12px
         cursor: pointer
+
         &:hover
           background: $grey
           color: $light
           border: 1px $grey solid
+
     .close-btn
       border: none
       background: none
       height: 30px
       cursor: pointer
       font-size: 20px
+
     .total-amount
       box-sizing: border-box
       padding-top: 18px
@@ -498,6 +644,7 @@ body
       font-family: $rlw-b
       text-transform: uppercase
       font-size: 18px
+
       span
         font-family: $rbt-b
 
@@ -507,20 +654,26 @@ body
     background: white
     height: 370px
     font-size: 18px
+
     .total
       padding-top: 25px
       font-family: $rlw-b
       text-transform: uppercase
       margin-bottom: 19px
+
     select
       font-size: 14px
+
       &:focus
         border-color: $light-grey !important
         box-shadow: none !important
+
     .sum
       margin-top: 10px
+
       .delivery
         font-family: $rlw-b
+
       .delivery-price
         font-family: $rbt-r
 
@@ -534,6 +687,7 @@ body
       font-family: $rlw-b
       text-transform: uppercase
       cursor: pointer
+
       &:hover
         background: $grey
         color: $light
@@ -552,8 +706,10 @@ body
 
 .like-unit
   position: relative
+
   a
     margin-bottom: 0
+
   button
     position: absolute
     right: 20px
@@ -567,16 +723,20 @@ body
     border-radius: 50%
     font-size: 16px
     padding: 0
+
     &:hover
       background: $grey
+
   .name
     font-size: 16px
     color: $grey
     background: white
     padding-left: 10px
     padding-right: 10px
+
     hr
       margin-top: 0
+
   .price
     background: white
     padding-left: 10px
@@ -590,8 +750,10 @@ body
 .like-buttons
   .clear-like
     background: $yellow
+
   .like-to-bag
     background: $green
+
   button
     width: 100%
     border: none
@@ -601,6 +763,7 @@ body
     color: $grey
     margin-bottom: 25px
     cursor: pointer
+
     &:hover
       background: $grey
       color: $light
@@ -615,23 +778,30 @@ body
   box-sizing: border-box
   padding-top: 20px
   font-size: 24px
+
   a
     color: $light
+
     &:first-child
       &:hover
         color: #3b5998
+
     &:nth-child(2)
       &:hover
         color: #1dcaff
+
     &:nth-child(3)
       &:hover
         color: #4c75a3
+
     &:nth-child(4)
       &:hover
         color: #FF0000
+
     &:nth-child(5)
       &:hover
         color: #E1306C
+
     &:nth-child(6)
       &:hover
         color: #C92228
@@ -643,9 +813,11 @@ body
   padding-top: 22px
   box-sizing: border-box
   color: $light
+
   .copyright-text
     box-sizing: border-box
     padding-top: 10px
+
     span
       font-family: $rlw-b
 
@@ -1334,6 +1506,7 @@ body
   .main-categories
     padding: 0
     margin-top: 5px
+
     .main-category
       border-top: 1px $dark solid
       border-bottom: 1px $dark solid
@@ -1345,13 +1518,16 @@ body
   .categories-menu
     height: 0
     background: none
+
     button
       position: absolute
       top: -49px
+
     .navbar
       min-height: 0
       width: 50%
       z-index: 100
+
       .nav-item
         width: 100%
 
@@ -1396,11 +1572,13 @@ body
     button
       left: unset
       right: -100%
+
     .navbar-collapse
       position: absolute
       right: -100%
       width: calc(100% + 1px)
       top: 0
+
       .navbar-nav
         position: absolute
         width: 100%
@@ -1430,6 +1608,7 @@ body
 
   .first-menu
     padding: 3px 15px 0 15px
+
     a
       font-size: 13px
 
@@ -1470,7 +1649,7 @@ body
     .modal-footer
       button
         width: 50% !important
-
+        
 @media screen and (min-width: 992px)
 
   .basket-order

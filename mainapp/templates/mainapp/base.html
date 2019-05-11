@@ -28,7 +28,7 @@
 
 <div class="first-menu">
     <div class="container">
-        <div class="row">
+        <div class="row wow fadeInDown">
             <div class="col-md-3 slogan">
                 <span>Your code</span> <span>-</span> your brand
             </div>
@@ -46,26 +46,26 @@
     <div class="second-menu">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-sm-3 col-md-2 logo order-1">
+                <div class="col-6 col-sm-3 col-md-2 logo order-1 wow rollIn">
                     <a href="{% url 'mainapp:home' %}"><img
                             src="{% static 'img/logo.png' %}"
                             alt="logo" width="113"></a>
                 </div>
-                <div class="col-12 col-lg-4 main-categories d-flex order-2 order-lg-1">
+                <div class="col-12 col-lg-4 main-categories d-flex order-2 order-lg-1 wow fadeInRight">
                     {% include 'mainapp/includes/inc_active_menu.html' %}
                 </div>
-                <div class="col-sm-6 col-md-8 col-lg-5 search order-1 d-none d-sm-block">
+                <div class="col-sm-6 col-md-8 col-lg-5 search order-1 d-none d-sm-block wow fadeInRight">
                     <input class="form-control" type="search" placeholder="Поиск"
                            aria-label="Search">
                     <button type="submit"><i class="far fa-search search-button"></i>
                     </button>
                 </div>
-                <div class="col-6 col-sm-3 col-md-2 col-lg-1 d-flex justify-content-around justify-content-sm-between main-icons order-1">
-                    <a href="#" class="d-sm-none"><i class="far fa-search"></i></a>
-                    <a href="#"><i class="far fa-user"></i></a>
-                    <a href="{% url 'products:like' %}"><i class="far fa-heart"></i></a>
-                    <a href="{% url 'basket:basket' %}"><i
-                            class="far fa-shopping-bag"></i></a>
+                <div class="col-6 col-sm-3 col-md-2 col-lg-1 d-flex justify-content-around justify-content-sm-between main-icons order-1 wow fadeInDown">
+                    <a href="#" class="d-sm-none"><i class="far fa-search wow swing delay-2s"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#modalLoginForm"><i class="far fa-user wow swing delay-2s"></i></a>
+
+                    <a href="{% url 'products:like' %}"><i class="far fa-heart wow swing delay-2s"></i></a>
+                    <a href="{% url 'basket:basket' %}"><i class="far fa-shopping-bag wow swing delay-2s"></i></a>
                 </div>
             </div>
         </div>
@@ -80,10 +80,10 @@
 {% block content %}
 {% endblock %}
 
-
+{% include 'mainapp/includes/modal_login_form.html' %}
 <footer>
     <div class="social">
-        <div class="container">
+        <div class="container wow fadeInLeft">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-lg-4 col-sm-8 col-10 d-flex justify-content-between">
                     <a href="#"><i class="fab fa-facebook"></i></a>
@@ -97,7 +97,7 @@
         </div>
     </div>
     <div class="copyright">
-        <div class="container">
+        <div class="container wow fadeInUp">
             <img src="{% static 'img/logo_white.png' %}" alt="logo" width="113">
             <div class="copyright-text">
                 &copy; Copyright <span>CoderMerch Team</span>
@@ -114,7 +114,7 @@
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 <!-- MDB core JavaScript -->
-<script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 <!-- Включение анимации -->
 <script type="text/javascript">
     new WOW().init();
