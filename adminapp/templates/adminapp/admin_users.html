@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello! It's the Product Manager!</h1>
+
+<h2>All products is here
+    {% for object in products_list %}
+    <h3>category:</h3> {{ object.category }}
+    <h3>name_product:</h3> {{ object.name_product }}
+    <h3>logotype:</h3> {{ object.logotype }}
+    <h3>gender:</h3> {{ object.gender }}
+    <h3>color:</h3> {{ object.color }}
+    <h3>article:</h3> {{ object.article }}
+    <h3>price:</h3> {{ object.price }}
+    <h3>discount:</h3> {{ object.discount }}
+    <h3>description:</h3> {{ object.description }}
+    <hr>
+    {% endfor%}
+</h2>
+
+
+</body>
+</html>

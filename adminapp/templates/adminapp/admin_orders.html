@@ -1,0 +1,1471 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Заказы
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block product-title %}
+    Заказы
+{% endblock %}
+
+{% block content %}
+
+<div class="container admin-order-info d-block d-lg-flex">
+    <div>Всего: <span>100500</span></div>
+    <div>Новых: <span>1</span></div>
+    <div>Выполненных: <span>1023</span></div>
+    <div>Выполняются: <span>1</span></div>
+    <div>Отмененных: <span>36</span></div>
+</div>
+
+
+{% include 'adminapp/includes/orders-nav.html' %}
+
+<section class="min-vh-100 orders-row-names-wrap">
+    <div class="container">
+        <div class="row orders-row-names d-none d-lg-flex">
+            <div class="col-lg-1">
+                Номер
+            </div>
+            <div class="col-lg-2">
+                Данные клиента
+            </div>
+            <div class="col-lg-1">
+                Дата
+            </div>
+            <div class="col-lg-1">
+                Доставка
+            </div>
+            <div class="col-lg-1">
+                Сумма
+            </div>
+            <div class="col-lg-2">
+                Оплата
+            </div>
+            <div class="col-lg-2">
+                Статус
+            </div>
+            <div class="col-lg-2">
+                Действия
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row order-wrap status-new">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0017</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Томара Оганесян</div>
+                <div class="client-phone"><a href="tel:+79031231212">+79031231212</a></div>
+                <div class="client-mail"><a href="mailto:masha_i@gmail.com">masha_i@gmail.com</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Армян, д. 2, кв. 285
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">09.05.2019 17:54</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская в пределах МКАД (300р.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>1200</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+                <div class="row order-wrap status-inprogress">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0015</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Валера</div>
+                <div class="client-phone"><a href="tel:+79297516723">+79297516723</a></div>
+                <div class="client-mail"><a href="mailto:valera_online@mail.ru">valera_online@mail.ru</a></div>
+                <div class="client-address">
+                    г. Крыжополь, ул. Пушкина, д. 2, кв. 12
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">02.05.2019 12:43</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">До любой почтовой службы (бесплатно)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2980</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option selected value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="submit" otype="button" data-toggle="modal" data-target="#modal-order-read"nclick="window.location='order_read.html'">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-inprogress">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0015</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Валера</div>
+                <div class="client-phone"><a href="tel:+79297516723">+79297516723</a></div>
+                <div class="client-mail"><a href="mailto:valera_online@mail.ru">valera_online@mail.ru</a></div>
+                <div class="client-address">
+                    г. Крыжополь, ул. Пушкина, д. 2, кв. 12
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">02.05.2019 12:43</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">До любой почтовой службы (бесплатно)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2980</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option selected value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="submit" otype="button" data-toggle="modal" data-target="#modal-order-read"nclick="window.location='order_read.html'">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0014</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-cancel">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0013</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Людмила</div>
+                <div class="client-phone"><a href="tel:+79162450987">+79162450987</a></div>
+                <div class="client-mail"><a href="mailto:ludacriss@ymail.ru">ludacriss@ymail.ru</a></div>
+                <div class="client-address">
+                    г. Клин, ул. Горная, д. 4, кв. 102
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">01.05.2019 09:35</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>1340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option selected value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0012</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0011</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-cancel">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0010</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Людмила</div>
+                <div class="client-phone"><a href="tel:+79162450987">+79162450987</a></div>
+                <div class="client-mail"><a href="mailto:ludacriss@ymail.ru">ludacriss@ymail.ru</a></div>
+                <div class="client-address">
+                    г. Клин, ул. Горная, д. 4, кв. 102
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">01.05.2019 09:35</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>1340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option selected value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-cancel">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0009</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Людмила</div>
+                <div class="client-phone"><a href="tel:+79162450987">+79162450987</a></div>
+                <div class="client-mail"><a href="mailto:ludacriss@ymail.ru">ludacriss@ymail.ru</a></div>
+                <div class="client-address">
+                    г. Клин, ул. Горная, д. 4, кв. 102
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">01.05.2019 09:35</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>1340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected value="">Не оплачен</option>
+                        <option value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option selected value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0008</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0007</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0006</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0005</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0004</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0003</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0002</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row order-wrap status-ready">
+            <div class="col-lg-1">
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0001</a>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-name">Жора</div>
+                <div class="client-phone"><a href="tel:+78003238934">+78003238934</a></div>
+                <div class="client-mail"><a href="mailto:jora200@yandex.ru">jora200@yandex.ru</a></div>
+                <div class="client-address">
+                    г. Москва, ул. Октября, д. 16К2, кв. 5
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-date">14.05.2019 14:21</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-delivery">Курьерская до 5 км за МКАД (350p.)</div>
+            </div>
+            <div class="col-lg-1">
+                <div class="order-price">
+                    <span>2340</span> руб.
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-payment">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Не оплачен</option>
+                        <option selected value="">Оплачен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="">Новый</option>
+                        <option selected value="">Выполнен</option>
+                        <option value="">Выполняется</option>
+                        <option value="">Отменен</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="order-buttons">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--МОДАЛКА ДОБАВЛЕНИЯ ЗАКАЗА: START-->
+<div class="modal fade modal-order-add" id="modal-order-add" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Создать заказ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-number">Номер</label>
+                        <input type="email" class="form-control" id="order-add-number" placeholder="0000">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-name">ФИО</label>
+                        <input type="email" class="form-control" id="order-add-name" placeholder="Иванов Иван Иванович">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-tel">Телефон</label>
+                        <input type="tel" class="form-control" id="order-add-tel" placeholder="+79123456789">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-email">Email</label>
+                        <input type="email" class="form-control" id="order-add-email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-delivery">Способ доставки</label>
+                        <select class="form-control" id="order-add-delivery">
+                            <option value="">Самовывоз (Бесплатно)</option>
+                            <option value="">Курьерская в пределах МКАД (300р.)</option>
+                            <option value="">Курьерская до 5 км за МКАД (350р.)</option>
+                            <option value="">Курьерская до 15 км за МКАД (500р.)</option>
+                            <option value="">Курьерская до 25 км за МКАД (800р.)</option>
+                            <option value="">До любой почтовой службы (Бесплатно)</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-date">Дата доставки</label>
+                        <input type="date" class="form-control" id="order-add-date">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-time">Время доставки</label>
+                        <select class="form-control" id="order-add-time">
+                            <option>C 08:00 до 15:00</option>
+                            <option>C 15:00 до 22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-payment">Способ оплаты</label>
+                        <select class="form-control" id="order-add-payment">
+                            <option value="">Наличными при самовывозе</option>
+                            <option value="">Картой при самовывозе</option>
+                            <option value="">Наличными курьеру</option>
+                            <option value="">Картой курьеру</option>
+                            <option value="">Картой через сайт</option>
+                            <option value="">Другая платежная система</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-address">Адрес доставки</label>
+                        <textarea class="form-control" id="order-add-address" rows="3"></textarea>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-info">Дополнительная информация</label>
+                        <textarea class="form-control" id="order-add-info" rows="3"></textarea>
+                    </div>
+                    <h4>Товары</h4>
+                    <div class="order-add-product-wrap d-lg-flex">
+                        <select class="order-add-product-code form-control">
+                            <option disabled selected>Артикул</option>
+                            <option>A0001</option>
+                            <option>A0002</option>
+                            <option>A0003</option>
+                            <option>A0004</option>
+                            <option>F0001</option>
+                            <option>F0002</option>
+                            <option>F0003</option>
+                            <option>F0004</option>
+                            <option>K0001</option>
+                            <option>K0002</option>
+                            <option>K0003</option>
+                            <option>K0004</option>
+                            <option>T0001</option>
+                            <option>T0002</option>
+                            <option>T0003</option>
+                            <option>T0004</option>
+                            <option>T0005</option>
+                        </select>
+                        <select class="order-add-product-size form-control">
+                            <option disabled selected>Размер</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select>
+                        <input class="order-add-product-count form-control" type="number" min="0" value="0">
+                        <button type="button" class="ml-auto order-delete-product">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <button class="order-more-product no-focus" type="button">
+                        <i class="far fa-plus"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА ДОБАВЛЕНИЯ ЗАКАЗА: END-->
+
+
+<!--МОДАЛКА ПРОСМОТРА ЗАКАЗОВ: START-->
+<div class="modal fade modal-order-read" id="modal-order-read" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Заказ #0016</h5>
+                <button class="order-read-print-btn" value="print" onclick="print()"><i class="fal fa-print"></i></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container order-read-wrap">
+                    <div class="row">
+                        <div class="col-12 order-read-up-title">
+                            Сведения о заказчике:
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 order-read-left-titles">
+                            <div>ФИО</div>
+                            <div>Пользователь</div>
+                            <div>Телефон</div>
+                            <div>E-mail</div>
+                            <div>IP</div>
+                        </div>
+                        <div class="col-lg-9 order-read-right-content">
+                            <div>Василий Пупкин</div>
+                            <div>Нет</div>
+                            <div><a href="tel:+791234567890">+791234567890</a></div>
+                            <div><a href="mailto:vasya_pupkin@mail.ru">vasya_pupkin@mail.ru</a></div>
+                            <div>192.0.0.3</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 order-read-up-title">
+                            Сведения о заказе:
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 order-read-left-titles">
+                            <div>Статус</div>
+                            <div>Дата</div>
+                            <div>Время</div>
+                            <div>Сумма</div>
+                            <div>Оплата</div>
+                            <div>Способ оплаты</div>
+                        </div>
+                        <div class="col-lg-9 order-read-right-content">
+                            <div>Новый</div>
+                            <div>25.04.2019</div>
+                            <div>20:43</div>
+                            <div>3970 руб.</div>
+                            <div>Нет</div>
+                            <div>Наличными курьеру</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 order-read-up-title">
+                            Сведения о доставке:
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 order-read-left-titles">
+                            <div>Стоимость</div>
+                            <div>Способ доставки</div>
+                            <div>Дата</div>
+                            <div>Время</div>
+                            <div>Адрес</div>
+                            <div>Дополнительная информация</div>
+                        </div>
+                        <div class="col-lg-9 order-read-right-content">
+                            <div>300 руб.</div>
+                            <div>Курьерская в пределах МКАД (300р.)</div>
+                            <div>28.04.2019</div>
+                            <div>С 15:00 до 22:00</div>
+                            <div>г.Москва, ул. Пушкина, д. 2, кв. 104</div>
+                            <div>Прошу,  чтобы курьер позвонил за час до доставки</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 order-read-up-title">
+                            Сведения о товарах:
+                        </div>
+                    </div>
+                    <div class="row order-read-products-title">
+                        <div class="col-lg-3">Название</div>
+                        <div class="col-lg-2">Артикул</div>
+                        <div class="col-lg-1">Размер</div>
+                        <div class="col-lg-2">Цена</div>
+                        <div class="col-lg-2">Количество</div>
+                        <div class="col-lg-2">Итого</div>
+                    </div>
+                    <div class="row order-read-products">
+                        <div class="col-lg-3"><a href="product.html">Футболка C#</a></div>
+                        <div class="col-lg-2">F0003</div>
+                        <div class="col-lg-1">XL</div>
+                        <div class="col-lg-2">990 руб.</div>
+                        <div class="col-lg-2">2 шт.</div>
+                        <div class="col-lg-2">1980 руб.</div>
+                    </div>
+                    <div class="row order-read-products">
+                        <div class="col-lg-3"><a href="product.html">Толстовка Python</a></div>
+                        <div class="col-lg-2">T0001</div>
+                        <div class="col-lg-1">XL</div>
+                        <div class="col-lg-2">1990 руб.</div>
+                        <div class="col-lg-2">1 шт.</div>
+                        <div class="col-lg-2">1990 руб.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 order-read-up-title">
+                            Итого:
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 order-read-count-all">
+                            <div><span>Сумма:</span> 3970 руб.</div>
+                            <div><span>Сумма со скидкой:</span> 3970 руб.</div>
+                            <div><span>Доставка:</span> 300 руб.</div>
+                            <div><span>Сумма к оплате:</span> 4270 руб.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА ПРОСМОТРА ЗВКАЗОВ: END-->
+
+
+<!--МОДАЛКА РЕДАКТИРОВАНИЯ ЗАКАЗА: START-->
+<div class="modal fade modal-order-edit" id="modal-order-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Редактирование заказа</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-number">Номер</label>
+                        <input type="email" class="form-control" id="order-edit-number" value="0016">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-name">ФИО</label>
+                        <input type="email" class="form-control" id="order-edit-name" value="Василий Пупкин">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-tel">Телефон</label>
+                        <input type="tel" class="form-control" id="order-edit-tel" value="+791234567890">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-email">Email</label>
+                        <input type="email" class="form-control" id="order-edit-email" value="vasya_pupkin@mail.ru">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-delivery">Способ доставки</label>
+                        <select class="form-control" id="order-edit-delivery">
+                            <option>Самовывоз (Бесплатно)</option>
+                            <option selected>Курьерская в пределах МКАД (300р.)</option>
+                            <option>Курьерская до 5 км за МКАД (350р.)</option>
+                            <option>Курьерская до 15 км за МКАД (500р.)</option>
+                            <option>Курьерская до 25 км за МКАД (800р.)</option>
+                            <option>До любой почтовой службы (Бесплатно)</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-date">Дата доставки</label>
+                        <input type="date" class="form-control" id="order-edit-date" value="2019-04-28">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-time">Время доставки</label>
+                        <select class="form-control" id="order-edit-time">
+                            <option>C 08:00 до 15:00</option>
+                            <option>C 15:00 до 22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-payment">Способ оплаты</label>
+                        <select class="form-control" id="order-edit-payment">
+                            <option>Наличными при самовывозе</option>
+                            <option>Картой при самовывозе</option>
+                            <option selected>Наличными курьеру</option>
+                            <option>Картой курьеру</option>
+                            <option>Картой через сайт</option>
+                            <option>Другая платежная система</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-address">Адрес доставки</label>
+                        <textarea class="form-control" id="order-edit-address" rows="3">г.Москва, ул. Пушкина, д. 2, кв. 104</textarea>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-edit-info">Дополнительная информация</label>
+                        <textarea class="form-control" id="order-edit-info" rows="3">Прошу, чтобы курьер позвонил за час до доставки</textarea>
+                    </div>
+                </form>
+                <h4>Товары</h4>
+                <form class="order-edit-change-product" id="order-edit-change-product">
+                    <div class="order-edit-product-wrap d-lg-flex">
+                        <select class="order-edit-product-code form-control">
+                            <option disabled>Артикул</option>
+                            <option>A0001</option>
+                            <option>A0002</option>
+                            <option>A0003</option>
+                            <option>A0004</option>
+                            <option>F0001</option>
+                            <option>F0002</option>
+                            <option selected>F0003</option>
+                            <option>F0004</option>
+                            <option>K0001</option>
+                            <option>K0002</option>
+                            <option>K0003</option>
+                            <option>K0004</option>
+                            <option>T0001</option>
+                            <option>T0002</option>
+                            <option>T0003</option>
+                            <option>T0004</option>
+                            <option>T0005</option>
+                        </select>
+                        <select class="order-edit-product-size form-control">
+                            <option disabled>Размер</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option selected>XL</option>
+                            <option>XXL</option>
+                        </select>
+                        <input class="order-edit-product-count form-control" type="number" min="0" value="2">
+                        <button type="button" class="ml-auto order-delete-product">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div class="order-edit-product-wrap d-lg-flex">
+                        <select class="order-edit-product-code form-control">
+                            <option disabled>Артикул</option>
+                            <option>A0001</option>
+                            <option>A0002</option>
+                            <option>A0003</option>
+                            <option>A0004</option>
+                            <option>F0001</option>
+                            <option>F0002</option>
+                            <option>F0003</option>
+                            <option>F0004</option>
+                            <option>K0001</option>
+                            <option>K0002</option>
+                            <option>K0003</option>
+                            <option>K0004</option>
+                            <option selected>T0001</option>
+                            <option>T0002</option>
+                            <option>T0003</option>
+                            <option>T0004</option>
+                            <option>T0005</option>
+                        </select>
+                        <select class="order-edit-product-size form-control">
+                            <option disabled>Размер</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option selected>XL</option>
+                            <option>XXL</option>
+                        </select>
+                        <input class="order-edit-product-count form-control" type="number" min="0" value="1">
+                        <button type="button" class="ml-auto order-delete-product">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div class="order-edit-product-wrap d-lg-flex">
+                        <select class="order-edit-product-code form-control">
+                            <option disabled selected>Артикул</option>
+                            <option>A0001</option>
+                            <option>A0002</option>
+                            <option>A0003</option>
+                            <option>A0004</option>
+                            <option>F0001</option>
+                            <option>F0002</option>
+                            <option>F0003</option>
+                            <option>F0004</option>
+                            <option>K0001</option>
+                            <option>K0002</option>
+                            <option>K0003</option>
+                            <option>K0004</option>
+                            <option>T0001</option>
+                            <option>T0002</option>
+                            <option>T0003</option>
+                            <option>T0004</option>
+                            <option>T0005</option>
+                        </select>
+                        <select class="order-edit-product-size form-control">
+                            <option disabled selected>Размер</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select>
+                        <input class="order-edit-product-count form-control" type="number" min="0" value="0">
+                        <button type="button" class="ml-auto order-delete-product">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <button class="order-more-product no-focus" type="button">
+                        <i class="far fa-plus"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal">Отмена</button>
+                <button type="button">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА РЕДАКТИРОВАНИЯ ЗАКАЗА: END-->
+
+
+<!--МОДАЛКА УДАЛЕНИЯ ЗАКАЗА: START-->
+<div class="modal modal-order-delete" id="modal-order-delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Вы действительно хотите удалить?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Заказ #0016
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА УДАЛЕНИЯ ЗАКАЗА: END-->
+
+<div class="paginator">
+    <div class="container">
+        <div>
+            Вы посмотрели <span>16</span> из <span>100500</span> заказов
+        </div>
+        <button>
+            Загрузить еще
+        </button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
