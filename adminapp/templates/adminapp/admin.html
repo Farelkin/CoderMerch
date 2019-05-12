@@ -3,30 +3,27 @@
 
 {% block content %}
     <section>
-        <div class="container">
-            <div class="row admin-main">
-                <div class="col-lg-4">
-                    <a href="{% url 'adminapp:admin_orders' %}" class="admin-unit orders overlay zoom">
-                        <h3>Заказы</h3>
-                        <img src="{% static 'img/orders.png' %}" alt="Orders" width="180">
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="{% url 'adminapp:admin_products' %}" class="admin-unit products overlay zoom">
-                        <h3>Товары</h3>
-                        <img src="{% static 'img/products.png' %}" alt="Products" width="180">
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="{% url 'adminapp:admin_users' %}" class="admin-unit users overlay zoom">
-                        <h3>Пользователи</h3>
-                        <img src="{% static 'img/users.png' %}" alt="Users" width="180">
-                    </a>
-                </div>
+    <div class="container">
+        <div class="row admin-main">
+            <div class="col-lg-4">
+                <a href="{% url 'adminapp:admin_orders' %}" class="admin-unit orders overlay zoom">
+                    <h3>Заказы</h3>
+                    <img src="{% static '/img/orders.png' %}" alt="Orders" width="180">
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{% url 'adminapp:admin_products' %}" class="admin-unit products overlay zoom">
+                    <h3>Товары</h3>
+                    <img src="{% static 'img/products.png' %}" alt="Products" width="180">
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{% url 'adminapp:admin_users' %}" class="admin-unit users overlay zoom">
+                    <h3>Пользователи</h3>
+                    <img src="{% static 'img/users.png' %}" alt="Users" width="180">
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
-
-
-

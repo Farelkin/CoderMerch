@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block content %}
-
-<div class="container admin-order-info d-block d-lg-flex">
+    <div class="container admin-order-info d-block d-lg-flex">
     <div>Всего: <span>100500</span></div>
     <div>Новых: <span>1</span></div>
     <div>Выполненных: <span>1023</span></div>
@@ -12,7 +11,28 @@
 </div>
 
 
-{% include 'adminapp/includes/inc-orders-nav.html' %}
+<div class="orders-nav-wrap">
+    <div class="container">
+        <div class="row orders-nav">
+            <div class="col-md-4 col-lg-2 add-order-wrap">
+                <button class="add-order-btn" type="button" data-toggle="modal" data-target="#modal-order-add">
+                    <i class="far fa-plus"></i> Добавить заказ
+                </button>
+            </div>
+            <div class="col-md-8 col-lg-6 order-sort d-md-flex">
+                <a class="order-sort-button active" href="#">Все</a>
+                <a class="order-sort-button" href="#">Новые</a>
+                <a class="order-sort-button" href="#">Готовые</a>
+                <a class="order-sort-button" href="#">Выполняются</a>
+                <a class="order-sort-button" href="#">Отмененные</a>
+            </div>
+            <div class="col-12 col-lg-4 order-search-wrap">
+                <input class="order-search" type="search" placeholder="Поиск заказов" aria-label="Search">
+                <button type="submit"><i class="far fa-search search-button"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <section class="min-vh-100 orders-row-names-wrap">
     <div class="container">
@@ -46,18 +66,18 @@
     <div class="container">
         <div class="row order-wrap status-new">
             <div class="col-lg-1">
-                <a class="order-number" data-toggle="modal" href="#modal-order-read">0017</a>
+                <a class="order-number" data-toggle="modal" href="#modal-order-read">0016</a>
             </div>
             <div class="col-lg-2">
-                <div class="client-name">Томара Оганесян</div>
+                <div class="client-name">Мария Иванова</div>
                 <div class="client-phone"><a href="tel:+79031231212">+79031231212</a></div>
                 <div class="client-mail"><a href="mailto:masha_i@gmail.com">masha_i@gmail.com</a></div>
                 <div class="client-address">
-                    г. Москва, ул. Армян, д. 2, кв. 285
+                    г. Москва, ул. Ленина, д. 2/9, кв. 204
                 </div>
             </div>
             <div class="col-lg-1">
-                <div class="order-date">09.05.2019 17:54</div>
+                <div class="order-date">30.04.2019 18:14</div>
             </div>
             <div class="col-lg-1">
                 <div class="order-delivery">Курьерская в пределах МКАД (300р.)</div>
@@ -88,61 +108,6 @@
             <div class="col-lg-2">
                 <div class="order-buttons">
                     <button type="button" data-toggle="modal" data-target="#modal-order-read">
-                        <i class="far fa-book"></i> Посмотреть
-                    </button>
-                    <button type="button" data-toggle="modal" data-target="#modal-order-edit">
-                        <i class="far fa-edit"></i> Изменить
-                    </button>
-                    <button type="button" data-toggle="modal" data-target="#modal-order-delete">
-                        <i class="far fa-trash-alt"></i> Удалить
-                    </button>
-                </div>
-            </div>
-        </div>
-                <div class="row order-wrap status-inprogress">
-            <div class="col-lg-1">
-                <a class="order-number" data-toggle="modal" href="#modal-order-read">0015</a>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-name">Валера</div>
-                <div class="client-phone"><a href="tel:+79297516723">+79297516723</a></div>
-                <div class="client-mail"><a href="mailto:valera_online@mail.ru">valera_online@mail.ru</a></div>
-                <div class="client-address">
-                    г. Крыжополь, ул. Пушкина, д. 2, кв. 12
-                </div>
-            </div>
-            <div class="col-lg-1">
-                <div class="order-date">02.05.2019 12:43</div>
-            </div>
-            <div class="col-lg-1">
-                <div class="order-delivery">До любой почтовой службы (бесплатно)</div>
-            </div>
-            <div class="col-lg-1">
-                <div class="order-price">
-                    <span>2980</span> руб.
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="order-payment">
-                    <select class="form-control" data-btn-class="btn-primary">
-                        <option selected value="">Не оплачен</option>
-                        <option value="">Оплачен</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="order-status">
-                    <select class="form-control" data-btn-class="btn-primary">
-                        <option value="">Новый</option>
-                        <option value="">Выполнен</option>
-                        <option selected value="">Выполняется</option>
-                        <option value="">Отменен</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="order-buttons">
-                    <button type="submit" otype="button" data-toggle="modal" data-target="#modal-order-read"nclick="window.location='order_read.html'">
                         <i class="far fa-book"></i> Посмотреть
                     </button>
                     <button type="button" data-toggle="modal" data-target="#modal-order-edit">
@@ -197,7 +162,7 @@
             </div>
             <div class="col-lg-2">
                 <div class="order-buttons">
-                    <button type="submit" otype="button" data-toggle="modal" data-target="#modal-order-read"nclick="window.location='order_read.html'">
+                    <button type="button" data-toggle="modal" data-target="#modal-order-read">
                         <i class="far fa-book"></i> Посмотреть
                     </button>
                     <button type="button" data-toggle="modal" data-target="#modal-order-edit">
@@ -1196,7 +1161,7 @@
                         <div class="col-lg-2">Итого</div>
                     </div>
                     <div class="row order-read-products">
-                        <div class="col-lg-3"><a href="product.html">Футболка C#</a></div>
+                        <div class="col-lg-3"><a href="#">Футболка C#</a></div>
                         <div class="col-lg-2">F0003</div>
                         <div class="col-lg-1">XL</div>
                         <div class="col-lg-2">990 руб.</div>
@@ -1204,7 +1169,7 @@
                         <div class="col-lg-2">1980 руб.</div>
                     </div>
                     <div class="row order-read-products">
-                        <div class="col-lg-3"><a href="product.html">Толстовка Python</a></div>
+                        <div class="col-lg-3"><a href="#">Толстовка Python</a></div>
                         <div class="col-lg-2">T0001</div>
                         <div class="col-lg-1">XL</div>
                         <div class="col-lg-2">1990 руб.</div>
@@ -1453,5 +1418,4 @@
         </button>
     </div>
 </div>
-
 {% endblock %}

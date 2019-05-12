@@ -21,16 +21,6 @@ class AdminOrdersView(TemplateView):
         return parent_context
 
 
-class AdminUsersView(TemplateView):
-    template_name = 'adminapp/admin_users.html'
-
-    def get_context_data(self, **kwargs):
-        parent_context = super(AdminUsersView, self).get_context_data(**kwargs)
-        parent_context['page_title'] = 'Админка | Юзеры'
-        parent_context['page_name'] = 'Юзеры'
-        return parent_context
-
-
 class AdminProductsView(TemplateView):
     template_name = 'adminapp/admin_products.html'
 
@@ -38,4 +28,14 @@ class AdminProductsView(TemplateView):
         parent_context = super(AdminProductsView, self).get_context_data(**kwargs)
         parent_context['page_title'] = 'Админка | Товары'
         parent_context['page_name'] = 'Товары'
+        return parent_context
+
+
+class AdminUsersView(TemplateView):
+    template_name = 'adminapp/admin_users.html'
+
+    def get_context_data(self, **kwargs):
+        parent_context = super(AdminUsersView, self).get_context_data(**kwargs)
+        parent_context['page_title'] = 'Админка | Юзеры'
+        parent_context['page_name'] = 'Юзеры'
         return parent_context
