@@ -1,17 +1,6 @@
 {% extends 'adminapp/base.html' %}
 {% load static %}
 
-{% block title %}
-    CoderMerch | Заказы
-{% endblock %}
-
-{% block css %}
-{% endblock %}
-
-{% block product-title %}
-    Заказы
-{% endblock %}
-
 {% block content %}
 
 <div class="container admin-order-info d-block d-lg-flex">
@@ -23,7 +12,7 @@
 </div>
 
 
-{% include 'adminapp/includes/orders-nav.html' %}
+{% include 'adminapp/includes/inc-orders-nav.html' %}
 
 <section class="min-vh-100 orders-row-names-wrap">
     <div class="container">
@@ -1465,7 +1454,4 @@
     </div>
 </div>
 
-{% endblock %}
-
-{% block js %}
 {% endblock %}

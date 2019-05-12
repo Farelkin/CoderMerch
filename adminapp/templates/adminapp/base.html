@@ -9,8 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" type="img/png" href="{% static 'img/favicon.png' %}">
     <title>
-        {% block title %}
-        {% endblock %}
+        {{ page_title }}
     </title>
     <!-- Font Awesome -->
     <link href="{% static 'libs/fontawesome-free/css/all.css' %}" rel="stylesheet">
@@ -24,12 +23,11 @@
 </head>
 <body>
 
-{% include 'adminapp/includes/admin-menu.html' %}
+{% include 'adminapp/includes/inc-admin-menu.html' %}
 
 <div class="product-title">
     <div class="container">
-        {% block product-title %}
-        {% endblock %}
+        {{ page_name }}
     </div>
 </div>
 
