@@ -1,0 +1,18 @@
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'admin_main' %}active{% endif %}"
+           href="{% url 'adminapp:admin_main' %}">Админка</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'admin_orders' %}active{% endif %}"
+           href="{% url 'adminapp:admin_orders' %}">Заказы</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'admin_products' %}active{% endif %}"
+           href="{% url 'adminapp:admin_products' %}">Товары</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'admin_users' %}active{% endif %}"
+           href="{% url 'adminapp:admin_users' %}">Пользователи</a>
+    </li>
+</ul>
