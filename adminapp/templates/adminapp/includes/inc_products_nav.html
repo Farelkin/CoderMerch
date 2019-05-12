@@ -1,0 +1,49 @@
+<div class="products-nav-wrap">
+    <div class="container">
+        <div class="row products-nav">
+            <div class="col-md-4 col-lg-2 add-product-wrap">
+                <button class="add-product-btn" type="button" data-toggle="modal" data-target="#modal-product-add">
+                    <i class="far fa-plus"></i> Добавить товар
+                </button>
+            </div>
+
+            <div class="col-md-8 col-lg-6 admin-product-sort d-md-flex">
+                <a class="product-sort-btn
+                          {% if request.resolver_match.kwargs.pk == 0 %}
+                              active
+                          {% endif %}"
+                    href="{% url 'adminapp:gender' 0 %}">
+                    Все
+                </a>
+                {% for link in links_menu %}
+                    <a class="product-sort-btn
+                            {% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}
+                                active
+                            {% endif %}"
+                       href="{% url 'adminapp:gender' link.pk %}">
+                        {{ link.name }}
+                    </a>
+                {% endfor %}
+                <!--<a class="product-sort-btn" href="#">Женские</a>-->
+
+                <!--<a class="product-sort-btn" href="#">Мужские</a>-->
+                <div class="dropdown">
+                    <button class="admin-products-category-btn no-focus" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Категории
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Футболки</a>
+                        <a class="dropdown-item" href="#">Рубашки</a>
+                        <a class="dropdown-item" href="#">Кофты</a>
+                        <a class="dropdown-item" href="#">Толстовки</a>
+                        <a class="dropdown-item" href="#">Куртки</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 product-search-wrap">
+                <input class="product-search" type="search" placeholder="Поиск товаров" aria-label="Search">
+                <button type="submit"><i class="far fa-search search-button"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
