@@ -3,11 +3,11 @@
 
 {% block content %}
     <div class="container admin-products-info d-block d-lg-flex">
-    <div>Всего: <span>100500</span></div>
+    <div>Всего: <span>{{ product_all_count }}</span></div>
     <div>Новинок: <span>134</span></div>
     <div>Sale: <span>58</span></div>
-    <div>Женских: <span>20436</span></div>
-    <div>Мужских: <span>3209</span></div>
+    <div>Женских: <span>{{ product_female_count }}</span></div>
+    <div>Мужских: <span>{{ product_male_count }}</span></div>
 </div>
 
 <div class="products-nav-wrap">
@@ -73,6 +73,51 @@
             </div>
         </div>
 
+        {% for item in product_objects %}
+            <div class="row admin-product-unit">
+                <div class="col-lg-2 admin-product-img">
+                    <a href="#">
+                        <img class="" src="{{ item.product.url }}" alt="" height="110">
+                    </a>
+                    <!--{{ item.product.product_image.img_product }}-->
+                    <!--{{ item.product.img_product.url }}-->
+                    <!--{% static 'img/product4.jpg' %}-->
+                </div>
+                <div class="col-lg-1 admin-product-code">
+                    <a href="#">{{ item.article }}</a>
+                </div>
+                <div class="col-lg-2 admin-product-name">
+                    <a href="#">{{ item.name_product }}</a>
+                </div>
+                <div class="col-lg-1 admin-product-gender-male">
+                    <i class="far fa-mars"></i>
+                </div>
+                <div class="col-lg-1 admin-product-category">
+                    {{ item.category }}
+                </div>
+                <div class="col-lg-2 admin-product-status">
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option selected>Базовая коллекция</option>
+                        <option>Новинка</option>
+                        <option>Sale</option>
+                    </select>
+                </div>
+                <div class="col-lg-1 admin-product-price">
+                    <span>{{ item.price }}</span> руб.
+                </div>
+                <div class="col-lg-2 admin-product-actions">
+                    <button type="button" onclick="window.location.href='product.html'">
+                        <i class="far fa-book"></i> Посмотреть
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                        <i class="far fa-edit"></i> Изменить
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                        <i class="far fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
         <div class="row admin-product-unit">
             <div class="col-lg-2 admin-product-img">
                 <a href="#">

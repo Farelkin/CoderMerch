@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-
+from products.models import Product, ProductImage
 
 class AdminMainView(TemplateView):
     template_name = 'adminapp/admin.html'
@@ -23,11 +23,18 @@ class AdminOrdersView(TemplateView):
 
 class AdminProductsView(TemplateView):
     template_name = 'adminapp/admin_products.html'
+    model = Product
 
     def get_context_data(self, **kwargs):
         parent_context = super(AdminProductsView, self).get_context_data(**kwargs)
-        parent_context['page_title'] = 'Админка | Товары'
-        parent_context['page_name'] = 'Товары'
+        parent_context = {
+            'page_title': 'Админка | Товары',
+            'page_name': 'Товары',
+            'product_objects': Product.objects.all(),
+            'product_male_count': Product.objects.filter(gender='male').count(),
+            'product_female_count': Product.objects.filter(gender='female').count(),
+            'product_all_count': Product.objects.count(),
+        }
         return parent_context
 
 

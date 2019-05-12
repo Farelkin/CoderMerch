@@ -107,7 +107,7 @@ class ProductImage(models.Model):
                                 on_delete=models.CASCADE)
     img_product = models.ImageField(verbose_name='Фотография товара',
                                     max_length=255, upload_to='content')
-
+ 
     def __str__(self):
         return 'фотографии ({})'.format(self.product.name_product)
 

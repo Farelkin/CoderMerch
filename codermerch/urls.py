@@ -33,7 +33,6 @@ urlpatterns = [
     path('favicon.ico',
          RedirectView.as_view(url='/static/img/favicon.png'),
          name='favicon'),
-    path('adminka/', include('adminapp.urls', namespace='adminka'))
 ]
 
 if settings.DEBUG:
