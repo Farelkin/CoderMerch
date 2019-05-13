@@ -22,8 +22,8 @@ class Product(models.Model):
     """ПРОДУКТ - список всех продуктов, без учета размеров"""
     # Список категорий людей
     GENDER_CHOICES = (
-        ('male', 'Мужское'),
-        ('female', 'Женское')
+        ('man', 'Мужское'),
+        ('woman', 'Женское')
     )
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE,
                                  related_name='product_category')
@@ -47,6 +47,9 @@ class Product(models.Model):
     keywords = models.CharField(max_length=100, verbose_name=u"Ключевые слова",
                                 blank=True, db_index=True)
 
+    is_active = models.BooleanField(verbose_name='Продукт активен',
+                                    default=True)
+
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
 
@@ -61,6 +64,10 @@ class Product(models.Model):
         for img in item:
             lst.append(str(img.img_product))
         return lst
+
+    @property
+    def first_img(self):
+        return self.prod_img.first().img_product
 
     # получение всех размеров выбранного товара
     def get_size(self):

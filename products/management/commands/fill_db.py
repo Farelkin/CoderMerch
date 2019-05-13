@@ -3,17 +3,15 @@ from products.models import ProductCategory, Product, ProductBySize, \
     ProductImage
 import json
 import os
-from django.db import connection
+from django.core.files.images import ImageFile
 from shutil import copyfile
+from django.db import connection
 
 # путь к файлу с данными продуктов
 JSON_PATH = 'products/json'
 
-# путь к папкам "woman" и "man"
-IMG_PATH = 'media/content/'
 
-
-def load_from_json(file_name):
+def loadFromJSON(file_name):
     with open(os.path.join(JSON_PATH, file_name + '.json'), 'r',
               encoding='utf-8') as f:
         return json.load(f)
@@ -21,7 +19,7 @@ def load_from_json(file_name):
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        products_data = load_from_json('product_data')
+        products_data = loadFromJSON('product_data')
 
         # удаляем все данные из таблиц
         ProductCategory.objects.all().delete()
@@ -38,14 +36,14 @@ class Command(BaseCommand):
             connection.cursor().execute(i)
 
         # фаилы выбивающиеся из общей системы названий, копирование его с переименованием
-        copyfile(IMG_PATH + 'woman/jackets/4.png',
-                 IMG_PATH + 'woman/jackets/c1-1.jpg')
-        copyfile(IMG_PATH + 'woman/tshirts/wcp22.jpg',
-                 IMG_PATH + 'woman/tshirts/wcp2-2.jpg')
-        copyfile(IMG_PATH + 'woman/tshirts/wcp24.jpg',
-                 IMG_PATH + 'woman/tshirts/wcp2-4.jpg')
-        copyfile(IMG_PATH + 'man/tshirts/r1-1psd.jpg',
-                 IMG_PATH + 'man/tshirts/r1-1.jpg')
+        copyfile(os.path.join('media/content/', 'woman/jackets', '4.png'),
+                 os.path.join('media/content/', 'woman/jackets', 'c1-1.jpg'))
+        copyfile(os.path.join('media/content/', 'woman/tshirts', 'wcp22.jpg'),
+                 os.path.join('media/content/', 'woman/tshirts', 'wcp2-2.jpg'))
+        copyfile(os.path.join('media/content/', 'woman/tshirts', 'wcp24.jpg'),
+                 os.path.join('media/content/', 'woman/tshirts', 'wcp2-4.jpg'))
+        copyfile(os.path.join('media/content/', 'man/tshirts', 'r1-1psd.jpg'),
+                 os.path.join('media/content/', 'man/tshirts', 'r1-1.jpg'))
 
         for data in products_data:
             name_category = data['category']
@@ -90,6 +88,7 @@ class Command(BaseCommand):
                 try:
                     print(data['product'])
                     path_img = 'content/' + data['product'] + f'-{i}.jpg'
+                    ImageFile(open('media/' + path_img, "rb"))
                     product_img = ProductImage(
                         product=product,
                         img_product=path_img
@@ -97,6 +96,7 @@ class Command(BaseCommand):
                     product_img.save()
                 except FileNotFoundError:
                     path_img = 'content/' + data['product'][:-1] + f'{i}.jpg'
+                    ImageFile(open('media/' + path_img, "rb"))
                     product_img = ProductImage(
                         product=product,
                         img_product=path_img
