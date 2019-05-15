@@ -1,6 +1,7 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from products.models import Product, ProductImage, ProductCategory
+
 
 class AdminMainView(TemplateView):
     template_name = 'adminapp/admin.html'
@@ -24,32 +25,52 @@ class AdminOrdersView(TemplateView):
 
 class AdminProductsView(TemplateView):
     template_name = 'adminapp/admin_products.html'
-    model = Product
+    paginate_by = 10
 
     def get_context_data(self,  pk=None, **kwargs):
         parent_context = super(AdminProductsView, self).get_context_data(**kwargs)
-        links_menu = Product.objects.filter(gender=True)
 
-        if pk:
-            if pk == '0':
-                products = Product.objects.filter(category__is_active=True).order_by('price')
-                category = {'name': 'все'}
-            else:
-                category = get_object_or_404(ProductCategory, pk=pk)
-                products = \
-                    Product.objects.filter(category__pk=pk, category__is_active=True).order_by('price')
+        filter_male = Product.objects.filter(gender='male')
+        filter_female = Product.objects.filter(gender='female')
+        product_objects = Product.objects.all()
+        q = self.request.GET.get("browse")
 
         parent_context = {
             'page_title': 'Админка | Товары',
             'page_name': 'Товары',
-            'product_objects': Product.objects.all(),
-            'product_male_count': Product.objects.filter(gender='male').count(),
-            'product_female_count': Product.objects.filter(gender='female').count(),
-            'product_all_count': Product.objects.count(),
-            # 'category': category,
-            'links_menu': links_menu,
+            'product_objects': product_objects,
+            'product_male_count': filter_male,
+            'product_female_count': filter_female,
+            'input': q,
         }
         return parent_context
+
+    def get_queryset(self):
+
+        queryset = Product.objects.all()
+
+        if self.request.GET.get("browse"):
+            selection = self.request.GET.get("browse")
+            if selection == "male":
+                queryset = Product.objects.filter(gender='male')
+            elif selection == "female":
+                queryset = Product.objects.filter(gender='female')
+            else:
+                queryset = Product.objects.all()
+
+        return queryset
+
+
+def nav_filter_bar(request, pk):
+
+    if pk == 1:
+        nav_filter = Product.objects.filter(gender='female')
+    elif pk == 2:
+        nav_filter = Product.objects.filter(gender='male')
+
+    context = {'product_objects': nav_filter}
+
+    return render(request, 'adminapp/admin_products.html', context)
 
 
 class AdminUsersView(TemplateView):

@@ -3,11 +3,12 @@
 
 {% block content %}
     <div class="container admin-products-info d-block d-lg-flex">
-    <div>Всего: <span>{{ product_all_count }}</span></div>
+    <!--<div>Всего: <span>{{ product_all_count.count }}</span></div>-->
+    <div>Всего: <span>{{ product_objects.count }}</span></div>
     <div>Новинок: <span>134</span></div>
     <div>Sale: <span>58</span></div>
-    <div>Женских: <span>{{ product_female_count }}</span></div>
-    <div>Мужских: <span>{{ product_male_count }}</span></div>
+    <div>Женских: <span>{{ product_female_count.count }}</span></div>
+    <div>Мужских: <span>{{ product_male_count.count }}</span></div>
 </div>
 
 {% include 'adminapp/includes/inc_products_nav.html' %}

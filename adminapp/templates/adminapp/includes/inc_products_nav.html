@@ -8,22 +8,57 @@
             </div>
 
             <div class="col-md-8 col-lg-6 admin-product-sort d-md-flex">
-                <a class="product-sort-btn
-                          {% if request.resolver_match.kwargs.pk == 0 %}
+                <!--<a class="product-sort-btn-->
+                          <!--{% if request.resolver_match.url_name == 'admin_products' %}-->
+                              <!--active-->
+                          <!--{% endif %}"-->
+                    <!--href="{% url 'adminapp:admin_products' %}">-->
+                    <!--Все-->
+                <!--</a>-->
+                <!--<a class="product-sort-btn-->
+                        <!--{% if request.resolver_match.kwargs.pk == 1 %}-->
+                            <!--active-->
+                        <!--{% endif %}"-->
+                    <!--href="{% url 'adminapp:gender' pk=1 %}">-->
+                    <!--Женские-->
+                  <!--</a>-->
+                <!--<a class="product-sort-btn-->
+                        <!--{% if request.resolver_match.kwargs.pk == 2 %}-->
+                            <!--active-->
+                        <!--{% endif %}"-->
+                    <!--href="{% url 'adminapp:gender' pk=2 %}">-->
+                    <!--Мужские-->
+                <!--</a>-->
+                    <a class="product-sort-btn
+                          {% if request.resolver_match.url_name == 'admin_products' %}
                               active
                           {% endif %}"
-                    href="{% url 'adminapp:gender' 0 %}">
+                    href="{% url 'adminapp:admin_products' %}">
                     Все
                 </a>
-                {% for link in links_menu %}
-                    <a class="product-sort-btn
-                            {% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}
-                                active
-                            {% endif %}"
-                       href="{% url 'adminapp:gender' link.pk %}">
-                        {{ link.name }}
-                    </a>
-                {% endfor %}
+                <a class="product-sort-btn
+                        {% if request.resolver_match.kwargs.pk == 1 %}
+                            active
+                        {% endif %}"
+                    href="{% url 'adminapp:admin_products' %}/?browse={{ input }}&page={{ page_obj.previous_page_number }}">
+                    Женские
+                  </a>
+                <a class="product-sort-btn
+                        {% if request.resolver_match.kwargs.pk == 2 %}
+                            active
+                        {% endif %}"
+                    href="{% url 'adminapp:gender' pk=2 %}">
+                    Мужские
+                </a>
+                    {% if page_obj.has_previous %}
+                        <a href="/browse/?browse={{ input }}&page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="/browse/?browse={{ input }}&page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
                 <!--<a class="product-sort-btn" href="#">Женские</a>-->
 
                 <!--<a class="product-sort-btn" href="#">Мужские</a>-->
