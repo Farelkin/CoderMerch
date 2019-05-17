@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from products.models import Product, ProductImage, ProductCategory
 
 
@@ -23,7 +23,7 @@ class AdminOrdersView(TemplateView):
         return parent_context
 
 
-class AdminProductsView(TemplateView):
+class AdminProductsView(ListView):
     template_name = 'adminapp/admin_products.html'
     paginate_by = 10
 
@@ -46,19 +46,23 @@ class AdminProductsView(TemplateView):
         return parent_context
 
     def get_queryset(self):
-
         queryset = Product.objects.all()
-
-        if self.request.GET.get("browse"):
-            selection = self.request.GET.get("browse")
-            if selection == "male":
-                queryset = Product.objects.filter(gender='male')
-            elif selection == "female":
-                queryset = Product.objects.filter(gender='female')
-            else:
-                queryset = Product.objects.all()
-
         return queryset
+
+    # def get_queryset(self, **kwargs):
+    #
+    #     queryset = Product.objects.all()
+    #
+    #     if self.request.GET.get("browse"):
+    #         selection = self.request.GET.get("browse")
+    #         if selection == "male":
+    #             queryset = Product.objects.filter(gender='male')
+    #         elif selection == "female":
+    #             queryset = Product.objects.filter(gender='female')
+    #         else:
+    #             queryset = Product.objects.all()
+    #
+    #     return queryset
 
 
 def nav_filter_bar(request, pk):
