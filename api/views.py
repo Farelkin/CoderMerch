@@ -10,6 +10,7 @@ from rest_auth.views import LoginView
 from products.serializers import *
 from products.models import *
 from users.serializers import *
+from basket.serializers import *
 from users.models import CustomUser
 
 
@@ -32,6 +33,7 @@ def api_root(request, format=None):
                             format=format),
         'categories': reverse('api:productcategory-list', request=request,
                               format=format),
+        'basket': reverse('api:basket-list', request=request, format=format),
     })
 
 
@@ -46,19 +48,20 @@ class CustomLogin(LoginView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
     serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.filter(is_active=True)
     http_method_names = ['get', 'put', 'patch', 'head', 'delete', 'options']
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
-    search_fields = ('keywords', 'name_product', 'category__name_category', )
+    search_fields = ('keywords', 'name_product', 'category__name_category',)
     ordering_fields = ('name_product', 'price',)
+    http_method_names = ['get', 'head', 'options']
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -67,7 +70,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
     serializer_class = ProductCategorySerializer
     queryset = ProductCategory.objects.all()
 
@@ -76,3 +79,29 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
         serializer = ProductSerializer(
             Product.objects.filter(category_id=instance.id), many=True)
         return Response(serializer.data)
+
+
+class BasketViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = BasketSerializer
+    filter_backends = (filters.OrderingFilter,)
+    ordering_fields = ('datetime_added',)
+    ordering = ['-datetime_added', ]
+
+    def get_queryset(self):
+        return Basket.objects.filter(user=self.request.user)
+
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+    def perform_create(self, serializer):
+
+        basket_product = Basket.objects.filter(user=self.request.user,
+                                               product=serializer.data[
+                                                   'product']).first()
+
+        if not basket_product:
+            serializer.save(user=self.request.user)
+        else:
+            basket_product.quantity += serializer.data['quantity']
+            basket_product.save()
