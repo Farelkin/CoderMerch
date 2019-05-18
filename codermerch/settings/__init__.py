@@ -1,5 +1,6 @@
 import os
 import json
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -20,7 +21,5 @@ DJANGO_MODULE_STR = get_secret('DJANGO_MODULE_STR')
 
 if DJANGO_MODULE_STR == 'development':
     from .development import *
-elif DJANGO_MODULE_STR == 'local':
-    from .local_settings import *
 else:
     from .production import *
