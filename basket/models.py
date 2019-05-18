@@ -4,7 +4,8 @@ from products.models import ProductBySize
 
 
 class Basket(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='basket')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
+                             related_name='basket')
     product = models.ForeignKey(ProductBySize, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=0)
     datetime_added = models.DateTimeField(auto_now_add=True)

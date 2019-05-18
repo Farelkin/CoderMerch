@@ -83,7 +83,7 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
 class BasketViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = BasketSerializer
+    serializer_class = BasketProductSerializer
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('datetime_added',)
     ordering = ['-datetime_added', ]
@@ -95,13 +95,13 @@ class BasketViewSet(viewsets.ModelViewSet):
         return {'request': self.request}
 
     def perform_create(self, serializer):
-
+        product_by_size = ProductBySize.objects.get(
+            pk=self.request.data['product_id'])
         basket_product = Basket.objects.filter(user=self.request.user,
-                                               product=serializer.data[
-                                                   'product']).first()
+                                               product_id=product_by_size).first()
 
         if not basket_product:
-            serializer.save(user=self.request.user)
+            serializer.save(user=self.request.user, product=product_by_size)
         else:
             basket_product.quantity += serializer.data['quantity']
             basket_product.save()
