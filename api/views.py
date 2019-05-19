@@ -14,6 +14,18 @@ from basket.serializers import *
 from users.models import CustomUser
 
 
+class ActionBasedPermission(permissions.AllowAny):
+    """
+    Grant or deny access to a view, based on a mapping in view.action_permissions
+    """
+
+    def has_permission(self, request, view):
+        for c_class, actions in getattr(view, 'action_permissions', {}).items():
+            if view.action in actions:
+                return c_class().has_permission(request, view)
+        return False
+
+
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
@@ -50,18 +62,25 @@ class CustomLogin(LoginView):
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
     serializer_class = CustomUserSerializer
-    queryset = CustomUser.objects.filter(is_active=True)
+    queryset = CustomUser.objects.all()
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
+    search_fields = ('email', 'first_name', 'last_name', 'email')
+    ordering_fields = ('email', 'last_name', 'first_name', 'is_active')
+    ordering = ['-is_active', ]
     http_method_names = ['get', 'put', 'patch', 'head', 'delete', 'options']
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = (ActionBasedPermission,)
+    action_permissions = {
+        permissions.IsAdminUser: ['update', 'partial_update', 'destroy', 'create'],
+        permissions.AllowAny: ['list', 'retrieve']
+    }
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
     search_fields = ('keywords', 'name_product', 'category__name_category',)
     ordering_fields = ('name_product', 'price',)
-    http_method_names = ['get', 'head', 'options']
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -70,14 +89,17 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = (ActionBasedPermission,)
+    action_permissions = {
+        permissions.IsAdminUser: ['update', 'partial_update', 'destroy', 'create'],
+        permissions.AllowAny: ['list', 'retrieve']
+    }
     serializer_class = ProductCategorySerializer
     queryset = ProductCategory.objects.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = ProductSerializer(
-            Product.objects.filter(category_id=instance.id), many=True)
+        serializer = ProductCategoryDetailSerializer(instance)
         return Response(serializer.data)
 
 

@@ -84,9 +84,9 @@ class Command(BaseCommand):
                 product_size.save()
 
             """Запись картинок фотографий продукта в таблицу ProductImage"""
+            print(data['product'])
             for i in range(1, 5):
                 try:
-                    print(data['product'])
                     path_img = 'content/' + data['product'] + f'-{i}.jpg'
                     ImageFile(open('media/' + path_img, "rb"))
                     product_img = ProductImage(

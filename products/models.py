@@ -10,6 +10,17 @@ class ProductCategory(models.Model):
     is_active = models.BooleanField(verbose_name='Категория активна',
                                     default=True)
 
+    def get_products(self):
+        return Product.objects.filter(category_id=self.id).values('id',
+                                                                  'name_product',
+                                                                  'description',
+                                                                  'main_img',
+                                                                  'logotype',
+                                                                  'gender',
+                                                                  'color',
+                                                                  'article',
+                                                                  'price')
+
     def __str__(self):
         return self.name_category
 
@@ -25,7 +36,7 @@ class Product(models.Model):
         ('man', 'Мужское'),
         ('woman', 'Женское')
     )
-    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE,
+    category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT,
                                  related_name='product_category')
     name_product = models.CharField(verbose_name='Название товара',
                                     max_length=80, unique=True, db_index=True)
@@ -50,6 +61,9 @@ class Product(models.Model):
     is_active = models.BooleanField(verbose_name='Продукт активен',
                                     default=True)
 
+    main_img = models.ImageField(verbose_name='Фотография товара',
+                                 max_length=255, upload_to='content', default='')
+
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
 
@@ -59,27 +73,21 @@ class Product(models.Model):
 
     # получение всех картинок выбранного товара
     def get_img(self):
-        lst = []
-        item = self.prod_img.select_related()
-        for img in item:
-            lst.append(str(img.img_product))
-        return lst
-
-    @property
-    def first_img(self):
-        return self.prod_img.first().img_product
+        return [i['img_product'] for i in
+                self.prod_img.select_related().values('img_product')]
 
     # получение всех размеров выбранного товара
     def get_size(self):
         lis_size = {}
-        item = self.prod_by_size.select_related()
+        item = self.prod_by_size.select_related().values('size', 'quantity')
         for one_size in item:
-            lis_size[str(one_size.size)] = str(one_size.quantity)
+            lis_size[str(one_size['size'])] = str(one_size['quantity'])
         return lis_size
 
     @property
     def total_qty(self):
-        return sum([i.quantity for i in self.prod_by_size.select_related()])
+        return sum([i['quantity'] for i in
+                    self.prod_by_size.select_related().values('quantity')])
 
 
 class ProductBySize(models.Model):
@@ -101,7 +109,7 @@ class ProductBySize(models.Model):
                                            default=0, )
 
     def __str__(self):
-        return '{} ({})'.format(self.product.name_product, self.size)
+        return f'{self.product.name_product} ({self.size})'
 
     class Meta:
         verbose_name = 'Размер товара'
@@ -121,3 +129,11 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = 'Фотографии товара'
         verbose_name_plural = 'Фотографии товаров'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super(ProductImage, self).save()
+        product = self.product
+        if not product.main_img:
+            product.main_img = self.img_product
+            product.save()

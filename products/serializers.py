@@ -3,19 +3,22 @@ from rest_framework import serializers
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    qty = serializers.IntegerField(source='total_qty', read_only=True)
+    # qty = serializers.IntegerField(source='total_qty', read_only=True)
 
     class Meta:
         model = Product
-        fields = ('name_product', 'article', 'description', 'category', 'price', 'qty', )
-
-
-class ProductCategorySerializer(serializers.ModelSerializer):
-    products = serializers.StringRelatedField(source='product_category', read_only=True, many=True)
-
-    class Meta:
-        model = ProductCategory
-        fields = ('name_category', 'products')
+        fields = (
+            'id',
+            'article',
+            'name_product',
+            'description',
+            'price',
+            'discount',
+            'main_img',
+            'logotype',
+            'gender',
+            'color'
+        )
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -23,5 +26,30 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('name_product', 'sizes')
+        fields = (
+            'id',
+            'article',
+            'name_product',
+            'description',
+            'price',
+            'discount',
+            'main_img',
+            'logotype',
+            'gender',
+            'color',
+            'sizes'
+        )
 
+
+class ProductCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductCategory
+        exclude = ('is_active',)
+
+
+class ProductCategoryDetailSerializer(serializers.ModelSerializer):
+    products = serializers.ListField(source='get_products')
+
+    class Meta:
+        model = ProductCategory
+        fields = ('id', 'name_category', 'discount', 'products')
