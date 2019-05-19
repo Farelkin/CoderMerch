@@ -14,7 +14,6 @@ class CustomUserManager(BaseUserManager):
     use_in_migrations = True
 
     def create_user(self, email, first_name, date_of_birth, password=None):
-
         user = self.model(
             email=self.normalize_email(email),
             date_of_birth=date_of_birth,

@@ -22,10 +22,10 @@ class Command(BaseCommand):
         products_data = loadFromJSON('product_data')
 
         # удаляем все данные из таблиц
-        ProductCategory.objects.all().delete()
         Product.objects.all().delete()
         ProductBySize.objects.all().delete()
         ProductImage.objects.all().delete()
+        ProductCategory.objects.all().delete()
 
         for i in (
                 'ALTER SEQUENCE products_productcategory_id_seq RESTART WITH 1;',

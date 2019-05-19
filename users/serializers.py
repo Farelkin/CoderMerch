@@ -80,3 +80,16 @@ class CustomUserSerializer(serializers.ModelSerializer):
         profile.phone = profile_data.get('phone', profile.phone)
         profile.save()
         return instance
+
+
+class CustomUserListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:customuser-detail',
+        lookup_field='pk',
+    )
+
+    class Meta:
+        model = models.CustomUser
+        fields = (
+            'url', 'email', 'first_name', 'last_name')
+        read_only_fields = ('email',)

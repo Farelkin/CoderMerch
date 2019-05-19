@@ -1,6 +1,17 @@
 from django.db import models
 
 
+def get_upload_dir(instance, filename):
+    category = {
+        'жакет': 'jackets',
+        'рубашка': 'shirts',
+        'свитер': 'sweaters',
+        'футболка': 'tshirts',
+        'толстовка': 'hoodie',
+    }
+    return f'content/{instance.gender}/{category[instance.category.name_category]}/{filename}'
+
+
 class ProductCategory(models.Model):
     """КАТЕГОРИЯ ПРОДУКТА - тип товара (толстовка, футболка, аксессуары и т.д.)"""
     name_category = models.CharField(verbose_name='Категория продукта',
@@ -37,7 +48,7 @@ class Product(models.Model):
         ('woman', 'Женское')
     )
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT,
-                                 related_name='product_category')
+                                 related_name='products')
     name_product = models.CharField(verbose_name='Название товара',
                                     max_length=80, unique=True, db_index=True)
 
@@ -62,7 +73,8 @@ class Product(models.Model):
                                     default=True)
 
     main_img = models.ImageField(verbose_name='Фотография товара',
-                                 max_length=255, upload_to='content', default='')
+                                 max_length=255, upload_to=get_upload_dir,
+                                 default='')
 
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
@@ -73,16 +85,11 @@ class Product(models.Model):
 
     # получение всех картинок выбранного товара
     def get_img(self):
-        return [i['img_product'] for i in
-                self.prod_img.select_related().values('img_product')]
+        return self.prod_img.select_related().values_list('img_product', flat=True)
 
     # получение всех размеров выбранного товара
     def get_size(self):
-        lis_size = {}
-        item = self.prod_by_size.select_related().values('size', 'quantity')
-        for one_size in item:
-            lis_size[str(one_size['size'])] = str(one_size['quantity'])
-        return lis_size
+        return self.prod_by_size.select_related().values('size', 'quantity')
 
     @property
     def total_qty(self):

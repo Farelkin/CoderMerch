@@ -1,16 +1,43 @@
-from .models import Product, ProductCategory
+from .models import Product, ProductCategory, ProductBySize, ProductImage
 from rest_framework import serializers
+
+
+class ProductBySizeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProductBySize
+        fields = ('size', 'quantity')
+
+
+class ProductImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProductImage
+        fields = ('img_product',)
 
 
 class ProductSerializer(serializers.ModelSerializer):
     # qty = serializers.IntegerField(source='total_qty', read_only=True)
 
+    category = serializers.HyperlinkedRelatedField(
+        view_name='api:productcategory-detail',
+        lookup_field='pk',
+        many=False,
+        read_only=False,
+        queryset=ProductCategory.objects.all())
+
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:product-detail',
+        lookup_field='pk'
+    )
+
     class Meta:
         model = Product
         fields = (
-            'id',
+            'url',
             'article',
             'name_product',
+            'category',
             'description',
             'price',
             'discount',
@@ -22,34 +49,52 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
-    sizes = serializers.DictField(source='get_size')
+    sizes = ProductBySizeSerializer(source='prod_by_size', many=True, required=False, read_only=True)
+    images = ProductImageSerializer(source='prod_img', many=True, required=False, read_only=True)
+    category = serializers.HyperlinkedRelatedField(
+        view_name='api:productcategory-detail',
+        lookup_field='pk',
+        many=False,
+        read_only=False,
+        queryset=ProductCategory.objects.all())
 
     class Meta:
         model = Product
         fields = (
-            'id',
             'article',
             'name_product',
+            'category',
             'description',
             'price',
             'discount',
             'main_img',
+            'images',
             'logotype',
             'gender',
             'color',
-            'sizes'
+            'sizes',
         )
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:productcategory-detail',
+        lookup_field='pk',
+    )
+
     class Meta:
         model = ProductCategory
-        exclude = ('is_active',)
+        exclude = ('id', 'is_active',)
 
 
 class ProductCategoryDetailSerializer(serializers.ModelSerializer):
-    products = serializers.ListField(source='get_products')
+    products = serializers.HyperlinkedRelatedField(
+        view_name='api:product-detail',
+        lookup_field='pk',
+        many=True,
+        read_only=False,
+        queryset=Product.objects.all())
 
     class Meta:
         model = ProductCategory
-        fields = ('id', 'name_category', 'discount', 'products')
+        fields = ('name_category', 'discount', 'products')

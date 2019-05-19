@@ -69,6 +69,19 @@ class UserViewSet(viewsets.ModelViewSet):
     ordering = ['-is_active', ]
     http_method_names = ['get', 'put', 'patch', 'head', 'delete', 'options']
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = CustomUserListSerializer(page, many=True,
+                                                  context={'request': request})
+            return self.get_paginated_response(serializer.data)
+
+        serializer = CustomUserListSerializer(queryset, many=True,
+                                              context={'request': request})
+        return Response(serializer.data)
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (ActionBasedPermission,)
@@ -84,7 +97,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = ProductDetailSerializer(instance)
+        serializer = ProductDetailSerializer(instance, context={'request': request})
         return Response(serializer.data)
 
 
@@ -99,7 +112,8 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = ProductCategoryDetailSerializer(instance)
+        serializer = ProductCategoryDetailSerializer(instance,
+                                                     context={'request': request})
         return Response(serializer.data)
 
 
