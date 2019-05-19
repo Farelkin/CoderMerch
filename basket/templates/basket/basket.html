@@ -174,7 +174,7 @@
                         <span class="delivery">Всего</span> <span
                             class="delivery-price">8260 руб.</span>
                     </div>
-                    <button>Оформить заказ</button>
+                    <button type="button" data-toggle="modal" data-target="#modal-user-basket-order" class="no-focus">Оформить заказ</button>
                     <div class="we-take">
                         Мы принимаем:
                     </div>
@@ -199,4 +199,81 @@
             </div>
         </div>
     </div>
+
+<!--МОДАЛКА ОФОРМЛЕНИЯ ЗАКАЗА ПОЛЬЗОВАТЕЛЕМ: START-->
+<div class="modal fade modal-user-basket-order" id="modal-user-basket-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title" id="exampleModalLongTitle">Оформление заказа</h5>
+                <button type="button" class="close no-focus" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <h3><span class="star">&#10057;</span> Обязательные поля</h3>
+                    <div class="form-group d-lg-flex">
+                        <label><span class="star">&#10057;</span> ФИО</label>
+                        <input class="form-control" type="text" placeholder="Фамилия Имя Отчество">
+                    </div>
+                    <div class="form-group  d-lg-flex">
+                        <label><span class="star">&#10057;</span> Телефон</label>
+                        <input class="phone-mask form-control" type="tel" placeholder="+7(123)456-78-90">
+                    </div>
+                    <div class="form-group  d-lg-flex">
+                        <label><span class="star">&#10057;</span> Email</label>
+                        <input class="form-control" type="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label><span class="star">&#10057;</span> Оплата</label>
+                        <select class="form-control">
+                            <option value="" hidden="">Способ оплаты</option>
+                            <option value="">Наличными при самовывозе</option>
+                            <option value="">Картой при самовывозе</option>
+                            <option value="">Наличными курьеру</option>
+                            <option value="">Картой курьеру</option>
+                            <option value="">Картой через сайт</option>
+                            <option value="">Другая платежная система</option>
+                        </select>
+                    </div>
+                    <h3>Доставка</h3>
+                    <div class="form-group d-lg-flex">
+                        <label>Дата</label>
+                        <input class="form-control" type="date">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label>Время</label>
+                        <select class="form-control">
+                            <option value="" hidden="">Время доставки</option>
+                            <option>C 08:00 до 15:00</option>
+                            <option>C 15:00 до 22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-address">Адрес</label>
+                        <textarea class="form-control" id="order-add-address" rows="3"></textarea>
+                    </div>
+                    <h3>Комментарий</h3>
+                    <div class="form-group d-lg-flex">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" onclick="window.location='{% url "basket:order_done" %}'">Заказать</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА ОФОРМЛЕНИЯ ЗАКАЗА ПОЛЬЗОВАТЕЛЕМ: END-->
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+<script>
+    $(".phone-mask").mask("+7(999)999-99-99");
+</script>
 {% endblock %}

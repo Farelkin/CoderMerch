@@ -683,6 +683,110 @@ body
       font-size: 14px
       margin-top: 6px
 
+
+// Корзина (оформление заказа)
+
+.modal-user-basket-order
+  h3
+    background: $grey
+    box-sizing: border-box
+    color: $green
+    font-family: $rlw-b
+    font-size: 14px
+    text-align: center
+    text-transform: uppercase
+    min-height: 25px
+    margin-bottom: 15px
+    padding-top: 5px
+  .star
+    color: $pink
+
+
+  .modal-header
+    background: $grey
+    border-radius: 0 !important
+    .modal-title
+      background: $grey
+      color: $yellow
+      font-family: $pst
+      font-size: 34px
+      width: 100%
+      text-align: center
+    button
+      color: $light
+      font-family: $rbt-r
+      font-size: 25px
+      text-shadow: none !important
+      opacity: 1 !important
+      position: relative
+      top: 11px
+      &:hover
+        color: $yellow
+
+  .modal-body
+    background: $light
+    label
+      font-family: $rbt-b
+      color: $grey
+      width: 30%
+      font-size: 16px
+    input, select, textarea
+      border-radius: 0 !important
+      -webkit-appearance: none !important
+      -webkit-border-radius: 0 !important
+      font-family: $rbt-r !important
+
+  .modal-footer
+    background: $grey
+    border-radius: 0 !important
+    button
+      border: none
+      background: $green
+      color: $grey
+      font-family: $rlw-b
+      height: 33px
+      text-transform: uppercase
+      outline: none
+      width: 150px
+      cursor: pointer
+      &:first-child
+        background: $yellow
+      &:hover
+        color: $dark
+
+@media screen and (max-width: 576px)
+
+  .modal-user-basket-order
+    .modal-header
+      .modal-title
+        font-size: 24px !important
+      button
+        top: 5px !important
+    .modal-footer
+      button
+        width: 50%
+
+.final-basket-order
+  font-size: 18px
+  min-height: 58vh
+  .order-is-done
+    margin-top: 80px
+    margin-bottom: 15px
+    text-align: center
+    font-family: $rbt-b
+    font-size: 34px
+    color: $grey
+  .order-is-done-info
+    max-width: 500px
+    margin-bottom: 25px
+
+@media screen and (max-width: 992px)
+
+  .final-basket-order
+    .order-is-done
+      margin-top: 25px !important
+
+
 /* ИЗБРАННОЕ */
 
 .like-unit
