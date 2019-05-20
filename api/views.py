@@ -20,7 +20,8 @@ class ActionBasedPermission(permissions.AllowAny):
     """
 
     def has_permission(self, request, view):
-        for c_class, actions in getattr(view, 'action_permissions', {}).items():
+        for c_class, actions in getattr(view, 'action_permissions',
+                                        {}).items():
             if view.action in actions:
                 return c_class().has_permission(request, view)
         return False
@@ -30,6 +31,10 @@ class ActionBasedPermission(permissions.AllowAny):
 def api_root(request, format=None):
     return Response({
         'login': reverse('api:rest_login', request=request, format=format),
+        'login-vk': request.build_absolute_uri('/accounts/vk/login/'),
+        'login-github': request.build_absolute_uri('/accounts/github/login/'),
+        'connecnt social account': request.build_absolute_uri(
+            '/accounts/social/connections/'),
         'logout': reverse('api:rest_logout', request=request, format=format),
         'register': reverse('api:rest_register', request=request,
                             format=format),
@@ -86,7 +91,8 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (ActionBasedPermission,)
     action_permissions = {
-        permissions.IsAdminUser: ['update', 'partial_update', 'destroy', 'create'],
+        permissions.IsAdminUser: ['update', 'partial_update', 'destroy',
+                                  'create'],
         permissions.AllowAny: ['list', 'retrieve']
     }
     serializer_class = ProductSerializer
@@ -97,14 +103,16 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = ProductDetailSerializer(instance, context={'request': request})
+        serializer = ProductDetailSerializer(instance,
+                                             context={'request': request})
         return Response(serializer.data)
 
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
     permission_classes = (ActionBasedPermission,)
     action_permissions = {
-        permissions.IsAdminUser: ['update', 'partial_update', 'destroy', 'create'],
+        permissions.IsAdminUser: ['update', 'partial_update', 'destroy',
+                                  'create'],
         permissions.AllowAny: ['list', 'retrieve']
     }
     serializer_class = ProductCategorySerializer
@@ -113,7 +121,8 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = ProductCategoryDetailSerializer(instance,
-                                                     context={'request': request})
+                                                     context={
+                                                         'request': request})
         return Response(serializer.data)
 
 

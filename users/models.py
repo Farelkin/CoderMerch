@@ -1,6 +1,10 @@
 from django.db import models
 from django.conf import settings
-import datetime
+
+import datetime, calendar
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
@@ -8,6 +12,15 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 def image_path(instance, filename):
     return f'users_avatars/{instance.username.lower()}/{filename}'
+
+
+def reduce_years():
+    _date = datetime.date.today()
+    month = _date.month - 1
+    year = _date.year + month // 12 - 18
+    month = month % 12 + 1
+    day = min(_date.day, calendar.monthrange(year, month)[1])
+    return datetime.date(year, month, day)
 
 
 class CustomUserManager(BaseUserManager):
@@ -54,7 +67,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(verbose_name='e-mail', unique=True)
 
     date_of_birth = models.DateField(verbose_name='birth date',
-                                     default=datetime.date.today)
+                                     default=reduce_years())
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'date_of_birth']
 
@@ -96,6 +109,15 @@ class CustomUserProfile(models.Model):
                                )
 
     phone = PhoneNumberField(verbose_name='phone', blank=True)
+
+    @receiver(post_save, sender=CustomUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            CustomUserProfile.objects.create(user=instance)
+
+    @receiver(post_save, sender=CustomUser)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
 
 class ShippingAddress(models.Model):
