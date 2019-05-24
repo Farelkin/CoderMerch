@@ -27,7 +27,6 @@ class Command(BaseCommand):
         ProductImage.objects.all().delete()
         ProductCategory.objects.all().delete()
 
-
         for i in (
                 'ALTER SEQUENCE products_productcategory_id_seq RESTART WITH 1;',
                 'ALTER SEQUENCE products_product_id_seq RESTART WITH 1;',

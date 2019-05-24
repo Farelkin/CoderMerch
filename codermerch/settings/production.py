@@ -50,21 +50,17 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.github',
-
     'rest_auth.registration',
 
     'mainapp',
     'users',
     'api',
     'products',
-
     'basket',
     'orders',
     'adminapp',
-
 ]
 
 SITE_ID = 1

@@ -14,7 +14,6 @@ from basket.serializers import *
 from users.models import CustomUser
 
 
-
 class ActionBasedPermission(permissions.AllowAny):
     """
     Grant or deny access to a view, based on a mapping in view.action_permissions
@@ -32,7 +31,6 @@ class ActionBasedPermission(permissions.AllowAny):
 def api_root(request, format=None):
     return Response({
         'login': reverse('api:rest_login', request=request, format=format),
-
         'login-vk': request.build_absolute_uri('/accounts/vk/login/'),
         'login-github': request.build_absolute_uri('/accounts/github/login/'),
         'connecnt social account': request.build_absolute_uri(

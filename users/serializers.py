@@ -70,7 +70,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
                                           profile.gender)
         profile.avatar = profile_data.get('avatar', profile.avatar)
         profile.phone = profile_data.get('phone', profile.phone)
-
         instance.save()
 
         return instance
@@ -87,4 +86,3 @@ class CustomUserListSerializer(serializers.ModelSerializer):
         fields = (
             'url', 'email', 'first_name', 'last_name')
         read_only_fields = ('email',)
-

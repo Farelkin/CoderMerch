@@ -24,58 +24,39 @@
 {% block content %}
     <div class="path">
         <div class="container">
-            <a href="{% url 'mainapp:home' %}">Главная ></a>
-            <a href="{% url 'products:man' %}">Мужское > </a>
-            <a href="#">Футболки ></a>
-            <a href="#">Футболка C#</a>
         </div>
     </div>
 
     <div class="product-title">
-        <div class="container">
-            Футболка C#
-        </div>
     </div>
 
     <div class="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-1 col-12 d-flex justify-content-sm-around justify-content-center d-lg-block sub-product-photos order-2 order-lg-0">
-                    <img class="img-fluid active"
-                         src="{% static 'img/product4.jpg' %}" alt="product4">
-                    <img class="img-fluid" src="{% static 'img/2.jpg' %}"
-                         alt="product4">
-                    <img class="img-fluid" src="{% static 'img/3.jpg' %}"
-                         alt="product4">
-                    <img class="img-fluid" src="{% static 'img/4.jpg' %}"
-                         alt="product4">
                 </div>
                 <div class="col-lg-7 main-product-photo order-1 order-lg-0">
-                    <img class="img-fluid" src="{% static 'img/product4.jpg' %}"
-                         alt="product4">
                 </div>
                 <div class="col-lg-4 order-3">
                     <div class="short-description">
-                        Серая мужская футболка с логотипом C#
                     </div>
+
                     <div class="price order-3">
-                        <span>990</span> руб.
+                        <span></span> руб.
                     </div>
+
                     <div class="vendor-code order-3">
-                        <span>Артикул:</span> T0003
+                        <span>Артикул:</span>
                     </div>
+
                     <div class="color order-3">
-                        <span>Цвет:</span> Серый
+                        <span>Цвет:</span>
                     </div>
+
                     <select class="form-control order-3"
                             data-btn-class="btn-primary">
-                        <option value="" hidden>Пожалуйста, выберите размер</option>
-                        <option value="">S</option>
-                        <option value="">M</option>
-                        <option value="">L</option>
-                        <option value="">XL</option>
-                        <option value="">2XL</option>
                     </select>
+
                     <div class="buttons d-flex order-3">
                         <button class="add-to-bag" type="submit">
                             Добавить в корзину
@@ -85,24 +66,7 @@
                         </button>
                     </div>
 
-
                     <div class="long-description order-3">
-                        Разнообразный и богатый опыт консультация с широким активом
-                        играет
-                        важную роль в формировании существенных финансовых и
-                        административных условий.
-                        Равным образом сложившаяся структура организации требуют
-                        определения уточнения
-                        существенных финансовых и административных условий. Идейные
-                        соображения высшего
-                        порядка, а также постоянный количественный рост и сфера нашей
-                        активности играет
-                        важную роль в формировании модели развития. Не следует,
-                        однако забывать,
-                        что начало повседневной работы по формированию позиции влечет
-                        за собой процесс
-                        внедрения и модернизации существенных финансовых и
-                        административных условий.
                     </div>
                 </div>
             </div>
@@ -118,31 +82,198 @@
     <div class="similar-products">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-sm-3">
-                    <a href="#" class="view overlay zoom">
-                        <img src="{% static 'img/product7.jpg' %}" alt="product7"
-                             class="img-fluid">
-                    </a>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <a href="#" class="view overlay zoom">
-                        <img src="{% static 'img/product9.jpg' %}" alt="product9"
-                             class="img-fluid">
-                    </a>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <a href="#" class="view overlay zoom">
-                        <img src="{% static 'img/product11.jpg' %}" alt="product11"
-                             class="img-fluid">
-                    </a>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <a href="#" class="view overlay zoom">
-                        <img src="{% static 'img/product14.jpg' %}" alt="product14"
-                             class="img-fluid">
-                    </a>
-                </div>
             </div>
         </div>
     </div>
 {% endblock %}
+
+
+{% block extra_scripts %}
+<script>
+    class Product {
+        constructor(api){
+            this.api = api;
+            this.nameProduct = '';
+            this.id = 0;
+            this.article = '';
+            this.color = '';
+            this.logotype = '';
+            this.price = 0;
+            this.description = '';
+            this.sizes = {};
+            this.gender = '';
+            this.getImg = [];
+            this.genderRus = '';
+            this.productsList = [];
+            this.similarProductsList = [];
+            this.indexList = [];
+            this._getProduct();
+
+        }
+
+        _getProduct(){
+            const apiHref = window.location.href.replace(window.location.origin, '')
+            fetch(`${this.api}${apiHref}`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(data => {
+                    this.nameProduct = data.name_product;
+                    this.id = data.id;
+                    this.article = data.article;
+                    this.color = data.color;
+                    this.logotype = data.logotype;
+                    this.price = data.price;
+                    this.description = data.description;
+                    this.sizes = data.sizes;
+                    this.gender = data.gender;
+                    this.discount = data.discount;
+                    this.categoryId = data.category.id;
+                    console.log(this.categoryId);
+                    this.category = data.category.name_category.charAt(0).toUpperCase() + data.category.name_category.slice(1);
+                    this.getImg = data.get_img;
+
+                    this._renderName();
+                    this._renderDescription();
+                    this._renderShortDescription();
+                    this._renderPrice();
+                    this._renderArticle();
+                    this._renderColor();
+                    this._renderSize();
+                    this._renderImg();
+                    this._renderImgMini();
+                    this._renderPath();
+                    this._getProducts();
+                })
+                .catch(error => console.log(error));
+        }
+
+        _renderName() {
+            const block = document.querySelector('.product-title');
+            <!--block.insertAdjacentHTML('beforeend', `<div class="container">${this.nameProduct}</div>`);-->
+            block.insertAdjacentHTML('beforeend', `<div class="container">${this.category} ${this.logotype.toUpperCase()}</div>`);
+        }
+
+        _renderDescription() {
+            const block = document.querySelector('.long-description');
+            block.innerHTML = this.description;
+        }
+
+        _renderShortDescription() {
+            const block = document.querySelector('.short-description');
+            block.innerHTML = this.nameProduct.charAt(0).toUpperCase() + this.nameProduct.slice(1);
+        }
+
+        _renderPrice() {
+            const block = document.querySelector('.price').getElementsByTagName('span')[0];
+            console.log(this.discount);
+            block.innerHTML = this.price*(100 - this.discount)/100;
+        }
+
+        _renderArticle() {
+            const block = document.querySelector('.vendor-code');
+            block.innerHTML =  `<span>Артикул:</span> ${this.article}`;
+        }
+
+        _renderColor() {
+            const block = document.querySelector('.color');
+            block.style.textTransform = 'capitalize';
+            block.innerHTML =  `<span>Цвет:</span> ${this.color}`;
+        }
+
+        _renderSize() {
+            const block = document.getElementsByTagName('select')[0];
+            let contentSizes = '<option value="" hidden>Пожалуйста, выберите размер</option>';
+            for (let key in this.sizes) {
+                if (+this.sizes[key] > 0) {
+                    contentSizes += `<option value="${key}">${key}</option>`
+                }
+            }
+            block.innerHTML =  contentSizes;
+        }
+
+        _renderImg() {
+            const block = document.querySelector('.main-product-photo');
+            block.innerHTML =  `<img class="img-fluid" src="/media/${this.getImg.sort()[0]}" alt="product${this.id}">`;
+        }
+
+        _renderImgMini() {
+            const block = document.querySelector('.sub-product-photos');
+            let contentIMG = '';
+            for (let img of this.getImg.sort()) {
+                contentIMG += `<img class="img-fluid" src="/media/${img}" alt="${this.id}">`
+            }
+            block.innerHTML =  contentIMG;
+        }
+
+        _renderPath() {
+            if (this.gender==='man') {
+                this.genderRus = 'Мужское'
+            } else {
+                this.genderRus = 'Женское'}
+            const block = document.querySelector('.path').getElementsByTagName('div')[0];
+            block.innerHTML =  `<a href="/">Главная &gt; </a>
+                                <a href="/products/${this.gender}/">${this.genderRus} &gt; </a>
+                                <a href="/products/${this.gender}/"> ${this.category} &gt;</a>
+                                <a href="#">${this.category} ${this.logotype.toUpperCase()}</a>`;
+        }
+
+
+        _getProducts() {
+            const apiHref = window.location.href.replace(window.location.origin, '')
+            fetch(`${this.api}/categories/${this.categoryId}/`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('DATA', data);
+                    this.productsList = data;
+                    this._getSimilarProducts();
+                    this._renderSimilarProducts();
+
+                })
+                .catch(error => console.log(error));
+        }
+
+        _getSimilarProducts() {
+            for (let obj of this.productsList) {
+                if (obj.gender === this.gender && obj.id !== this.id) {
+                    this.similarProductsList.push(obj);
+                }
+            }
+
+            while (this.indexList.length < 4) {
+                let ind = Math.floor(Math.random() * this.similarProductsList.length);
+                if (!this.indexList.includes(ind)) {
+                    this.indexList.push(ind);
+                }
+            }
+        }
+
+        _renderSimilarProducts() {
+            const block = document.querySelector('.similar-products').querySelector('.row');
+            let contentSimilarProduct = '';
+
+            this.indexList.forEach(ind => {
+                let element = this.similarProductsList[ind];
+                contentSimilarProduct += `
+                    <div class="col-6 col-sm-3">
+                        <a href="/products/${element.id}" class="view overlay zoom">
+                            <img src="/media/${element.get_img.sort()[0]}" alt="product${element.id}" class="img-fluid">
+                        </a>
+                    </div>`
+                console.log('ELEM', );
+            })
+            block.innerHTML =  contentSimilarProduct;
+        }
+    }
+
+
+    const API = 'http://127.0.0.1:8000/api/v1';
+    let prod = new Product(API);
+    <!--let similarProducts = new SimilarProduct(API);-->
+
+</script>
+
+{% endblock %}
+

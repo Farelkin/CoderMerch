@@ -19,4 +19,3 @@ class Basket(models.Model):
     def total_price(self):
         products = Basket.objects.filter(user=self.user)
         return sum([x.product_price for x in products])
-

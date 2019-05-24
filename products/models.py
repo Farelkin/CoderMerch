@@ -47,7 +47,7 @@ class Product(models.Model):
     GENDER_CHOICES = (
         # ('male', 'Мужское'),
         # ('female', 'Женское')
-        ('man', 'Женское'),
+        ('man', 'Мужское'),
         ('woman', 'Женское')
     )
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT,
@@ -79,7 +79,6 @@ class Product(models.Model):
                                  max_length=255, upload_to=get_upload_dir,
                                  default='')
 
-
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
 
@@ -99,6 +98,7 @@ class Product(models.Model):
     def total_qty(self):
         return sum([i['quantity'] for i in
                     self.prod_by_size.select_related().values('quantity')])
+
 
 class ProductBySize(models.Model):
     """КОЛИЧЕСТВО ТОВАРОВ ПО РАЗМЕРАМ"""

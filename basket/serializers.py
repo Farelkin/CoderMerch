@@ -19,6 +19,4 @@ class BasketProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Basket
-
         exclude = ('id', 'product', 'user', 'is_ordered')
-
