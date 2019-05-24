@@ -22,10 +22,11 @@ class Command(BaseCommand):
         products_data = loadFromJSON('product_data')
 
         # удаляем все данные из таблиц
-        ProductCategory.objects.all().delete()
         Product.objects.all().delete()
         ProductBySize.objects.all().delete()
         ProductImage.objects.all().delete()
+        ProductCategory.objects.all().delete()
+
 
         for i in (
                 'ALTER SEQUENCE products_productcategory_id_seq RESTART WITH 1;',
@@ -84,9 +85,9 @@ class Command(BaseCommand):
                 product_size.save()
 
             """Запись картинок фотографий продукта в таблицу ProductImage"""
+            print(data['product'])
             for i in range(1, 5):
                 try:
-                    print(data['product'])
                     path_img = 'content/' + data['product'] + f'-{i}.jpg'
                     ImageFile(open('media/' + path_img, "rb"))
                     product_img = ProductImage(

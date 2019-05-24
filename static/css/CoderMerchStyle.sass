@@ -43,32 +43,12 @@ $dark: #1e1e1e
 $light-grey: #eaeaea
 $hover-dark: #323232
 
-/* СПЕЦКЛАССЫ */
-
-.no-focus
-  &:focus
-    outline: none
-
 body
   margin: 0
   background: $light
   font-family: $rlw-r
   font-size: 18px
   color: $dark
-  min-height: 100vh
-
-  //Скроллбар
-  //&::-webkit-scrollbar
-  //  background-color: $light
-  //  width: 12px
-  //&::-webkit-scrollbar-track
-  //  background-color: $light
-  //&::-webkit-scrollbar-thumb
-  //  position: relative
-  //  left: 20px
-  //  background-color: $grey
-  //  border-radius: 30px
-  //  border: 2px solid $light
 
 
 /* МЕНЮ 1 */
@@ -82,8 +62,10 @@ body
     color: $yellow
     box-sizing: border-box
     padding-left: 15px
+
     span
       color: $blue
+
       &:first-child
         color: $green
 
@@ -97,9 +79,11 @@ body
     font-size: 16px
     box-sizing: border-box
     padding-top: 4px
+
     &:first-child
       color: $pink
       font-family: $rlw-b
+
     &:hover
       color: lightgrey
 
@@ -109,12 +93,14 @@ body
 .second-menu
   min-height: 61px
   background: $grey
+
   .logo
     padding: 5px 0 0 0
 
   .main-categories a
     &:first-child
       border-left: $dark 1px solid
+
     &:hover
       background: $hover-dark
 
@@ -128,12 +114,14 @@ body
     text-transform: uppercase
     text-align: center
     border-right: $dark 1px solid
+
   .active
     background: $dark
 
   .search
     padding-top: 15px
     position: relative
+
     input
       border: none
       background: $dark
@@ -143,15 +131,19 @@ body
       padding-left: 32px
       font-size: 16px
       color: $grey
+
       &::-webkit-input-placeholder
         color: $grey
         font-size: 16px
+
       &::-moz-placeholder
         color: $grey
         font-size: 16px
+
       &::placeholder
         color: $grey
         font-size: 16px
+
     .form-control
       &:focus
         border-color: $blue !important
@@ -164,24 +156,28 @@ body
       border: none
       position: absolute
       top: 16px
+
       i
         color: $grey
+
       &:focus
         outline: none !important
 
 .main-icons
   padding: 14px 0 0 0
   font-size: 22px
+
   a
     color: $light
+
     &:hover
       color: $yellow
 
   &:nth-child(2n)
     color: $pink
+
     &:hover
       color: $green
-
 
 
 /* ФОТО НА ГЛАВНОЙ */
@@ -213,7 +209,6 @@ body
   font-size: 43px
 
 
-
 /* ЗАГОЛОВОК СТРАНИЦ И БЛОКОВ */
 
 .product-title
@@ -233,6 +228,7 @@ body
   a
     margin-bottom: 25px
     display: block
+
     img
       cursor: pointer
 
@@ -245,6 +241,7 @@ body
   background: $yellow
   padding-top: 25px
   padding-bottom: 25px
+
   h3
     font-size: 22px
     font-family: $rlw-b
@@ -258,6 +255,7 @@ body
 .categories-menu
   height: 46px
   background: $dark
+
   .container
     padding: 0
 
@@ -269,10 +267,12 @@ body
     font-family: $rlw-b
     font-size: 16px
     color: $light
+
     .nav-item
       width: 132px
       min-height: 46px
       text-align: center
+
       a
         &:hover
           background-color: $grey
@@ -286,8 +286,10 @@ body
     .active
       background-color: $light
       color: $grey !important
+
       a
         color: $grey !important
+
       &:hover
         background-color: $grey !important
 
@@ -296,6 +298,7 @@ body
 
 .path
   height: 30px
+
   a
     font-size: 14px
     color: $grey
@@ -309,6 +312,7 @@ body
   .active
     background: $grey
     color: $light
+
   a
     display: block
     height: 40px
@@ -322,6 +326,7 @@ body
     box-sizing: border-box
     padding-top: 9px
     margin-bottom: 25px
+
     &:hover
       background: #c5c4c4
       color: $grey
@@ -333,8 +338,10 @@ body
   text-align: center
   font-size: 16px
   margin-bottom: 25px
+
   span
     font-family: $rlw-b
+
   button
     border: none
     background: $grey
@@ -345,6 +352,7 @@ body
     color: $yellow
     cursor: pointer
     margin-top: 5px
+
     &:hover
       background: $green
       color: $grey
@@ -355,9 +363,11 @@ body
 .product
   color: $grey
   margin-bottom: 25px
+
   .sub-product-photos
     .active
       border: 2px $blue solid
+
     img
       margin-bottom: 20px
 
@@ -369,6 +379,7 @@ body
 
   .price
     font-family: $rlw-b
+
     span
       font-family: $rbt-b
       font-size: 32px
@@ -376,6 +387,7 @@ body
   .vendor-code
     font-family: $rbt-r
     margin-bottom: 10px
+
     span
       font-family: $rlw-b
 
@@ -386,6 +398,7 @@ body
   .buttons
     margin-top: 25px
     margin-bottom: 25px
+
     .add-to-bag
       height: 44px
       width: 290px
@@ -395,6 +408,7 @@ body
       background: $green
       cursor: pointer
       margin-right: 15px
+
       &:hover
         background: $grey
         color: $light
@@ -408,9 +422,11 @@ body
       width: 44px
       cursor: pointer
       border-radius: 50px
+
       &:hover
         background: $pink
         color: $light
+
       i
         font-size: 22px
         position: relative
@@ -418,6 +434,7 @@ body
 
   select
     margin-top: 25px
+
     &:focus
       border-color: lightgrey
       box-shadow: none
@@ -430,11 +447,108 @@ body
     overflow: hidden
 
 
+/* АНИМАЦИЯ НА ТОВАРАХ */
+
+.coder-merch-goods-text
+  color: #00dff0
+
+.coder-merch-goods-price
+  color: #a6e22e
+  font-size: 40px
+
+.coder-merch-goods-photo
+  background-size: cover
+  width: 280px
+  height: 280px
+
+.coder-merch-goods-photo:hover
+  .coder-merch-goods-description
+    display: flex
+
+
+.coder-merch-goods-description
+  display: none
+  width: 100%
+  height: 100%
+  opacity: .9
+
+
+.photobox
+  display: inline-block
+
+
+.photobox__previewbox
+  position: relative
+  overflow: hidden
+
+
+.photobox__preview
+  display: block
+  max-width: 100%
+
+
+.photobox__previewbox:before
+  content: ""
+
+
+/* type 8 */
+
+.photobox_type8 .photobox__previewbox:before
+  width: 0
+  height: 0
+  padding: 25%
+
+  background-color: var(--photoboxOverlay, rgba(0, 0, 0, .8))
+  border-radius: 50%
+
+  position: absolute
+  top: 50%
+  left: 50%
+  z-index: 2
+
+  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) ease
+  will-change: transform
+  transform: translate(-50%, -50%) scale(0)
+
+.photobox_type8:hover .photobox__previewbox:before
+  transform: translate(-50%, -50%) scale(4)
+  transition-duration: var(--photoboxAnimationDuration, .8s)
+
+.photobox_type8 .photobox__label
+  width: 95%
+  text-align: center
+
+  opacity: 0
+  transition: opacity calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .8s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9)
+  will-change: opacity, transform
+
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, 200%)
+  z-index: 3
+
+.photobox_type8:hover .photobox__label
+  opacity: 1
+  transform: translate(-50%, -50%)
+  transition-duration: calc(var(--photoboxAnimationDuration, .8s) / 2)
+  transition-delay: calc(var(--photoboxAnimationDuration, .8s) / 4)
+
+.photobox_type8 .photobox__preview
+  transition: transform calc(var(--photoboxAnimationDuration, .8s) / 2) cubic-bezier(0.71, 0.05, 0.29, 0.9)
+    will-change: transform
+  transform: scale(1) rotate(0)
+
+.photobox_type8:hover .photobox__preview
+  transform: scale(1.2) rotate(5deg)
+
+
 /* ПОХОЖИЕ ПРОДУКТЫ */
 
 .similar-products
   a
     cursor: pointer
+
     img
       margin-bottom: 25px
 
@@ -444,52 +558,65 @@ body
 .basket
   color: $grey
   font-size: 16px
+
   .basket-items
     background: white
     padding-left: 20px
     padding-right: 20px
     margin-bottom: 25px
     margin-right: 10px
+
     .img
       margin-right: 10px
+
     .title
       padding-top: 25px
       font-size: 14px
       margin-bottom: 19px
+
       .my-basket
         font-family: $rlw-b
         text-transform: uppercase
         font-size: 18px
+
       .sixty-min
         padding-top: 3px
         box-sizing: border-box
+
     .basket-unit-description
       .price, .name, .color
         margin-bottom: 5px
+
       span
         margin-right: 10px
         font-family: $rbt-r
         text-transform: uppercase
+
         input
           width: 37px
           height: 20px
+
       .count
         margin-right: 0
+
       button
         border: 1px lightgrey solid
         background: none
         margin-top: 12px
         cursor: pointer
+
         &:hover
           background: $grey
           color: $light
           border: 1px $grey solid
+
     .close-btn
       border: none
       background: none
       height: 30px
       cursor: pointer
       font-size: 20px
+
     .total-amount
       box-sizing: border-box
       padding-top: 18px
@@ -498,6 +625,7 @@ body
       font-family: $rlw-b
       text-transform: uppercase
       font-size: 18px
+
       span
         font-family: $rbt-b
 
@@ -507,20 +635,26 @@ body
     background: white
     height: 370px
     font-size: 18px
+
     .total
       padding-top: 25px
       font-family: $rlw-b
       text-transform: uppercase
       margin-bottom: 19px
+
     select
       font-size: 14px
+
       &:focus
         border-color: $light-grey !important
         box-shadow: none !important
+
     .sum
       margin-top: 10px
+
       .delivery
         font-family: $rlw-b
+
       .delivery-price
         font-family: $rbt-r
 
@@ -534,6 +668,7 @@ body
       font-family: $rlw-b
       text-transform: uppercase
       cursor: pointer
+
       &:hover
         background: $grey
         color: $light
@@ -548,12 +683,118 @@ body
       font-size: 14px
       margin-top: 6px
 
+
+// Корзина (оформление заказа)
+
+.modal-user-basket-order
+  h3
+    background: $grey
+    box-sizing: border-box
+    color: $green
+    font-family: $rlw-b
+    font-size: 14px
+    text-align: center
+    text-transform: uppercase
+    min-height: 25px
+    margin-bottom: 15px
+    padding-top: 5px
+  .star
+    color: $pink
+
+
+  .modal-header
+    background: $grey
+    border-radius: 0 !important
+    .modal-title
+      background: $grey
+      color: $yellow
+      font-family: $pst
+      font-size: 34px
+      width: 100%
+      text-align: center
+    button
+      color: $light
+      font-family: $rbt-r
+      font-size: 25px
+      text-shadow: none !important
+      opacity: 1 !important
+      position: relative
+      top: 11px
+      &:hover
+        color: $yellow
+
+  .modal-body
+    background: $light
+    label
+      font-family: $rbt-b
+      color: $grey
+      width: 30%
+      font-size: 16px
+    input, select, textarea
+      border-radius: 0 !important
+      -webkit-appearance: none !important
+      -webkit-border-radius: 0 !important
+      font-family: $rbt-r !important
+
+  .modal-footer
+    background: $grey
+    border-radius: 0 !important
+    button
+      border: none
+      background: $green
+      color: $grey
+      font-family: $rlw-b
+      height: 33px
+      text-transform: uppercase
+      outline: none
+      width: 150px
+      cursor: pointer
+      &:first-child
+        background: $yellow
+      &:hover
+        color: $dark
+
+@media screen and (max-width: 576px)
+
+  .modal-user-basket-order
+    .modal-header
+      .modal-title
+        font-size: 24px !important
+      button
+        top: 5px !important
+    .modal-footer
+      button
+        width: 50%
+
+.final-basket-order
+  font-size: 18px
+  min-height: 58vh
+  .order-is-done
+    margin-top: 80px
+    margin-bottom: 15px
+    text-align: center
+    font-family: $rbt-b
+    font-size: 34px
+    color: $grey
+  .order-is-done-info
+    max-width: 500px
+    margin-bottom: 25px
+
+@media screen and (max-width: 992px)
+
+  .final-basket-order
+    .order-is-done
+      margin-top: 25px !important
+
+
 /* ИЗБРАННОЕ */
 
 .like-unit
   position: relative
+
   a
     margin-bottom: 0
+
   button
     position: absolute
     right: 20px
@@ -567,16 +808,20 @@ body
     border-radius: 50%
     font-size: 16px
     padding: 0
+
     &:hover
       background: $grey
+
   .name
     font-size: 16px
     color: $grey
     background: white
     padding-left: 10px
     padding-right: 10px
+
     hr
       margin-top: 0
+
   .price
     background: white
     padding-left: 10px
@@ -590,8 +835,10 @@ body
 .like-buttons
   .clear-like
     background: $yellow
+
   .like-to-bag
     background: $green
+
   button
     width: 100%
     border: none
@@ -601,6 +848,7 @@ body
     color: $grey
     margin-bottom: 25px
     cursor: pointer
+
     &:hover
       background: $grey
       color: $light
@@ -615,23 +863,30 @@ body
   box-sizing: border-box
   padding-top: 20px
   font-size: 24px
+
   a
     color: $light
+
     &:first-child
       &:hover
         color: #3b5998
+
     &:nth-child(2)
       &:hover
         color: #1dcaff
+
     &:nth-child(3)
       &:hover
         color: #4c75a3
+
     &:nth-child(4)
       &:hover
         color: #FF0000
+
     &:nth-child(5)
       &:hover
         color: #E1306C
+
     &:nth-child(6)
       &:hover
         color: #C92228
@@ -643,9 +898,11 @@ body
   padding-top: 22px
   box-sizing: border-box
   color: $light
+
   .copyright-text
     box-sizing: border-box
     padding-top: 10px
+
     span
       font-family: $rlw-b
 
@@ -872,929 +1129,6 @@ body
 
 .status-cancel
   background: $pink
-
-
-// Админка просмотр заказа
-
-.modal-order-read
-  font-family: $rbt-r
-  .modal-header
-    background: $light
-    .modal-title
-      font-family: $rbt-b
-      font-size: 18px
-    .order-read-print-btn
-      background: none
-      border: none
-      cursor: pointer
-      &:focus
-        outline: none
-  .order-read-wrap
-    background: white
-    font-size: 14px
-    border: 1px $light-grey solid
-    padding-bottom: 25px
-    margin-bottom: 25px
-    .order-read-up-title
-      background: $light
-      margin-bottom: 10px
-      &:last-child
-        margin-top: 20px
-    .order-read-left-titles
-      box-sizing: border-box
-      color: $grey
-      font-family: $rbt-b
-      padding-top: 10px
-      div
-        background: $light
-        margin-bottom: 10px
-    .order-read-right-content
-      padding-top: 10px
-      div
-        border-bottom: 1px $light solid
-        margin-bottom: 10px
-    .order-read-products-title
-      color: grey
-      border-bottom: 1px $light solid
-      font-size: 12px
-      padding-bottom: 10px
-    .order-read-products
-      margin-top: 10px
-      div
-        border-bottom: 1px $light solid
-    .order-read-count-all
-      font-size: 14px
-      div
-        span
-          color: $grey
-          font-family: $rbt-b
-
-
-// Печать
-
-@media print
-  body
-    height: 100%
-  .admin-menu
-    display: none
-  .product-title
-    display: none
-  .admin-order-info
-    display: none!important
-  .orders-nav-wrap
-    display: none
-  .orders-row-names-wrap
-    display: none
-  .paginator
-    display: none
-  .modal-order-read
-    position: absolute
-    left: -45%
-    width: 140%
-    .modal-header
-      width: 200%
-  .order-read-up-title
-    font-family: $rbt-b
-    font-size: 16px
-  .order-read-wrap
-    border: none !important
-  button
-    display: none
-  footer
-    display: none
-  .order-read-left-titles
-    width: 30%!important
-  .order-read-right-content
-    width: 70%!important
-  .order-read-products-title, .order-read-products
-    div
-      &:first-child
-        width: 25%
-      &:nth-child(2)
-        width: 16%
-      &:nth-child(3)
-        width: 16%
-      &:nth-child(4)
-        width: 16%
-      &:nth-child(5)
-        width: 11%
-      &:nth-child(6)
-        width: 16%
-
-
-// Добавление заказа
-
-.modal-order-add
-  font-family: $rbt-r
-  h4
-    color: $grey
-    font-size: 16px
-    font-family: $rbt-b
-    margin-bottom: 20px
-    margin-top: 30px
-    text-align: center
-    text-transform: uppercase
-  .modal-header
-    background: $light
-    .modal-title
-      font-family: $rbt-b
-      font-size: 18px
-  .form-group
-    font-size: 16px
-    label
-      width: 35%
-      font-family: $rbt-b
-      color: $grey
-      min-height: 39px
-      box-sizing: border-box
-      padding-left: 8px
-      padding-top: 8px
-      margin-right: 20px
-    input, select
-      font-size: 16px
-  .modal-footer
-    background: $light
-    button
-      background: $green
-      border: none
-      cursor: pointer
-      color: $grey
-      width: 145px
-      font-size: 16px
-      font-family: $rlw-b
-      height: 35px
-      &:hover
-        color: white
-      &:first-child
-        background: $blue
-
-  .order-add-product-wrap, .add-user-wrap
-    background: $light
-    padding: 10px
-    margin-bottom: 15px
-    .order-add-product-code
-      width: 60%
-      margin-right: 10px
-    .order-add-product-size
-      width: 20%
-      margin-right: 10px
-    .order-add-product-count
-      width: 10%
-      margin-right: 10px
-    .order-delete-product
-      color: $grey
-      cursor: pointer
-      background: none
-      border: none
-
-.order-more-product
-  background: $light
-  border: 1px solid #ced4da
-  border-radius: .25rem
-  color: $grey
-  cursor: pointer
-  font-size: 15px
-  height: 36px
-  width: 36px
-  margin-left: 10px
-  &:hover
-    background: $grey
-    border: 1px $grey solid
-    color: $light
-
-
-
-// Редактирование заказа
-
-.modal-order-edit
-  font-family: $rbt-r
-  h4
-    color: $grey
-    font-size: 16px
-    font-family: $rbt-b
-    margin-bottom: 20px
-    margin-top: 30px
-    text-align: center
-    text-transform: uppercase
-  .modal-header
-    background: $light
-    .modal-title
-      font-family: $rbt-b
-      font-size: 18px
-  .form-group
-    font-size: 16px
-    label
-      width: 35%
-      font-family: $rbt-b
-      color: $grey
-      min-height: 39px
-      box-sizing: border-box
-      padding-left: 8px
-      padding-top: 8px
-      margin-right: 20px
-    input, select
-      font-size: 16px
-
-  .modal-footer
-    background: $light
-    button
-      background: $green
-      border: none
-      cursor: pointer
-      color: $grey
-      width: 145px
-      font-size: 16px
-      font-family: $rlw-b
-      height: 35px
-      &:hover
-        color: white
-      &:first-child
-        background: $blue
-
-.order-edit-change-product
-  .order-edit-product-wrap
-    background: $light
-    padding: 10px
-    margin-bottom: 15px
-    .order-edit-product-code
-      width: 60%
-      margin-right: 10px
-    .order-edit-product-size
-      width: 20%
-      margin-right: 10px
-    .order-edit-product-count
-      width: 10%
-      margin-right: 10px
-    .order-delete-product
-      color: $grey
-      cursor: pointer
-      background: none
-      border: none
-
-// Удаление заказа/Товара/Пользователя
-
-.modal-order-delete, .modal-product-delete, .modal-user-delete
-  font-family: $rbt-r
-  .modal-header
-    color: $grey
-    font-size: 18px
-    font-family: $rbt-b
-  .modal-body
-    color: $grey
-    font-family: $pst
-    font-size: 34px
-    text-align: center
-  .modal-footer
-    button
-      background: $green
-      border: none
-      cursor: pointer
-      font-family: $rlw-b
-      height: 40px
-      width: 145px
-      color: $grey
-      &:first-child
-        background: $blue
-      &:hover
-        color: $light
-
-// Админка товары
-
-.products-nav-wrap
-  background: $dark
-  font-size: 14px
-  min-height: 51px
-  margin-bottom: 25px
-  .products-nav
-    .add-product-btn
-      margin-top: 10px
-      border: none
-      background: $green
-      font-family: $rlw-b
-      color: $dark
-      height: 30px
-      cursor: pointer
-      width: 100%
-      padding: 0
-      &:hover
-        color: $grey
-    .admin-product-sort
-      margin-top: 10px
-      .product-sort-btn
-        display: block
-        flex: 100%
-        text-align: center
-        background: $grey
-        margin-right: 1px
-        height: 30px
-        color: $light
-        box-sizing: border-box
-        padding-top: 4px
-        &:hover
-          background: #323232
-      .dropdown
-        flex: 100%
-        background: none
-        position: relative
-        .admin-products-category-btn
-          background: $yellow
-          border: none
-          box-sizing: border-box
-          color: $dark
-          cursor: pointer
-          padding-top: 3px
-          font-family: $rbt-b
-          height: 30px
-          text-transform: uppercase
-          width: 100%
-          &:hover
-            color: $grey
-        .dropdown-menu
-          background: $grey
-          border: none
-          border-radius: 0
-          min-width: 100% !important
-          top: -1px !important
-          text-align: center
-          .dropdown-item
-            color: $light
-            border-radius: 0
-            &:hover
-              background: $yellow
-              color: $grey
-      .active
-        background: $light
-        color: $grey
-        font-family: $rlw-b
-        &:hover
-          color: $dark
-          background: #e4e5e5
-
-
-  .product-search-wrap
-    position: relative
-    margin-top: 10px
-    margin-bottom: 10px
-    .product-search
-      width: 100%
-      border: none
-      height: 30px
-      border-radius: 20px
-      box-sizing: border-box
-      padding-left: 28px
-      padding-right: 10px
-      color: $grey
-      &::-webkit-input-placeholder
-        color: $grey
-      &::-moz-placeholder
-        color: $grey
-      &::placeholder
-        color: $grey
-      &:focus
-        outline: none
-
-    button
-      border: none
-      background: none
-      position: absolute
-      top: 4px
-      color: $grey
-
-.products-row-wrap, .users-row-wrap
-  .products-row-names, .users-row-names
-    background: white
-    box-sizing: border-box
-    font-size: 12px
-    min-height: 30px
-    padding-top: 6px
-    margin-bottom: 5px
-
-  .admin-product-unit, .admin-user-unit
-    background: $yellow
-    color: $grey
-    font-size: 14px
-    padding-top: 10px
-    margin-bottom: 5px
-    .admin-product-code, .admin-user-name, .admin-user-login, .admin-user-email
-      a
-        color: $grey
-        font-family: $rbt-b
-        &:hover
-          text-decoration: underline
-    .admin-product-name
-      a
-        color: $grey
-        font-family: $rlw-b
-        &:hover
-          text-decoration: underline
-    .admin-product-gender-male, .admin-user-gender-male
-      font-size: 25px
-      color: $blue
-      i
-        background: $grey
-        box-sizing: border-box
-        border-radius: 5px
-        height: 30px
-        width: 30px
-        padding-top: 2px
-        text-align: center
-
-    .admin-product-gender-female, .admin-user-gender-female
-      font-size: 25px
-      color: $pink
-      i
-        background: $grey
-        box-sizing: border-box
-        border-radius: 5px
-        height: 30px
-        width: 30px
-        padding-top: 2px
-        text-align: center
-    .admin-product-status, .admin-user-status
-      select
-        border: none
-        width: 100%
-        font-size: 14px
-        height: 30px
-        margin-bottom: 10px
-    .admin-product-price
-      span
-        font-family: $rbt-b
-    .admin-product-actions, .admin-user-actions
-      button
-        border: none
-        background: white
-        cursor: pointer
-        height: 30px
-        width: 100%
-        margin-bottom: 10px
-        &:hover
-          background: $light
-
-
-// Добавление/Изменение товаров/Юзеров
-
-.modal-product-add, .modal-product-edit, .modal-user-add, .modal-user-edit
-  font-family: $rbt-r
-  .modal-header
-    background: $light
-    .modal-title
-      font-family: $rbt-b
-      font-size: 18px
-  .form-group
-    font-size: 16px
-    label
-      width: 35%
-      font-family: $rbt-b
-      color: $grey
-      min-height: 39px
-      box-sizing: border-box
-      padding-left: 8px
-      padding-top: 8px
-      margin-right: 20px
-    input, select
-      font-size: 16px
-    input[type="file"]
-      border: none
-      background: $light
-    .multiple-sizes-add
-      button
-        border: none
-        position: relative
-        .open
-          position: absolute
-  .modal-footer
-    background: $light
-    button
-      background: $green
-      border: none
-      cursor: pointer
-      color: $grey
-      width: 145px
-      font-size: 16px
-      font-family: $rlw-b
-      height: 35px
-      &:hover
-        color: white
-      &:first-child
-        background: $blue
-
-
-//Админка пользователи
-
-.users-nav-wrap
-  background: $dark
-  font-size: 14px
-  min-height: 51px
-  margin-bottom: 25px
-  .users-nav
-    .add-user-btn
-      margin-top: 10px
-      border: none
-      background: $green
-      font-family: $rlw-b
-      color: $dark
-      height: 30px
-      cursor: pointer
-      width: 100%
-      padding: 0
-      &:hover
-        color: $grey
-      .active
-        background: $light
-        color: $grey
-        font-family: $rlw-b
-        &:hover
-          color: $dark
-          background: #e4e5e5
-    .admin-user-sort
-      margin-top: 10px
-      .user-sort-btn
-        display: block
-        flex: 100%
-        text-align: center
-        background: $grey
-        margin-right: 1px
-        height: 30px
-        color: $light
-        box-sizing: border-box
-        padding-top: 4px
-        &:hover
-          background: #323232
-      .active
-        background: $light
-        color: $grey
-        font-family: $rlw-b
-        &:hover
-          color: $dark
-          background: #e4e5e5
-
-  .user-search-wrap
-    position: relative
-    margin-top: 10px
-    margin-bottom: 10px
-    .user-search
-      width: 100%
-      border: none
-      height: 30px
-      border-radius: 20px
-      box-sizing: border-box
-      padding-left: 28px
-      padding-right: 10px
-      color: $grey
-      &::-webkit-input-placeholder
-        color: $grey
-      &::-moz-placeholder
-        color: $grey
-      &::placeholder
-        color: $grey
-      &:focus
-        outline: none
-
-    button
-      border: none
-      background: none
-      position: absolute
-      top: 4px
-      color: $grey
-
-//Админка просмотр пользователя
-
-.modal-user-read
-  font-family: $rbt-r
-  .modal-header
-    background: $light
-    .modal-title
-      font-family: $rbt-b
-      font-size: 18px
-  .form-group
-    label
-      width: 35%
-      font-family: $rbt-b
-      color: $grey
-      min-height: 39px
-      box-sizing: border-box
-      padding-left: 8px
-      padding-top: 8px
-      margin-right: 20px
-    div, a
-      font-size: 16px
-      padding-top: 8px
-      display: block
-  .modal-footer
-    background: $light
-    button
-      background: $green
-      border: none
-      cursor: pointer
-      color: $grey
-      width: 145px
-      font-size: 16px
-      font-family: $rlw-b
-      height: 35px
-      &:hover
-        color: white
-      &:first-child
-        background: $blue
-
-
-
-/* АДМИНКА */
-
-// Меню админки
-
-.admin-menu
-  min-height: 61px
-  background: $grey
-  margin-bottom: 25px
-  .navbar
-    box-shadow: none
-    padding: 0
-<<<<<<< HEAD
-    background: $grey
-    .active
-      background: $light
-      color: $grey !important
-    a
-      color: $light
-      font-family: $rlw-b
-      font-size: 16px
-      text-transform: uppercase
-    .dropdown
-      &:hover
-        background: $dark
-      .admin-name
-        box-sizing: border-box
-        padding-top: 15px
-        padding-right: 15px
-        padding-left: 15px
-      .dropdown-toggle
-        padding: 15px 15px 0 15px
-      .dropdown-menu
-        .dropdown-item
-          color: $grey
-          text-transform: none
-          &:hover
-            background: $grey
-            color: $light
-
-// Админка главная
-
-.admin-main
-  .admin-unit
-    display: block
-    height: 400px
-    text-align: center
-    margin-bottom: 25px
-    &:hover
-      background: $grey
-    h3
-      display: block
-      background: $grey
-      color: $light
-      font-family: $pst
-      font-size: 34px
-    img
-      margin-top: 83px
-  .orders
-    background: $green
-  .products
-    background: $yellow
-  .users
-    background: $blue
-=======
-    margin-top: 5px
-    .main-category
-      border-top: 1px $dark solid
-      border-bottom: 1px $dark solid
->>>>>>> dev
-
-// Админка заказы
-
-<<<<<<< HEAD
-.admin-order-info, .admin-products-info, .admin-users-info
-  font-size: 12px
-  margin-bottom: 10px
-  div
-    margin-right: 10px
-    span
-      font-family: $rbt-r
-
-.orders-nav-wrap
-  background: $dark
-  font-size: 14px
-  min-height: 51px
-  margin-bottom: 25px
-  .orders-nav
-    .add-order-btn
-      margin-top: 10px
-      border: none
-      background: $green
-      font-family: $rlw-b
-      color: $dark
-      height: 30px
-      cursor: pointer
-      width: 100%
-      padding: 0
-      &:hover
-        color: $grey
-
-    .order-sort
-      margin-top: 10px
-      .order-sort-button
-        display: block
-        flex: 100%
-        text-align: center
-        background: $grey
-        margin-right: 1px
-        height: 30px
-        color: $light
-        box-sizing: border-box
-        padding-top: 4px
-        &:hover
-          background: #323232
-      .active
-        background: $light
-        color: $grey
-        font-family: $rlw-b
-        &:hover
-          color: $dark
-          background: #e4e5e5
-
-    .order-search-wrap
-      position: relative
-      margin-top: 10px
-      margin-bottom: 10px
-      .order-search
-=======
-  .categories-menu
-    height: 0
-    background: none
-    button
-      position: absolute
-      top: -49px
-    .navbar
-      min-height: 0
-      width: 50%
-      z-index: 100
-      .nav-item
->>>>>>> dev
-        width: 100%
-        border: none
-        height: 30px
-        border-radius: 20px
-        box-sizing: border-box
-        padding-left: 28px
-        padding-right: 10px
-        color: $grey
-        &::-webkit-input-placeholder
-          color: $grey
-        &::-moz-placeholder
-          color: $grey
-        &::placeholder
-          color: $grey
-        &:focus
-          outline: none
-
-      button
-        border: none
-        background: none
-        position: absolute
-        top: 4px
-        color: $grey
-
-.orders-row-names
-  background: white
-  box-sizing: border-box
-  font-size: 12px
-  min-height: 30px
-  padding-top: 6px
-  margin-bottom: 5px
-
-<<<<<<< HEAD
-.order-wrap
-  color: $grey
-  font-size: 14px
-  min-height: 132px
-  padding-top: 10px
-  box-sizing: border-box
-  margin-bottom: 5px
-  .order-number
-    font-family: $rbt-b
-    color: $grey
-    &:hover
-      text-decoration: underline
-  .client-name
-    font-family: $rlw-b
-  .client-phone
-    a
-      font-family: $rbt-r
-      color: $grey
-    &:hover
-      text-decoration: underline
-  .client-mail
-    a
-      color: $dark
-    &:hover
-      text-decoration: underline
-  .client-address
-    color: $grey
-    font-size: 12px
-    overflow: hidden
-  .order-date
-    font-family: $rbt-r
-  .order-delivery
-    font-size: 12px
-  .order-price
-    span
-      font-family: $rbt-b
-  .order-payment
-    select
-      border: none
-      width: 100%
-      font-size: 14px
-      height: 30px
-      margin-bottom: 10px
-  .order-status
-    select
-      border: none
-      width: 100%
-      font-size: 14px
-      height: 30px
-      margin-bottom: 10px
-  .order-buttons
-    button
-      border: none
-      background: white
-      cursor: pointer
-      height: 30px
-      width: 100%
-      margin-bottom: 10px
-      &:hover
-        background: $light
-=======
-  .admin-menu
-    .dropdown
-      .admin-name
-        padding-left: 0 !important
-      .dropdown-menu
-        width: 100%
-
-  .modal-order-add, .modal-product-add, .modal-user-add, .modal-user-edit
-    label
-      width: 100% !important
-
-  .order-edit-product-wrap, .order-add-product-wrap
-    padding-top: 40px !important
-    position: relative
-    select, input
-      width: 100% !important
-      margin-bottom: 20px
-    .order-delete-product
-      position: absolute
-      top: 5px
-      right: 15px
-
-  .modal-order-delete, .modal-product-delete, .modal-user-delete
-    button
-      width: 50% !important
-
-  .admin-product-img
-    text-align: center
-
-  .modal-user-read
-    div, a
-      margin-left: 8px
-
->>>>>>> dev
-
-.status-new
-  background: $yellow
-
-<<<<<<< HEAD
-.status-inprogress
-  background: $blue
-
-.status-ready
-  background: $green
-
-.status-cancel
-  background: $pink
-=======
-  .categories-menu.woman
-    button
-      left: unset
-      right: -100%
-    .navbar-collapse
-      position: absolute
-      right: -100%
-      width: calc(100% + 1px)
-      top: 0
-      .navbar-nav
-        position: absolute
-        width: 100%
-        background: $dark
->>>>>>> dev
 
 
 // Админка просмотр заказа

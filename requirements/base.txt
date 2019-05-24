@@ -3,5 +3,8 @@ pillow
 psycopg2-binary
 django-phonenumber-field
 phonenumbers
+
 django-rest-auth[with_social]
 django-filters
+
+

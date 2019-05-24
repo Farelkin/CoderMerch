@@ -55,13 +55,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'email', 'first_name', 'last_name', 'date_of_birth', 'profile')
         read_only_fields = ('email',)
 
-    def create(self, validated_data):
-        profile_data = validated_data.pop('profile')
-        user = models.CustomUser.objects.create(**validated_data)
-        models.CustomUserProfile.objects.create(user=user, **profile_data)
-
-        return user
-
     def update(self, instance, validated_data):
         profile_data = validated_data.pop('profile')
         profile = instance.profile
@@ -71,12 +64,27 @@ class CustomUserSerializer(serializers.ModelSerializer):
                                                 instance.last_name)
         instance.date_of_birth = validated_data.get('date_of_birth',
                                                     instance.date_of_birth)
-        instance.save()
 
         profile.patronymic = profile_data.get('patronymic', profile.patronymic)
         profile.gender = profile_data.get('gender',
                                           profile.gender)
         profile.avatar = profile_data.get('avatar', profile.avatar)
         profile.phone = profile_data.get('phone', profile.phone)
-        profile.save()
+
+        instance.save()
+
         return instance
+
+
+class CustomUserListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:customuser-detail',
+        lookup_field='pk',
+    )
+
+    class Meta:
+        model = models.CustomUser
+        fields = (
+            'url', 'email', 'first_name', 'last_name')
+        read_only_fields = ('email',)
+

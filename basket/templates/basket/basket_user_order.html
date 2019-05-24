@@ -1,0 +1,36 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Ваш заказ
+{% endblock %}
+
+{% block content %}
+
+<div class="path">
+    <div class="container">
+        <a href="{% url 'mainapp:home' %}">Главная ></a>
+        <a href="{% url 'basket:basket' %}">Корзина ></a>
+        <a href="{% url 'basket:order_done' %}">Ваш заказ</a>
+    </div>
+</div>
+
+<section class="final-basket-order">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 order-is-done">
+                Заказ #1234 оформлен!
+            </div>
+            <div class="col-lg-12 order-is-done-info">
+                В ближайшее время с Вами свяжутся для уточнения деталей.
+                Информация о заказе отправлена на указанный Вами email.
+                Управлять своими заказами Вы можете в <a href="#">Личном кабинете</a>.
+                Спасибо, что выбрали CoderMerch!
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

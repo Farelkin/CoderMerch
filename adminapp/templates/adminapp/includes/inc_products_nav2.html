@@ -12,21 +12,21 @@
                           {% if request.resolver_match.kwargs.pk == 'all' %}
                               active
                           {% endif %}"
-                    href="{% url 'adminapp:admin_products' pk='all' %}">
+                    href="{% url 'adminapp:somefilter' %}">
                     Все
                 </a>
                 <a class="product-sort-btn
                         {% if request.resolver_match.kwargs.pk == 'female' %}
                             active
                         {% endif %}"
-                    href="{% url 'adminapp:admin_products' pk='female' %}">
+                    href="{% url 'adminapp:somefilter' %}">
                     Женские
                   </a>
                 <a class="product-sort-btn
                         {% if request.resolver_match.kwargs.pk == 'male' %}
                             active
                         {% endif %}"
-                    href="{% url 'adminapp:admin_products' pk='male' %}">
+                    href="{% url 'adminapp:somefilter' %}">
                     Мужские
                 </a>
 
@@ -36,11 +36,11 @@
                         Категории
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{% url 'adminapp:admin_products' pk='5' %}">Футболки</a>
-                        <a class="dropdown-item" href="{% url 'adminapp:admin_products' pk='3' %}">Рубашки</a>
-                        <a class="dropdown-item" href="{% url 'adminapp:admin_products' pk='4' %}">Кофты</a>
-                        <a class="dropdown-item" href="{% url 'adminapp:admin_products' pk='1' %}">Толстовки</a>
-                        <a class="dropdown-item" href="{% url 'adminapp:admin_products' pk='2' %}">Куртки</a>
+                        <a class="dropdown-item" href="{% url 'adminapp:somefilter'  %}">Футболки</a>
+                        <a class="dropdown-item" href="{% url 'adminapp:somefilter'  %}">Рубашки</a>
+                        <a class="dropdown-item" href="{% url 'adminapp:somefilter'  %}">Кофты</a>
+                        <a class="dropdown-item" href="{% url 'adminapp:somefilter'  %}">Толстовки</a>
+                        <a class="dropdown-item" href="{% url 'adminapp:somefilter'  %}">Куртки</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,20 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+
+{% block content %}
+<h1> very nice</h1>
+
+{% include 'adminapp/includes/inc_products_nav3.html' %}
+
+<form method="GET">
+    {{ filter.form|bootstrap }}
+    <button type="submit" class="bt btn-primary">Search</button>
+</form>
+
+{% for snipet in filter.qs %}
+    {{ snipet }} <br>
+{% endfor %}
+
+{% endblock %}

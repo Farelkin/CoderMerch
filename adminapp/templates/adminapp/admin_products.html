@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="container admin-products-info d-block d-lg-flex">
-    <!--<div>Всего: <span>{{ product_all_count.count }}</span></div>-->
+
     <div>Всего: <span>{{ product_objects.count }}</span></div>
     <div>Новинок: <span>134</span></div>
     <div>Sale: <span>58</span></div>
@@ -12,6 +12,7 @@
 </div>
 
 {% include 'adminapp/includes/inc_products_nav.html' %}
+
 
 <section class="min-vh-100 products-row-wrap">
     <div class="container">
@@ -93,6 +94,7 @@
                 </div>
             </div>
         {% endfor %}
+
         <div class="row admin-product-unit">
             <div class="col-lg-2 admin-product-img">
                 <a href="#">
@@ -496,7 +498,6 @@
         <div class="row admin-product-unit">
             <div class="col-lg-2 admin-product-img">
                 <a href="#">
-                <a href="product.html">
                     <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
                 </a>
             </div>
