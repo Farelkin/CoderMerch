@@ -48,7 +48,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'logotype',
             'gender',
             'color',
-            'datetime_added',
         )
 
 
@@ -83,7 +82,6 @@ class ProductDetailSerializer(serializers.ModelSerializer):
             'gender',
             'color',
             'sizes',
-            'datetime_added',
             'url_similar_products',
         )
 
@@ -113,8 +111,44 @@ class ProductCategoryDetailSerializer(serializers.ModelSerializer):
 
 
 class ProductsLikeSerializer(serializers.ModelSerializer):
-    product = ProductSerializer()
+    product_id = serializers.IntegerField(source='product.id')
+    product_url = serializers.HyperlinkedRelatedField(source='product',
+                                                      view_name='api:product-detail',
+                                                      lookup_field='pk',
+                                                      many=False,
+                                                      read_only=True,
+                                                      )
+    article = serializers.StringRelatedField(
+        source='product.article')
+    name_product = serializers.StringRelatedField(
+        source='product.name_product')
+    category = serializers.HyperlinkedRelatedField(
+        source='product.category',
+        view_name='api:productcategory-detail',
+        lookup_field='pk',
+        many=False,
+        read_only=True,
+    )
+    name_category = serializers.CharField(source='product.category',
+                                          read_only=True)
+
+    description = serializers.StringRelatedField(
+        source='product.description')
+    price = serializers.DecimalField(source='product.price',
+                                     max_digits=10, decimal_places=2,
+                                     read_only=True)
+    discount = serializers.IntegerField(source='product.discount',
+                                        read_only=True)
+    main_img = serializers.ImageField(source='product.main_img',
+                                      read_only=True)
+    logotype = serializers.StringRelatedField(
+        source='product.product.logotype',
+        read_only=True)
+    gender = serializers.StringRelatedField(source='product.gender',
+                                            read_only=True)
+    color = serializers.StringRelatedField(source='product.color',
+                                           read_only=True)
 
     class Meta:
         model = ProductsLike
-        fields = ('user', 'product', 'is_active')
+        exclude = ('id', 'product', 'user')

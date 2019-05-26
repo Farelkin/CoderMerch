@@ -78,8 +78,6 @@ class Product(models.Model):
                                  max_length=255, upload_to=get_upload_dir,
                                  default='')
 
-    datetime_added = models.DateTimeField(auto_now_add=True)
-
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
 
@@ -156,6 +154,3 @@ class ProductsLike(models.Model):
                              related_name='like')
     product = models.ForeignKey(Product, related_name='product',
                                 on_delete=models.CASCADE)
-    is_active = models.BooleanField(
-        verbose_name='Продукт добавлен в избранное',
-        default=True)

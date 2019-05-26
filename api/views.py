@@ -104,7 +104,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
     search_fields = ('keywords', 'name_product', 'category__name_category',)
-    ordering_fields = ('name_product', 'price', 'datetime_added')
+    ordering_fields = ('name_product', 'price', 'id')
 
     def get_queryset(self):
         queryset = self.queryset
@@ -184,23 +184,30 @@ class BasketViewSet(viewsets.ModelViewSet):
             basket_product.save()
 
     def perform_update(self, serializer):
+        instance = self.get_object()
         product_by_size = get_object_or_404(ProductBySize,
-                                            pk=self.get_object().product.pk)
+                                            pk=instance.product.pk)
         serializer.save(user=self.request.user, product=product_by_size)
 
 
 class ProductsLikeViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ProductsLikeSerializer
-    queryset = ProductsLike.objects.all()
+    http_method_names = ['get', 'post', 'head', 'delete', 'options']
 
     def get_queryset(self):
         return ProductsLike.objects.filter(user=self.request.user)
 
-    def put(self, request, serializer):
-        like_product = ProductsLike.objects.get(user=self.request.user,
-                                                product_id=request.id)
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+    def perform_create(self, serializer):
+
+        product = get_object_or_404(Product,
+                                    pk=self.request.data['product_id'])
+
+        like_product = ProductsLike.objects.filter(user=self.request.user,
+                                                   product=product).first()
 
         if not like_product:
-            like_product.is_active = False
-            like_product.save()
+            serializer.save(user=self.request.user, product=product)
