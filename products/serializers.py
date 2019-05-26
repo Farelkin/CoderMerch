@@ -6,7 +6,7 @@ class ProductBySizeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductBySize
-        fields = ('size', 'quantity')
+        fields = ('id', 'size', 'quantity')
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -142,7 +142,7 @@ class ProductsLikeSerializer(serializers.ModelSerializer):
     main_img = serializers.ImageField(source='product.main_img',
                                       read_only=True)
     logotype = serializers.StringRelatedField(
-        source='product.product.logotype',
+        source='product.logotype',
         read_only=True)
     gender = serializers.StringRelatedField(source='product.gender',
                                             read_only=True)
@@ -151,4 +151,4 @@ class ProductsLikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductsLike
-        exclude = ('id', 'product', 'user')
+        exclude = ('product', 'user')

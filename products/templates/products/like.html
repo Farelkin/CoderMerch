@@ -28,95 +28,95 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script>
-    class ProductsLike {
-        constructor() {
-            this.API = `${window.location.origin}/api/v1/like`;
-            this.products_like = [];
-            this.content = '';
-            this.requestProduct();
-        }
-
-        requestProduct() {
-            fetch(`${this.API}`)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(data => {
-                this.products_like = data.results;
-                <!--console.log(this.products_like);-->
-                this.renderProducts();
-            })
-            .then(() => {
-                this.deleteProducts();
-            })
-            .catch(error => console.log(error));
-        }
-
-        renderProducts() {
-            for (let obj of this.products_like) {
-                <!--console.log(obj)-->
-                if (obj.is_active) {
-                    this.content += this.getContentHTML(obj.product);
-                }
+    <script>
+        class ProductsLike {
+            constructor() {
+                this.API = `${window.location.origin}/api/v1/like`;
+                this.products_like = [];
+                this.content = '';
+                this.requestProduct();
             }
-            const block = document.querySelector('.products .container .fadeIn');
-            block.innerHTML += this.content;
-        }
 
-        getContentHTML(obj) {
-            return `<div class="col-lg-3 col-sm-6 like-unit" id="${obj.article}">
-                    <a href="${obj.url.replace('/api/v1/', '/')}" class="view overlay zoom">
+            requestProduct() {
+                fetch(`${this.API}`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.products_like = data.results;
+                        <!--console.log(this.products_like);-->
+                        this.renderProducts();
+                    })
+                    .then(() => {
+                        this.deleteProducts();
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            renderProducts() {
+                for (let obj of this.products_like) {
+                    <!--console.log(obj)-->
+                    this.content += this.getContentHTML(obj);
+                }
+                const block = document.querySelector('.products .container .fadeIn');
+                block.innerHTML += this.content;
+            }
+
+            getContentHTML(obj) {
+                return `<div class="col-lg-3 col-sm-6 like-unit" id="${obj.article}">
+                    <a href="${obj.product_url.replace('/api/v1/', '/')}" class="view overlay zoom">
                         <img class="img-fluid" src="${obj.main_img}"
                              alt="${obj.name_product}">
                     </a>
-                    <button type="submit" data-id="${obj.article}"><i class="far fa-times" data-id="${obj.article}"></i></button>
+                    <button type="submit" data-id="${obj.id}"><i class="far fa-times" data-id="${obj.id}"></i></button>
                     <div class="name">
                         <hr>
                         ${obj.name_category.charAt(0).toUpperCase()}${obj.name_category.slice(1)}
                         ${obj.logotype.charAt(0).toUpperCase()}${obj.logotype.slice(1)}
                     </div>
-                    <div class="price"> ${obj.price*(100 - obj.discount)/100} руб</div>
+                    <div class="price"> ${obj.price * (100 - obj.discount) / 100} руб</div>
                 </div>`
-        }
+            }
 
-        deleteProducts() {
+            deleteProducts() {
 
-            const element = document.querySelector('.products .container .fadeIn');
+                const element = document.querySelector('.products .container .fadeIn');
 
-            element.onclick = (event) => {
-                if (event.target.tagName === 'BUTTON' || event.target.tagName === 'I') {
-                    {#console.log(document.getElementById(event.target.dataset.id));#}
-                    <!--document.getElementById(event.target.dataset.id).remove();-->
-                    this.requestPut();
-                }
-            };
-        }
+                element.onclick = (event) => {
+                    if (event.target.tagName === 'BUTTON' || event.target.tagName === 'I') {
+                        {#console.log(document.getElementById(event.target.dataset.id));#}
+                        <!--document.getElementById(event.target.dataset.id).remove();-->
+                        this.requestDelete(event.target);
+                    }
+                };
+            }
 
-        requestPut() {
-            fetch(`${this.API}`, {
-                    method: 'put',
+            requestDelete(elem) {
+                let g_csrftoken = getCookie('csrftoken');
+
+                fetch(`${this.API + '/' + elem.getAttribute('data-id') + '/'}`, {
+                    method: 'delete',
                     headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+                        "X-CSRFToken": g_csrftoken,
                     },
-                    body: 'foo=bar&lorem=ipsum'
+                    body: 'foo=bar&lorem=ipsum',
                 })
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(data => {
-                    {#console.log(data);#}
-                })
-                .catch(error => console.log(error));
+                    .then(function (response) {
+                        elem.closest('div').remove();
+                    })
+                    .then(data => {
+                        {#console.log(data);#}
+                    })
+                    .catch(error => console.log(error));
+            }
+
+
         }
 
 
+        let prod = new ProductsLike();
 
-    }
-
-
-    let prod = new ProductsLike();
-
-</script>
+    </script>
 
 {% endblock %}
