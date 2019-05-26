@@ -38,36 +38,6 @@
                 <div class="col-lg-7 main-product-photo order-1 order-lg-0">
                 </div>
                 <div class="col-lg-4 order-3">
-                    <div class="short-description">
-                    </div>
-
-                    <div class="price order-3">
-                        <span></span> руб.
-                    </div>
-
-                    <div class="vendor-code order-3">
-                        <span>Артикул:</span>
-                    </div>
-
-                    <div class="color order-3">
-                        <span>Цвет:</span>
-                    </div>
-
-                    <select class="form-control order-3"
-                            data-btn-class="btn-primary">
-                    </select>
-
-                    <div class="buttons d-flex order-3">
-                        <button class="add-to-bag" type="submit">
-                            Добавить в корзину
-                        </button>
-                        <button class="add-to-like ml-auto order-3">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
-
-                    <div class="long-description order-3">
-                    </div>
                 </div>
             </div>
         </div>
@@ -90,188 +60,382 @@
 
 {% block extra_scripts %}
 <script>
-    class Product {
-        constructor(api){
-            this.api = api;
-            this.nameProduct = '';
-            this.id = 0;
-            this.article = '';
-            this.color = '';
-            this.logotype = '';
-            this.price = 0;
-            this.description = '';
-            this.sizes = {};
-            this.gender = '';
-            this.getImg = [];
-            this.genderRus = '';
-            this.productsList = [];
-            this.similarProductsList = [];
-            this.indexList = [];
-            this._getProduct();
+
+    class DisplayPhoto {
+        constructor() {
+
+            this.init();
+        }
+
+        init() {
+            this.getElementsPhoto();
+            document
+                .querySelector('.main-product-photo img')
+                .addEventListener('click', event => {
+                    this.renderContainerPhoto(event);
+                    this.flippingPhotos();
+                });
 
         }
 
-        _getProduct(){
-            const apiHref = window.location.href.replace(window.location.origin, '')
-            fetch(`${this.api}${apiHref}`)
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(data => {
-                    this.nameProduct = data.name_product;
-                    this.id = data.id;
-                    this.article = data.article;
-                    this.color = data.color;
-                    this.logotype = data.logotype;
-                    this.price = data.price;
-                    this.description = data.description;
-                    this.sizes = data.sizes;
-                    this.gender = data.gender;
-                    this.discount = data.discount;
-                    this.categoryId = data.category.id;
-                    console.log(this.categoryId);
-                    this.category = data.category.name_category.charAt(0).toUpperCase() + data.category.name_category.slice(1);
-                    this.getImg = data.get_img;
-
-                    this._renderName();
-                    this._renderDescription();
-                    this._renderShortDescription();
-                    this._renderPrice();
-                    this._renderArticle();
-                    this._renderColor();
-                    this._renderSize();
-                    this._renderImg();
-                    this._renderImgMini();
-                    this._renderPath();
-                    this._getProducts();
-                })
-                .catch(error => console.log(error));
+        getElementsPhoto() {
+            this.mainPhotoElem = document.querySelector('.main-product-photo img');
+            this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
         }
 
-        _renderName() {
-            const block = document.querySelector('.product-title');
-            <!--block.insertAdjacentHTML('beforeend', `<div class="container">${this.nameProduct}</div>`);-->
-            block.insertAdjacentHTML('beforeend', `<div class="container">${this.category} ${this.logotype.toUpperCase()}</div>`);
+        renderContainerPhoto(event) {
+            this.galleryWrapperElement = document.createElement('div');
+            this.galleryWrapperElement.id = 'gallery';
+            this.galleryWrapperElement.style.cssText = "\
+                z-index: 98;\
+            ";
+
+
+            this.galleryScreenElement = document.createElement('div');
+            this.galleryScreenElement.style.cssText = "\
+                left: 0;\
+                width: 100%;\
+                height: 100%;\
+                background-color: #222;\
+                opacity: 0.85;\
+                position: fixed;\
+                top: 0;\
+                z-index: 100;\
+                display: block;\
+                text-align: center;\
+            ";
+            this.galleryWrapperElement.appendChild(this.galleryScreenElement);
+
+
+            this.closeElement = document.createElement('div');
+            this.closeElement.innerHTML = `<i class="fas fa-times" style="color: darkgray;"></i>`
+            this.closeElement.style.cssText = '\
+                font-size: 50px;\
+                z-index: 101;\
+                position: absolute;\
+                top: 100px;\
+                right: 30px;\
+            ';
+            this.closeElement.addEventListener('click', () => this.galleryWrapperElement.remove());
+            this.galleryWrapperElement.appendChild(this.closeElement);
+
+
+            this.image = new Image();
+            this.image.style.cssText = '\
+                max-height: 80%;\
+                max-width: 80%;\
+                z-index: 101;\
+                position: absolute;\
+                margin: auto;\
+                left: 0;\
+                top: 50px;\
+                bottom: 0;\
+                right: 0;\
+            ';
+            this.image.id = 'galleryImage';
+            this.image.src = event.target.src;
+            this.galleryWrapperElement.appendChild(this.image);
+            document.body.appendChild(this.galleryWrapperElement);
+
+            this.leftArrowContainer = document.createElement('div');
+            this.leftArrowContainer.id = 'leftArrow';
+            this.leftArrowContainer.style.cssText = '\
+                top: calc(50% - 38px);\
+                position: absolute;\
+                width: 32px;\
+                height: 77px;\
+                margin: 0 5px;\
+                background-color: #292926;\
+                border: 1px solid #191919;\
+                border-radius: 2px;\
+                z-index: 101;\
+                display: flex;\
+                align-items: center;\
+            ';
+            this.leftArrowContainer.innerHTML = `<i class="fas fa-chevron-left" style="color: darkgray;"></i>`
+            this.leftArrowContainer.querySelector('i').style.cssText = '\
+                font-size: 35px;\
+                color: #0e0d0d;\
+                display: block;\
+                margin-left: auto;\
+                margin-right: auto;\
+            ';
+            this.galleryWrapperElement.appendChild(this.leftArrowContainer);
+
+            this.rightArrowContainer = document.createElement('div');
+            this.rightArrowContainer.id = 'rightArrow';
+            this.rightArrowContainer.style.cssText = '\
+                top: calc(50% - 38px);\
+                right: 0;\
+                position: absolute;\
+                width: 32px;\
+                height: 77px;\
+                margin: 0 5px;\
+                background-color: #292926;\
+                border: 1px solid #191919;\
+                border-radius: 2px;\
+                z-index: 101;\
+                display: flex;\
+                align-items: center;\
+            ';
+            this.rightArrowContainer.innerHTML = `<i class="fas fa-chevron-right" style="color: darkgray;"></i>`
+            this.rightArrowContainer.querySelector('i').style.cssText = '\
+                font-size: 35px;\
+                color: #0e0d0d;\
+                display: block;\
+                margin-left: auto;\
+                margin-right: auto;\
+            ';
+            this.galleryWrapperElement.appendChild(this.rightArrowContainer);
+
         }
 
-        _renderDescription() {
-            const block = document.querySelector('.long-description');
-            block.innerHTML = this.description;
+        flippingPhotos() {
+            document.getElementById('leftArrow').addEventListener('click', event => this.flippingLeftPhotos());
+            document.getElementById('rightArrow').addEventListener('click', event => this.flippingRightPhotos());
         }
 
-        _renderShortDescription() {
-            const block = document.querySelector('.short-description');
-            block.innerHTML = this.nameProduct.charAt(0).toUpperCase() + this.nameProduct.slice(1);
-        }
-
-        _renderPrice() {
-            const block = document.querySelector('.price').getElementsByTagName('span')[0];
-            console.log(this.discount);
-            block.innerHTML = this.price*(100 - this.discount)/100;
-        }
-
-        _renderArticle() {
-            const block = document.querySelector('.vendor-code');
-            block.innerHTML =  `<span>Артикул:</span> ${this.article}`;
-        }
-
-        _renderColor() {
-            const block = document.querySelector('.color');
-            block.style.textTransform = 'capitalize';
-            block.innerHTML =  `<span>Цвет:</span> ${this.color}`;
-        }
-
-        _renderSize() {
-            const block = document.getElementsByTagName('select')[0];
-            let contentSizes = '<option value="" hidden>Пожалуйста, выберите размер</option>';
-            for (let key in this.sizes) {
-                if (+this.sizes[key] > 0) {
-                    contentSizes += `<option value="${key}">${key}</option>`
+        flippingRightPhotos() {
+            for (let key = 0; key < this.subPhotoList.length; key++) {
+                if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
+                    continue;
                 }
-            }
-            block.innerHTML =  contentSizes;
-        }
-
-        _renderImg() {
-            const block = document.querySelector('.main-product-photo');
-            block.innerHTML =  `<img class="img-fluid" src="/media/${this.getImg.sort()[0]}" alt="product${this.id}">`;
-        }
-
-        _renderImgMini() {
-            const block = document.querySelector('.sub-product-photos');
-            let contentIMG = '';
-            for (let img of this.getImg.sort()) {
-                contentIMG += `<img class="img-fluid" src="/media/${img}" alt="${this.id}">`
-            }
-            block.innerHTML =  contentIMG;
-        }
-
-        _renderPath() {
-            if (this.gender==='man') {
-                this.genderRus = 'Мужское'
-            } else {
-                this.genderRus = 'Женское'}
-            const block = document.querySelector('.path').getElementsByTagName('div')[0];
-            block.innerHTML =  `<a href="/">Главная &gt; </a>
-                                <a href="/products/${this.gender}/">${this.genderRus} &gt; </a>
-                                <a href="/products/${this.gender}/"> ${this.category} &gt;</a>
-                                <a href="#">${this.category} ${this.logotype.toUpperCase()}</a>`;
-        }
-
-
-        _getProducts() {
-            const apiHref = window.location.href.replace(window.location.origin, '')
-            fetch(`${this.api}/categories/${this.categoryId}/`)
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('DATA', data);
-                    this.productsList = data;
-                    this._getSimilarProducts();
-                    this._renderSimilarProducts();
-
-                })
-                .catch(error => console.log(error));
-        }
-
-        _getSimilarProducts() {
-            for (let obj of this.productsList) {
-                if (obj.gender === this.gender && obj.id !== this.id) {
-                    this.similarProductsList.push(obj);
+                if (key == this.subPhotoList.length - 1) {
+                    document.getElementById('galleryImage').src = this.subPhotoList[0].src;
+                    break;
                 }
-            }
-
-            while (this.indexList.length < 4) {
-                let ind = Math.floor(Math.random() * this.similarProductsList.length);
-                if (!this.indexList.includes(ind)) {
-                    this.indexList.push(ind);
+                else {
+                    document.getElementById('galleryImage').src = this.subPhotoList[key + 1].src;
+                    break;
                 }
             }
         }
 
-        _renderSimilarProducts() {
-            const block = document.querySelector('.similar-products').querySelector('.row');
-            let contentSimilarProduct = '';
+        flippingLeftPhotos() {
+            for (let key = 0; key < this.subPhotoList.length; key++) {
+                if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
+                    continue;
+                }
+                if (key == 0) {
+                    document.getElementById('galleryImage').src = this.subPhotoList[this.subPhotoList.length - 1].src;
+                    break;
+                }
+                else {
+                    document.getElementById('galleryImage').src = this.subPhotoList[key - 1].src;
+                    break;
+                }
+            }
+        }
 
-            this.indexList.forEach(ind => {
-                let element = this.similarProductsList[ind];
-                contentSimilarProduct += `
-                    <div class="col-6 col-sm-3">
-                        <a href="/products/${element.id}" class="view overlay zoom">
-                            <img src="/media/${element.get_img.sort()[0]}" alt="product${element.id}" class="img-fluid">
-                        </a>
-                    </div>`
-                console.log('ELEM', );
-            })
-            block.innerHTML =  contentSimilarProduct;
+
+    }
+
+
+    class RenderMainPhoto {
+        constructor() {
+
+            this.mainPhotoElem = '';
+            this.subPhotoList = [];
+            this.init();
+        }
+
+        init() {
+            this.getElementsPhoto();
+            document
+                .querySelector('.sub-product-photos')
+                .addEventListener('click', event => this.clickSubPhoto(event));
+            this.activePhoto();
+        }
+
+        getElementsPhoto() {
+            this.mainPhotoElem = document.querySelector('.main-product-photo img');
+            this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
+        }
+
+        clickSubPhoto(event) {
+            if (event.target.tagName !== 'IMG') {
+                return;
+            }
+            this.renderMainPhoto(event.target.src);
+            this.activePhoto();
+        }
+
+        renderMainPhoto(srcPhoto) {
+            this.mainPhotoElem.src = srcPhoto;
+        }
+
+        activePhoto() {
+            console.log(this.subPhotoList);
+            for (let elem of this.subPhotoList) {
+                console.log('!elem!', elem);
+                if (elem.src === this.mainPhotoElem.src) {
+                    elem.classList.add("active");
+                }
+                else {
+                    elem.classList.remove("active");
+                }
+            }
         }
     }
 
 
-    const API = 'http://127.0.0.1:8000/api/v1';
-    let prod = new Product(API);
-    <!--let similarProducts = new SimilarProduct(API);-->
+    class Product {
+        constructor() {
+            this.API = `${window.location.origin}/api/v1${window.location.pathname}`;
+            this.dataProduct = {};
+            this._requestProduct();
+        }
+
+        _requestProduct() {
+            fetch(this.API)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(data => {
+                this.dataProduct = data;
+            })
+            .then(() => {
+
+                this.renderPath();
+                this.renderTitle();
+                this.renderProductInfo();
+                this.renderMainProductPhoto();
+                this.renderSubProductPhotos();
+            })
+            .then(() => {
+                new SimilarProducts(this.dataProduct.url_similar_products);
+                new RenderMainPhoto();
+                new DisplayPhoto();
+            })
+            .catch(error => console.log(error));
+        }
+
+        renderPath() {
+            this.dataProduct.gender === 'man' ? this.dataProduct.genderInRus = 'Мужское' : this.dataProduct.genderInRus = 'Женское';
+            const block = document.querySelector('.path .container');
+            block.innerHTML =
+                `<a href="/">Главная &gt; </a>
+                 <a href="/products/${this.dataProduct.gender}/">${this.dataProduct.genderInRus} &gt; </a>
+                 <a href="/products/${this.dataProduct.gender}/?category=${this.dataProduct.name_category}" style="text-transform: capitalize"> ${this.dataProduct.name_category} &gt;</a>
+                 <a href="#" style="text-transform: capitalize">${this.dataProduct.name_category} ${this.dataProduct.logotype.toUpperCase()}</a>`;
+        }
+
+        renderTitle() {
+            const block = document.querySelector('.product-title');
+            block.innerHTML = `<div class="container">${this.dataProduct.name_category} ${this.dataProduct.logotype.toUpperCase()}</div>`;
+        }
+
+        renderMainProductPhoto() {
+            const block = document.querySelector('.main-product-photo');
+            block.innerHTML =  `<img class="img-fluid" src="${this.dataProduct.main_img}"
+                                     alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`;
+        }
+
+        renderSubProductPhotos() {
+            let srsListPhotos = [];
+            let contentPhotos = '';
+            const block = document.querySelector('.sub-product-photos');
+
+            for (let srcImg of this.dataProduct.images) {
+                srsListPhotos.push(srcImg.img_product);
+            }
+
+            srsListPhotos.sort().forEach((src) => {
+                contentPhotos += `<img class="img-fluid" src="${src}"
+                                       alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`
+            })
+            block.innerHTML =  contentPhotos;
+        }
+
+        renderProductInfo() {
+            const block = document.querySelector('.product .row :last-child');
+            block.innerHTML =
+                    `<div class="short-description">
+                        ${this.dataProduct.name_product.charAt(0).toUpperCase()}${this.dataProduct.name_product.slice(1)}
+                    </div>
+                    <div class="price order-3">
+                        <span>${this.dataProduct.price*(100 - this.dataProduct.discount)/100}</span> руб.
+                    </div>
+                    <div class="vendor-code order-3">
+                        <span>Артикул: </span>${this.dataProduct.article}
+                    </div>
+                    <div class="color order-3" style="text-transform: capitalize">
+                        <span>Цвет: </span>${this.dataProduct.color}
+                    </div>
+                    <select class="form-control order-3" data-btn-class="btn-primary">
+                        <option value="" hidden>Пожалуйста, выберите размер</option>
+                        ${this._contentSelectSize()}
+                    </select>
+                    <div class="buttons d-flex order-3">
+                        <button class="add-to-bag" type="submit">
+                            Добавить в корзину
+                        </button>
+                        <button class="add-to-like ml-auto order-3">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="long-description order-3">
+                        ${this.dataProduct.description}
+                    </div>`
+        }
+
+        _contentSelectSize() {
+            let contentSizes = '';
+            let sizeListNoSort = [];
+
+            this.dataProduct.sizes.forEach(obj => {
+                if (obj.quantity > 0) {
+                    sizeListNoSort.push(obj.size);
+                }
+            });
+
+            sizeListNoSort.sort().forEach(elem => {
+                contentSizes += `<option value="${elem}">${elem}</option>`;
+            })
+
+            return contentSizes;
+        }
+    }
+
+    class SimilarProducts {
+        constructor(API) {
+            this.API = API;
+            this.similarProductsList = [];
+            this.contentSimilarProduct = '';
+            this._requestProduct();
+        }
+
+        _requestProduct() {
+            fetch(this.API)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(data => {
+                this.similarProductsList = data;
+            })
+            .then(data => {
+                this._renderSimilarProducts();
+            })
+            .catch(error => console.log(error));
+        }
+
+        _renderSimilarProducts() {
+            const block = document.querySelector('.similar-products .row');
+
+            for (let elem of this.similarProductsList) {
+                this.contentSimilarProduct +=
+                        `<div class="col-6 col-sm-3">
+                            <a href="${elem.url.replace('/api/v1/', '/')}" class="view overlay zoom">
+                                <img src="${elem.main_img}" alt="${elem.name_product}" class="img-fluid">
+                            </a>
+                        </div>`;
+            }
+            block.innerHTML = this.contentSimilarProduct;
+        }
+    }
+
+    let product = new Product();
+
 
 </script>
 

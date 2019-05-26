@@ -1,4 +1,4 @@
-from .models import Product, ProductCategory, ProductBySize, ProductImage
+from .models import Product, ProductCategory, ProductBySize, ProductImage, ProductsLike
 from rest_framework import serializers
 
 
@@ -31,6 +31,8 @@ class ProductSerializer(serializers.ModelSerializer):
         lookup_field='pk'
     )
 
+    name_category = serializers.CharField(source='category')
+
     class Meta:
         model = Product
         fields = (
@@ -44,7 +46,8 @@ class ProductSerializer(serializers.ModelSerializer):
             'main_img',
             'logotype',
             'gender',
-            'color'
+            'color',
+            'name_category'
         )
 
 
@@ -57,6 +60,11 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         many=False,
         read_only=False,
         queryset=ProductCategory.objects.all())
+    url_similar_products = serializers.HyperlinkedIdentityField(
+        view_name='api:product-similar',
+        lookup_field='pk'
+    )
+    name_category = serializers.CharField(source='category')
 
     class Meta:
         model = Product
@@ -73,6 +81,8 @@ class ProductDetailSerializer(serializers.ModelSerializer):
             'gender',
             'color',
             'sizes',
+            'url_similar_products',
+            'name_category'
         )
 
 
@@ -98,3 +108,11 @@ class ProductCategoryDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
         fields = ('name_category', 'discount', 'products')
+
+
+class ProductsLikeSerializer(serializers.ModelSerializer):
+    product = ProductSerializer()
+
+    class Meta:
+        model = ProductsLike
+        fields = ('user', 'product', 'is_active')
