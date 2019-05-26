@@ -86,7 +86,7 @@
 
             element.onclick = (event) => {
                 if (event.target.tagName === 'BUTTON' || event.target.tagName === 'I') {
-                    console.log(document.getElementById(event.target.dataset.id));
+                    {#console.log(document.getElementById(event.target.dataset.id));#}
                     <!--document.getElementById(event.target.dataset.id).remove();-->
                     this.requestPut();
                 }
@@ -105,7 +105,7 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data);
+                    {#console.log(data);#}
                 })
                 .catch(error => console.log(error));
         }

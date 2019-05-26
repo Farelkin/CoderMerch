@@ -158,7 +158,7 @@
 
             let url = new URLSearchParams(window.location.search);
             url.get('category') ? this.categoryBack = url.get('category') : this.categoryBack = '';
-            console.log('categoryBack: ', this.categoryBack);
+            {#console.log('categoryBack: ', this.categoryBack);#}
 
             this.convertCategBackInFront();
             this.requestProduct();
@@ -183,7 +183,7 @@
         }
 
         requestProduct() {
-        console.log(`${this.API}?gender=${this.gender}&category=${this.categoryBack}&limit=${this.limit}&offset=${this.offset}`);
+        {#console.log(`${this.API}?gender=${this.gender}&category=${this.categoryBack}&limit=${this.limit}&offset=${this.offset}`);#}
             fetch(`${this.API}?gender=${this.gender}&category=${this.categoryBack}&limit=${this.limit}&offset=${this.offset}`)
             .then(function(response) {
                 return response.json();
@@ -197,7 +197,7 @@
 
             })
             .then(data => {
-                console.log(this.countElement)
+                {#console.log(this.countElement);#}
                 this.renderProducts();
                 this.renderPaginator();
                 this.clickDownload();
@@ -232,7 +232,7 @@
                             <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
                                 ${obj.price * (100 - obj.discount) / 100}</h3>
                             <a href="${obj.url.replace('/api/v1/', '/')}"
-                               class="btn yellow text-black-50 font-weight-bold px-5 py-1 my-3 mx-5">Подробнее</a>
+                               class="btn yellow text-black-50 font-weight-bold px-3 py-3 my-3 mx-5">Подробнее</a>
                         </div>
                     </div>
                 </div>`
@@ -362,9 +362,9 @@
 
         renderPathMenu() {
             const element = document.querySelector('.path  a:last-child');
-            console.log('elementwasdq', element);
+            {#console.log('elementwasdq', element);#}
             element.innerHTML = this.categoryFront;
-            console.log(element.innerHTML);
+            {#console.log(element.innerHTML);#}
         }
 
     }

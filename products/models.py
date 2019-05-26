@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
 def get_upload_dir(instance, filename):
     category = {
         'жакет': 'jackets',
@@ -85,7 +86,8 @@ class Product(models.Model):
 
     # получение всех картинок выбранного товара
     def get_img(self):
-        return self.prod_img.select_related().values_list('img_product', flat=True)
+        return self.prod_img.select_related().values_list('img_product',
+                                                          flat=True)
 
     # получение всех размеров выбранного товара
     def get_size(self):
@@ -149,6 +151,8 @@ class ProductImage(models.Model):
 class ProductsLike(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
                              related_name='like')
-    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE)
-    is_active = models.BooleanField(verbose_name='Продукт добавлен в избранное',
-                                    default=True)
+    product = models.ForeignKey(Product, related_name='product',
+                                on_delete=models.CASCADE)
+    is_active = models.BooleanField(
+        verbose_name='Продукт добавлен в избранное',
+        default=True)

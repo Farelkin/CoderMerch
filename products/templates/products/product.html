@@ -265,9 +265,9 @@
         }
 
         activePhoto() {
-            console.log(this.subPhotoList);
+            {#console.log(this.subPhotoList);#}
             for (let elem of this.subPhotoList) {
-                console.log('!elem!', elem);
+                {#console.log('!elem!', elem);#}
                 if (elem.src === this.mainPhotoElem.src) {
                     elem.classList.add("active");
                 }
