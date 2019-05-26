@@ -155,6 +155,28 @@ body {
   color: #a6e22e;
 }
 
+.modal-login {
+  color: #383838;
+}
+.modal-login label {
+  color: #1e1e1e;
+  padding-bottom: 1px !important;
+}
+.modal-login .login-btn, .modal-login .registration_btn {
+  border: none;
+  width: 45%;
+  background: #66d9ef;
+  height: 35px;
+  cursor: pointer;
+}
+.modal-login .login-btn:first-child, .modal-login .registration_btn:first-child {
+  background: #a6e22e;
+}
+.modal-login .login-btn:hover, .modal-login .registration_btn:hover {
+  background: #383838;
+  color: #f6f6f6;
+}
+
 /* ФОТО НА ГЛАВНОЙ */
 .main-image {
   background: #ebdb76;
