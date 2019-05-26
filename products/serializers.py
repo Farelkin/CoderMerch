@@ -26,12 +26,12 @@ class ProductSerializer(serializers.ModelSerializer):
         read_only=False,
         queryset=ProductCategory.objects.all())
 
+    name_category = serializers.CharField(source='category')
+
     url = serializers.HyperlinkedIdentityField(
         view_name='api:product-detail',
         lookup_field='pk'
     )
-
-    name_category = serializers.CharField(source='category')
 
     class Meta:
         model = Product
@@ -40,6 +40,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'article',
             'name_product',
             'category',
+            'name_category',
             'description',
             'price',
             'discount',
@@ -47,7 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'logotype',
             'gender',
             'color',
-            'name_category'
+            'datetime_added',
         )
 
 
@@ -72,6 +73,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
             'article',
             'name_product',
             'category',
+            'name_category',
             'description',
             'price',
             'discount',
@@ -81,8 +83,8 @@ class ProductDetailSerializer(serializers.ModelSerializer):
             'gender',
             'color',
             'sizes',
+            'datetime_added',
             'url_similar_products',
-            'name_category'
         )
 
 

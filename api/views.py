@@ -104,7 +104,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
     search_fields = ('keywords', 'name_product', 'category__name_category',)
-    ordering_fields = ('name_product', 'price',)
+    ordering_fields = ('name_product', 'price', 'datetime_added')
 
     def get_queryset(self):
         queryset = self.queryset
@@ -113,7 +113,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         if gender is not None:
             queryset = queryset.filter(gender=gender)
-        if category is not None :
+        if category is not None:
             tmp = queryset.filter(category__name_category=category)
             if tmp:
                 queryset = tmp
@@ -130,9 +130,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_similar(self, request, *args, **kwargs):
 
         instance = self.get_object()
-        similar_queryset = Product.objects.filter(category__name_category=instance.category, gender=instance.gender) \
+        similar_queryset = Product.objects.filter(
+            category__name_category=instance.category, gender=instance.gender) \
                                .exclude(id=instance.id).order_by('?')[0:4]
-        serializer = ProductSerializer(similar_queryset, many=True, context={'request': request})
+        serializer = ProductSerializer(similar_queryset, many=True,
+                                       context={'request': request})
         return Response(serializer.data)
 
 
@@ -168,8 +170,10 @@ class BasketViewSet(viewsets.ModelViewSet):
         return {'request': self.request}
 
     def perform_create(self, serializer):
-        product_by_size = ProductBySize.objects.get(
-            pk=self.request.data['product_id'])
+        product_by_size = get_object_or_404(ProductBySize,
+                                            pk=self.request.data[
+                                                'product_by_size_id'])
+
         basket_product = Basket.objects.filter(user=self.request.user,
                                                product_id=product_by_size).first()
 
@@ -178,6 +182,11 @@ class BasketViewSet(viewsets.ModelViewSet):
         else:
             basket_product.quantity += serializer.data['quantity']
             basket_product.save()
+
+    def perform_update(self, serializer):
+        product_by_size = get_object_or_404(ProductBySize,
+                                            pk=self.get_object().product.pk)
+        serializer.save(user=self.request.user, product=product_by_size)
 
 
 class ProductsLikeViewSet(viewsets.ModelViewSet):
@@ -190,7 +199,7 @@ class ProductsLikeViewSet(viewsets.ModelViewSet):
 
     def put(self, request, serializer):
         like_product = ProductsLike.objects.get(user=self.request.user,
-                                               product_id=request.id)
+                                                product_id=request.id)
 
         if not like_product:
             like_product.is_active = False

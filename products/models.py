@@ -19,6 +19,7 @@ class ProductCategory(models.Model):
                                      max_length=40, unique=True, db_index=True)
     discount = models.PositiveSmallIntegerField(verbose_name='Процент скидки',
                                                 default=0)
+
     is_active = models.BooleanField(verbose_name='Категория активна',
                                     default=True)
 
@@ -76,6 +77,8 @@ class Product(models.Model):
     main_img = models.ImageField(verbose_name='Фотография товара',
                                  max_length=255, upload_to=get_upload_dir,
                                  default='')
+
+    datetime_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '{} ({})'.format(self.name_product, self.category.name_category)
