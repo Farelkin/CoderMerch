@@ -8,4 +8,3 @@ class AdminProductFilter(django_filters.FilterSet):
         model = Product
         fields = ['gender']
 
-

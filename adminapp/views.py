@@ -5,7 +5,6 @@ from products.models import Product, ProductImage, ProductCategory
 from .filters import AdminProductFilter
 
 
-
 class AdminMainView(TemplateView):
     template_name = 'adminapp/admin.html'
 
@@ -115,7 +114,6 @@ def nav_filter_bar(request, pk):
                }
 
     return render(request, 'adminapp/admin_products.html', context)
-
 
 
 class AdminUsersView(TemplateView):

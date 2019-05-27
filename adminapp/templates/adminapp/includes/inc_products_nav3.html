@@ -16,17 +16,6 @@
                     Все
                 </a>
 
-                <a href="#">{{ filter.id }} туть</a>
-
-                {% for item in filter.form %}
-                    <a type="button" class="product-sort-btn
-                            {% if request.resolver_match.kwargs.pk == 'female' %}
-                                active
-                            {% endif %}">
-                        {{ item }}
-                    </a>
-                {% endfor %}
-
                 <div class="dropdown">
                     <button class="admin-products-category-btn no-focus" type="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
