@@ -10,6 +10,7 @@ app_name = 'api'
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'categories', ProductCategoryViewSet)
+router.register(r'like', ProductsLikeViewSet, basename='like')
 router.register(r'users', UserViewSet)
 router.register(r'basket', BasketViewSet, basename='basket')
 

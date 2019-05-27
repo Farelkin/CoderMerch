@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
 def get_upload_dir(instance, filename):
@@ -18,6 +19,7 @@ class ProductCategory(models.Model):
                                      max_length=40, unique=True, db_index=True)
     discount = models.PositiveSmallIntegerField(verbose_name='Процент скидки',
                                                 default=0)
+
     is_active = models.BooleanField(verbose_name='Категория активна',
                                     default=True)
 
@@ -88,7 +90,8 @@ class Product(models.Model):
 
     # получение всех картинок выбранного товара
     def get_img(self):
-        return self.prod_img.select_related().values_list('img_product', flat=True)
+        return self.prod_img.select_related().values_list('img_product',
+                                                          flat=True)
 
     # получение всех размеров выбранного товара
     def get_size(self):
@@ -147,3 +150,10 @@ class ProductImage(models.Model):
         if not product.main_img:
             product.main_img = self.img_product
             product.save()
+
+
+class ProductsLike(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
+                             related_name='like')
+    product = models.ForeignKey(Product, related_name='product',
+                                on_delete=models.CASCADE)
