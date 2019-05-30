@@ -1773,6 +1773,161 @@ body
       &:first-child
         background: $blue
 
+// ЛИЧНЫЙ КАБИНЕТ
+
+.acc-menu
+  background: white
+  height: 460px
+  margin-bottom: 25px
+  margin-right: 15px
+  padding-bottom: 15px
+  position: sticky
+  top: 70px
+  img
+    margin-top: 15px
+  .acc-edit
+    display: block
+    width: 100%
+    height: 40px
+    background: $light
+    color: $grey
+    text-align: center
+    margin-top: 15px
+    margin-bottom: 10px
+    padding-top: 5px
+    &:hover
+      background: $light-grey
+  .acc-orders, .acc-like
+    display: block
+    color: $grey
+    text-align: center
+    &:hover
+      text-decoration: underline
+  .acc-exit
+    margin-top: 10px
+    font-size: 16px
+    color: $grey
+    font-family: $rbt-b
+    text-align: center
+  a
+    display: block
+
+
+.acc-content
+  min-height: 700px
+  background: white
+  margin-bottom: 25px
+  .acc-name
+    width: 100%
+    text-align: center
+    font-family: $rbt-b
+    font-size: 25px
+    color: $grey
+    margin-top: 15px
+  .acc-info
+    font-family: $rlw-b
+    font-size: 16px
+    color: $grey
+    span
+      font-family: $rbt-r
+  h3
+    font-size: 20px
+    font-family: $rbt-b
+    color: $grey
+  .acc-task-condition
+    background: $light
+    margin-bottom: 15px
+    font-size: 16px
+    p
+      margin: 5px
+    span
+      font-family: $rbt-r
+  img
+    margin-bottom: 15px
+
+  .acc-task-explain
+    font-size: 14px
+    margin-bottom: 15px
+    text-align: center
+
+// Аккаунт заказы (Модалка)
+
+.modal-acc-orders
+  .modal-header
+    background: $grey
+    color: $yellow
+    font-family: $rlw-b
+    text-transform: uppercase
+    border-radius: 0 !important
+    .close
+      color: $yellow
+      text-shadow: none !important
+      opacity: 1 !important
+      font-size: 30px
+      font-family: $rbt-r
+      &:hover
+        color: $light
+
+  .modal-body
+    color: $grey
+    font-family: $rbt-r
+    .acc-order-unit
+      margin-bottom: 10px
+      .acc-order-title
+        font-family: $rbt-b
+        font-size: 20px
+        text-align: center
+        margin: 10px
+        text-transform: uppercase
+      a
+        font-family: $rbt-b
+        color: $grey
+        &:hover
+          text-decoration: underline
+      .acc-order-detail
+        margin-top: 10px
+        h3
+          font-size: 14px
+      .acc-order-total
+        text-align: right
+        font-family: $rbt-b
+        margin-bottom: 10px
+
+// Аккаунт модалка изменения пароля
+
+.acc-password-change
+  color: $grey
+  .modal-header
+    background: $grey
+    color: $yellow
+    font-family: $rlw-b
+    border-radius: 0 !important
+    .close
+      color: $yellow
+      text-shadow: none !important
+      opacity: 1 !important
+      font-size: 30px
+      font-family: $rbt-r
+      &:hover
+        color: $light
+
+  .modal-body
+    label
+      width: 50%
+
+  .modal-footer
+    button
+      border: none
+      background: $green
+      cursor: pointer
+      width: 50%
+      height: 40px
+      &:first-child
+        background: $blue
+      &:hover
+        background: $grey
+        color: $light
+
 
 
 /* ------------------------------- */
