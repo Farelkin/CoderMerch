@@ -1,0 +1,920 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container admin-users-info d-block d-lg-flex">
+    <div>Всего: <span>100500</span></div>
+    <div>Женщин: <span>100</span></div>
+    <div>Мужчин: <span>500</span></div>
+</div>
+
+<div class="users-nav-wrap">
+    <div class="container">
+        <div class="row users-nav">
+            <div class="col-md-4 col-lg-2 add-user-wrap">
+                <button class="add-user-btn" type="button" data-toggle="modal" data-target="#modal-user-add">
+                    <i class="far fa-plus"></i> Добавить юзера
+                </button>
+            </div>
+            <div class="col-md-8 col-lg-6 admin-user-sort d-md-flex">
+                <a class="user-sort-btn active" href="#">Все</a>
+                <a class="user-sort-btn" href="#">Женщины</a>
+                <a class="user-sort-btn" href="#">Мужчины</a>
+            </div>
+            <div class="col-12 col-lg-4 user-search-wrap">
+                <input class="user-search" type="search" placeholder="Поиск пользователей" aria-label="Search">
+                <button type="submit"><i class="far fa-search search-button"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="min-vh-100 users-row-wrap">
+    <div class="container">
+
+        <div class="row users-row-names d-none d-lg-flex">
+            <div class="col-lg-2">
+                Аватар
+            </div>
+            <div class="col-lg-2">
+                ФИО
+            </div>
+            <div class="col-lg-1">
+                Логин
+            </div>
+            <div class="col-lg-1">
+                Пол
+            </div>
+            <div class="col-lg-2">
+                Email
+            </div>
+            <div class="col-lg-2">
+                Статус
+            </div>
+            <div class="col-lg-2">
+                Действия
+            </div>
+        </div>
+
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/garold.jpg' %}" alt="avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Mr. Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Garold
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-user-unit">
+            <div class="col-lg-2 admin-user-img">
+                <a href="#modal-user-read" data-toggle="modal">
+                    <img  src="{% static 'img/no_avatar.jpg' %}" alt="no avatar" height="110">
+                </a>
+            </div>
+            <div class="col-lg-2 admin-user-name">
+                <a href="#modal-user-read" data-toggle="modal">
+                    Фрося
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-login">
+                <a href="#modal-user-read" data-toggle="modal">
+                    frosya
+                </a>
+            </div>
+            <div class="col-lg-1 admin-user-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-2 admin-user-email">
+                <a href="mailto:frosyah@gmail.com">frosyah@gmail.com</a>
+            </div>
+            <div class="col-lg-2 admin-user-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Клиент</option>
+                    <option>Персонал</option>
+                    <option>Суперюзер</option>
+                </select>
+            </div>
+            <div class="col-lg-2 admin-user-actions">
+                <button type="button" data-toggle="modal" data-target="#modal-user-read">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-user-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--Модаока добавления юзера. Start-->
+
+<div class="modal fade modal-user-add" id="modal-user-add" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title" id="">Добавить юзера</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="avatar-add">Аватар</label>
+                        <input type="file" class="form-control" id="avatar-add">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-add-name">ФИО</label>
+                        <input type="text" class="form-control" id="user-add-name">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-add-login">Логин</label>
+                        <input type="text" class="form-control" id="user-add-login">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-add-gender">Пол</label>
+                        <select class="form-control" id="user-add-gender">
+                            <option value="" hidden>Пожалуйста, выберите пол</option>
+                            <option value="">Женский</option>
+                            <option value="">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-add-email">Email</label>
+                        <input type="email" class="form-control" id="user-add-email">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-add-status">Статус</label>
+                        <select class="form-control" id="user-add-status">
+                            <option value="" hidden>Пожалуйста, выберите статус</option>
+                            <option value="">Клиент</option>
+                            <option value="">Персонал</option>
+                            <option value="">Суперюзер</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Модаока добавления юзера. End-->
+
+
+<!--Модаока просмотра юзера. Start-->
+
+<div class="modal fade modal-user-read" id="modal-user-read" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Просмотреть юзера</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="avatar-read">Аватар</label>
+                        <img src="{% static 'img/garold.jpg' %}" alt="Garold" height="110" id="avatar-read">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-name">ФИО</label>
+                        <div class="user-read-name" id="user-read-name">Mr. Garold</div>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-login">Логин</label>
+                        <div class="user-read-login" id="user-read-login">Garold</div>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-gender">Пол</label>
+                        <div class="user-read-gender" id="user-read-gender">Мужской</div>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-email">Email</label>
+                        <a class="user-read-email" id="user-read-email" href="mailto:iamgaroldbeach@gmail.com">iamgaroldbeach@gmail.com</a>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-status">Статус</label>
+                        <div class="user-read-status" id="user-read-status">Клиент</div>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-read-date">Дата</label>
+                        <div class="user-read-status" id="user-read-date">21.03.2019</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Модаока просмотра юзера. End-->
+
+
+<!--Модаока редактирования юзера. Start-->
+
+<div class="modal fade modal-user-edit" id="modal-user-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Изменить юзера</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="avatar-edit">Аватар</label>
+                        <input type="file" class="form-control" id="avatar-edit">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-name">ФИО</label>
+                        <input type="text" class="form-control" id="user-edit-name">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-login">Логин</label>
+                        <input type="text" class="form-control" id="user-edit-login">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-gender">Пол</label>
+                        <select class="form-control" id="user-edit-gender">
+                            <option value="" hidden>Пожалуйста, выберите пол</option>
+                            <option value="">Женский</option>
+                            <option value="">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-email">Email</label>
+                        <input type="email" class="form-control" id="user-edit-email">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-status">Статус</label>
+                        <select class="form-control" id="user-edit-status">
+                            <option value="" hidden>Пожалуйста, выберите статус</option>
+                            <option value="">Клиент</option>
+                            <option value="">Персонал</option>
+                            <option value="">Суперюзер</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Модаока редактирования юзера. End-->
+
+
+<!--МОДАЛКА УДАЛЕНИЯ юзера: START-->
+<div class="modal modal-user-delete" id="modal-user-delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Вы действительно хотите удалить?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mr. Garold
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА УДАЛЕНИЯ юзера: END-->
+
+<div class="paginator">
+    <div class="container">
+        <div>
+            Вы посмотрели <span>16</span> из <span>100500</span> юзеров
+        </div>
+        <button>
+            Загрузить еще
+        </button>
+    </div>
+</div>
+{% endblock %}

@@ -1,2 +1,2 @@
-# CoderMerch
+# codermerch
 Coder Merch

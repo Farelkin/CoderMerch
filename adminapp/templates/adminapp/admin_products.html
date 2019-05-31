@@ -1,0 +1,893 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container admin-products-info d-block d-lg-flex">
+    <div>Всего: <span>100500</span></div>
+    <div>Новинок: <span>134</span></div>
+    <div>Sale: <span>58</span></div>
+    <div>Женских: <span>20436</span></div>
+    <div>Мужских: <span>3209</span></div>
+</div>
+
+<div class="products-nav-wrap">
+    <div class="container">
+        <div class="row products-nav">
+            <div class="col-md-4 col-lg-2 add-product-wrap">
+                <button class="add-product-btn" type="button" data-toggle="modal" data-target="#modal-product-add">
+                    <i class="far fa-plus"></i> Добавить товар
+                </button>
+            </div>
+            <div class="col-md-8 col-lg-6 admin-product-sort d-md-flex">
+                <a class="product-sort-btn active" href="#">Все</a>
+                <a class="product-sort-btn" href="#">Женские</a>
+                <a class="product-sort-btn" href="#">Мужские</a>
+                <div class="dropdown">
+                    <button class="admin-products-category-btn no-focus" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Категории
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Футболки</a>
+                        <a class="dropdown-item" href="#">Рубашки</a>
+                        <a class="dropdown-item" href="#">Кофты</a>
+                        <a class="dropdown-item" href="#">Толстовки</a>
+                        <a class="dropdown-item" href="#">Куртки</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 product-search-wrap">
+                <input class="product-search" type="search" placeholder="Поиск товаров" aria-label="Search">
+                <button type="submit"><i class="far fa-search search-button"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="min-vh-100 products-row-wrap">
+    <div class="container">
+
+        <div class="row products-row-names d-none d-lg-flex">
+            <div class="col-lg-2">
+                Фото
+            </div>
+            <div class="col-lg-1">
+                Артикул
+            </div>
+            <div class="col-lg-2">
+                Название
+            </div>
+            <div class="col-lg-1">
+                Пол
+            </div>
+            <div class="col-lg-1">
+                Категория
+            </div>
+            <div class="col-lg-2">
+                Статус
+            </div>
+            <div class="col-lg-1">
+                Цена
+            </div>
+            <div class="col-lg-2">
+                Действия
+            </div>
+        </div>
+
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="#">
+                    <img class="" src="{% static 'img/product4.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="#">F0003</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="#">Футболка C#</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-male">
+                <i class="far fa-mars"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Футболки
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row admin-product-unit">
+            <div class="col-lg-2 admin-product-img">
+                <a href="product.html">
+                    <img class="" src="{% static 'img/product6.jpg' %}" alt="product4" height="110">
+                </a>
+            </div>
+            <div class="col-lg-1 admin-product-code">
+                <a href="product.html">K0001</a>
+            </div>
+            <div class="col-lg-2 admin-product-name">
+                <a href="product.html">Кофта GoLang</a>
+            </div>
+            <div class="col-lg-1 admin-product-gender-female">
+                <i class="far fa-venus"></i>
+            </div>
+            <div class="col-lg-1 admin-product-category">
+                Кофты
+            </div>
+            <div class="col-lg-2 admin-product-status">
+                <select class="form-control" data-btn-class="btn-primary">
+                    <option selected>Базовая коллекция</option>
+                    <option>Новинка</option>
+                    <option>Sale</option>
+                </select>
+            </div>
+            <div class="col-lg-1 admin-product-price">
+                <span>1990</span> руб.
+            </div>
+            <div class="col-lg-2 admin-product-actions">
+                <button type="button" onclick="window.location.href='product.html'">
+                    <i class="far fa-book"></i> Посмотреть
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-edit">
+                    <i class="far fa-edit"></i> Изменить
+                </button>
+                <button type="button" data-toggle="modal" data-target="#modal-product-delete">
+                    <i class="far fa-trash-alt"></i> Удалить
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Модаока добавления товара. Start-->
+
+<div class="modal fade modal-product-add" id="modal-product-add" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title" id="">Добавить товар</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="main-product-add">Главное фото</label>
+                        <input type="file" class="form-control" id="main-product-add">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="other-products-add">Другие фото</label>
+                        <input type="file" class="form-control" id="other-products-add" multiple>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-code">Артикул</label>
+                        <input type="text" class="form-control" id="product-add-code">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-color">Цвет</label>
+                        <input type="text" class="form-control" id="product-add-color">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-name">Название</label>
+                        <input type="tel" class="form-control" id="product-add-name">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-price">Цена</label>
+                        <input type="text" class="form-control" id="product-add-price">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-gender">Пол</label>
+                        <select class="form-control" id="product-add-gender">
+                            <option value="" hidden>Пожалуйста, выберите пол</option>
+                            <option value="">Женский</option>
+                            <option value="">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-status">Статус</label>
+                        <select class="form-control" id="product-add-status">
+                            <option value="" hidden>Пожалуйста, выберите статус</option>
+                            <option value="">Базовая коллекция</option>
+                            <option value="">Новинка</option>
+                            <option value="">Sale</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-category">Категория</label>
+                        <select class="form-control" id="product-add-category">
+                            <option value="" hidden>Пожалуйста, выберите категорию</option>
+                            <option value="">Футболки</option>
+                            <option value="">Рубашки</option>
+                            <option value="">Толстовки</option>
+                            <option value="">Куртки</option>
+                            <option value="">Кофты</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-category">Размеры</label>
+                        <link href="{% static 'css/multiple-select.css' %}" rel="stylesheet">
+                        <select multiple="multiple" class="multiple-sizes-add form-control">
+                            <option value="1">XS</option>
+                            <option value="2">S</option>
+                            <option value="3">L</option>
+                            <option value="4">M</option>
+                            <option value="5">XL</option>
+                            <option value="6">2XL</option>
+                            <option value="7">3XL</option>
+                            <option value="8">4XL</option>
+                            <option value="9">5XL</option>
+                            <option value="10">6XL</option>
+                            <option value="11">7XL</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-count">Количество</label>
+                        <input type="number" class="form-control" id="product-add-count">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-short-desc">Краткое описание</label>
+                        <textarea class="form-control" id="product-add-short-desc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-add-full-desc">Полное описание</label>
+                        <textarea class="form-control" id="product-add-full-desc" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Модаока добавления товара. End-->
+
+
+<!--Модаока редактирования товара товара. Start-->
+
+<div class="modal fade modal-product-edit" id="modal-product-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Изменить товар</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="main-product-edit">Главное фото</label>
+                        <input type="file" class="form-control" id="main-product-edit">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="other-products-edit">Другие фото</label>
+                        <input type="file" class="form-control" id="other-products-edit" multiple>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-code">Артикул</label>
+                        <input type="text" class="form-control" id="product-edit-code">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-color">Цвет</label>
+                        <input type="text" class="form-control" id="product-edit-color">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-name">Название</label>
+                        <input type="tel" class="form-control" id="product-edit-name">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-price">Цена</label>
+                        <input type="text" class="form-control" id="product-edit-price">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-gender">Пол</label>
+                        <select class="form-control" id="product-edit-gender">
+                            <option value="" hidden>Пожалуйста, выберите пол</option>
+                            <option value="">Женский</option>
+                            <option value="">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-status">Статус</label>
+                        <select class="form-control" id="product-edit-status">
+                            <option value="" hidden>Пожалуйста, выберите статус</option>
+                            <option value="">Базовая коллекция</option>
+                            <option value="">Новинка</option>
+                            <option value="">Sale</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-category">Категория</label>
+                        <select class="form-control" id="product-edit-category">
+                            <option value="" hidden>Пожалуйста, выберите категорию</option>
+                            <option value="">Футболки</option>
+                            <option value="">Рубашки</option>
+                            <option value="">Толстовки</option>
+                            <option value="">Куртки</option>
+                            <option value="">Кофты</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-category">Размеры</label>
+                        <link href="{% static 'css/multiple-select.css' %}" rel="stylesheet">
+                        <select multiple="multiple" class="multiple-sizes-add form-control">
+                            <option value="1">XS</option>
+                            <option value="2">S</option>
+                            <option value="3">L</option>
+                            <option value="4">M</option>
+                            <option value="5">XL</option>
+                            <option value="6">2XL</option>
+                            <option value="7">3XL</option>
+                            <option value="8">4XL</option>
+                            <option value="9">5XL</option>
+                            <option value="10">6XL</option>
+                            <option value="11">7XL</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-count">Количество</label>
+                        <input type="number" class="form-control" id="product-edit-count">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-short-desc">Краткое описание</label>
+                        <textarea class="form-control" id="product-edit-short-desc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="product-edit-full-desc">Полное описание</label>
+                        <textarea class="form-control" id="product-edit-full-desc" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Модаока редактирования товара товара. End-->
+
+
+<!--МОДАЛКА УДАЛЕНИЯ ТОВАРА: START-->
+<div class="modal modal-product-delete" id="modal-product-delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Вы действительно хотите удалить?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Товар F0003
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА УДАЛЕНИЯ ТОВАРА: END-->
+
+<div class="paginator">
+    <div class="container">
+        <div>
+            Вы посмотрели <span>16</span> из <span>100500</span> товаров
+        </div>
+        <button>
+            Загрузить еще
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'js/multiple-select.js' %}"></script>
+<script>
+    $(function() {
+        $('.multiple-sizes-add').multipleSelect()
+    })
+</script>
+{% endblock %}

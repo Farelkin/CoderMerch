@@ -1,0 +1,131 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Избранное
+{% endblock %}
+
+{% block content %}
+    <div class="path">
+        <div class="container">
+            <a href="{% url 'mainapp:home' %}">Главная ></a>
+            <a href="{% url 'products:like' %}">Избранное</a>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container wow fadeInLeft">
+            Избранное
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="row wow fadeIn">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        class ProductsLike {
+            constructor() {
+                this.API = `${window.location.origin}/api/v1/like/`;
+                this.products_like = [];
+                this.content = '';
+                this.csrftoken = '';
+                this.requestProduct();
+                this.getCSRFToken();
+            }
+
+            requestProduct() {
+                fetch(`${this.API}`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.products_like = data.results;
+                        this.renderProducts();
+                    })
+                    .then(() => {
+                        this.clickDeleteProducts();
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            renderProducts() {
+                for (let obj of this.products_like) {
+                    this.obj = obj;
+                    this.content += this.getContentHTML();
+                }
+                const block = document.querySelector('.products .container .fadeIn');
+                block.innerHTML += this.content;
+            }
+
+            getContentHTML(obj) {
+                return `<div class="col-lg-3 col-sm-6 like-unit" id="${this.obj.id}">
+                    <a href="${this.obj.product_url.replace('/api/v1/', '/')}" class="view overlay zoom">
+                        <img class="img-fluid" src="${this.obj.main_img}"
+                             alt="${this.obj.name_product}">
+                    </a>
+                    <button type="submit" data-id="${this.obj.id}" data-user="${this.obj.user}" data-id_prod="${this.obj.product_id}">
+                        <i class="far fa-times" data-id="${this.obj.id}" data-id_prod="${this.obj.product_id}"></i>
+                    </button>
+                    <div class="name">
+                        <hr>
+                        ${this.obj.name_category.charAt(0).toUpperCase()}${this.obj.name_category.slice(1)}
+                        ${this.obj.logotype.charAt(0).toUpperCase()}${this.obj.logotype.slice(1)}
+                    </div>
+                    <div class="price"> ${this.obj.price * (100 - this.obj.discount) / 100} руб</div>
+                </div>`
+            }
+
+            clickDeleteProducts() {
+                const element = document.querySelector('.products .container .fadeIn');
+                element.onclick = (event) => {
+                    if (event.target.tagName === 'BUTTON' || event.target.tagName === 'I') {
+                        this.product_id = event.target.dataset.id_prod;
+                        this.data_id = event.target.dataset.id;
+                        this.requestDelete(event);
+                    }
+                };
+            }
+
+            requestDelete(event) {
+                fetch(`${this.API + this.data_id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": this.csrftoken,
+                    },
+                })
+                    .then(function (response) {
+                        return response;
+                    })
+                    .then(data => {
+                        console.log(data.ok);
+                        if (data.ok === true) {
+                            document.getElementById(event.target.dataset.id).remove();
+                        }
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            getCSRFToken() {
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let el of cookies) {
+                        if (el.split('=')[0] === "csrftoken") {
+                            this.csrftoken = el.split('=')[1]
+                        }
+                    }
+                }
+            }
+        }
+
+        let prod = new ProductsLike();
+
+    </script>
+
+{% endblock %}

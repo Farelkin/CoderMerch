@@ -1,0 +1,116 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ page_title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-image">
+    <div class="container">
+        <img src="{% static 'img/main-image.jpg' %}" class="img-fluid "
+             alt="Main image">
+    </div>
+</div>
+
+<div class="main-announcement">
+    <div class="container wow fadeInLeft">
+        Реши легкую задачу и получи скидку 15%
+    </div>
+</div>
+
+<div class="product-title">
+    <div class="container wow fadeInRight">
+        Новые поступления
+    </div>
+</div>
+
+<div class="products">
+    <div class="container p-0 d-flex justify-content-center flex-wrap">
+    </div>
+</div>
+
+<div class="page-description">
+    <div class="container wow fadeIn">
+        <h3>Раздел для описания страницы</h3>
+        <p>Данный раздел предназначен для описания страницы и SEO-оптимизации.
+            Здесь будет находится много текста, содержащего поисковые запросы и
+            ключевые слова.
+            Заполнять этот раздел должен менеджер или SEO-оптимизатор из админки
+            сайта.
+            Дальше будет идти «текст-рыба».
+        </p>
+        <p>
+            Таким образом сложившаяся структура организации играет важную роль в
+            формировании позиций,
+            занимаемых участниками в отношении поставленных задач.
+            Значимость этих проблем настолько очевидна, что новая модель
+            организационной деятельности
+            влечет за собой процесс внедрения и модернизации новых предложений.
+        </p>
+        <p>
+            Идейные соображения высшего порядка, а также новая модель
+            организационной деятельности
+            требуют от нас анализа существенных финансовых и административных
+            условий.
+            Товарищи! укрепление и развитие структуры требуют от нас анализа
+            направлений
+            прогрессивного развития.
+        </p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    class Product {
+        constructor() {
+            this.content = '';
+            this.productList = [];
+            this.API = `${window.location.origin}/api/v1/products/?limit=8&ordering=-id`;
+            this.requestProduct();
+        }
+         requestProduct() {
+            fetch(this.API)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(data => {
+                this.productList = data.results;
+            })
+            .then(data => {
+                this.renderProducts();
+            })
+            .catch(error => console.log(error));
+        }
+         renderProducts() {
+            for (let obj of this.productList) {
+                this.content += this.getContentHTML(obj);
+            }
+            const block = document.querySelector('.products .container');
+            block.innerHTML = this.content;
+        }
+         getContentHTML(obj) {
+            return `<div class="photobox photobox_type8 coder-merch-goods-photo text-center mr-1 mb-1 wow pulse">
+                    <div class="photobox__previewbox">
+                        <img src="${obj.main_img}"
+                             class="photobox__preview" alt="${obj.name_product}">
+                        <div class="photobox__label text-uppercase">
+                            <p class="coder-merch-goods-text my-3 font-weight-bolder">
+                                ${obj.name_category} "${obj.logotype}"</p>
+                            <h3 class="coder-merch-custom-font coder-merch-goods-price my-3">
+                                ${obj.price * (100 - obj.discount) / 100}</h3>
+                            <a href="${obj.url.replace('/api/v1/', '/')}"
+                               class="btn yellow text-black-50 font-weight-bold px-4 py-1 my-3 mx-5">Подробнее</a>
+                        </div>
+                    </div>
+                </div>`
+        }
+    }
+     let prod = new Product();
+
+</script>
+
+{% endblock %}

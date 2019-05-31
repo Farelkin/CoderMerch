@@ -1,0 +1,279 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    CoderMerch | Корзина
+{% endblock %}
+
+{% block content %}
+    <div class="path">
+        <div class="container">
+            <a href="{% url 'mainapp:home' %}">Главная ></a>
+            <a href="{% url 'products:man' %}">Корзина</a>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <div class="container wow fadeInLeft">
+            Корзина
+        </div>
+    </div>
+
+    <div class="basket">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6 basket-items wow fadeInLeft">
+                    <div class="title d-sm-flex justify-content-between">
+                        <span class="my-basket">Моя корзина</span>
+                        <span class="sixty-min">Товары будут зарезервированы на 60 минут</span>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product1.jpg' %}"
+                                 alt="product1.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>2990 руб.</span></div>
+                            <div class="name">Название:
+                                <span>Толстовrка Python</span></div>
+                            <div class="name">Цвет: <span>Бордовый</span></div>
+                            <div class="d-sm-flex code-size-count">
+                                <div>
+                                    Код: <span>T0001</span>
+                                </div>
+                                <div class="size-count">
+                                    Размер: <span>XL</span>
+                                </div>
+                                <div class="size-count">
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product2.jpg' %}"
+                                 alt="product2.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>990 руб.</span></div>
+                            <div class="name">Название:
+                                <span>Футболка Coding Girl</span></div>
+                            <div class="name">Цвет: <span>Черный</span></div>
+                            <div class="d-sm-flex code-size-count">
+                                <div>
+                                    Код: <span>F0002</span>
+                                </div>
+                                <div class="size-count">
+                                    Размер: <span>M</span>
+                                </div>
+                                <div class="size-count">
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product3.jpg' %}"
+                                 alt="product3.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>2990 руб.</span></div>
+                            <div class="name">Название: <span>Толстовка C++</span>
+                            </div>
+                            <div class="color">Цвет: <span>Зеленый</span></div>
+                            <div class="d-sm-flex code-size-count-wrap">
+                                <div>
+                                    Код: <span>T0002</span>
+                                </div>
+                                <div class="size-count">
+                                    Размер: <span>2XL</span>
+                                </div>
+                                <div class="size-count">
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product4.jpg' %}"
+                                 alt="product4.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>990 руб.</span></div>
+                            <div class="name">Название: <span>Футболка C#</span>
+                            </div>
+                            <div class="name">Цвет: <span>Серый</span></div>
+                            <div class="d-sm-flex code-size-count">
+                                <div>
+                                    Код: <span>F0001</span>
+                                </div>
+                                <div>
+                                    Размер: <span>XL</span>
+                                </div>
+                                <div>
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="total-amount">
+                        Всего <span>7960</span> руб.
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4 basket-order wow fadeInRight">
+                    <div class="total">
+                        Итого
+                    </div>
+                    <hr>
+                    <select class="form-control" data-btn-class="btn-primary">
+                        <option value="" hidden>Пожалуйста, выберите способ
+                            доставки
+                        </option>
+                        <option value="">Самовывоз (Бесплатно)</option>
+                        <option value="">Курьерская в пределах МКАД (300р.)</option>
+                        <option value="">Курьерская до 5 км за МКАД (350р.)</option>
+                        <option value="">Курьерская до 15 км за МКАД (500р.)</option>
+                        <option value="">Курьерская до 25 км за МКАД (800р.)</option>
+                        <option value="">До любой почтовой службы (Бесплатно)
+                        </option>
+                    </select>
+                    <div class="d-flex justify-content-between sum">
+                        <span class="delivery">Доставка</span> <span
+                            class="delivery-price">300 руб.</span>
+                    </div>
+                    <div class="d-flex justify-content-between sum">
+                        <span class="delivery">Всего</span> <span
+                            class="delivery-price">8260 руб.</span>
+                    </div>
+                    <button type="button" data-toggle="modal" data-target="#modal-user-basket-order" class="no-focus">Оформить заказ</button>
+                    <div class="we-take">
+                        Мы принимаем:
+                    </div>
+                    <div class="cards">
+                        <img src="{% static 'img/payment_method_icons/dark_color/1.png' %}"
+                             alt="Visa" width="30">
+                        <img src="{% static 'img/payment_method_icons/dark_color/2.png' %}"
+                             alt="Mastercard" width="30">
+                        <img src="{% static 'img/payment_method_icons/dark_color/3.png' %}"
+                             alt="Maestro" width="30">
+                        <img src="{% static 'img/payment_method_icons/dark_color/5.png' %}"
+                             alt="PayPal" width="30">
+                        <img src="{% static 'img/payment_method_icons/dark_color/7.png' %}"
+                             alt="Visa Electron" width="30">
+                        <img src="{% static 'img/payment_method_icons/dark_color/6.png' %}"
+                             alt="Western Union" width="30">
+                    </div>
+                    <div class="have-coupon">
+                        Есть купон на скидку? Введите его на следующем этапе
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--МОДАЛКА ОФОРМЛЕНИЯ ЗАКАЗА ПОЛЬЗОВАТЕЛЕМ: START-->
+<div class="modal fade modal-user-basket-order" id="modal-user-basket-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title" id="exampleModalLongTitle">Оформление заказа</h5>
+                <button type="button" class="close no-focus" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <h3><span class="star">&#10057;</span> Обязательные поля</h3>
+                    <div class="form-group d-lg-flex">
+                        <label><span class="star">&#10057;</span> ФИО</label>
+                        <input class="form-control" type="text" placeholder="Фамилия Имя Отчество">
+                    </div>
+                    <div class="form-group  d-lg-flex">
+                        <label><span class="star">&#10057;</span> Телефон</label>
+                        <input class="phone-mask form-control" type="tel" placeholder="+7(123)456-78-90">
+                    </div>
+                    <div class="form-group  d-lg-flex">
+                        <label><span class="star">&#10057;</span> Email</label>
+                        <input class="form-control" type="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label><span class="star">&#10057;</span> Оплата</label>
+                        <select class="form-control">
+                            <option value="" hidden="">Способ оплаты</option>
+                            <option value="">Наличными при самовывозе</option>
+                            <option value="">Картой при самовывозе</option>
+                            <option value="">Наличными курьеру</option>
+                            <option value="">Картой курьеру</option>
+                            <option value="">Картой через сайт</option>
+                            <option value="">Другая платежная система</option>
+                        </select>
+                    </div>
+                    <h3>Доставка</h3>
+                    <div class="form-group d-lg-flex">
+                        <label>Дата</label>
+                        <input class="form-control" type="date">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label>Время</label>
+                        <select class="form-control">
+                            <option value="" hidden="">Время доставки</option>
+                            <option>C 08:00 до 15:00</option>
+                            <option>C 15:00 до 22:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="order-add-address">Адрес</label>
+                        <textarea class="form-control" id="order-add-address" rows="3"></textarea>
+                    </div>
+                    <h3>Комментарий</h3>
+                    <div class="form-group d-lg-flex">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" onclick="window.location='{% url "basket:order_done" %}'">Заказать</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--МОДАЛКА ОФОРМЛЕНИЯ ЗАКАЗА ПОЛЬЗОВАТЕЛЕМ: END-->
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+<script>
+    $(".phone-mask").mask("+7(999)999-99-99");
+</script>
+{% endblock %}
