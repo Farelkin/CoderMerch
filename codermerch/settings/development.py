@@ -129,6 +129,7 @@ TEMPLATES = [
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'CoderMerch. '
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -154,6 +155,7 @@ REST_FRAMEWORK = {
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "users.serializers.CustomUserSerializer",
     "LOGIN_SERIALIZER": "users.serializers.CustomUserLoginSerializer",
+    "PASSWORD_RESET_SERIALIZER": "users.serializers.PasswordSerializer",
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
     "REGISTER_SERIALIZER": "users.serializers.CustomUserRegisterSerializer",

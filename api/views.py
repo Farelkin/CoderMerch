@@ -1,4 +1,4 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -30,7 +30,17 @@ class ActionBasedPermission(permissions.AllowAny):
         return False
 
 
+class IsOwnerOrAdmin(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_staff:
+            return True
+
+        return obj.user == request.user
+
+
 @api_view(['GET'])
+@permission_classes((permissions.IsAdminUser, ))
 def api_root(request, format=None):
     return Response({
         'login': reverse('api:rest_login', request=request, format=format),
@@ -157,7 +167,11 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
 
 class BasketViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (ActionBasedPermission,)
+    action_permissions = {
+        permissions.IsAuthenticated: ['list', 'create'],
+        IsOwnerOrAdmin: ['retrieve', 'update', 'partial_update', 'destroy']
+    }
     serializer_class = BasketProductSerializer
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('datetime_added',)
@@ -202,7 +216,6 @@ class ProductsLikeViewSet(viewsets.ModelViewSet):
         return {'request': self.request}
 
     def perform_create(self, serializer):
-
         product = get_object_or_404(Product,
                                     pk=self.request.data['product_id'])
 

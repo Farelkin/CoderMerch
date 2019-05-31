@@ -59,40 +59,40 @@
 
 
 {% block extra_scripts %}
-<script>
+    <script>
 
-    class DisplayPhoto {
-        constructor() {
+        class DisplayPhoto {
+            constructor() {
 
-            this.init();
-        }
+                this.init();
+            }
 
-        init() {
-            this.getElementsPhoto();
-            document
-                .querySelector('.main-product-photo img')
-                .addEventListener('click', event => {
-                    this.renderContainerPhoto(event);
-                    this.flippingPhotos();
-                });
+            init() {
+                this.getElementsPhoto();
+                document
+                    .querySelector('.main-product-photo img')
+                    .addEventListener('click', event => {
+                        this.renderContainerPhoto(event);
+                        this.flippingPhotos();
+                    });
 
-        }
+            }
 
-        getElementsPhoto() {
-            this.mainPhotoElem = document.querySelector('.main-product-photo img');
-            this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
-        }
+            getElementsPhoto() {
+                this.mainPhotoElem = document.querySelector('.main-product-photo img');
+                this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
+            }
 
-        renderContainerPhoto(event) {
-            this.galleryWrapperElement = document.createElement('div');
-            this.galleryWrapperElement.id = 'gallery';
-            this.galleryWrapperElement.style.cssText = "\
+            renderContainerPhoto(event) {
+                this.galleryWrapperElement = document.createElement('div');
+                this.galleryWrapperElement.id = 'gallery';
+                this.galleryWrapperElement.style.cssText = "\
                 z-index: 98;\
             ";
 
 
-            this.galleryScreenElement = document.createElement('div');
-            this.galleryScreenElement.style.cssText = "\
+                this.galleryScreenElement = document.createElement('div');
+                this.galleryScreenElement.style.cssText = "\
                 left: 0;\
                 width: 100%;\
                 height: 100%;\
@@ -104,24 +104,24 @@
                 display: block;\
                 text-align: center;\
             ";
-            this.galleryWrapperElement.appendChild(this.galleryScreenElement);
+                this.galleryWrapperElement.appendChild(this.galleryScreenElement);
 
 
-            this.closeElement = document.createElement('div');
-            this.closeElement.innerHTML = `<i class="fas fa-times" style="color: darkgray;"></i>`
-            this.closeElement.style.cssText = '\
+                this.closeElement = document.createElement('div');
+                this.closeElement.innerHTML = `<i class="fas fa-times" style="color: darkgray;"></i>`;
+                this.closeElement.style.cssText = '\
                 font-size: 50px;\
                 z-index: 101;\
                 position: absolute;\
                 top: 100px;\
                 right: 30px;\
             ';
-            this.closeElement.addEventListener('click', () => this.galleryWrapperElement.remove());
-            this.galleryWrapperElement.appendChild(this.closeElement);
+                this.closeElement.addEventListener('click', () => this.galleryWrapperElement.remove());
+                this.galleryWrapperElement.appendChild(this.closeElement);
 
 
-            this.image = new Image();
-            this.image.style.cssText = '\
+                this.image = new Image();
+                this.image.style.cssText = '\
                 max-height: 80%;\
                 max-width: 80%;\
                 z-index: 101;\
@@ -132,14 +132,14 @@
                 bottom: 0;\
                 right: 0;\
             ';
-            this.image.id = 'galleryImage';
-            this.image.src = event.target.src;
-            this.galleryWrapperElement.appendChild(this.image);
-            document.body.appendChild(this.galleryWrapperElement);
+                this.image.id = 'galleryImage';
+                this.image.src = event.target.src;
+                this.galleryWrapperElement.appendChild(this.image);
+                document.body.appendChild(this.galleryWrapperElement);
 
-            this.leftArrowContainer = document.createElement('div');
-            this.leftArrowContainer.id = 'leftArrow';
-            this.leftArrowContainer.style.cssText = '\
+                this.leftArrowContainer = document.createElement('div');
+                this.leftArrowContainer.id = 'leftArrow';
+                this.leftArrowContainer.style.cssText = '\
                 top: calc(50% - 38px);\
                 position: absolute;\
                 width: 32px;\
@@ -152,19 +152,19 @@
                 display: flex;\
                 align-items: center;\
             ';
-            this.leftArrowContainer.innerHTML = `<i class="fas fa-chevron-left" style="color: darkgray;"></i>`
-            this.leftArrowContainer.querySelector('i').style.cssText = '\
+                this.leftArrowContainer.innerHTML = `<i class="fas fa-chevron-left" style="color: darkgray;"></i>`;
+                this.leftArrowContainer.querySelector('i').style.cssText = '\
                 font-size: 35px;\
                 color: #0e0d0d;\
                 display: block;\
                 margin-left: auto;\
                 margin-right: auto;\
             ';
-            this.galleryWrapperElement.appendChild(this.leftArrowContainer);
+                this.galleryWrapperElement.appendChild(this.leftArrowContainer);
 
-            this.rightArrowContainer = document.createElement('div');
-            this.rightArrowContainer.id = 'rightArrow';
-            this.rightArrowContainer.style.cssText = '\
+                this.rightArrowContainer = document.createElement('div');
+                this.rightArrowContainer.id = 'rightArrow';
+                this.rightArrowContainer.style.cssText = '\
                 top: calc(50% - 38px);\
                 right: 0;\
                 position: absolute;\
@@ -178,183 +178,196 @@
                 display: flex;\
                 align-items: center;\
             ';
-            this.rightArrowContainer.innerHTML = `<i class="fas fa-chevron-right" style="color: darkgray;"></i>`
-            this.rightArrowContainer.querySelector('i').style.cssText = '\
+                this.rightArrowContainer.innerHTML = `<i class="fas fa-chevron-right" style="color: darkgray;"></i>`;
+                this.rightArrowContainer.querySelector('i').style.cssText = '\
                 font-size: 35px;\
                 color: #0e0d0d;\
                 display: block;\
                 margin-left: auto;\
                 margin-right: auto;\
             ';
-            this.galleryWrapperElement.appendChild(this.rightArrowContainer);
+                this.galleryWrapperElement.appendChild(this.rightArrowContainer);
+
+            }
+
+            flippingPhotos() {
+                document.getElementById('leftArrow').addEventListener('click', event => this.flippingLeftPhotos());
+                document.getElementById('rightArrow').addEventListener('click', event => this.flippingRightPhotos());
+            }
+
+            flippingRightPhotos() {
+                for (let key = 0; key < this.subPhotoList.length; key++) {
+                    if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
+                        continue;
+                    }
+                    if (key === this.subPhotoList.length - 1) {
+                        document.getElementById('galleryImage').src = this.subPhotoList[0].src;
+                        break;
+                    } else {
+                        document.getElementById('galleryImage').src = this.subPhotoList[key + 1].src;
+                        break;
+                    }
+                }
+            }
+
+            flippingLeftPhotos() {
+                for (let key = 0; key < this.subPhotoList.length; key++) {
+                    if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
+                        continue;
+                    }
+                    if (key === 0) {
+                        document.getElementById('galleryImage').src = this.subPhotoList[this.subPhotoList.length - 1].src;
+                        break;
+                    } else {
+                        document.getElementById('galleryImage').src = this.subPhotoList[key - 1].src;
+                        break;
+                    }
+                }
+            }
+
 
         }
 
-        flippingPhotos() {
-            document.getElementById('leftArrow').addEventListener('click', event => this.flippingLeftPhotos());
-            document.getElementById('rightArrow').addEventListener('click', event => this.flippingRightPhotos());
-        }
 
-        flippingRightPhotos() {
-            for (let key = 0; key < this.subPhotoList.length; key++) {
-                if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
-                    continue;
+        class RenderMainPhoto {
+            constructor() {
+
+                this.mainPhotoElem = '';
+                this.subPhotoList = [];
+                this.init();
+            }
+
+            init() {
+                this.getElementsPhoto();
+                document
+                    .querySelector('.sub-product-photos')
+                    .addEventListener('click', event => this.clickSubPhoto(event));
+                this.activePhoto();
+            }
+
+            getElementsPhoto() {
+                this.mainPhotoElem = document.querySelector('.main-product-photo img');
+                this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
+            }
+
+            clickSubPhoto(event) {
+                if (event.target.tagName !== 'IMG') {
+                    return;
                 }
-                if (key == this.subPhotoList.length - 1) {
-                    document.getElementById('galleryImage').src = this.subPhotoList[0].src;
-                    break;
-                }
-                else {
-                    document.getElementById('galleryImage').src = this.subPhotoList[key + 1].src;
-                    break;
+                this.renderMainPhoto(event.target.src);
+                this.activePhoto();
+            }
+
+            renderMainPhoto(srcPhoto) {
+                this.mainPhotoElem.src = srcPhoto;
+            }
+
+            activePhoto() {
+                for (let elem of this.subPhotoList) {
+                    if (elem.src === this.mainPhotoElem.src) {
+                        elem.classList.add("active");
+                    } else {
+                        elem.classList.remove("active");
+                    }
                 }
             }
         }
 
-        flippingLeftPhotos() {
-            for (let key = 0; key < this.subPhotoList.length; key++) {
-                if (document.getElementById('galleryImage').src !== this.subPhotoList[key].src) {
-                    continue;
-                }
-                if (key == 0) {
-                    document.getElementById('galleryImage').src = this.subPhotoList[this.subPhotoList.length - 1].src;
-                    break;
-                }
-                else {
-                    document.getElementById('galleryImage').src = this.subPhotoList[key - 1].src;
-                    break;
-                }
+
+        class Product {
+            constructor() {
+                this.API = `${window.location.origin}/api/v1${window.location.pathname}`;
+                this.dataProduct = {};
+                this._requestProduct();
             }
-        }
 
+            _requestProduct() {
+                fetch(this.API)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.dataProduct = data;
+                    })
+                    .then(() => {
 
-    }
-
-
-    class RenderMainPhoto {
-        constructor() {
-
-            this.mainPhotoElem = '';
-            this.subPhotoList = [];
-            this.init();
-        }
-
-        init() {
-            this.getElementsPhoto();
-            document
-                .querySelector('.sub-product-photos')
-                .addEventListener('click', event => this.clickSubPhoto(event));
-            this.activePhoto();
-        }
-
-        getElementsPhoto() {
-            this.mainPhotoElem = document.querySelector('.main-product-photo img');
-            this.subPhotoList = document.querySelectorAll('.sub-product-photos img');
-        }
-
-        clickSubPhoto(event) {
-            if (event.target.tagName !== 'IMG') {
-                return;
+                        this.renderPath();
+                        this.renderTitle();
+                        this.renderProductInfo();
+                        this.renderMainProductPhoto();
+                        this.renderSubProductPhotos();
+                    })
+                    .then(() => {
+                        this.requestProductLike();
+                        new SimilarProducts(this.dataProduct.url_similar_products);
+                        new RenderMainPhoto();
+                        new DisplayPhoto();
+                        new ProductLike(this.dataProduct.id);
+                    })
+                    .catch(error => console.log(error));
             }
-            this.renderMainPhoto(event.target.src);
-            this.activePhoto();
-        }
 
-        renderMainPhoto(srcPhoto) {
-            this.mainPhotoElem.src = srcPhoto;
-        }
-
-        activePhoto() {
-            {#console.log(this.subPhotoList);#}
-            for (let elem of this.subPhotoList) {
-                {#console.log('!elem!', elem);#}
-                if (elem.src === this.mainPhotoElem.src) {
-                    elem.classList.add("active");
-                }
-                else {
-                    elem.classList.remove("active");
-                }
+            requestProductLike() {
+                fetch(`${window.location.origin}/api/v1/like/`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.count !== 0) {
+                            const block = document.querySelector('.add-to-like');
+                            block.dataset.is_active = 'true';
+                            block.style.backgroundColor = '#f92672';
+                            block.style.color = '#f6f6f6';
+                        }
+                    })
+                    .catch(error => console.log(error));
             }
-        }
-    }
 
-
-    class Product {
-        constructor() {
-            this.API = `${window.location.origin}/api/v1${window.location.pathname}`;
-            this.dataProduct = {};
-            this._requestProduct();
-        }
-
-        _requestProduct() {
-            fetch(this.API)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(data => {
-                this.dataProduct = data;
-            })
-            .then(() => {
-
-                this.renderPath();
-                this.renderTitle();
-                this.renderProductInfo();
-                this.renderMainProductPhoto();
-                this.renderSubProductPhotos();
-            })
-            .then(() => {
-                new SimilarProducts(this.dataProduct.url_similar_products);
-                new RenderMainPhoto();
-                new DisplayPhoto();
-            })
-            .catch(error => console.log(error));
-        }
-
-        renderPath() {
-            this.dataProduct.gender === 'man' ? this.dataProduct.genderInRus = 'Мужское' : this.dataProduct.genderInRus = 'Женское';
-            const block = document.querySelector('.path .container');
-            block.innerHTML =
-                `<a href="/">Главная &gt; </a>
+            renderPath() {
+                this.dataProduct.gender === 'man' ? this.dataProduct.genderInRus = 'Мужское' : this.dataProduct.genderInRus = 'Женское';
+                const block = document.querySelector('.path .container');
+                block.innerHTML =
+                    `<a href="/">Главная &gt; </a>
                  <a href="/products/${this.dataProduct.gender}/">${this.dataProduct.genderInRus} &gt; </a>
                  <a href="/products/${this.dataProduct.gender}/?category=${this.dataProduct.name_category}" style="text-transform: capitalize"> ${this.dataProduct.name_category} &gt;</a>
                  <a href="#" style="text-transform: capitalize">${this.dataProduct.name_category} ${this.dataProduct.logotype.toUpperCase()}</a>`;
-        }
-
-        renderTitle() {
-            const block = document.querySelector('.product-title');
-            block.innerHTML = `<div class="container">${this.dataProduct.name_category} ${this.dataProduct.logotype.toUpperCase()}</div>`;
-        }
-
-        renderMainProductPhoto() {
-            const block = document.querySelector('.main-product-photo');
-            block.innerHTML =  `<img class="img-fluid" src="${this.dataProduct.main_img}"
-                                     alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`;
-        }
-
-        renderSubProductPhotos() {
-            let srsListPhotos = [];
-            let contentPhotos = '';
-            const block = document.querySelector('.sub-product-photos');
-
-            for (let srcImg of this.dataProduct.images) {
-                srsListPhotos.push(srcImg.img_product);
             }
 
-            srsListPhotos.sort().forEach((src) => {
-                contentPhotos += `<img class="img-fluid" src="${src}"
-                                       alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`
-            })
-            block.innerHTML =  contentPhotos;
-        }
+            renderTitle() {
+                const block = document.querySelector('.product-title');
+                block.innerHTML = `<div class="container">${this.dataProduct.name_category} ${this.dataProduct.logotype.toUpperCase()}</div>`;
+            }
 
-        renderProductInfo() {
-            const block = document.querySelector('.product .row :last-child');
-            block.innerHTML =
+            renderMainProductPhoto() {
+                const block = document.querySelector('.main-product-photo');
+                block.innerHTML = `<img class="img-fluid" src="${this.dataProduct.main_img}"
+                                     alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`;
+            }
+
+            renderSubProductPhotos() {
+                let srsListPhotos = [];
+                let contentPhotos = '';
+                const block = document.querySelector('.sub-product-photos');
+
+                for (let srcImg of this.dataProduct.images) {
+                    srsListPhotos.push(srcImg.img_product);
+                }
+
+                srsListPhotos.sort().forEach((src) => {
+                    contentPhotos += `<img class="img-fluid" src="${src}"
+                                       alt="${this.dataProduct.name_category} ${this.dataProduct.logotype}">`
+                });
+                block.innerHTML = contentPhotos;
+            }
+
+            renderProductInfo() {
+                const block = document.querySelector('.product .row :last-child');
+                block.innerHTML =
                     `<div class="short-description">
                         ${this.dataProduct.name_product.charAt(0).toUpperCase()}${this.dataProduct.name_product.slice(1)}
                     </div>
                     <div class="price order-3">
-                        <span>${this.dataProduct.price*(100 - this.dataProduct.discount)/100}</span> руб.
+                        <span>${this.dataProduct.price * (100 - this.dataProduct.discount) / 100}</span> руб.
                     </div>
                     <div class="vendor-code order-3">
                         <span>Артикул: </span>${this.dataProduct.article}
@@ -377,67 +390,154 @@
                     <div class="long-description order-3">
                         ${this.dataProduct.description}
                     </div>`
+            }
+
+            _contentSelectSize() {
+                let contentSizes = '';
+                let sizeListNoSort = [];
+
+                this.dataProduct.sizes.forEach(obj => {
+                    if (obj.quantity > 0) {
+                        sizeListNoSort.push(obj.size);
+                    }
+                });
+
+                sizeListNoSort.sort().forEach(elem => {
+                    contentSizes += `<option value="${elem}">${elem}</option>`;
+                });
+
+                return contentSizes;
+            }
         }
 
-        _contentSelectSize() {
-            let contentSizes = '';
-            let sizeListNoSort = [];
+        class SimilarProducts {
+            constructor(API) {
+                this.API = API;
+                this.similarProductsList = [];
+                this.contentSimilarProduct = '';
+                this._requestProduct();
+            }
 
-            this.dataProduct.sizes.forEach(obj => {
-                if (obj.quantity > 0) {
-                    sizeListNoSort.push(obj.size);
-                }
-            });
+            _requestProduct() {
+                fetch(this.API)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.similarProductsList = data;
+                    })
+                    .then(data => {
+                        this._renderSimilarProducts();
+                    })
+                    .catch(error => console.log(error));
+            }
 
-            sizeListNoSort.sort().forEach(elem => {
-                contentSizes += `<option value="${elem}">${elem}</option>`;
-            })
+            _renderSimilarProducts() {
+                const block = document.querySelector('.similar-products .row');
 
-            return contentSizes;
-        }
-    }
-
-    class SimilarProducts {
-        constructor(API) {
-            this.API = API;
-            this.similarProductsList = [];
-            this.contentSimilarProduct = '';
-            this._requestProduct();
-        }
-
-        _requestProduct() {
-            fetch(this.API)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(data => {
-                this.similarProductsList = data;
-            })
-            .then(data => {
-                this._renderSimilarProducts();
-            })
-            .catch(error => console.log(error));
-        }
-
-        _renderSimilarProducts() {
-            const block = document.querySelector('.similar-products .row');
-
-            for (let elem of this.similarProductsList) {
-                this.contentSimilarProduct +=
+                for (let elem of this.similarProductsList) {
+                    this.contentSimilarProduct +=
                         `<div class="col-6 col-sm-3">
                             <a href="${elem.url.replace('/api/v1/', '/')}" class="view overlay zoom">
                                 <img src="${elem.main_img}" alt="${elem.name_product}" class="img-fluid">
                             </a>
                         </div>`;
+                }
+                block.innerHTML = this.contentSimilarProduct;
             }
-            block.innerHTML = this.contentSimilarProduct;
         }
-    }
 
-    let product = new Product();
+        class ProductLike {
+            constructor(id) {
+                this.product_id = id;
+                this.API = `${window.location.origin}/api/v1/like/`;
+                this.getCSRFToken();
+                this.clickProductLike();
+            }
+
+            clickProductLike() {
+                const element = document.querySelector('.add-to-like');
+                element.onclick = () => {
+                    this.block_like = document.querySelector('.add-to-like');
+                    this.like_ative = this.block_like.dataset.is_active !== 'true';
+                    if (this.like_ative) {
+                        this.requestDelete()
+                    } else {
+                        this.requestPost()
+                    }
+                };
+            }
+
+            requestPost() {
+                fetch(this.API, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": this.csrftoken,
+                    },
+                    body: JSON.stringify({
+                            "product": this.product_id,
+                        }
+                    )
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data['result'] === 1) {
+                            this.renderButtonLike();
+                        }
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            requestDelete(event) {
+                fetch(`${this.API + this.data_id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": this.csrftoken,
+                    },
+                })
+                    .then(function (response) {
+                        return response;
+                    })
+                    .then(data => {
+                        if (data.ok === true) {
+                            document.getElementById(event.target.dataset.id).remove();
+                        }
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            renderButtonLike() {
+                if (this.like_ative) {
+                    this.block_like.dataset.is_active = 'true';
+                    this.block_like.style.backgroundColor = '#f92672';
+                    this.block_like.style.color = '#f6f6f6';
+                } else {
+                    this.block_like.dataset.is_active = 'false';
+                    this.block_like.style.backgroundColor = 'white';
+                    this.block_like.style.color = '#383838';
+                }
+            }
+
+            getCSRFToken() {
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let el of cookies) {
+                        if (el.split('=')[0].replace(/\s/g, '') === "csrftoken") {
+                            this.csrftoken = el.split('=')[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        let product = new Product();
 
 
-</script>
+    </script>
 
 {% endblock %}
 

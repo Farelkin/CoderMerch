@@ -36,10 +36,10 @@
                 <span>Your code</span> <span>-</span> your brand
             </div>
             <div class="col-12 col-lg-5 d-flex justify-content-between ml-lg-auto top-menu">
-                <a href="#">SALE</a>
+<!--                <a href="#">SALE</a>
                 <a href="{% url 'mainapp:about' %}">О команде</a>
                 <a href="#">Доставка и оплата</a>
-                <a href="#">Контакты</a>
+                <a href="#">Контакты</a> -->
             </div>
         </div>
     </div>
@@ -74,9 +74,9 @@
                     <a href="#" id="logged-in" style="display: none">
                         <i class="far fa-sign-out-alt wow swing delay-2s"></i>
                     </a>
-                    <a href="{% url 'products:like' %}"><i
+                    <a href="{% url 'products:like' %}" id="like-button"><i
                             class="far fa-heart wow swing delay-2s"></i></a>
-                    <a href="{% url 'basket:basket' %}"><i
+                    <a href="{% url 'basket:basket' %}" id="basket-button"><i
                             class="far fa-shopping-bag wow swing delay-2s"></i></a>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 <!-- Rest-auth -->
-<script type="text/javascript" src="{% static 'js/rest_auth.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 <!-- Включение анимации -->
 <script type="text/javascript">

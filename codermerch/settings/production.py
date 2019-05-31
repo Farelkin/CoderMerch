@@ -99,6 +99,7 @@ TEMPLATES = [
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'CoderMerch. '
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -115,12 +116,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 50,
 }
 
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "users.serializers.CustomUserSerializer",
     "LOGIN_SERIALIZER": "users.serializers.CustomUserLoginSerializer",
+    "PASSWORD_RESET_SERIALIZER": "users.serializers.PasswordSerializer",
 }
+
 REST_AUTH_REGISTER_SERIALIZERS = {
     "REGISTER_SERIALIZER": "users.serializers.CustomUserRegisterSerializer",
 }
@@ -129,8 +134,14 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = 'temp/email-messages/'
+DOMAIN_NAME = 'http://csda.ddns.net'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'CoderMerch2019@gmail.com'
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+
 
 WSGI_APPLICATION = 'codermerch.wsgi.application'
 
@@ -138,10 +149,6 @@ WSGI_APPLICATION = 'codermerch.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
 
     'default': {
         'NAME': 'codermerch',
@@ -150,6 +157,7 @@ DATABASES = {
         'PASSWORD': get_secret('DB_PASSWORD'),
         'HOST': '127.0.0.1'
     }
+
 }
 
 # Phone number field option
@@ -191,6 +199,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticproduction')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
