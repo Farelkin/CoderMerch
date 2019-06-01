@@ -1,4 +1,7 @@
-<div class="modal fade modal-login" id="modalLoginForm" tabindex="-1" role="dialog"
+{% load socialaccount %}
+
+<div class="modal fade modal-login" id="modalLoginForm" tabindex="-1"
+     role="dialog"
      aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -31,9 +34,9 @@
                     </div>
                 </form>
                 <!--<label class="form-checkbox"-->
-                       <!--for="input-local-storage">-->
-                    <!--<input type="checkbox" id="input-local-storage"/>-->
-                    <!--Запомнить меня-->
+                <!--for="input-local-storage">-->
+                <!--<input type="checkbox" id="input-local-storage"/>-->
+                <!--Запомнить меня-->
                 <!--</label>-->
                 <div class="label text-warning invisible"
                      id="modal-error">
@@ -42,9 +45,14 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button class="login-btn" id='loginOkButton'>Войти</button>
-                <button class="registration_btn">
+                <button class="registration_btn"
+                        onclick="window.location.href='{% url 'api:rest_register' %}'">
                     Зарегистрироваться
                 </button>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <a href="{% provider_login_url "vk" %}">VK</a>
+                <a href="{% provider_login_url "github" %}">GitHub</a>
             </div>
         </div>
     </div>
