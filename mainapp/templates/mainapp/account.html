@@ -1,0 +1,384 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content%}
+<div class="path">
+    <div class="container">
+        <a href="index.html">Главная ></a>
+        <a href="account.html">Личный кабинет</a>
+    </div>
+</div>
+
+<div class="product-title">
+    <div class="container">
+        Личный Кабинет
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4 acc-menu">
+            <img class="img-fluid" src="{%if user.profile.avatar%}/media/{{user.profile.avatar}}{%else%}{%static 'img/no_avatar.jpg'%}{%endif%}" alt="avatar">
+            <a class="acc-edit" href="#acc-user-edit" data-toggle="modal">Редактировать профиль</a>
+            <a class="acc-orders" href="#modal-acc-orders" data-toggle="modal">Мои заказы</a>
+            <a class="acc-like" href="like.html">Избранное</a>
+            <a class="acc-like" href="#acc-password-change" data-toggle="modal">Изменить пароль</a>
+            <a class="acc-exit" href="#acc-quit" data-toggle="modal"><i class="far fa-sign-out"></i> Выйти</a>
+        </div>
+        <div class="col-md-7 acc-content">
+            <div class="acc-name">
+              {{user}}
+            </div>
+            <hr>
+            <div class="acc-info">
+                <div class="acc-status">
+                    Статус: <span>Пользователь</span>
+                </div>
+                <div class="acc-gender">
+                    Пол: <span>{%if user.profile.gender %}{{user.profile.gender}}{%else%}Не указан{%endif%}</span>
+                </div>
+                <div class="acc-date">
+                    Дата рождения: <span>{{user.date_of_birth}}</span>
+                </div>
+                <div class="acc-tel">
+                    Номер телефона: <span>{%if user.profile.phone %}{{user.profile.phone}}{%else%}Не указан{%endif%}</span>
+                </div>
+            </div>
+            <hr>
+            <h3>Задача дня:</h3>
+            <div class="acc-task-condition">
+                <p>Что выведет на экран данный код?</p>
+                <p>ЯП: <span>Python</span></p>
+                <p>Скидка: <span>15%</span></p>
+            </div>
+            <img class="img-fluid" src="{% static 'img/daily_task.png' %}" alt="Daily Task">
+            <div class="acc-task-explain">
+                * При оформлении заказа, введите ответ в поле для промокода
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Модалка ЛК: Редактировать профиль-->
+<div class="modal fade modal-user-edit" id="acc-user-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Редактирование профиля</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="avatar-edit">Аватар</label>
+                        <input type="file" class="form-control" id="avatar-edit">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-name">ФИО</label>
+                        <input type="text" class="form-control" id="user-edit-name">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-login">Логин</label>
+                        <input type="text" class="form-control" id="user-edit-login">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-gender">Пол</label>
+                        <select class="form-control" id="user-edit-gender">
+                            <option value="" hidden>Пожалуйста, выберите пол</option>
+                            <option value="">Женский</option>
+                            <option value="">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-email">Email</label>
+                        <input type="email" class="form-control" id="user-edit-email">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="user-edit-phone">Телефон</label>
+                        <input type="tel" class="form-control" id="user-edit-phone">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Отмена</button>
+                <button type="button" class="" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Модалка ЛК: Мои заказы-->
+<div class="modal fade modal-acc-orders" id="modal-acc-orders" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top">
+                <h5 class="modal-title">Мои заказы</h5>
+                <button type="button" class="close no-focus" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row acc-order-unit status-new" data-toggle="modal" data-target="#acc-order-delete">
+                        <div class="col-12 acc-order-title">
+                            Заказ #0004
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Толстовка Python</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Футболка C++</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Кофта GoLang</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-12 acc-order-detail">
+                            <h3>Статус: Новый</h3>
+                            <h3>Оплата: Не оплачен</h3>
+                            <h3>Дата: 30.04.2019 18:14</h3>
+                            <h3>Доставка: Курьерская в пределах МКАД (300р.)</h3>
+                        </div>
+                        <div class="col-12 acc-order-total">
+                            Итого: 5270 руб.
+                        </div>
+                    </div>
+                    <div class="row acc-order-unit status-inprogress" data-toggle="modal" data-target="#acc-order-delete">
+                        <div class="col-12 acc-order-title">
+                            Заказ #0003
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Толстовка Python</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Футболка C++</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Кофта GoLang</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-12 acc-order-detail">
+                            <h3>Статус: Выполняется</h3>
+                            <h3>Оплата: Не оплачен</h3>
+                            <h3>Дата: 30.04.2019 18:14</h3>
+                            <h3>Доставка: Курьерская в пределах МКАД (300р.)</h3>
+                        </div>
+                        <div class="col-12 acc-order-total">
+                            Итого: 5270 руб.
+                        </div>
+                    </div>
+                    <div class="row acc-order-unit status-ready" data-toggle="modal" data-target="#acc-order-delete">
+                        <div class="col-12 acc-order-title">
+                            Заказ #0002
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Толстовка Python</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Футболка C++</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Кофта GoLang</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-12 acc-order-detail">
+                            <h3>Статус: Готов</h3>
+                            <h3>Оплата: Оплачен</h3>
+                            <h3>Дата: 30.04.2019 18:14</h3>
+                            <h3>Доставка: Курьерская в пределах МКАД (300р.)</h3>
+                        </div>
+                        <div class="col-12 acc-order-total">
+                            Итого: 5270 руб.
+                        </div>
+                    </div>
+                    <div class="row acc-order-unit status-cancel" data-toggle="modal" data-target="#acc-order-delete">
+                        <div class="col-12 acc-order-title">
+                            Заказ #0001
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Толстовка Python</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Футболка C++</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>990 руб.</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#">Кофта GoLang</a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div>1 шт.</div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>1990 руб.</div>
+                        </div>
+                        <div class="col-lg-12 acc-order-detail">
+                            <h3>Статус: Отменен</h3>
+                            <h3>Оплата: Не оплачен</h3>
+                            <h3>Дата: 30.04.2019 18:14</h3>
+                            <h3>Доставка: Курьерская в пределах МКАД (300р.)</h3>
+                        </div>
+                        <div class="col-12 acc-order-total">
+                            Итого: 5270 руб.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Модалка ЛК: Изменение пароля-->
+<div class="modal fade acc-password-change" id="acc-password-change" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Изменение пароля</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group d-lg-flex">
+                        <label for="old-pass">Старый пароль</label>
+                        <input type="password" class="form-control" id="old-pass">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="new-pass">Новый пароль</label>
+                        <input type="password" class="form-control" id="new-pass">
+                    </div>
+                    <div class="form-group d-lg-flex">
+                        <label for="new-pass-repeat">Повторить ввод</label>
+                        <input type="password" class="form-control" id="new-pass-repeat">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="no-focus" data-dismiss="modal">Отмена</button>
+                <button type="button" class="no-focus">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Модалка ЛК: Выйти-->
+<div class="modal fade acc-password-change" id="acc-quit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Вы действительно хотите выйти?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="no-focus" data-dismiss="modal">Отмена</button>
+                <button type="button" class="no-focus">Выйти</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
