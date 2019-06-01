@@ -2061,6 +2061,95 @@ body {
   color: #f6f6f6;
 }
 
+.about {
+  color: #383838;
+}
+.about .about-text {
+  font-family: "Roboto Regular", sans-serif;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+.about .about-text span {
+  font-family: "Roboto Bold", sans-serif;
+}
+.about .developers {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Raleway Bold", sans-serif;
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+.about .dev-photo {
+  border-radius: 50%;
+  margin-bottom: 25px;
+  border: 8px white solid;
+}
+.about .developer-info {
+  position: relative;
+  height: 250px;
+  background: white;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+.about .developer-info h3 {
+  font-family: "Raleway Bold", sans-serif;
+  font-size: 22px;
+}
+.about .developer-info h4 {
+  font-size: 18px;
+}
+.about .developer-info .dev-city {
+  margin-bottom: 20px;
+}
+.about .developer-info h5 {
+  font-size: 18px;
+}
+.about .developer-info h6 {
+  font-family: "Raleway Bold", sans-serif;
+}
+.about .developer-info .dev-telegram {
+  position: absolute;
+  bottom: 10px;
+  left: 44%;
+}
+.about .developer-info .dev-telegram img {
+  margin-bottom: 0 !important;
+}
+.about .github-link {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+.about .github-link a {
+  color: #383838;
+}
+.about .github-link a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px) {
+  .developer-info {
+    height: 295px !important;
+  }
+
+  .dev-telegram {
+    bottom: 13px !important;
+  }
+}
+@media screen and (max-width: 992px) {
+  .dev-telegram {
+    bottom: 25px !important;
+  }
+}
+@media screen and (max-width: 576px) {
+  .developer-info {
+    height: 260px !important;
+  }
+
+  .dev-telegram {
+    left: 47% !important;
+  }
+}
 /* ------------------------------- */
 /* МЕДИАЗАПРОСЫ */
 @media screen and (max-width: 992px) {
