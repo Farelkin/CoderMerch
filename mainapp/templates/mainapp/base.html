@@ -74,12 +74,10 @@
                     <a href="#" id="logged-in" style="display: none">
                         <i class="far fa-sign-out-alt wow swing delay-2s"></i>
                     </a>
-                    <a href="{% url 'products:like' %}"><i
+                    <a href="{% url 'products:like' %}" id="like-button"><i
                             class="far fa-heart wow swing delay-2s"></i></a>
-                    <a href="{% url 'basket:basket' %}"><i
+                    <a href="{% url 'basket:basket' %}" id="basket-button"><i
                             class="far fa-shopping-bag wow swing delay-2s"></i></a>
-                    {%if user.is_authenticated%}
-                    <a href="{%url 'mainapp:account'%}"><i class="far fa-address-card wow swing delay-2s"></i></a>{%endif%}
                 </div>
             </div>
         </div>

@@ -28,27 +28,26 @@
                         <span class="sixty-min">Товары будут зарезервированы на 60 минут</span>
                     </div>
                     <hr>
-                    {% for i in user.basket.all%}
                     <div class="basket-unit d-flex">
                         <div class="img">
-                            <img src="/media/{{i.product.product.main_img}}"
+                            <img src="{% static 'img/product1.jpg' %}"
                                  alt="product1.jpg" height="150">
                         </div>
                         <div class="basket-unit-description">
-                            <div class="price">Цена: <span>{{i.product_price}} руб.</span></div>
+                            <div class="price">Цена: <span>2990 руб.</span></div>
                             <div class="name">Название:
-                                <span>{{i.product.product.name_product}}</span></div>
-                            <div class="name">Цвет: <span>{{i.product.product.color}}</span></div>
+                                <span>Толстовrка Python</span></div>
+                            <div class="name">Цвет: <span>Бордовый</span></div>
                             <div class="d-sm-flex code-size-count">
                                 <div>
-                                    Код: <span>{{i.product.product.article}}</span>
+                                    Код: <span>T0001</span>
                                 </div>
                                 <div class="size-count">
-                                    Размер: <span>{{i.product.size}}</span>
+                                    Размер: <span>XL</span>
                                 </div>
                                 <div class="size-count">
                                     Кол-во: <span><input type="number" min="0"
-                                                         value="{{i.quantity}}"></span>
+                                                         value="1"></span>
                                 </div>
                             </div>
                             <button><i class="far fa-heart"></i> Добавить в избранное
@@ -58,9 +57,95 @@
                         </button>
                     </div>
                     <hr>
-                    {%endfor%}
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product2.jpg' %}"
+                                 alt="product2.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>990 руб.</span></div>
+                            <div class="name">Название:
+                                <span>Футболка Coding Girl</span></div>
+                            <div class="name">Цвет: <span>Черный</span></div>
+                            <div class="d-sm-flex code-size-count">
+                                <div>
+                                    Код: <span>F0002</span>
+                                </div>
+                                <div class="size-count">
+                                    Размер: <span>M</span>
+                                </div>
+                                <div class="size-count">
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product3.jpg' %}"
+                                 alt="product3.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>2990 руб.</span></div>
+                            <div class="name">Название: <span>Толстовка C++</span>
+                            </div>
+                            <div class="color">Цвет: <span>Зеленый</span></div>
+                            <div class="d-sm-flex code-size-count-wrap">
+                                <div>
+                                    Код: <span>T0002</span>
+                                </div>
+                                <div class="size-count">
+                                    Размер: <span>2XL</span>
+                                </div>
+                                <div class="size-count">
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="basket-unit d-flex">
+                        <div class="img">
+                            <img src="{% static 'img/product4.jpg' %}"
+                                 alt="product4.jpg" height="150">
+                        </div>
+                        <div class="basket-unit-description">
+                            <div class="price">Цена: <span>990 руб.</span></div>
+                            <div class="name">Название: <span>Футболка C#</span>
+                            </div>
+                            <div class="name">Цвет: <span>Серый</span></div>
+                            <div class="d-sm-flex code-size-count">
+                                <div>
+                                    Код: <span>F0001</span>
+                                </div>
+                                <div>
+                                    Размер: <span>XL</span>
+                                </div>
+                                <div>
+                                    Кол-во: <span><input type="number" min="0"
+                                                         value="1"></span>
+                                </div>
+                            </div>
+                            <button><i class="far fa-heart"></i> Добавить в избранное
+                            </button>
+                        </div>
+                        <button class="close-btn"><i class="far fa-times"></i>
+                        </button>
+                    </div>
+                    <hr>
                     <div class="total-amount">
-                        Всего <span>{{request.user.basket.first.total_price}}</span> руб.
+                        Всего <span>7960</span> руб.
                     </div>
                 </div>
 
@@ -87,7 +172,7 @@
                     </div>
                     <div class="d-flex justify-content-between sum">
                         <span class="delivery">Всего</span> <span
-                            class="delivery-price">{{request.user.basket.first.total_price}} руб.</span>
+                            class="delivery-price">8260 руб.</span>
                     </div>
                     <button type="button" data-toggle="modal" data-target="#modal-user-basket-order" class="no-focus">Оформить заказ</button>
                     <div class="we-take">

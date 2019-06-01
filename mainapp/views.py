@@ -19,5 +19,3 @@ class AboutView(TemplateView):
         return parent_context
 
 
-class AccountView(TemplateView):
-    template_name = 'mainapp/account.html'
