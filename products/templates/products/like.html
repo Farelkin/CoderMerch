@@ -35,9 +35,8 @@
                 this.products_like = [];
                 this.content = '';
                 this.csrftoken = '';
-
-                this.getCSRFToken();
                 this.requestProduct();
+                this.getCSRFToken();
             }
 
             requestProduct() {
@@ -94,9 +93,7 @@
             }
 
             requestDelete(event) {
-
-                fetch(`${this.API + this.product_id}`, {
-
+                fetch(`${this.API + this.data_id}`, {
                     method: 'DELETE',
                     headers: {
                         "Content-Type": "application/json",
@@ -119,9 +116,8 @@
                 if (document.cookie && document.cookie !== '') {
                     let cookies = document.cookie.split(';');
                     for (let el of cookies) {
-                        if (el.split('=')[0].replace(/\s+/g, '') === "csrftoken") {
-                            this.csrftoken = el.split('=')[1];
-
+                        if (el.split('=')[0] === "csrftoken") {
+                            this.csrftoken = el.split('=')[1]
                         }
                     }
                 }

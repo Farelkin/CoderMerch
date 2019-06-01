@@ -4,8 +4,6 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import permissions
 from rest_framework import filters
-from rest_framework import status
-from rest_framework.exceptions import ValidationError
 
 from rest_auth.views import LoginView
 from rest_framework.decorators import action
@@ -221,24 +219,8 @@ class ProductsLikeViewSet(viewsets.ModelViewSet):
         product = get_object_or_404(Product,
                                     pk=self.request.data['product_id'])
 
-        try:
-            ProductsLike.objects.get(user=self.request.user,
-                                     product=product)
-        except ProductsLike.DoesNotExist:
+        like_product = ProductsLike.objects.filter(user=self.request.user,
+                                                   product=product).first()
+
+        if not like_product:
             serializer.save(user=self.request.user, product=product)
-        else:
-            raise ValidationError
-
-    def retrieve(self, request, pk=None, *args, **kwargs):
-        like = get_object_or_404(ProductsLike, user=self.request.user,
-                                 product=pk)
-
-        serializer = ProductsLikeSerializer(like,
-                                            context={'request': request})
-        return Response(serializer.data)
-
-    def destroy(self, request, pk=None, *args, **kwargs):
-        instance = get_object_or_404(ProductsLike, user=self.request.user,
-                                     product=pk)
-        self.perform_destroy(instance)
-        return Response(status=status.HTTP_204_NO_CONTENT)
