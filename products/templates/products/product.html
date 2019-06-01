@@ -298,7 +298,9 @@
                         this.renderSubProductPhotos();
                     })
                     .then(() => {
-                        this.requestProductLike();
+
+                        <!--this.requestProductLike();-->
+
                         new SimilarProducts(this.dataProduct.url_similar_products);
                         new RenderMainPhoto();
                         new DisplayPhoto();
@@ -307,21 +309,21 @@
                     .catch(error => console.log(error));
             }
 
-            requestProductLike() {
-                fetch(`${window.location.origin}/api/v1/like/`)
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.count !== 0) {
-                            const block = document.querySelector('.add-to-like');
-                            block.dataset.is_active = 'true';
-                            block.style.backgroundColor = '#f92672';
-                            block.style.color = '#f6f6f6';
-                        }
-                    })
-                    .catch(error => console.log(error));
-            }
+            <!--requestProductLike() {-->
+                <!--fetch(`${window.location.origin}/api/v1/like/`)-->
+                    <!--.then(function (response) {-->
+                        <!--return response.json();-->
+                    <!--})-->
+                    <!--.then(data => {-->
+                        <!--if (data.count !== 0) {-->
+                            <!--const block = document.querySelector('.add-to-like');-->
+                            <!--block.dataset.is_active = 'true';-->
+                            <!--block.style.backgroundColor = '#f92672';-->
+                            <!--block.style.color = '#f6f6f6';-->
+                        <!--}-->
+                    <!--})-->
+                    <!--.catch(error => console.log(error));-->
+            <!--}-->
 
             renderPath() {
                 this.dataProduct.gender === 'man' ? this.dataProduct.genderInRus = 'Мужское' : this.dataProduct.genderInRus = 'Женское';
@@ -451,19 +453,35 @@
             constructor(id) {
                 this.product_id = id;
                 this.API = `${window.location.origin}/api/v1/like/`;
+                this.productLike = false;
+                this.block_like = document.querySelector('.add-to-like');
                 this.getCSRFToken();
+                this.requestInfoProduct();
                 this.clickProductLike();
             }
 
+
+            requestInfoProduct() {
+                fetch(`${this.API + this.product_id}`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.id) {
+                            this.productLike = true;
+                        }
+                        this.renderButtonLike();
+                    })
+                    .catch(error => console.log(error));
+            }
+
+
             clickProductLike() {
-                const element = document.querySelector('.add-to-like');
-                element.onclick = () => {
-                    this.block_like = document.querySelector('.add-to-like');
-                    this.like_ative = this.block_like.dataset.is_active !== 'true';
-                    if (this.like_ative) {
-                        this.requestDelete()
+                this.block_like.onclick = () => {
+                    if (this.productLike) {
+                        this.requestDelete();
                     } else {
-                        this.requestPost()
+                        this.requestPost();
                     }
                 };
             }
@@ -476,7 +494,8 @@
                         "X-CSRFToken": this.csrftoken,
                     },
                     body: JSON.stringify({
-                            "product": this.product_id,
+                            "product_id": this.product_id,
+
                         }
                     )
                 })
@@ -484,7 +503,9 @@
                         return response.json();
                     })
                     .then(data => {
-                        if (data['result'] === 1) {
+                        if (data.id) {
+                            this.productLike = true;
+
                             this.renderButtonLike();
                         }
                     })
@@ -492,7 +513,8 @@
             }
 
             requestDelete(event) {
-                fetch(`${this.API + this.data_id}`, {
+                fetch(`${this.API + this.product_id}/`, {
+
                     method: 'DELETE',
                     headers: {
                         "Content-Type": "application/json",
@@ -503,15 +525,19 @@
                         return response;
                     })
                     .then(data => {
-                        if (data.ok === true) {
-                            document.getElementById(event.target.dataset.id).remove();
+                        console.log('DELETE', data)
+                        if (!data.id) {
+                            this.productLike = false;
+                            this.renderButtonLike();
+
                         }
                     })
                     .catch(error => console.log(error));
             }
 
             renderButtonLike() {
-                if (this.like_ative) {
+                if (this.productLike) {
+
                     this.block_like.dataset.is_active = 'true';
                     this.block_like.style.backgroundColor = '#f92672';
                     this.block_like.style.color = '#f6f6f6';
