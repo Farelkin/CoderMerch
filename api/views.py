@@ -48,7 +48,7 @@ def api_root(request, format=None):
         'login': reverse('api:rest_login', request=request, format=format),
         'login-vk': request.build_absolute_uri('/accounts/vk/login/'),
         'login-github': request.build_absolute_uri('/accounts/github/login/'),
-        'connecnt social account': request.build_absolute_uri(
+        'connect social account': request.build_absolute_uri(
             '/accounts/social/connections/'),
         'logout': reverse('api:rest_logout', request=request, format=format),
         'register': reverse('api:rest_register', request=request,
@@ -198,12 +198,20 @@ class BasketViewSet(viewsets.ModelViewSet):
         else:
             basket_product.quantity += serializer.data['quantity']
             basket_product.save()
+        product_by_size.quantity -= serializer.data['quantity']
+        product_by_size.save()
 
     def perform_update(self, serializer):
         instance = self.get_object()
         product_by_size = get_object_or_404(ProductBySize,
                                             pk=instance.product.pk)
         serializer.save(user=self.request.user, product=product_by_size)
+
+    def perform_destroy(self, instance):
+        product_by_size = get_object_or_404(ProductBySize, pk=instance.product.id)
+        product_by_size.quantity += instance.quantity
+        product_by_size.save()
+        instance.delete()
 
 
 class ProductsLikeViewSet(viewsets.ModelViewSet):
