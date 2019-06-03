@@ -17,5 +17,5 @@ class Basket(models.Model):
 
     @property
     def total_price(self):
-        products = Basket.objects.filter(user=self.user)
+        products = Basket.objects.filter(user=self.user, is_ordered=False)
         return sum([x.product_price for x in products])
