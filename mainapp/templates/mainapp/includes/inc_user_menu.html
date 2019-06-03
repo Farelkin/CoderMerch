@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if user.avatar %}
+    <div class="menu-avatar wow swing delay-2s">
+        <img src="{{ user.avatar.url }}" alt="{{ user.name }}">
+    </div>
+{% else %}
+    <div class="menu-avatar wow swing delay-2s">
+        <img src="{% static 'img/no_avatar.jpg' %}" alt="{{ user.name }}">
+    </div>
+{% endif %}

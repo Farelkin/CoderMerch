@@ -52,13 +52,21 @@
                 document.querySelector('.modal-body').style.display = 'none';
                 document.querySelector('#basket-button').style.display = 'block';
                 document.querySelector('#like-button').style.display = 'block';
+                document.querySelector('#non-logged-in').style.display = 'none';
+                document.querySelector('#non-logged-in').style.position = 'absolute';
+                document.querySelector('#logged-in').style.display = 'block';
+                document.querySelector('#logged-in').style.position = 'static';
                 this.button.innerText = 'Выйти';
-                this.modalTitle.innerText = 'Выйти с сайта';
+                this.modalTitle.innerText = 'Выйти из сайта';
             }
             else {
                 document.querySelector('.modal-body').style.display = 'block';
                 document.querySelector('#basket-button').style.display = 'none';
                 document.querySelector('#like-button').style.display = 'none';
+                document.querySelector('#non-logged-in').style.display = 'block';
+                document.querySelector('#non-logged-in').style.position = 'static';
+                document.querySelector('#logged-in').style.display = 'none';
+                document.querySelector('#logged-in').style.position = 'absolute';
                 this.button.innerText = 'Войти';
                 this.modalTitle.innerText = 'Войти на сайт';
             }
@@ -143,7 +151,7 @@
 
          renderErrorLogin() {
             this.blockError = document.createElement('p');
-            this.blockError.style.color = 'red';
+            this.blockError.style.color = '#f92672';
             this.blockError.style.fontWeight  = 'bold';
             this.blockError.innerText = 'Введены неверные учетные данные!';
             document.querySelector('.modal-body').insertAdjacentElement('afterbegin', this.blockError);

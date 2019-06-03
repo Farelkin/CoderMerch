@@ -68,11 +68,11 @@
                 <div class="col-6 col-sm-3 col-md-2 col-lg-1 d-flex justify-content-around justify-content-sm-between main-icons order-1 wow fadeInDown">
                     <a href="#" class="d-sm-none"><i
                             class="far fa-search wow swing delay-2s"></i></a>
-                    <a href="#" id="non-logged-in" data-toggle="modal"
-                       data-target="#modalLoginForm"><i
-                            class="far fa-user wow swing delay-2s"></i></a>
-                    <a href="#" id="logged-in" style="display: none">
-                        <i class="far fa-sign-out-alt wow swing delay-2s"></i>
+                    <a href="#" id="non-logged-in" data-toggle="modal" data-target="#modalLoginForm">
+                        <i class="far fa-user wow swing delay-2s"></i>
+                    </a>
+                    <a href="#" id="logged-in" style="display: none" data-toggle="modal" data-target="#modalLoginForm">
+                        {% include 'mainapp/includes/inc_user_menu.html' %}
                     </a>
                     <a href="{% url 'products:like' %}" id="like-button"><i
                             class="far fa-heart wow swing delay-2s"></i></a>
