@@ -2335,4 +2335,12 @@ body {
   }
 }
 
+.md-form > label:after {
+    width: 100px;
+}
+
+.modal-login .modal-body > form :last-child label{
+    margin-top: -20px;
+    font-size: 0.8rem;
+}
 /*# sourceMappingURL=CoderMerchStyle.css.map */
