@@ -70,7 +70,7 @@
         constructor() {
             this.content = '';
             this.productList = [];
-            this.API = `${window.location.origin}/api/v1/products/?limit=8&offset=0`;
+            this.API = `${window.location.origin}/api/v1/products/?limit=8&ordering=-id`;
             this.requestProduct();
         }
          requestProduct() {
