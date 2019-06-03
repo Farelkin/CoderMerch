@@ -74,9 +74,9 @@
                     <a href="#" id="logged-in" style="display: none" data-toggle="modal" data-target="#modalLoginForm">
                         {% include 'mainapp/includes/inc_user_menu.html' %}
                     </a>
-                    <a href="{% url 'products:like' %}" id="like-button"><i
+                    <a href="{% url 'products:like' %}" id="like-button" style="display: none"><i
                             class="far fa-heart wow swing delay-2s"></i></a>
-                    <a href="{% url 'basket:basket' %}" id="basket-button"><i
+                    <a href="{% url 'basket:basket' %}" id="basket-button" style="display: none"><i
                             class="far fa-shopping-bag wow swing delay-2s"></i></a>
                 </div>
             </div>
