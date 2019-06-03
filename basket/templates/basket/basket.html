@@ -28,7 +28,7 @@
                         <span class="sixty-min">Товары будут зарезервированы на 60 минут</span>
                     </div>
                     <hr>
-                    {% for i in user.basket.all%}
+                    {% for i in basket%}
                     <div class="basket-unit d-flex">
                         <div class="img">
                             <img src="/media/{{i.product.product.main_img}}"
@@ -60,7 +60,7 @@
                     <hr>
                     {%endfor%}
                     <div class="total-amount">
-                        Всего <span>{{request.user.basket.first.total_price}}</span> руб.
+                        Всего <span>{{basket.first.total_price}}</span> руб.
                     </div>
                 </div>
 
