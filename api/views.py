@@ -180,7 +180,7 @@ class BasketViewSet(viewsets.ModelViewSet):
     ordering = ['-datetime_added', ]
 
     def get_queryset(self):
-        return Basket.objects.filter(user=self.request.user)
+        return Basket.objects.filter(user=self.request.user, is_ordered=False)
 
     def get_serializer_context(self):
         return {'request': self.request}

@@ -1,6 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 from api.views import *
+from orders.views import OrderViewSet
 
 from . import views
 from api.views import CustomLogin
@@ -13,6 +14,7 @@ router.register(r'categories', ProductCategoryViewSet)
 router.register(r'like', ProductsLikeViewSet, basename='like')
 router.register(r'users', UserViewSet)
 router.register(r'basket', BasketViewSet, basename='basket')
+router.register(r'orders', OrderViewSet,basename='orders')
 
 urlpatterns = [
     path('', views.api_root),
