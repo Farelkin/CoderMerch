@@ -3,9 +3,10 @@ from orders.models import Order
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = serializers.StringRelatedField(source='order_product', many=True, read_only=True, required=False)
+    items = serializers.StringRelatedField(source='order_product', read_only=True, required=False, many=True)
+    total_price = serializers.ReadOnlyField()
 
     class Meta:
         model = Order
-        fields = '__all__'
+        exclude = ('user', 'is_active',)
 

@@ -17,6 +17,10 @@ class Order(models.Model):
     delivery = models.ForeignKey(DeliveryMethod, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
+    def total_price(self):
+        products_in_order = self.order_product.select_related()
+        return sum([i.product.product.product.price for i in products_in_order])+self.delivery.price
+
 
 class OrderUnits(models.Model):
     product = models.ForeignKey(Basket, on_delete=models.DO_NOTHING)
