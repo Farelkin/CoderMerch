@@ -42,7 +42,7 @@ class IsOwnerOrAdmin(permissions.BasePermission):
 
 
 @api_view(['GET'])
-@permission_classes((permissions.IsAdminUser, ))
+@permission_classes((permissions.IsAdminUser,))
 def api_root(request, format=None):
     return Response({
         'login': reverse('api:rest_login', request=request, format=format),
@@ -115,7 +115,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
-    search_fields = ('keywords', 'name_product', 'category__name_category',)
+    search_fields = (
+        'article', 'keywords', 'name_product', 'category__name_category',)
     ordering_fields = ('name_product', 'price', 'id')
 
     def get_queryset(self):
