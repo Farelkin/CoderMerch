@@ -65,9 +65,15 @@
 
                 document.querySelector('#basket-button').style.display = 'block';        // вывод значка "корзины"
                 document.querySelector('#like-button').style.display = 'block';          // вывод значка "избранное"
+                document.querySelector('#non-logged-in').style.display = 'none';
+                document.querySelector('#non-logged-in').style.position = 'absolute';
+                document.querySelector('#logged-in').style.display = 'block';
+                document.querySelector('#logged-in').style.position = 'static';
 
                 this.button.innerText = 'Выйти';                    // надпись на кнопке "Выйти"
                 this.modalTitle.innerText = 'Выйти с сайта';        // надпись заголовка "Выйти с сайта"
+
+
             }
             else {
                 // пользователь НЕ залогинен
@@ -84,9 +90,15 @@
 
                 document.querySelector('#basket-button').style.display = 'none';        // убрать значок "корзины"
                 document.querySelector('#like-button').style.display = 'none';          // убрать значок "избранное"
+                document.querySelector('#non-logged-in').style.display = 'block';
+                document.querySelector('#non-logged-in').style.position = 'static';
+                document.querySelector('#logged-in').style.display = 'none';
+                document.querySelector('#logged-in').style.position = 'absolute';
 
                 this.button.innerText = 'Войти';                    // надпись на кнопке "Войти"
                 this.modalTitle.innerText = 'Войти на сайт';        // надпись заголовка "Войти с сайта"
+
+
             }
         }
 
