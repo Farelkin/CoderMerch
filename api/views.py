@@ -1,9 +1,11 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import permissions
 from rest_framework import filters
+from rest_framework import status
+from rest_framework.exceptions import ValidationError
 
 from rest_auth.views import LoginView
 from rest_framework.decorators import action
@@ -30,7 +32,17 @@ class ActionBasedPermission(permissions.AllowAny):
         return False
 
 
+class IsOwnerOrAdmin(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_staff:
+            return True
+
+        return obj.user == request.user
+
+
 @api_view(['GET'])
+@permission_classes((permissions.IsAdminUser,))
 def api_root(request, format=None):
     return Response({
         'login': reverse('api:rest_login', request=request, format=format),
@@ -103,7 +115,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
-    search_fields = ('keywords', 'name_product', 'category__name_category',)
+    search_fields = (
+        'article', 'keywords', 'name_product', 'category__name_category',)
     ordering_fields = ('name_product', 'price', 'id')
 
     def get_queryset(self):
@@ -157,7 +170,11 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
 
 class BasketViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (ActionBasedPermission,)
+    action_permissions = {
+        permissions.IsAuthenticated: ['list', 'create'],
+        IsOwnerOrAdmin: ['retrieve', 'update', 'partial_update', 'destroy']
+    }
     serializer_class = BasketProductSerializer
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('datetime_added',)
@@ -202,12 +219,27 @@ class ProductsLikeViewSet(viewsets.ModelViewSet):
         return {'request': self.request}
 
     def perform_create(self, serializer):
-
         product = get_object_or_404(Product,
                                     pk=self.request.data['product_id'])
 
-        like_product = ProductsLike.objects.filter(user=self.request.user,
-                                                   product=product).first()
-
-        if not like_product:
+        try:
+            ProductsLike.objects.get(user=self.request.user,
+                                     product=product)
+        except ProductsLike.DoesNotExist:
             serializer.save(user=self.request.user, product=product)
+        else:
+            raise ValidationError
+
+    def retrieve(self, request, pk=None, *args, **kwargs):
+        like = get_object_or_404(ProductsLike, user=self.request.user,
+                                 product=pk)
+
+        serializer = ProductsLikeSerializer(like,
+                                            context={'request': request})
+        return Response(serializer.data)
+
+    def destroy(self, request, pk=None, *args, **kwargs):
+        instance = get_object_or_404(ProductsLike, user=self.request.user,
+                                     product=pk)
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)

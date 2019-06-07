@@ -36,10 +36,10 @@
                 <span>Your code</span> <span>-</span> your brand
             </div>
             <div class="col-12 col-lg-5 d-flex justify-content-between ml-lg-auto top-menu">
-                <a href="#">SALE</a>
+<!--                <a href="#">SALE</a> -->
                 <a href="{% url 'mainapp:about' %}">О команде</a>
-                <a href="#">Доставка и оплата</a>
-                <a href="#">Контакты</a>
+<!--                <a href="#">Доставка и оплата</a>
+                <a href="#">Контакты</a> -->
             </div>
         </div>
     </div>
@@ -68,15 +68,15 @@
                 <div class="col-6 col-sm-3 col-md-2 col-lg-1 d-flex justify-content-around justify-content-sm-between main-icons order-1 wow fadeInDown">
                     <a href="#" class="d-sm-none"><i
                             class="far fa-search wow swing delay-2s"></i></a>
-                    <a href="#" id="non-logged-in" data-toggle="modal"
-                       data-target="#modalLoginForm"><i
-                            class="far fa-user wow swing delay-2s"></i></a>
-                    <a href="#" id="logged-in" style="display: none">
-                        <i class="far fa-sign-out-alt wow swing delay-2s"></i>
+                    <a href="#" id="non-logged-in" data-toggle="modal" data-target="#modalLoginForm">
+                        <i class="far fa-user wow swing delay-2s"></i>
                     </a>
-                    <a href="{% url 'products:like' %}"><i
+                    <a href="#" id="logged-in" style="display: none" data-toggle="modal" data-target="#modalLoginForm">
+                        {% include 'mainapp/includes/inc_user_menu.html' %}
+                    </a>
+                    <a href="{% url 'products:like' %}" id="like-button" style="display: none"><i
                             class="far fa-heart wow swing delay-2s"></i></a>
-                    <a href="{% url 'basket:basket' %}"><i
+                    <a href="{% url 'basket:basket' %}" id="basket-button" style="display: none"><i
                             class="far fa-shopping-bag wow swing delay-2s"></i></a>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 <!-- Rest-auth -->
-<script type="text/javascript" src="{% static 'js/rest_auth.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 <!-- Включение анимации -->
 <script type="text/javascript">

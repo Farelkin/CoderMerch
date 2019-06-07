@@ -1929,6 +1929,107 @@ body
         color: $light
 
 
+// О Команде
+
+.about
+  color: $grey
+  .about-text
+    font-family: $rbt-r
+    margin-bottom: 50px
+    padding: 10px
+    span
+      font-family: $rbt-b
+  .developers
+    text-align: center
+    text-transform: uppercase
+    font-family: $rlw-b
+    font-size: 22px
+    margin-bottom: 50px
+  .dev-photo
+    border-radius: 50%
+    margin-bottom: 25px
+    border: 8px white solid
+  .developer-info
+    position: relative
+    height: 250px
+    background: white
+    text-align: center
+    padding: 10px
+    margin-bottom: 25px
+    h3
+      font-family: $rlw-b
+      font-size: 22px
+    h4
+      font-size: 18px
+    .dev-city
+      margin-bottom: 20px
+    h5
+      font-size: 18px
+    h6
+      font-family: $rlw-b
+    .dev-telegram
+      position: absolute
+      bottom: 10px
+      left: 44%
+      img
+        margin-bottom: 0 !important
+
+  .github-link
+    font-size: 20px
+    margin-bottom: 25px
+    a
+      color: $grey
+      &:hover
+        text-decoration: underline
+
+
+// Модалка логина
+.md-form > label
+    width: 150px
+
+.md-form > label :after
+    width: 150px
+    font-size: 0.8rem
+
+.modal-login .modal-body > form :last-child label
+    margin-top: -20px
+    font-size: 0.8rem
+
+@media screen and (max-width: 1200px)
+  .developer-info
+    height: 295px !important
+  .dev-telegram
+    bottom: 13px !important
+
+@media screen and (max-width: 992px)
+  .dev-telegram
+    bottom: 25px !important
+
+@media screen and (max-width: 576px)
+  .developer-info
+    height: 260px !important
+  .dev-telegram
+    left: 47% !important
+
+
+// Стили в меню для юзера
+
+.menu-avatar
+  height: 20px
+  width: 20px
+  border-radius: 50%
+  margin-top: 6px
+  overflow: hidden
+  box-shadow: 0 0 0 2px $light
+  &:hover
+    box-shadow: 0 0 0 2px $green
+  img
+    height: 20px
+    margin-top: -16px
+
+
+
+
 
 /* ------------------------------- */
 

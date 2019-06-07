@@ -31,9 +31,12 @@
     <script>
         class ProductsLike {
             constructor() {
-                this.API = `${window.location.origin}/api/v1/like`;
+                this.API = `${window.location.origin}/api/v1/like/`;
                 this.products_like = [];
                 this.content = '';
+                this.csrftoken = '';
+
+                this.getCSRFToken();
                 this.requestProduct();
             }
 
@@ -44,76 +47,86 @@
                     })
                     .then(data => {
                         this.products_like = data.results;
-                        <!--console.log(this.products_like);-->
                         this.renderProducts();
                     })
                     .then(() => {
-                        this.deleteProducts();
+                        this.clickDeleteProducts();
                     })
                     .catch(error => console.log(error));
             }
 
             renderProducts() {
                 for (let obj of this.products_like) {
-                    <!--console.log(obj)-->
-                    this.content += this.getContentHTML(obj);
+                    this.obj = obj;
+                    this.content += this.getContentHTML();
                 }
                 const block = document.querySelector('.products .container .fadeIn');
                 block.innerHTML += this.content;
             }
 
             getContentHTML(obj) {
-                return `<div class="col-lg-3 col-sm-6 like-unit" id="${obj.article}">
-                    <a href="${obj.product_url.replace('/api/v1/', '/')}" class="view overlay zoom">
-                        <img class="img-fluid" src="${obj.main_img}"
-                             alt="${obj.name_product}">
+                return `<div class="col-lg-3 col-sm-6 like-unit" id="${this.obj.id}">
+                    <a href="${this.obj.product_url.replace('/api/v1/', '/')}" class="view overlay zoom">
+                        <img class="img-fluid" src="${this.obj.main_img}"
+                             alt="${this.obj.name_product}">
                     </a>
-                    <button type="submit" data-id="${obj.id}"><i class="far fa-times" data-id="${obj.id}"></i></button>
+                    <button type="submit" data-id="${this.obj.id}" data-user="${this.obj.user}" data-id_prod="${this.obj.product_id}">
+                        <i class="far fa-times" data-id="${this.obj.id}" data-id_prod="${this.obj.product_id}"></i>
+                    </button>
                     <div class="name">
                         <hr>
-                        ${obj.name_category.charAt(0).toUpperCase()}${obj.name_category.slice(1)}
-                        ${obj.logotype.charAt(0).toUpperCase()}${obj.logotype.slice(1)}
+                        ${this.obj.name_category.charAt(0).toUpperCase()}${this.obj.name_category.slice(1)}
+                        ${this.obj.logotype.charAt(0).toUpperCase()}${this.obj.logotype.slice(1)}
                     </div>
-                    <div class="price"> ${obj.price * (100 - obj.discount) / 100} руб</div>
+                    <div class="price"> ${this.obj.price * (100 - this.obj.discount) / 100} руб</div>
                 </div>`
             }
 
-            deleteProducts() {
-
+            clickDeleteProducts() {
                 const element = document.querySelector('.products .container .fadeIn');
-
                 element.onclick = (event) => {
                     if (event.target.tagName === 'BUTTON' || event.target.tagName === 'I') {
-                        {#console.log(document.getElementById(event.target.dataset.id));#}
-                        <!--document.getElementById(event.target.dataset.id).remove();-->
-                        this.requestDelete(event.target);
+                        this.product_id = event.target.dataset.id_prod;
+                        this.data_id = event.target.dataset.id;
+                        this.requestDelete(event);
                     }
                 };
             }
 
-            requestDelete(elem) {
-                let g_csrftoken = getCookie('csrftoken');
+            requestDelete(event) {
 
-                fetch(`${this.API + '/' + elem.getAttribute('data-id') + '/'}`, {
-                    method: 'delete',
+                fetch(`${this.API + this.product_id}`, {
+
+                    method: 'DELETE',
                     headers: {
-                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-                        "X-CSRFToken": g_csrftoken,
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": this.csrftoken,
                     },
-                    body: 'foo=bar&lorem=ipsum',
                 })
                     .then(function (response) {
-                        elem.closest('div').remove();
+                        return response;
                     })
                     .then(data => {
-                        {#console.log(data);#}
+                        console.log(data.ok);
+                        if (data.ok === true) {
+                            document.getElementById(event.target.dataset.id).remove();
+                        }
                     })
                     .catch(error => console.log(error));
             }
 
+            getCSRFToken() {
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let el of cookies) {
+                        if (el.split('=')[0].replace(/\s+/g, '') === "csrftoken") {
+                            this.csrftoken = el.split('=')[1];
 
+                        }
+                    }
+                }
+            }
         }
-
 
         let prod = new ProductsLike();
 

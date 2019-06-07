@@ -1,4 +1,7 @@
-<div class="modal fade modal-login" id="modalLoginForm" tabindex="-1" role="dialog"
+{% load socialaccount %}
+
+<div class="modal fade modal-login" id="modalLoginForm" tabindex="-1"
+     role="dialog"
      aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -14,7 +17,7 @@
             <div class="modal-body mx-3">
                 <form>
                     {% csrf_token %}
-                    <div class="md-form mb-5">
+                    <div class="email md-form mb-5">
                         <i class="fas fa-envelope prefix grey-text"></i>
                         <input type="email" id="defaultForm-email"
                                class="form-control validate">
@@ -22,19 +25,43 @@
                                for="defaultForm-email">Email</label>
                     </div>
 
-                    <div class="md-form mb-4">
+                    <div class="password_1 md-form mb-4">
                         <i class="fas fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass"
+                        <input type="password" id="defaultForm-pass-1"
                                class="form-control validate">
                         <label data-error="Неверный ввод" data-success="Верно"
-                               for="defaultForm-pass">Пароль</label>
+                               for="defaultForm-pass-1">Пароль</label>
+                    </div>
+                    <div class="password_2 md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <input type="password" id="defaultForm-pass-2"
+                               class="form-control validate">
+                        <label data-error="Неверный ввод" data-success="Верно"
+                               for="defaultForm-pass-2">Пароль</label>
+                    </div>
+                    <div class="first_name md-form mb-4">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <input type="text" id="defaultForm-first_name"
+                               class="form-control validate">
+                        <label data-error="Неверный ввод" data-success="Верно"
+                               for="defaultForm-first_name">Имя</label>
+                    </div>
+                    <div class="date_of_birth md-form mb-4">
+                        <div style="margin-left: 2.5rem; font-size: .8rem; position: absolute;top: -.95rem;left: 0; ">
+                            Дата рождения
+                        </div>
+                        <i class="fa fa-birthday-cake prefix grey-text"></i>
+                        <input type="date" id="defaultForm-date_of_birth"
+                               class="form-control validate" >
+                        <label data-error="Неверный ввод" data-success="Верно"
+                               for="defaultForm-date_of_birth" ></label>
                     </div>
                 </form>
-                <label class="form-checkbox"
-                       for="input-local-storage">
-                    <input type="checkbox" id="input-local-storage"/>
-                    Запомнить меня
-                </label>
+                <!--<label class="form-checkbox"-->
+                <!--for="input-local-storage">-->
+                <!--<input type="checkbox" id="input-local-storage"/>-->
+                <!--Запомнить меня-->
+                <!--</label>-->
                 <div class="label text-warning invisible"
                      id="modal-error">
                     Невозможно войти!
@@ -42,9 +69,16 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button class="login-btn" id='loginOkButton'>Войти</button>
-                <button class="registration_btn">
+                <button class="render_registration_modal registration_btn">
                     Зарегистрироваться
                 </button>
+                <button class="request_registration registration_btn">
+                    Зарегистрироваться
+                </button>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <a class="registration-by-vk" href="{% provider_login_url 'vk' %}">VK</a>
+                <a class="registration-by-github" href="{% provider_login_url 'github' %}">GitHub</a>
             </div>
         </div>
     </div>

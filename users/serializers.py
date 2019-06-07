@@ -1,11 +1,16 @@
 from rest_framework import serializers
-from rest_auth.serializers import LoginSerializer
+from rest_auth.serializers import LoginSerializer, PasswordResetSerializer
 from rest_auth.registration.serializers import RegisterSerializer
 from allauth.account import app_settings as allauth_settings
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 
 from . import models
+from allauth.account.forms import ResetPasswordForm
+
+
+class PasswordSerializer (PasswordResetSerializer):
+    password_reset_form_class = ResetPasswordForm
 
 
 class CustomUserRegisterSerializer(RegisterSerializer):
