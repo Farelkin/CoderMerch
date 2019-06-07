@@ -29,7 +29,7 @@
     <h2>{{ request.GET }}</h2><br>
     <h2>{{ request.get_full_path }}</h2><br>
     <h2>{{ request.build_absolute_uri }}</h2><br>
-    <h2>{{ QueryDict.items }}</h2><br>
+    <h2>{{ QueryDict.dict }}</h2><br>
     {% if request.resolver_match.kwargs.pk == 'all' %}
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="?gender=&category=5">Футболки</a>
