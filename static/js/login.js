@@ -277,7 +277,7 @@ class Register {
     //     }
     // }
     //
-    // // проверка поля ввода даты рождения
+    // проверка поля ввода даты рождения
     // validateDataBirth() {
     //     let dateBirth = document.querySelector('#defaultForm-date_of_birth');
     //

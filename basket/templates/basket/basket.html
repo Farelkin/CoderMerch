@@ -28,125 +28,6 @@
                         <span class="sixty-min">Товары будут зарезервированы на 60 минут</span>
                     </div>
                     <hr>
-                    <div class="basket-unit d-flex">
-                        <div class="img">
-                            <img src="{% static 'img/product1.jpg' %}"
-                                 alt="product1.jpg" height="150">
-                        </div>
-                        <div class="basket-unit-description">
-                            <div class="price">Цена: <span>2990 руб.</span></div>
-                            <div class="name">Название:
-                                <span>Толстовrка Python</span></div>
-                            <div class="name">Цвет: <span>Бордовый</span></div>
-                            <div class="d-sm-flex code-size-count">
-                                <div>
-                                    Код: <span>T0001</span>
-                                </div>
-                                <div class="size-count">
-                                    Размер: <span>XL</span>
-                                </div>
-                                <div class="size-count">
-                                    Кол-во: <span><input type="number" min="0"
-                                                         value="1"></span>
-                                </div>
-                            </div>
-                            <button><i class="far fa-heart"></i> Добавить в избранное
-                            </button>
-                        </div>
-                        <button class="close-btn"><i class="far fa-times"></i>
-                        </button>
-                    </div>
-                    <hr>
-                    <div class="basket-unit d-flex">
-                        <div class="img">
-                            <img src="{% static 'img/product2.jpg' %}"
-                                 alt="product2.jpg" height="150">
-                        </div>
-                        <div class="basket-unit-description">
-                            <div class="price">Цена: <span>990 руб.</span></div>
-                            <div class="name">Название:
-                                <span>Футболка Coding Girl</span></div>
-                            <div class="name">Цвет: <span>Черный</span></div>
-                            <div class="d-sm-flex code-size-count">
-                                <div>
-                                    Код: <span>F0002</span>
-                                </div>
-                                <div class="size-count">
-                                    Размер: <span>M</span>
-                                </div>
-                                <div class="size-count">
-                                    Кол-во: <span><input type="number" min="0"
-                                                         value="1"></span>
-                                </div>
-                            </div>
-                            <button><i class="far fa-heart"></i> Добавить в избранное
-                            </button>
-                        </div>
-                        <button class="close-btn"><i class="far fa-times"></i>
-                        </button>
-                    </div>
-                    <hr>
-                    <div class="basket-unit d-flex">
-                        <div class="img">
-                            <img src="{% static 'img/product3.jpg' %}"
-                                 alt="product3.jpg" height="150">
-                        </div>
-                        <div class="basket-unit-description">
-                            <div class="price">Цена: <span>2990 руб.</span></div>
-                            <div class="name">Название: <span>Толстовка C++</span>
-                            </div>
-                            <div class="color">Цвет: <span>Зеленый</span></div>
-                            <div class="d-sm-flex code-size-count-wrap">
-                                <div>
-                                    Код: <span>T0002</span>
-                                </div>
-                                <div class="size-count">
-                                    Размер: <span>2XL</span>
-                                </div>
-                                <div class="size-count">
-                                    Кол-во: <span><input type="number" min="0"
-                                                         value="1"></span>
-                                </div>
-                            </div>
-                            <button><i class="far fa-heart"></i> Добавить в избранное
-                            </button>
-                        </div>
-                        <button class="close-btn"><i class="far fa-times"></i>
-                        </button>
-                    </div>
-                    <hr>
-                    <div class="basket-unit d-flex">
-                        <div class="img">
-                            <img src="{% static 'img/product4.jpg' %}"
-                                 alt="product4.jpg" height="150">
-                        </div>
-                        <div class="basket-unit-description">
-                            <div class="price">Цена: <span>990 руб.</span></div>
-                            <div class="name">Название: <span>Футболка C#</span>
-                            </div>
-                            <div class="name">Цвет: <span>Серый</span></div>
-                            <div class="d-sm-flex code-size-count">
-                                <div>
-                                    Код: <span>F0001</span>
-                                </div>
-                                <div>
-                                    Размер: <span>XL</span>
-                                </div>
-                                <div>
-                                    Кол-во: <span><input type="number" min="0"
-                                                         value="1"></span>
-                                </div>
-                            </div>
-                            <button><i class="far fa-heart"></i> Добавить в избранное
-                            </button>
-                        </div>
-                        <button class="close-btn"><i class="far fa-times"></i>
-                        </button>
-                    </div>
-                    <hr>
-                    <div class="total-amount">
-                        Всего <span>7960</span> руб.
-                    </div>
                 </div>
 
                 <div class="col-12 col-lg-4 basket-order wow fadeInRight">
@@ -158,21 +39,22 @@
                         <option value="" hidden>Пожалуйста, выберите способ
                             доставки
                         </option>
-                        <option value="">Самовывоз (Бесплатно)</option>
-                        <option value="">Курьерская в пределах МКАД (300р.)</option>
-                        <option value="">Курьерская до 5 км за МКАД (350р.)</option>
-                        <option value="">Курьерская до 15 км за МКАД (500р.)</option>
-                        <option value="">Курьерская до 25 км за МКАД (800р.)</option>
-                        <option value="">До любой почтовой службы (Бесплатно)
+                        <option value="0">Самовывоз (Бесплатно)</option>
+                        <option value="300">Курьерская в пределах МКАД (300р.)</option>
+                        <option value="350">Курьерская до 5 км за МКАД (350р.)</option>
+                        <option value="500">Курьерская до 15 км за МКАД (500р.)</option>
+                        <option value="800">Курьерская до 25 км за МКАД (800р.)</option>
+                        <option value="0">До любой почтовой службы (Бесплатно)
                         </option>
                     </select>
                     <div class="d-flex justify-content-between sum">
                         <span class="delivery">Доставка</span> <span
-                            class="delivery-price">300 руб.</span>
+                            class="delivery-price" data-price="0">0 руб.</span>
                     </div>
+
                     <div class="d-flex justify-content-between sum">
                         <span class="delivery">Всего</span> <span
-                            class="delivery-price">8260 руб.</span>
+                            class="delivery-price total-cost"></span>
                     </div>
                     <button type="button" data-toggle="modal" data-target="#modal-user-basket-order" class="no-focus">Оформить заказ</button>
                     <div class="we-take">
@@ -276,4 +158,370 @@
 <script>
     $(".phone-mask").mask("+7(999)999-99-99");
 </script>
+<script type="text/javascript" src="{% static 'js/basket.js' %}"></script>
+<!--<script>-->
+    <!--class Basket {-->
+        <!--constructor() {-->
+            <!--this.dataProducts = [];-->
+            <!--this.content = '';-->
+            <!--this.csrftoken = '';-->
+            <!--this.price = 0;-->
+            <!--this.API = `${window.location.origin}/api/v1/basket/`;-->
+            <!--this.init();-->
+        <!--}-->
+
+        <!--init() {-->
+            <!--this.getCSRFToken();-->
+            <!--this.requestProductsGet();-->
+        <!--}-->
+
+        <!--requestProductsGet() {-->
+            <!--fetch(this.API)-->
+                <!--.then(function (response) {-->
+                    <!--return response.json();-->
+                <!--})-->
+                <!--.then(data => {-->
+                    <!--this.dataProducts = data.results;-->
+                <!--})-->
+                <!--.then(data => {-->
+                    <!--this.renderBasketItems();           // отоюражение содержимого корзины-->
+                    <!--this.setHandlerChangeInNumber();    // обработчик ввода количества товаров-->
+                    <!--this.setHandlerChangeCloseBtn();    // обработчик удаления товара из корзины-->
+                    <!--new ProductLike();                  // отображение избранное в товарах-->
+                <!--})-->
+                <!--.catch(error => console.log(error));-->
+        <!--}-->
+
+        <!--// отоюражение содержимого корзины-->
+        <!--renderBasketItems() {-->
+            <!--for (let elem of this.dataProducts) {-->
+                <!--this.price += +elem.price * elem.quantity * (100 - elem.discount) / 100;-->
+                <!--this.content += this.getHtmlBasketUnit(elem);-->
+            <!--}-->
+
+            <!--this.content += `-->
+                        <!--<div class="total-amount">-->
+                            <!--Всего <span>${this.price}</span> руб.-->
+                        <!--</div>-->
+                        <!--`-->
+
+            <!--const block = document.createElement('div');-->
+            <!--block.innerHTML = this.content;-->
+            <!--document.querySelector('.basket .basket-items').appendChild(el);-->
+            <!--document.querySelector('.basket .basket-order .total-cost').innerText = `${this.price} руб.`;-->
+
+        <!--}-->
+
+        <!--getHtmlBasketUnit(elem) {-->
+            <!--return `-->
+                <!--<div id="${elem.id}">-->
+                    <!--<div class="basket-unit d-flex" >-->
+                        <!--<div class="img">-->
+                        <!--<a href="${elem.product_url.replace('/api/v1/', '/')}">-->
+                            <!--<img src="${elem.main_img}"-->
+                                 <!--alt="${elem.name_product}" height="150">-->
+                        <!--</a>-->
+
+                        <!--</div>-->
+                        <!--<div class="basket-unit-description">-->
+                            <!--<div class="price">Цена: <span>${+elem.price * (100 - elem.discount) / 100} руб.</span></div>-->
+                            <!--<div class="name">Название:-->
+                                <!--<span>${elem.name_category} ${elem.logotype}</span></div>-->
+                            <!--<div class="name">Цвет: <span>${elem.color}</span></div>-->
+                            <!--<div class="d-sm-flex code-size-count">-->
+                                <!--<div>-->
+                                    <!--Код: <span>${elem.article}</span>-->
+                                <!--</div>-->
+                                <!--<div class="size-count">-->
+                                    <!--Размер: <span>${elem.size}</span>-->
+                                <!--</div>-->
+                                <!--<div class="size-count">-->
+                                    <!--Кол-во: <span><input type="number" min="0"-->
+                                                         <!--data-product_by_size_id = ${elem.product_by_size_id}-->
+                                                         <!--data-id_product_basket = ${elem.id}-->
+                                                         <!--data-product_quantity = ${elem.quantity}-->
+                                                         <!--value=${elem.quantity}>-->
+                                            <!--</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<button data-like=${false} data-article=${elem.article} data-product_id=${elem.product_id}>-->
+                                <!--<i class="far fa-heart"></i> Добавить в избранное-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<button class="close-btn ml-auto" data-product_basket_id = ${elem.id}-->
+                                                  <!--data-price = ${+elem.price * elem.quantity * (100 - elem.discount) / 100}>-->
+                            <!--<i class="far fa-times" data-product_basket_id = ${elem.id}-->
+                                                    <!--data-price = ${+elem.price * elem.quantity * (100 - elem.discount) / 100}>-->
+                            <!--</i>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--<hr>-->
+                <!--</div>-->
+            <!--`-->
+        <!--}-->
+
+        <!--// обработчик ввода количества товаров-->
+        <!--setHandlerChangeInNumber() {-->
+            <!--let elements = document.querySelectorAll('.basket .basket-items-->
+                                                      <!--.basket-unit-->
+                                                      <!--.code-size-count-->
+                                                      <!--.size-count-->
+                                                      <!--input');-->
+            <!--for(let el of elements) {-->
+                <!--el.onchange = (event) => {-->
+                    <!--this.obj = event.target;-->
+                    <!--this.requestPut();                  // запрос на изменение количество товара в корзине-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+
+        <!--requestPut() {-->
+            <!--fetch(`${this.API}${this.obj.dataset.id_product_basket}/`, {-->
+                <!--method: 'PUT',-->
+                <!--headers: {-->
+                    <!--"Content-Type": "application/json",-->
+                    <!--"X-CSRFToken": this.csrftoken,-->
+                <!--},-->
+                <!--body: JSON.stringify({-->
+                   <!--"product_by_size_id": this.obj.dataset.product_by_size_id,-->
+                   <!--"quantity": this.obj.value-->
+                <!--})-->
+            <!--})-->
+            <!--.then(function (response) {-->
+                <!--console.log('response ', response);-->
+                <!--return response.json();-->
+            <!--})-->
+            <!--.then(data => {-->
+                <!--if (data.id) {-->
+                    <!--this.renderPriceProducts(data);-->
+                    <!--console.log(data);-->
+                <!--}-->
+
+            <!--})-->
+            <!--.catch(error => console.log(error));-->
+        <!--}-->
+
+        <!--renderPriceProducts(data) {-->
+            <!--this.price += +data.price * (this.obj.value - this.obj.dataset.product_quantity) * (100 - data.discount) / 100;-->
+            <!--this.obj.dataset.product_quantity = this.obj.value;-->
+
+            <!--document.querySelector('.basket .basket-items .total-amount span').innerText = this.price;-->
+            <!--document.querySelector('.basket .basket-order .total-cost').innerText = `${this.price} руб.`;-->
+        <!--}-->
+
+        <!--setHandlerChangeCloseBtn() {-->
+            <!--let elements = document.querySelectorAll('.basket .basket-items .close-btn');-->
+
+            <!--for(let el of elements) {-->
+                <!--el.onclick = (event) => {-->
+                    <!--this.objDelete = event.target;-->
+                    <!--this.requestDelete(event.target.dataset.product_basket_id);-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+
+        <!--requestDelete(id) {-->
+            <!--fetch(`${this.API}${id}/`, {-->
+                <!--method: 'DELETE',-->
+                <!--headers: {-->
+                    <!--"Content-Type": "application/json",-->
+                    <!--"X-CSRFToken": this.csrftoken,-->
+                <!--},-->
+                <!--body: JSON.stringify({-->
+                    <!--"product_by_size_id": id,-->
+                <!--})-->
+            <!--})-->
+            <!--.then(() => {-->
+                <!--console.log('ответ после удаления ');-->
+                <!--this.renderPriceProductsDelete();-->
+                <!--this.renderProductDelete();-->
+            <!--})-->
+            <!--.catch(error => console.log(error));-->
+        <!--}-->
+
+        <!--renderPriceProductsDelete() {-->
+            <!--console.log(this.objDelete);-->
+            <!--console.log(this.objDelete.dataset.price)-->
+            <!--this.price -= this.objDelete.dataset.price;-->
+
+            <!--document.querySelector('.basket .basket-items .total-amount span').innerText = this.price;-->
+            <!--document.querySelector('.basket .basket-order .total-cost').innerText = `${this.price} руб.`;-->
+        <!--}-->
+
+        <!--renderProductDelete() {-->
+            <!--document.getElementById(this.objDelete.dataset.product_basket_id).remove();-->
+        <!--}-->
+
+        <!--getCSRFToken() {-->
+                <!--if (document.cookie && document.cookie !== '') {-->
+                    <!--let cookies = document.cookie.split(';');-->
+                    <!--for (let el of cookies) {-->
+                        <!--if (el.split('=')[0].replace(/\s/g, '') === "csrftoken") {-->
+                            <!--this.csrftoken = el.split('=')[1];-->
+                        <!--}-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+    <!--}-->
+
+
+
+
+    <!--class ProductLike {-->
+            <!--constructor() {-->
+                <!--this.productsList = [];-->
+                <!--this.API = `${window.location.origin}/api/v1/like/`;-->
+                <!--this.getCSRFToken();-->
+                <!--this.init();-->
+            <!--}-->
+
+            <!--init() {-->
+                <!--this.requestProductsLike();-->
+                <!--this.clickProductsLike();-->
+            <!--}-->
+
+            <!--requestProductsLike() {-->
+                <!--fetch(`${this.API}`)-->
+                    <!--.then(function (response) {-->
+                        <!--return response.json();-->
+                    <!--})-->
+                    <!--.then(data => {-->
+                        <!--this.productsLikeList = data.results;-->
+                        <!--console.log('LIKE &ndash;&gt; ', data);-->
+                    <!--})-->
+                    <!--.then(() => {-->
+                        <!--this.productsLike();-->
+
+                    <!--})-->
+                    <!--.catch(error => console.log(error));-->
+            <!--}-->
+
+            <!--productsLike() {-->
+                <!--for (let el of this.productsLikeList) {-->
+                    <!--let elements_list = document.querySelectorAll(`[data-article=${el.article}]`);-->
+                    <!--console.log('elements_list', elements_list);-->
+                    <!--for (let element of elements_list) {-->
+                        <!--element.innerHTML = '<i class="far fa-heart"></i>Удалить из избранного';-->
+                        <!--element.style.backgroundColor = '#f92672';-->
+                        <!--element.style.color = '#ffffff';-->
+                        <!--element.dataset.like = true;-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+
+            <!--clickProductsLike() {-->
+                <!--let btnAddProductsLike = document.querySelectorAll('.basket .basket-items .basket-unit-description > button');-->
+                <!--for (let el of btnAddProductsLike) {-->
+                    <!--el.onclick = (event) => {-->
+                        <!--this.element = event.target;-->
+                        <!--console.log('dsdsd', event.target.dataset.like)-->
+                        <!--if (event.target.dataset.like === 'true') {-->
+                            <!--this.requestDelete(event.target.dataset.product_id, event.target.dataset.article);-->
+                        <!--} else {-->
+                            <!--this.requestPost(event.target.dataset.product_id, event.target.dataset.article);-->
+                        <!--}-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+
+
+            <!--requestPost(id, article) {-->
+                <!--fetch(this.API, {-->
+                    <!--method: 'POST',-->
+                    <!--headers: {-->
+                        <!--"Content-Type": "application/json",-->
+                        <!--"X-CSRFToken": this.csrftoken,-->
+                    <!--},-->
+                    <!--body: JSON.stringify({-->
+                            <!--"product_id": id,-->
+                        <!--}-->
+                    <!--)-->
+                <!--})-->
+                    <!--.then(function (response) {-->
+                        <!--return response.json();-->
+                    <!--})-->
+                    <!--.then(data => {-->
+                        <!--console.log('13048144 ', data)-->
+                        <!--if (data.id) {-->
+                            <!--this.addStyleButtonLike(article);-->
+                        <!--}-->
+                    <!--})-->
+                    <!--.catch(error => console.log(error));-->
+            <!--}-->
+
+            <!--requestDelete(id, article) {-->
+                <!--fetch(`${this.API + id}/`, {-->
+                    <!--method: 'DELETE',-->
+                    <!--headers: {-->
+                        <!--"Content-Type": "application/json",-->
+                        <!--"X-CSRFToken": this.csrftoken,-->
+                    <!--},-->
+                <!--})-->
+                    <!--.then(function (response) {-->
+                        <!--return response;-->
+                    <!--})-->
+                    <!--.then(data => {-->
+                        <!--console.log('DELETE', data)-->
+                        <!--if (!data.id) {-->
+                            <!--this.removeStyleButtonLike(article);-->
+                        <!--}-->
+                    <!--})-->
+                    <!--.catch(error => console.log(error));-->
+            <!--}-->
+
+            <!--addStyleButtonLike(article) {-->
+                <!--for (let el of document.querySelectorAll(`[data-article=${article}]`)) {-->
+                    <!--el.innerHTML = '<i class="far fa-heart"></i>Удалить из избранного';-->
+                    <!--el.style.backgroundColor = '#f92672';-->
+                    <!--el.style.color = '#ffffff';-->
+                    <!--el.dataset.like = true;-->
+                <!--};-->
+
+            <!--}-->
+
+            <!--removeStyleButtonLike(article) {-->
+                <!--for (let el of document.querySelectorAll(`[data-article=${article}]`)) {-->
+                    <!--el.innerHTML = '<i class="far fa-heart"></i>Удалить из избранного';-->
+                    <!--el.style.backgroundColor = '#ffffff';-->
+                    <!--el.style.color = '#383838';-->
+                    <!--el.dataset.like = false;-->
+                <!--};-->
+            <!--}-->
+
+            <!--getCSRFToken() {-->
+                <!--if (document.cookie && document.cookie !== '') {-->
+                    <!--let cookies = document.cookie.split(';');-->
+                    <!--for (let el of cookies) {-->
+                        <!--if (el.split('=')[0].replace(/\s/g, '') === "csrftoken") {-->
+                            <!--this.csrftoken = el.split('=')[1];-->
+                        <!--}-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+    <!--}-->
+
+    <!--class Delivery {-->
+        <!--constructor() {-->
+            <!--this.deliverPrice = 0;-->
+            <!--this.changeInputDelivery();-->
+        <!--}-->
+
+        <!--changeInputDelivery() {-->
+            <!--let block = document.querySelector('.basket .basket-order .form-control');-->
+            <!--block.onchange = () => {-->
+                <!--this.deliverPrice = block.options[block.selectedIndex].value;-->
+                <!--this.renderPriceDeliver();-->
+            <!--}-->
+        <!--}-->
+
+        <!--renderPriceDeliver() {-->
+            <!--document.querySelector('.basket .basket-order .sum .delivery-price').innerText = `${this.deliverPrice} руб.`-->
+        <!--}-->
+
+    <!--}-->
+
+    <!--let delivery = new Delivery();-->
+    <!--let basketProducts = new Basket();-->
+
+<!--</script>-->
 {% endblock %}

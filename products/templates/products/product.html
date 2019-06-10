@@ -231,7 +231,6 @@
 
         class RenderMainPhoto {
             constructor() {
-
                 this.mainPhotoElem = '';
                 this.subPhotoList = [];
                 this.init();
@@ -298,9 +297,7 @@
                         this.renderSubProductPhotos();
                     })
                     .then(() => {
-
-                        <!--this.requestProductLike();-->
-
+                        new AddToBasket(this.dataProduct.sizes);
                         new SimilarProducts(this.dataProduct.url_similar_products);
                         new RenderMainPhoto();
                         new DisplayPhoto();
@@ -308,22 +305,6 @@
                     })
                     .catch(error => console.log(error));
             }
-
-            <!--requestProductLike() {-->
-                <!--fetch(`${window.location.origin}/api/v1/like/`)-->
-                    <!--.then(function (response) {-->
-                        <!--return response.json();-->
-                    <!--})-->
-                    <!--.then(data => {-->
-                        <!--if (data.count !== 0) {-->
-                            <!--const block = document.querySelector('.add-to-like');-->
-                            <!--block.dataset.is_active = 'true';-->
-                            <!--block.style.backgroundColor = '#f92672';-->
-                            <!--block.style.color = '#f6f6f6';-->
-                        <!--}-->
-                    <!--})-->
-                    <!--.catch(error => console.log(error));-->
-            <!--}-->
 
             renderPath() {
                 this.dataProduct.gender === 'man' ? this.dataProduct.genderInRus = 'Мужское' : this.dataProduct.genderInRus = 'Женское';
@@ -495,7 +476,6 @@
                     },
                     body: JSON.stringify({
                             "product_id": this.product_id,
-
                         }
                     )
                 })
@@ -560,10 +540,124 @@
             }
         }
 
+        class AddToBasket{
+            constructor(listSizes) {
+                <!--new Add();-->
+                this.listSizes = listSizes;
+                this.csrftoken = '';
+                this.API = `${window.location.origin}/api/v1/basket/`;
+                this.size = '';
+                this.sizeSelected = false;
+                this.product_by_size_id = null;
+                this.quantity = 1;
+                this.buttonAddBasket = document.querySelector('.product .row .add-to-bag');
+                this.init();
+            }
+
+            init() {
+                this.getCSRFToken();                // получение CSRF-токена
+                this.setHandlerToButton();          // установка обработчика события на кнопку добавления товара в корзину
+            }
+
+            // установка обработчика события на кнопку добавления товара в корзину
+            setHandlerToButton() {
+                this.buttonAddBasket.onclick = () => {
+                    this.getProductBySizeId();
+
+                    if (this.product_by_size_id) {
+                        this.requestProductPost();
+                    }
+                    else {
+                        console.log('Не выбран размер.')
+                    }
+                }
+            }
+
+
+            // получение id продукта с выбранным размером
+            getProductBySizeId() {
+                let block = document.querySelector('.product .row .form-control');
+                this.size = block.options[block.selectedIndex].value;
+
+                for (let el of this.listSizes) {
+                    if (el.size === this.size) {
+                        this.product_by_size_id = el.id;
+                    }
+                }
+            }
+
+            // запрос на добавление выбранного размера продукта в корзину
+            requestProductPost() {
+                fetch(this.API, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": this.csrftoken,
+                    },
+                    body: JSON.stringify({
+                            "product_by_size_id": this.product_by_size_id,
+                            "quantity": this.quantity
+                        }
+                    )
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.id) {
+                        console.log('iughqporighpro\ngkvjdfjvdfjbeoij\nrijgpqrgiqpegpo\nrgiporeg', $(".main-product-photo img"));
+                        $(".main-product-photo img")
+                            .clone()
+                            .css({'position' : 'absolute', 'z-index' : '11100', top: $(".add-to-bag").offset().top-300, left: $(".add-to-bag").offset().left-1000})
+                            .appendTo("body")
+                            .animate({opacity: 0.05,
+                                left: $("#basket-button").offset()['left'],
+                                top: $("#basket-button").offset()['top'],
+                                width: 20}, 1000, function() {
+                                $(this).remove();
+                            });
+                        }
+                })
+                .catch(error => console.log(error));
+            }
+
+            getCSRFToken() {
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let el of cookies) {
+                        if (el.split('=')[0].replace(/\s/g, '') === "csrftoken") {
+                            this.csrftoken = el.split('=')[1];
+                        }
+                    }
+                }
+            }
+        }
+
         let product = new Product();
 
 
+    class Add {
+        constructor() {
+
+            $(".add-to-bag").on("click",function(){
+            console.log('iughqporighpro\ngkvjdfjvdfjbeoij\nrijgpqrgiqpegpo\nrgiporeg', $(".main-product-photo img"));
+            $(".main-product-photo img")
+                .clone()
+                .css({'position' : 'absolute', 'z-index' : '11100', top: $(this).offset().top-300, left:$(this).offset().left-1000})
+                .appendTo("body")
+                .animate({opacity: 0.05,
+                    left: $("#basket-button").offset()['left'],
+                    top: $("#basket-button").offset()['top'],
+                    width: 20}, 1000, function() {
+                    $(this).remove();
+                });
+
+            });
+        }
+    }
+
     </script>
+
 
 {% endblock %}
 

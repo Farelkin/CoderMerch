@@ -10,6 +10,7 @@ class BasketProductSerializer(serializers.ModelSerializer):
                                                       many=False,
                                                       read_only=True,
                                                       )
+    product_id = serializers.IntegerField(source='product.product.id', read_only=True,)
     article = serializers.StringRelatedField(
         source='product.product.article')
     name_product = serializers.StringRelatedField(
@@ -43,4 +44,4 @@ class BasketProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Basket
-        exclude = ('id', 'product', 'user', 'is_ordered')
+        exclude = ('product', 'user', 'is_ordered')
